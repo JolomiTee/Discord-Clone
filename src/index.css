@@ -1,8 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @layer base {
-  :root {
-    --radius: 0.5rem
-  }
+	@font-face {
+			font-family: 'OpenSans';
+			font-style: normal;
+			font-weight: 400;
+			font-display: swap;
+			src: url(./font/OpenSans-Regular.ttf) format('truetype');
+		}
+	
+		@font-face {
+			font-family: 'OpenSans';
+			font-style: normal;
+			font-weight: 600;
+			font-display: swap;
+			src: url(./font/OpenSans-Semibold.ttf) format('truetype');
+		}
+	
+		@font-face {
+			font-family: 'OpenSans';
+			font-style: normal;
+			font-weight: 800;
+			font-display: swap;
+			src: url(./font/OpenSans-Bold.ttf) format('truetype');
+		}
 }

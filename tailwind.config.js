@@ -21,6 +21,9 @@ export default {
 				"soft-blue": "#B5BFE7", // active icon state
 				"discord-blue": "#5865F2", // selected server
 			},
+			fontFamily: {
+				"open-sans": ["OpenSans", "serif"], // Fallback to sans-serif
+			},
 		},
 	},
 };
