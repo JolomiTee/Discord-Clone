@@ -1,7 +1,14 @@
-import "./App.css";
-
 function App() {
-	return <h1 className="text-purple-500 text-2xl">Discord Clone</h1>;
+	return (
+		<div className="flex w-screen h-screen items-center justify-center bg-charcoal">
+			<div>
+				<img src="../wumpus.png" alt="Wumpus" className="max-w-[500px]" />
+				<p className="text-center">
+					Wumpus is waiting for you to pick a chat.
+				</p>
+			</div>
+		</div>
+	);
 }
 
 export default App;
