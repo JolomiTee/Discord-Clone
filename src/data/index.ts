@@ -2,22 +2,31 @@ export const serverList = [
 	{
 		name: "MidJourney",
 		serverImage: "/midjourney.png",
+		hasNotification: true
 	},
 	{
 		name: "Roblox",
 		serverImage: "/roblox.png",
+		hasNotification: false
+
 	},
 	{
 		name: "One Piece",
 		serverImage: "/onepiece.png",
+		hasNotification: true
+
 	},
 	{
 		name: "LinusTechTips",
 		serverImage: "/linustechtips.png",
+		hasNotification: false
+
 	},
 	{
 		name: "Apex Legends",
-		serverImage: "/aexlegends.png",
+		serverImage: "/apexlegends.png",
+		hasNotification: false
+
 	},
 ];
 

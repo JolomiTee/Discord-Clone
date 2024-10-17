@@ -29,7 +29,7 @@ const Sidebar = () => {
 						height={35}
 					/>
 				</Button>
-				<Separator className="w-full rounded-full bg-charcoal h-1 mx-auto" />
+				<Separator className="w-[70%] rounded-full bg-charcoal h-1 mx-auto" />
 				<Button className="rounded-full w-[40px] h-[40px] p-0 bg-transparent">
 					<img
 						src="/src/assets/icons/servers.svg"
@@ -42,15 +42,15 @@ const Sidebar = () => {
 
 			<div className="flex flex-col gap-y-[10px] overflow-y-auto max-h-full scrollbar-hidden">
 				{serverList.map((server, index) => {
-					const { name, serverImage } = server;
+					const { name, serverImage, hasNotification } = server;
 
 					return (
 						<div key={index} className="w-full flex relative group">
 							{/* Half-circle */}
 							<div
 								className={`absolute top-1/2 -translate-y-1/2 -left-[1px] w-2 rounded-full bg-white dark:bg-white transition-all duration-100 ${
-									isClicked ? "h-10" : "group-hover:h-5 h-2"
-								}`}
+									isClicked ? "h-10" : "group-hover:h-5"
+								} ${hasNotification && "h-2"}`}
 								style={{
 									clipPath: "inset(0 0 0 50%)",
 								}}
@@ -97,7 +97,7 @@ const Sidebar = () => {
 			</div>
 
 			<div className="flex flex-col items-center gap-y-[15px] mt-auto mb-0">
-				<Separator className="w-full rounded-full bg-charcoal h-1 mx-auto" />
+				<Separator className="w-[70%] rounded-full bg-charcoal h-1 mx-auto" />
 				<Button className="rounded-full w-[40px] h-[40px] p-0 bg-transparent">
 					<img
 						src="/src/assets/icons/mail.svg"
