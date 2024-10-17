@@ -7,6 +7,8 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select";
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { messageList } from "@/data";
 
 const Sidelist = () => {
 	return (
@@ -54,8 +56,43 @@ const Sidelist = () => {
 						</div>
 					</div>
 
-					<TabsContent value="messages" className="px-3 text-[#FFFFFF99] ">
-						Make changes to your messages here.
+					<TabsContent
+						value="messages"
+						className="px-3 text-[#FFFFFF99] grid gap-3"
+					>
+						{messageList.map((message, i) => {
+							const { profileImg, user, online, hasMessage } = message;
+							return (
+								<div className="flex items-center justify-start gap-3">
+									<div className="relative">
+										<Avatar className="flex items-center justify-center">
+											<AvatarImage
+												src={profileImg}
+												className="w-[35px] h-[35px]"
+											/>
+											<AvatarFallback className="flex items-center justify-center">
+												<img
+													src="src/assets/icons/discord.svg"
+													className="w-[35px] h-[35px]"
+												/>
+											</AvatarFallback>
+										</Avatar>
+										<div
+											className={`absolute -right-1 bottom-0 ${
+												online ? "bg-emerald" : "bg-gray"
+											} rounded-full w-4 h-4 border-[3px] border-solid border-onyx`}
+										></div>
+									</div>
+									<span
+										className={`${
+											hasMessage ? "font-bold" : "font-normal"
+										}`}
+									>
+										{user}
+									</span>
+								</div>
+							);
+						})}
 					</TabsContent>
 					<TabsContent value="friends" className="px-3 text-[#FFFFFF99] ">
 						Change your friends here.

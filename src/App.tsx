@@ -9,12 +9,8 @@ function App() {
 
 			<section className="flex w-full h-full items-center justify-center bg-charcoal font-open-sans overflow-hidden">
 				<div>
-					<img
-						src="../wumpus.png"
-						alt="Wumpus"
-						className="max-w-[500px]"
-					/>
-					<p className="text-center text-[16px]">
+					<img src="/wumpus.png" alt="Wumpus" className="max-w-[500px]" />
+					<p className="text-center text-[16px] text-white font-semibold">
 						Wumpus is waiting for you to pick a chat.
 					</p>
 				</div>
