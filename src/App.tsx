@@ -19,7 +19,7 @@ function App() {
 			<section
 				className={`bg-charcoal w-full h-full font-open-sans overflow-hidden ${
 					context === "messages"
-						? "flex flex-col"
+						? "flex flex-col h-full"
 						: "flex items-center justify-center"
 				}`}
 			>

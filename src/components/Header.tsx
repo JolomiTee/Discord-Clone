@@ -1,18 +1,11 @@
+import IconButtons from "./header/IconButtons";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import { Button } from "./ui/button";
-
 
 const Header = () => {
 	return (
-		<header className="flex justify-between items-center gap-3 h-[55px] px-4 bg-onyx w-full">
+		<header className="flex justify-between items-center gap-3 h-[110px] px-4 bg-onyx w-full">
 			<div className="flex items-center gap-3">
-				<Button className="bg-transparent" size={"icon"}>
-					<img
-						src="/src/assets/icons/sidebar.svg"
-						alt="Sidebar"
-						className="w-7 h-7"
-					/>
-				</Button>
+				<IconButtons src="sidebar" alt="Sidebar" />
 
 				<div className="flex items-center justify-start gap-3 bg-transparent shadow-none">
 					<div className="relative">
@@ -37,53 +30,11 @@ const Header = () => {
 			</div>
 
 			<div className="flex items-center gap-3">
-				<Button className="bg-transparent" size={"icon"}>
-					<img
-						src="/src/assets/icons/call.svg"
-						alt="Sidebar"
-						className="w-10 h-10"
-					/>
-				</Button>
-
-				<Button className="bg-transparent" size={"icon"}>
-					<img
-						src="/src/assets/icons/video_call.svg"
-						alt="Sidebar"
-						className="w-10 h-10"
-					/>
-				</Button>
-
-				<Button className="bg-transparent" size={"icon"}>
-					<img
-						src="/src/assets/icons/disable_notification.svg"
-						alt="Sidebar"
-						className="w-10 h-10"
-					/>
-				</Button>
-
-				<Button className="bg-transparent" size={"icon"}>
-					<img
-						src="/src/assets/icons/pin.svg"
-						alt="Sidebar"
-						className="w-10 h-10"
-					/>
-				</Button>
-
-				<Button className="bg-transparent" size={"icon"}>
-					<img
-						src="/src/assets/icons/search.svg"
-						alt="Sidebar"
-						className="w-7 h-7"
-					/>
-				</Button>
-
-				<Button className="bg-transparent" size={"icon"}>
-					<img
-						src="/src/assets/icons/sidebar.svg"
-						alt="Sidebar"
-						className="w-7 h-7"
-					/>
-				</Button>
+				<IconButtons src="call" alt="Call" sizes="w-7 h-7" />
+				<IconButtons src="video_call" alt="Video Call" sizes="w-7 h-7" />
+				<IconButtons src="disable_notification" alt="Notification" />
+				<IconButtons src="search" alt="Search" sizes="w-5 h-5" />
+				<IconButtons src="sidebar" alt="Call" />
 			</div>
 		</header>
 	);
