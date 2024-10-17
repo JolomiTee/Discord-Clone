@@ -10,13 +10,13 @@ const Sidebar = () => {
 	const handleClick = () => {
 		setIsClicked(!isClicked);
 	};
-	
+
 	return (
 		<section className="lg:min-w-[6%] bg-onyx py-3 flex flex-col gap-y-[16px] h-screen">
 			<div className="flex flex-col items-center gap-y-[10px]">
 				<Button className="rounded-full w-[40px] h-[40px] p-0 bg-transparent">
 					<img
-						src="/src/assets/icons/search.svg"
+						src="../assets/icons/search.svg"
 						alt="Search"
 						width={25}
 						height={25}
@@ -24,7 +24,7 @@ const Sidebar = () => {
 				</Button>
 				<Button className="rounded-full w-[40px] h-[40px] p-0 bg-transparent">
 					<img
-						src="/src/assets/icons/messages.svg"
+						src="../assets/icons/messages.svg"
 						alt="Search"
 						width={35}
 						height={35}
@@ -33,7 +33,7 @@ const Sidebar = () => {
 				<Separator className="w-[70%] rounded-full bg-charcoal h-1 mx-auto" />
 				<Button className="rounded-full w-[40px] h-[40px] p-0 bg-transparent">
 					<img
-						src="/src/assets/icons/servers.svg"
+						src="../assets/icons/servers.svg"
 						alt="Search"
 						width={35}
 						height={35}
@@ -90,7 +90,7 @@ const Sidebar = () => {
 										}`}
 									>
 										<img
-											src="src/assets/icons/discord.svg"
+											src="../assets/icons/discord.svg"
 											className="w-[35px] h-[35px] mx-auto my-auto"
 										/>
 									</AvatarFallback>
@@ -105,7 +105,7 @@ const Sidebar = () => {
 				<Separator className="w-[70%] rounded-full bg-charcoal h-1 mx-auto" />
 				<Button className="rounded-full w-[40px] h-[40px] p-0 bg-transparent">
 					<img
-						src="/src/assets/icons/mail.svg"
+						src="../assets/icons/mail.svg"
 						alt="Search"
 						width={40}
 						height={40}
@@ -122,7 +122,7 @@ const Sidebar = () => {
 						/>
 						<AvatarFallback className="bg-transparent">
 							<img
-								src="src/assets/icons/discord.svg"
+								src="../assets/icons/discord.svg"
 								className="w-[35px] h-[35px] mx-auto my-auto"
 							/>
 						</AvatarFallback>

@@ -52,7 +52,7 @@ const Sidelist = () => {
 						<div className="flex gap-2 items-center ">
 							<Button className="rounded-full w-[40px] h-[40px] p-0 bg-[#FFFFFF08] border border-solid border-[#FFFFFF0F]">
 								<img
-									src="/src/assets/icons/search.svg"
+									src="../assets/icons/search.svg"
 									alt="Search"
 									width={20}
 									height={20}
@@ -61,7 +61,7 @@ const Sidelist = () => {
 
 							<Button className="rounded-full w-[40px] h-[40px] p-0 bg-[#FFFFFF08] border border-solid border-[#FFFFFF0F]">
 								<img
-									src="/src/assets/icons/plus.svg"
+									src="../assets/icons/plus.svg"
 									alt="Add"
 									width={18}
 									height={20}
@@ -97,7 +97,7 @@ const Sidelist = () => {
 											/>
 											<AvatarFallback className="flex items-center justify-center">
 												<img
-													src="src/assets/icons/discord.svg"
+													src="../assets/icons/discord.svg"
 													className="w-[35px] h-[35px]  rounded-full"
 												/>
 											</AvatarFallback>
@@ -123,7 +123,7 @@ const Sidelist = () => {
 									<DropdownMenu>
 										<DropdownMenuTrigger>
 											<img
-												src="/src/assets/icons/more_h.svg"
+												src="../assets/icons/more_h.svg"
 												alt=""
 												width={20}
 											/>
