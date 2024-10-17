@@ -10,7 +10,7 @@
 			font-display: swap;
 			src: url(./font/OpenSans-Regular.ttf) format('truetype');
 		}
-	
+
 		@font-face {
 			font-family: 'OpenSans';
 			font-style: normal;
@@ -18,7 +18,7 @@
 			font-display: swap;
 			src: url(./font/OpenSans-Semibold.ttf) format('truetype');
 		}
-	
+
 		@font-face {
 			font-family: 'OpenSans';
 			font-style: normal;
@@ -26,4 +26,13 @@
 			font-display: swap;
 			src: url(./font/OpenSans-Bold.ttf) format('truetype');
 		}
+}
+.scrollbar-hidden {
+	overflow-y: scroll;
+	scrollbar-width: none;
+	/* For Firefox */
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+	display: none;
 }
