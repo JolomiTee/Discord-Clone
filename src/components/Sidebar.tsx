@@ -10,6 +10,7 @@ const Sidebar = () => {
 	const handleClick = () => {
 		setIsClicked(!isClicked);
 	};
+	
 	return (
 		<section className="lg:min-w-[6%] bg-onyx py-3 flex flex-col gap-y-[16px] h-screen">
 			<div className="flex flex-col items-center gap-y-[10px]">
@@ -49,8 +50,12 @@ const Sidebar = () => {
 							{/* Half-circle */}
 							<div
 								className={`absolute top-1/2 -translate-y-1/2 -left-[1px] w-2 rounded-full bg-white dark:bg-white transition-all duration-100 ${
-									isClicked ? "h-10" : "group-hover:h-5"
-								} ${hasNotification && "h-2"}`}
+									isClicked
+										? "h-10"
+										: hasNotification
+										? "h-2"
+										: "group-hover:h-5"
+								}`}
 								style={{
 									clipPath: "inset(0 0 0 50%)",
 								}}
