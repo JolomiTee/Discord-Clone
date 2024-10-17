@@ -5,9 +5,9 @@ import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
 const Sidebar = () => {
 	return (
-		<section className="lg:min-w-[7%] bg-onyx py-5 flex flex-col items-center gap-y-[20px] h-screen">
-			<div className="flex flex-col items-center gap-y-[15px]">
-				<Button>
+		<section className="lg:min-w-[6%] bg-onyx py-2 flex flex-col items-center gap-y-[20px] h-screen">
+			<div className="flex flex-col items-center gap-y-[10px]">
+				<Button className="rounded-full w-[50px] h-[50px] p-0 bg-transparent">
 					<img
 						src="/src/assets/icons/search.svg"
 						alt="Search"
@@ -15,7 +15,7 @@ const Sidebar = () => {
 						height={30}
 					/>
 				</Button>
-				<Button>
+				<Button className="rounded-full w-[50px] h-[50px] p-0 bg-transparent">
 					<img
 						src="/src/assets/icons/messages.svg"
 						alt="Search"
@@ -23,8 +23,8 @@ const Sidebar = () => {
 						height={40}
 					/>
 				</Button>
-				<Separator className="w-[80px] bg-charcoal h-1 mx-auto" />
-				<Button>
+				<Separator className="w-full rounded-full bg-charcoal h-1 mx-auto" />
+				<Button className="rounded-full w-[50px] h-[50px] p-0 bg-transparent">
 					<img
 						src="/src/assets/icons/servers.svg"
 						alt="Search"
@@ -33,7 +33,7 @@ const Sidebar = () => {
 					/>
 				</Button>
 			</div>
-			<div className="grid justify-center gap-y-3 overflow-y-auto max-h-full scrollbar-hidden">
+			<div className="grid justify-center gap-y-[10px] overflow-y-auto max-h-full scrollbar-hidden">
 				{serverList.map((server, index) => {
 					const { name, link } = server;
 
@@ -55,8 +55,8 @@ const Sidebar = () => {
 			</div>
 
 			<div className="flex flex-col items-center gap-y-[15px]">
-				<Separator className="w-[80px] bg-charcoal h-1 mx-auto" />
-				<Button>
+				<Separator className="w-full rounded-full bg-charcoal h-1 mx-auto" />
+				<Button className="rounded-full w-[50px] h-[50px] p-0 bg-transparent">
 					<img
 						src="/src/assets/icons/mail.svg"
 						alt="Search"
