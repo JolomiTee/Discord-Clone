@@ -1,8 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Sidebar from "./components/Sidebar";
 import Sidelist from "./components/Sidelist";
-import { Avatar, AvatarFallback, AvatarImage } from "./components/ui/avatar";
-import { Button } from "./components/ui/button";
 import { Badge } from "./components/ui/badge";
 import ChatBubble from "./components/ChatBubble";
 import { chatConversation } from "./data";
@@ -10,7 +8,12 @@ import Header from "./components/Header";
 import Keyboard from "./components/Keyboard";
 
 function App() {
-	const [context, setContext] = useState("messages");
+	const [context, setContext] = useState("");
+
+	useEffect(() => {
+		setContext("messages")
+	}, [])
+
 	return (
 		<div className="flex w-screen h-screen">
 			<Sidebar />

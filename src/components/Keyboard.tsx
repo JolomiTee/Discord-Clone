@@ -1,4 +1,4 @@
-import IconButtons from "./header/IconButtons";
+import IconButtons from "./IconButtons";
 import { Textarea } from "@/components/ui/textarea";
 
 const Keyboard = () => {
