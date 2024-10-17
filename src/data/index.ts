@@ -1,47 +1,23 @@
 export const serverList = [
 	{
-		name: "Backend Devs",
-		link: "#",
+		name: "MidJourney",
+		serverImage: "/midjourney.png",
 	},
 	{
-		name: "Backend Devs",
-		link: "#",
+		name: "Roblox",
+		serverImage: "/roblox.png",
 	},
 	{
-		name: "Backend Devs",
-		link: "#",
+		name: "One Piece",
+		serverImage: "/onepiece.png",
 	},
 	{
-		name: "Backend Devs",
-		link: "#",
+		name: "LinusTechTips",
+		serverImage: "/linustechtips.png",
 	},
 	{
-		name: "Backend Devs",
-		link: "#",
-	},
-	{
-		name: "Backend Devs",
-		link: "#",
-	},
-	{
-		name: "Backend Devs",
-		link: "#",
-	},
-	{
-		name: "Backend Devs",
-		link: "#",
-	},
-	{
-		name: "Backend Devs",
-		link: "#",
-	},
-	{
-		name: "Backend Devs",
-		link: "#",
-	},
-	{
-		name: "Backend Devs",
-		link: "#",
+		name: "Apex Legends",
+		serverImage: "/aexlegends.png",
 	},
 ];
 

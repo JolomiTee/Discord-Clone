@@ -2,10 +2,16 @@ import { serverList } from "@/data";
 import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { useState } from "react";
 
 const Sidebar = () => {
+	const [isClicked, setIsClicked] = useState(false);
+
+	const handleClick = () => {
+		setIsClicked(!isClicked);
+	};
 	return (
-		<section className="lg:min-w-[6%] bg-onyx py-3 px-1 flex flex-col items-center gap-y-[16px] h-screen">
+		<section className="lg:min-w-[6%] bg-onyx py-3 flex flex-col gap-y-[16px] h-screen">
 			<div className="flex flex-col items-center gap-y-[10px]">
 				<Button className="rounded-full w-[40px] h-[40px] p-0 bg-transparent">
 					<img
@@ -34,28 +40,63 @@ const Sidebar = () => {
 				</Button>
 			</div>
 
-			<div className="grid justify-center gap-y-[10px] overflow-y-auto max-h-full scrollbar-hidden">
+			<div className="flex flex-col gap-y-[10px] overflow-y-auto max-h-full scrollbar-hidden">
 				{serverList.map((server, index) => {
-					const { name } = server;
+					const { name, serverImage } = server;
 
 					return (
-						<Button
-							key={index}
-							className={`bg-graphite rounded-full w-[50px] h-[50px] p-0`}
-							title={name}
-						>
-							<img
-								src="/src/assets/icons/discord.svg"
-								alt={name}
-								width={30}
-								height={30}
+						<div key={index} className="w-full flex relative group">
+							{/* Half-circle */}
+							<div
+								className={`absolute top-1/2 -translate-y-1/2 -left-[1px] w-2 rounded-full bg-white dark:bg-white transition-all duration-100 ${
+									isClicked ? "h-10" : "group-hover:h-5 h-2"
+								}`}
+								style={{
+									clipPath: "inset(0 0 0 50%)",
+								}}
 							/>
-						</Button>
+
+							{/* Button */}
+							<Button
+								className={`rounded-full w-[50px] h-[50px] p-0 mx-auto transition-all duration-100 overflow-hidden ${
+									isClicked
+										? "rounded-[15px]"
+										: "group-hover:rounded-[15px]"
+								} focus-visible:ring-0`}
+								title={name}
+								onClick={handleClick}
+							>
+								<Avatar
+									className={`w-full h-full ${
+										isClicked
+											? "rounded-[12px]"
+											: "group-hover:rounded-[12px]"
+									}`}
+								>
+									<AvatarImage
+										src={serverImage}
+										className="mx-auto my-auto object-fill p-0"
+									/>
+									<AvatarFallback
+										className={`${
+											isClicked
+												? "bg-discord-blue rounded-[15px]"
+												: "bg-graphite group-hover:rounded-[12px]"
+										}`}
+									>
+										<img
+											src="src/assets/icons/discord.svg"
+											className="w-[35px] h-[35px] mx-auto my-auto"
+										/>
+									</AvatarFallback>
+								</Avatar>
+							</Button>
+						</div>
 					);
 				})}
 			</div>
 
-			<div className="flex flex-col items-center gap-y-[15px]">
+			<div className="flex flex-col items-center gap-y-[15px] mt-auto mb-0">
 				<Separator className="w-full rounded-full bg-charcoal h-1 mx-auto" />
 				<Button className="rounded-full w-[40px] h-[40px] p-0 bg-transparent">
 					<img
