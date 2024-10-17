@@ -14,7 +14,7 @@ function App() {
 						alt="Wumpus"
 						className="max-w-[500px]"
 					/>
-					<p className="text-center text-[32px]">
+					<p className="text-center text-[16px]">
 						Wumpus is waiting for you to pick a chat.
 					</p>
 				</div>
