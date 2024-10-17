@@ -1,6 +1,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Button } from "./ui/button";
 
+
 const Header = () => {
 	return (
 		<header className="flex justify-between items-center gap-3 h-[55px] px-4 bg-onyx w-full">
