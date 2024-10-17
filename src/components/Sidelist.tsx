@@ -7,10 +7,20 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select";
+
+import {
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuItem,
+	DropdownMenuLabel,
+	DropdownMenuSeparator,
+	DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { messageList } from "@/data";
 import { Badge } from "./ui/badge";
-
+import { Pin, FileDown, MessageCircleWarning, Archive } from "lucide-react";
 const Sidelist = () => {
 	return (
 		<section className="lg:min-w-[20%] bg-carbon relative">
@@ -109,6 +119,33 @@ const Sidelist = () => {
 									<Badge className="ms-auto me-0 rounded-full bg-white/10">
 										{messageCount}
 									</Badge>
+
+									<DropdownMenu>
+										<DropdownMenuTrigger>
+											<img
+												src="/src/assets/icons/more_h.svg"
+												alt=""
+												width={20}
+											/>
+										</DropdownMenuTrigger>
+										<DropdownMenuContent className="rounded-[8px]">
+											<DropdownMenuLabel>Actions</DropdownMenuLabel>
+											<DropdownMenuSeparator />
+											<DropdownMenuItem>
+												<Archive /> Archive
+											</DropdownMenuItem>
+											<DropdownMenuItem>
+												<FileDown />
+												Export{" "}
+											</DropdownMenuItem>
+											<DropdownMenuItem>
+												<Pin /> Pin
+											</DropdownMenuItem>
+											<DropdownMenuItem>
+												<MessageCircleWarning /> Report
+											</DropdownMenuItem>
+										</DropdownMenuContent>
+									</DropdownMenu>
 								</Button>
 							);
 						})}
