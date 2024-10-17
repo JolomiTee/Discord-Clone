@@ -53,10 +53,11 @@ const Sidelist = () => {
 							</Button>
 						</div>
 					</div>
-					<TabsContent value="messages">
+
+					<TabsContent value="messages" className="px-3 text-[#FFFFFF99] ">
 						Make changes to your messages here.
 					</TabsContent>
-					<TabsContent value="friends">
+					<TabsContent value="friends" className="px-3 text-[#FFFFFF99] ">
 						Change your friends here.
 					</TabsContent>
 				</Tabs>
