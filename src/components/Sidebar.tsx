@@ -1,12 +1,9 @@
 import { serverList } from "@/data";
 import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
-import { useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import { Badge } from "./ui/badge";
 
 const Sidebar = () => {
-	const [currenServer, setcurrenServer] = useState("default");
 	return (
 		<section className="lg:min-w-[7%] bg-onyx py-5 flex flex-col items-center gap-y-[20px] h-screen">
 			<div className="flex flex-col items-center gap-y-[15px]">
