@@ -26,6 +26,7 @@ interface props {
 	hasMessage: boolean;
 	messageCount?: number;
 	pinned: boolean;
+	action?: () => void;
 }
 const FriendProfileCard = ({
 	profileImg,
@@ -33,9 +34,13 @@ const FriendProfileCard = ({
 	online,
 	hasMessage,
 	pinned,
+	action,
 }: props) => {
 	return (
-		<Button className="flex items-center justify-start h-[55px] gap-3 bg-transparent shadow-none">
+		<Button
+			className="flex items-center justify-start h-[55px] gap-3 bg-transparent shadow-none"
+			onClick={action}
+		>
 			<div className="relative">
 				<Avatar className="flex items-center justify-center">
 					<AvatarImage

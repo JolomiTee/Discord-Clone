@@ -10,7 +10,9 @@ import {
 import { messageList } from "@/data";
 import IconButtons from "../IconButtons";
 import FriendProfileCard from "./FriendProfileCard";
+import { useStore } from "@/hooks/base-context";
 const MessagesDisplayVariant = () => {
+	const switchAppState = useStore((state) => state.switchAppState);
 	return (
 		<Tabs
 			defaultValue="messages"
@@ -78,6 +80,7 @@ const MessagesDisplayVariant = () => {
 								hasMessage={hasMessage}
 								messageCount={messageCount}
 								pinned={pinned}
+								action={() => switchAppState("messages")}
 							/>
 						);
 					})}
