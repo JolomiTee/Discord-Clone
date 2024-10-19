@@ -9,8 +9,13 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import { Badge } from "../ui/badge";
-import { Pin, FileDown, MessageCircleWarning, Archive, Ellipsis } from "lucide-react";
+import {
+	Pin,
+	FileDown,
+	MessageCircleWarning,
+	Archive,
+	Ellipsis,
+} from "lucide-react";
 import IconButtons from "../IconButtons";
 
 interface props {
@@ -18,14 +23,15 @@ interface props {
 	user: string;
 	online: boolean;
 	hasMessage: boolean;
-	messageCount: number;
+	messageCount?: number;
+	pinned: boolean;
 }
 const FriendProfileCard = ({
 	profileImg,
 	user,
 	online,
 	hasMessage,
-	messageCount,
+	pinned,
 }: props) => {
 	return (
 		<Button className="flex items-center justify-start h-[55px] gap-3 bg-transparent shadow-none">
@@ -52,32 +58,32 @@ const FriendProfileCard = ({
 				{user}
 			</span>
 
-			<Badge className="ms-auto me-0 rounded-full bg-white/10">
-				{messageCount}
-			</Badge>
+			<div className="flex items-center justify-start gap-3 ms-auto me-0 ">
+				{pinned && <IconButtons src="pin" alt="Pinned" />}
 
-			<DropdownMenu>
-				<DropdownMenuTrigger>
-					<Ellipsis />
-				</DropdownMenuTrigger>
-				<DropdownMenuContent className="rounded-[8px]">
-					<DropdownMenuLabel>Actions</DropdownMenuLabel>
-					<DropdownMenuSeparator />
-					<DropdownMenuItem>
-						<Archive /> Archive
-					</DropdownMenuItem>
-					<DropdownMenuItem>
-						<FileDown />
-						Export{" "}
-					</DropdownMenuItem>
-					<DropdownMenuItem>
-						<Pin /> Pin
-					</DropdownMenuItem>
-					<DropdownMenuItem>
-						<MessageCircleWarning /> Report
-					</DropdownMenuItem>
-				</DropdownMenuContent>
-			</DropdownMenu>
+				<DropdownMenu>
+					<DropdownMenuTrigger>
+						<Ellipsis />
+					</DropdownMenuTrigger>
+					<DropdownMenuContent className="rounded-[8px]">
+						<DropdownMenuLabel>Actions</DropdownMenuLabel>
+						<DropdownMenuSeparator />
+						<DropdownMenuItem>
+							<Archive /> Archive
+						</DropdownMenuItem>
+						<DropdownMenuItem>
+							<FileDown />
+							Export{" "}
+						</DropdownMenuItem>
+						<DropdownMenuItem>
+							<Pin /> Pin
+						</DropdownMenuItem>
+						<DropdownMenuItem>
+							<MessageCircleWarning /> Report
+						</DropdownMenuItem>
+					</DropdownMenuContent>
+				</DropdownMenu>
+			</div>
 		</Button>
 	);
 };

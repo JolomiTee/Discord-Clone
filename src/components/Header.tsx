@@ -3,7 +3,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
 const Header = () => {
 	return (
-		<header className="flex justify-between items-center gap-3 h-[110px] px-4 bg-onyx w-full">
+		<header className="flex justify-between items-center gap-3 h-[100px] px-4 bg-onyx w-full">
 			<div className="flex items-center gap-3">
 				<IconButtons src="sidebar" alt="Sidebar" />
 
@@ -32,9 +32,14 @@ const Header = () => {
 			<div className="flex items-center gap-3">
 				<IconButtons src="call" alt="Call" sizes="w-7 h-7" />
 				<IconButtons src="video_call" alt="Video Call" sizes="w-7 h-7" />
-				<IconButtons src="disable_notification" alt="Notification" />
+				<IconButtons
+					src="disable_notification"
+					alt="Notification"
+					sizes="w-7 h-7"
+				/>
+				<IconButtons src="pin" alt="Pinned" sizes="w-7 h-7" />
 				<IconButtons src="search" alt="Search" sizes="w-5 h-5" />
-				<IconButtons src="sidebar" alt="Call" />
+				<IconButtons src="sidebar" alt="Sidebar" />
 			</div>
 		</header>
 	);

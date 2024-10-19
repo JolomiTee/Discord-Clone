@@ -18,8 +18,8 @@ const Sidelist = () => {
 				className="w-full overflow-y-auto max-h-full scrollbar-hidden"
 			>
 				<div className="absolute bg-carbon w-full z-10 h-[120px]">
-					<TabsList className="w-full h-[55px] justify-center px-4 gap-4">
-						<TabsTrigger value="messages" className="px-5 py-2 w-1/2">
+					<TabsList className="w-full h-[50px] justify-center px-3 gap-4">
+						<TabsTrigger value="messages" className="px-5 py-1.5 w-1/2">
 							Messages
 						</TabsTrigger>
 						<TabsTrigger value="friends" className="px-5 py-2 w-1/2">
@@ -28,7 +28,7 @@ const Sidelist = () => {
 					</TabsList>
 					<div className="flex items-center justify-between gap-2 p-3">
 						<Select>
-							<SelectTrigger className="h-[40px] rounded-full bg-[#FFFFFF08] border border-solid border-[#FFFFFF0F] text-[#FFFFFF99] flex-row-reverse justify-end font-semibold">
+							<SelectTrigger className="h-[35px] rounded-full bg-[#FFFFFF08] border border-solid border-[#FFFFFF0F] text-[#FFFFFF99] flex-row-reverse justify-end font-semibold">
 								<SelectValue placeholder="Newest" />
 							</SelectTrigger>
 							<SelectContent>
@@ -42,15 +42,15 @@ const Sidelist = () => {
 							<IconButtons
 								src="search"
 								alt="Search"
-								sizes="w-[20px h-[20px]"
-								buttonStyles="rounded-full w-[40px] h-[40px] p-0 bg-[#FFFFFF08] border border-solid border-[#FFFFFF0F]"
+								sizes="w-[18px] h-[18px]"
+								buttonStyles="rounded-full w-[35px] h-[35px] p-0 bg-[#FFFFFF08] border border-solid border-[#FFFFFF0F]"
 							/>
 
 							<IconButtons
 								src="plus"
 								alt="Add"
-								sizes="w-[18px h-[18px]"
-								buttonStyles="rounded-full w-[40px] h-[40px] p-0 bg-[#FFFFFF08] border border-solid border-[#FFFFFF0F]"
+								sizes="w-[18px] h-[18px]"
+								buttonStyles="rounded-full w-[35px] h-[35px] p-0 bg-[#FFFFFF08] border border-solid border-[#FFFFFF0F]"
 							/>
 						</div>
 					</div>
@@ -68,6 +68,7 @@ const Sidelist = () => {
 								online,
 								hasMessage,
 								messageCount,
+								pinned,
 							} = message;
 							return (
 								<FriendProfileCard
@@ -77,6 +78,7 @@ const Sidelist = () => {
 									online={online}
 									hasMessage={hasMessage}
 									messageCount={messageCount}
+									pinned={pinned}
 								/>
 							);
 						})}
