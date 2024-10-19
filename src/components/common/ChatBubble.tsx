@@ -1,4 +1,4 @@
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 interface props {
 	profileImg: string;
 	user: string;
@@ -16,7 +16,7 @@ const ChatBubble = ({ user, time, message, profileImg }: props) => {
 					/>
 					<AvatarFallback className="flex items-center justify-center">
 						<img
-							src="src/assets/icons/discord.svg"
+							src="/icons/discord.svg"
 							className="w-[35px] h-[35px]  rounded-full"
 						/>
 					</AvatarFallback>

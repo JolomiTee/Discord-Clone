@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Sidebar from "./components/Sidebar";
 import Sidelist from "./components/Sidelist";
 import { Badge } from "./components/ui/badge";
-import ChatBubble from "./components/ChatBubble";
+import ChatBubble from "./components/common/ChatBubble";
 import { chatConversation } from "./data";
 import Header from "./components/Header";
 import Keyboard from "./components/Keyboard";
