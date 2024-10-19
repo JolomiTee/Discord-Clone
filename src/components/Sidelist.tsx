@@ -21,6 +21,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { messageList } from "@/data";
 import { Badge } from "./ui/badge";
 import { Pin, FileDown, MessageCircleWarning, Archive } from "lucide-react";
+import IconButtons from "./IconButtons";
 const Sidelist = () => {
 	return (
 		<section className="lg:min-w-[20%] bg-carbon relative">
@@ -50,23 +51,19 @@ const Sidelist = () => {
 						</Select>
 
 						<div className="flex gap-2 items-center ">
-							<Button className="rounded-full w-[40px] h-[40px] p-0 bg-[#FFFFFF08] border border-solid border-[#FFFFFF0F]">
-								<img
-									src="../assets/icons/search.svg"
-									alt="Search"
-									width={20}
-									height={20}
-								/>
-							</Button>
+							<IconButtons
+								src="search"
+								alt="Search"
+								sizes="w-[20px h-[20px]"
+								buttonStyles="rounded-full w-[40px] h-[40px] p-0 bg-[#FFFFFF08] border border-solid border-[#FFFFFF0F]"
+							/>
 
-							<Button className="rounded-full w-[40px] h-[40px] p-0 bg-[#FFFFFF08] border border-solid border-[#FFFFFF0F]">
-								<img
-									src="../assets/icons/plus.svg"
-									alt="Add"
-									width={18}
-									height={20}
-								/>
-							</Button>
+							<IconButtons
+								src="plus"
+								alt="Add"
+								sizes="w-[18px h-[18px]"
+								buttonStyles="rounded-full w-[40px] h-[40px] p-0 bg-[#FFFFFF08] border border-solid border-[#FFFFFF0F]"
+							/>
 						</div>
 					</div>
 				</div>
