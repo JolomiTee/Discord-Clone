@@ -120,6 +120,58 @@ export const chatConversation = [
   }
 ];
 
+export const textChannelConversation = [
+  {
+    user: "grass enjoyer",
+    time: "10:30 am",
+		message: "what an amazing day!",
+	 profileImg: ""
+  },
+  {
+    user: "NOT a grass enjoyer",
+    time: "10:32 am",
+    message: "TO SIT HOME AND PLAY GAMES I KNOW RIGHT",
+	 profileImg: ""
+  },
+  {
+    user: "grass enjoyer",
+    time: "10:33 am",
+    message: "no??? to go out and enjoy the sun and touch grass",
+	 profileImg: ""
+  },
+  {
+    user: "NOT a grass enjoyer",
+    time: "10:32 am",
+    message: "hell no",
+	 profileImg: ""
+  },
+  {
+    user: "sun enthusiast",
+    time: "10:32 am",
+    message: "hey @NOT a grass enjoyer you should actually try that dude. you've been online for a long time now.",
+	 profileImg: ""
+  },
+  {
+    user: "NOT a grass enjoyer",
+    time: "10:32 am",
+    message: "nuh uh grass is for losers you can't trick me",
+	 profileImg: ""
+  },
+  {
+    user: "grass enjoyer",
+    time: "10:33 am",
+    message: "well, i'll be on my way then. will update you guys with some pictures later :)",
+	 profileImg: ""
+  },
+  {
+    user: "sun enthusiast",
+    time: "10:32 am",
+    message: "have fun!",
+	 profileImg: ""
+  }
+];
+
+
 export const textChannels = [
 	{
 		type: "text_channel",

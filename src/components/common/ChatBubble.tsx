@@ -1,3 +1,4 @@
+import { getRandomColor } from "@/lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 interface props {
 	profileImg: string;
@@ -5,6 +6,7 @@ interface props {
 	time: string;
 	message: string;
 }
+
 const ChatBubble = ({ user, time, message, profileImg }: props) => {
 	return (
 		<div className="flex items-start justify-start gap-3 bg-transparent shadow-none">
@@ -12,12 +14,15 @@ const ChatBubble = ({ user, time, message, profileImg }: props) => {
 				<Avatar className="flex items-center justify-center">
 					<AvatarImage
 						src={profileImg}
-						className="w-[50px] h-[50px]  rounded-full"
+						className="w-[50px] h-[50px] rounded-full"
 					/>
-					<AvatarFallback className="flex items-center justify-center">
+					<AvatarFallback
+						style={{ backgroundColor: getRandomColor() }}
+						className="flex items-center justify-center w-[50px] h-[50px] "
+					>
 						<img
 							src="/icons/discord.svg"
-							className="w-[35px] h-[35px]  rounded-full"
+							className="w-[30px] h-[30px] rounded-full m-auto"
 						/>
 					</AvatarFallback>
 				</Avatar>

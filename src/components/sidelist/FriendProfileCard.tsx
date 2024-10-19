@@ -17,6 +17,7 @@ import {
 	Ellipsis,
 } from "lucide-react";
 import IconButtons from "../IconButtons";
+import { getRandomColor } from "@/lib/utils";
 
 interface props {
 	profileImg: string;
@@ -41,10 +42,13 @@ const FriendProfileCard = ({
 						src={profileImg}
 						className="w-[35px] h-[35px]  rounded-full"
 					/>
-					<AvatarFallback className="flex items-center justify-center">
+					<AvatarFallback
+						className="flex items-center justify-center"
+						style={{ backgroundColor: getRandomColor() }}
+					>
 						<img
 							src="/icons/discord.svg"
-							className="w-[35px] h-[35px]  rounded-full"
+							className="w-[35px] h-[35px] rounded-full"
 						/>
 					</AvatarFallback>
 				</Avatar>
