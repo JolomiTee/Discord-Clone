@@ -3,8 +3,14 @@ import { Separator } from "./ui/separator";
 import IconButtons from "./IconButtons";
 import SidebarServerIcon from "./sidebar/SidebarServerIcon";
 import ProfileHolder from "./sidebar/ProfileHolder";
+import { useState } from "react";
 
 const Sidebar = () => {
+	const [clickedServer, setClickedServer] = useState("");
+
+	const handleServerClick = (server: string) => {
+		setClickedServer(server);
+	};
 	return (
 		<section className="lg:min-w-[6%] bg-onyx py-3 flex flex-col gap-y-[16px] h-screen">
 			<div className="flex flex-col items-center gap-y-[10px]">
@@ -30,6 +36,8 @@ const Sidebar = () => {
 							name={name}
 							serverImage={serverImage}
 							hasNotification={hasNotification}
+							isClicked={clickedServer === name}
+							onClick={() => handleServerClick(name)}
 						/>
 					);
 				})}

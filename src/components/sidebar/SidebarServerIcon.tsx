@@ -1,23 +1,29 @@
-import { useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Button } from "../ui/button";
 
-
-interface props
-{ name: string; serverImage: string;  hasNotification: boolean}
-const SidebarServerIcon = ({ name, serverImage, hasNotification }: props) => {
-
-	const [isClicked, setIsClicked] = useState(false);
-
-	const handleClick = () => {
-		setIsClicked(!isClicked);
-	};
+interface props {
+	name: string;
+	serverImage: string;
+	hasNotification: boolean;
+	isClicked: boolean;
+	onClick: () => void;
+}
+const SidebarServerIcon = ({
+	name,
+	serverImage,
+	hasNotification,
+	isClicked,
+	onClick,
+}: props) => {
 	return (
 		<div className="w-full flex relative group">
-			{/* Half-circle */}
 			<div
-				className={`absolute top-1/2 -translate-y-1/2 -left-[1px] w-2 rounded-full bg-white dark:bg-white transition-all duration-100 ${
-					isClicked ? "h-10" : hasNotification ? "h-2" : "group-hover:h-5"
+				className={`absolute top-1/2 -translate-y-1/2 -left-[1px] w-2 rounded-full transition-all duration-100 ${
+					isClicked
+						? "h-10 bg-discord-blue"
+						: hasNotification
+						? "h-2 bg-white dark:bg-white"
+						: "group-hover:h-5 group-hover:bg-white"
 				}`}
 				style={{
 					clipPath: "inset(0 0 0 50%)",
@@ -30,7 +36,7 @@ const SidebarServerIcon = ({ name, serverImage, hasNotification }: props) => {
 					isClicked ? "rounded-[15px]" : "group-hover:rounded-[15px]"
 				} focus-visible:ring-0`}
 				title={name}
-				onClick={handleClick}
+				onClick={onClick}
 			>
 				<Avatar
 					className={`w-full h-full ${
@@ -59,4 +65,4 @@ const SidebarServerIcon = ({ name, serverImage, hasNotification }: props) => {
 	);
 };
 
-export default SidebarServerIcon
+export default SidebarServerIcon;
