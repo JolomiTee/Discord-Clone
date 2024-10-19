@@ -30,7 +30,7 @@ function App() {
 					<>
 						<Header />
 
-						<main className="p-6 relative flex flex-col gap-[30px] justify-between overflow-y-auto max-h-full w-full scrollbar-hidden pb-[50px]">
+						<main className="p-6 relative flex flex-col gap-[30px] justify-between overflow-y-auto w-full scrollbar-hidden pb-[50px] my-1.5 rounded">
 							<Badge className="mx-auto bg-charcoal rounded-[8px] px-3 py-2 sticky top-0 z-10">
 								September 26, 2024
 							</Badge>
