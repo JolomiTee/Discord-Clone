@@ -1,5 +1,4 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Button } from "./ui/button";
 import {
 	Select,
 	SelectContent,
@@ -8,20 +7,9 @@ import {
 	SelectValue,
 } from "@/components/ui/select";
 
-import {
-	DropdownMenu,
-	DropdownMenuContent,
-	DropdownMenuItem,
-	DropdownMenuLabel,
-	DropdownMenuSeparator,
-	DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { messageList } from "@/data";
-import { Badge } from "./ui/badge";
-import { Pin, FileDown, MessageCircleWarning, Archive } from "lucide-react";
 import IconButtons from "./IconButtons";
+import FriendProfileCard from "./sidelist/FriendProfileCard";
 const Sidelist = () => {
 	return (
 		<section className="lg:min-w-[20%] bg-carbon relative">
@@ -82,68 +70,14 @@ const Sidelist = () => {
 								messageCount,
 							} = message;
 							return (
-								<Button
+								<FriendProfileCard
 									key={i}
-									className="flex items-center justify-start h-[55px] gap-3 bg-transparent shadow-none"
-								>
-									<div className="relative">
-										<Avatar className="flex items-center justify-center">
-											<AvatarImage
-												src={profileImg}
-												className="w-[35px] h-[35px]  rounded-full"
-											/>
-											<AvatarFallback className="flex items-center justify-center">
-												<img
-													src="../assets/icons/discord.svg"
-													className="w-[35px] h-[35px]  rounded-full"
-												/>
-											</AvatarFallback>
-										</Avatar>
-										<div
-											className={`absolute -right-1 bottom-0 ${
-												online ? "bg-emerald" : "bg-gray"
-											} rounded-full w-4 h-4 border-[3px] border-solid border-onyx`}
-										></div>
-									</div>
-									<span
-										className={`${
-											hasMessage ? "font-bold" : "font-normal"
-										}`}
-									>
-										{user}
-									</span>
-
-									<Badge className="ms-auto me-0 rounded-full bg-white/10">
-										{messageCount}
-									</Badge>
-
-									<DropdownMenu>
-										<DropdownMenuTrigger>
-											<img
-												src="../assets/icons/more_h.svg"
-												alt=""
-												width={20}
-											/>
-										</DropdownMenuTrigger>
-										<DropdownMenuContent className="rounded-[8px]">
-											<DropdownMenuLabel>Actions</DropdownMenuLabel>
-											<DropdownMenuSeparator />
-											<DropdownMenuItem>
-												<Archive /> Archive
-											</DropdownMenuItem>
-											<DropdownMenuItem>
-												<FileDown />
-												Export{" "}
-											</DropdownMenuItem>
-											<DropdownMenuItem>
-												<Pin /> Pin
-											</DropdownMenuItem>
-											<DropdownMenuItem>
-												<MessageCircleWarning /> Report
-											</DropdownMenuItem>
-										</DropdownMenuContent>
-									</DropdownMenu>
-								</Button>
+									user={user}
+									profileImg={profileImg}
+									online={online}
+									hasMessage={hasMessage}
+									messageCount={messageCount}
+								/>
 							);
 						})}
 					</div>

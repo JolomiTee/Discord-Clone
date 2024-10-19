@@ -13,6 +13,7 @@ const IconButtons = ({
 }) => {
 	return (
 		<Button
+			role="button"
 			aria-label={alt}
 			className={`bg-transparent shadow-none rounded-full ${buttonStyles}`}
 			size={"icon"}
