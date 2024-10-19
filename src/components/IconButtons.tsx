@@ -5,11 +5,13 @@ const IconButtons = ({
 	alt,
 	sizes,
 	buttonStyles,
+	action,
 }: {
 	src: string;
 	alt: string;
 	sizes?: string;
-	buttonStyles?: string
+	buttonStyles?: string;
+	action?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }) => {
 	return (
 		<Button
@@ -17,6 +19,7 @@ const IconButtons = ({
 			aria-label={alt}
 			className={`bg-transparent shadow-none rounded-full ${buttonStyles}`}
 			size={"icon"}
+			onClick={action}
 		>
 			<img
 				src={`/icons/${src}.svg`}

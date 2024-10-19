@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import Sidebar from "./components/Sidebar";
 import Sidelist from "./components/Sidelist";
 import { Badge } from "./components/ui/badge";
@@ -6,13 +5,10 @@ import ChatBubble from "./components/common/ChatBubble";
 import { chatConversation, textChannelConversation } from "./data";
 import Header from "./components/Header";
 import Keyboard from "./components/Keyboard";
+import { useStore } from "./hooks/base-context";
 
 function App() {
-	const [context, setContext] = useState("");
-
-	useEffect(() => {
-		setContext("text_channel");
-	}, []);
+	const appState = useStore((state) => state.appState);
 
 	return (
 		<div className="flex w-screen h-screen">
@@ -21,14 +17,14 @@ function App() {
 
 			<section
 				className={`bg-charcoal w-full h-full font-open-sans overflow-hidden ${
-					context === "messages" || "text_channel"
+					appState === "messages" || appState === "server"
 						? "flex flex-col h-full"
-						: "flex items-center justify-center"
+						: "flex flex-col items-center justify-center text-center"
 				}`}
 			>
-				<Header />
-				{context === "messages" ? (
+				{appState === "messages" ? (
 					<>
+						<Header />
 						<main className="p-6 relative flex flex-col gap-[30px] justify-between overflow-y-auto w-full scrollbar-hidden pb-[50px] my-1.5 rounded">
 							<Badge className="mx-auto bg-charcoal rounded-[8px] px-3 py-2 sticky top-0 z-10">
 								September 26, 2024
@@ -51,8 +47,9 @@ function App() {
 
 						<Keyboard />
 					</>
-				) : context === "text_channel" ? (
+				) : appState === "server" ? (
 					<>
+						<Header />
 						<main className="p-6 relative flex flex-col gap-[30px] justify-between overflow-y-auto w-full scrollbar-hidden pb-[50px] my-1.5 rounded">
 							<Badge className="mx-auto bg-charcoal rounded-[8px] px-3 py-2 sticky top-0 z-10">
 								October 10, 2024
@@ -76,7 +73,7 @@ function App() {
 						<Keyboard />
 					</>
 				) : (
-					<div className="text-center">
+					<>
 						<img
 							src="/wumpus.png"
 							alt="Wumpus"
@@ -85,7 +82,7 @@ function App() {
 						<p className="text-center text-[16px] text-white font-semibold">
 							Wumpus is waiting for you to pick a chat.
 						</p>
-					</div>
+					</>
 				)}
 			</section>
 		</div>

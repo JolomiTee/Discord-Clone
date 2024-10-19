@@ -4,12 +4,15 @@ import IconButtons from "./IconButtons";
 import SidebarServerIcon from "./sidebar/SidebarServerIcon";
 import ProfileHolder from "./sidebar/ProfileHolder";
 import { useState } from "react";
+import { useStore } from "@/hooks/base-context";
 
 const Sidebar = () => {
 	const [clickedServer, setClickedServer] = useState("");
+	const switchAppState = useStore((state) => state.switchAppState);
 
 	const handleServerClick = (server: string) => {
 		setClickedServer(server);
+		switchAppState("server");
 	};
 	return (
 		<section className="lg:min-w-[6%] bg-onyx py-3 flex flex-col gap-y-[16px] h-screen">
@@ -19,6 +22,7 @@ const Sidebar = () => {
 					src="messages"
 					alt="Messages"
 					sizes="w-[35px h-[35px]"
+					action={() => switchAppState("messages")}
 				/>
 
 				<Separator className="w-[70%] rounded-full bg-charcoal h-1 mx-auto" />
