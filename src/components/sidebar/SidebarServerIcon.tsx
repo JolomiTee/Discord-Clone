@@ -32,7 +32,7 @@ const SidebarServerIcon = ({
 
 			{/* Button */}
 			<Button
-				className={`rounded-full w-[50px] h-[50px] p-0 mx-auto transition-all duration-100 overflow-hidden ${
+				className={`rounded-full w-[45px] h-[45px] p-0 mx-auto transition-all duration-100 overflow-hidden ${
 					isClicked ? "rounded-[15px]" : "group-hover:rounded-[15px]"
 				} focus-visible:ring-0`}
 				title={name}
@@ -55,7 +55,7 @@ const SidebarServerIcon = ({
 						}`}
 					>
 						<img
-							src="../assets/icons/discord.svg"
+							src="/icons/discord.svg"
 							className="w-[35px] h-[35px] mx-auto my-auto"
 						/>
 					</AvatarFallback>

@@ -12,7 +12,7 @@ const ProfileHolder = () => {
 				/>
 				<AvatarFallback className="bg-transparent">
 					<img
-						src="../assets/icons/discord.svg"
+						src="/icons/discord.svg"
 						className="w-[35px] h-[35px] mx-auto my-auto"
 					/>
 				</AvatarFallback>

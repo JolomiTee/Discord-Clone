@@ -16,7 +16,7 @@ const Header = () => {
 							/>
 							<AvatarFallback className="flex items-center justify-center">
 								<img
-									src="../assets/icons/discord.svg"
+									src="/icons/discord.svg"
 									className="w-[35px] h-[35px]  rounded-full"
 								/>
 							</AvatarFallback>

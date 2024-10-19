@@ -24,7 +24,7 @@ export const serverList = [
 	},
 	{
 		name: "Apex Legends",
-		serverImage: "/apexlegends.png",
+		serverImage: "/apelegends.png",
 		hasNotification: false
 
 	},
