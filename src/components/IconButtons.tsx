@@ -16,7 +16,7 @@ const IconButtons = ({
 			size={"icon"}
 		>
 			<img
-				src={`/src/assets/icons/${src}.svg`}
+				src={`./src/assets/icons/${src}.svg`}
 				alt={alt}
 				className={sizes ? sizes : "w-6 h-6"}
 			/>
