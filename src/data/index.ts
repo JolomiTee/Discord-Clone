@@ -120,3 +120,57 @@ export const chatConversation = [
   }
 ];
 
+export const textChannels = [
+	{
+		type: "text_channel",
+		name: "general-text",
+		link: "#"
+	},
+	{
+		type: "text_channel",
+		name: "grass update",
+		link: "#"
+	},
+	{
+		type: "text_channel",
+		name: "grass discussions",
+		link: "#"
+	},
+	{
+		type: "text_channel",
+		name: "grass pictures",
+		link: "#"
+	},
+	{
+		type: "text_channel",
+		name: "grass faq",
+		link: "#"
+	},
+	{
+		type: "forum",
+		name: "forum",
+		link: "#"
+	}
+]
+export const voiceChannels = [
+	{
+		type: "voice_channel",
+		name: "just chilling",
+		link: "#"
+	},
+	{
+		type: "voice_channel",
+		name: "grass-only",
+		link: "#"
+	},
+	{
+		type: "voice_channel",
+		name: "grass talk",
+		link: "#"
+	},
+	{
+		type: "stage",
+		name: "relaxing music stage",
+		link: "#"
+	}
+]

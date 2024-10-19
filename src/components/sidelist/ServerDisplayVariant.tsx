@@ -22,6 +22,7 @@ import {
 	AccordionItem,
 	AccordionTrigger,
 } from "@/components/ui/accordion";
+import { textChannels, voiceChannels } from "@/data";
 
 const ServerDisplayVariant = () => {
 	return (
@@ -93,20 +94,51 @@ const ServerDisplayVariant = () => {
 					data-state="open"
 				>
 					<AccordionItem value="text-channels" className="border-none">
-						<AccordionTrigger className="pt-0">
+						<AccordionTrigger className="pt-0 ">
 							TEXT CHANNELS
 						</AccordionTrigger>
-						<AccordionContent>
-							Yes. It adheres to the WAI-ARIA design pattern.
+						<AccordionContent className="px-3 flex flex-col gap-3">
+							{textChannels.map((channel, i) => {
+								return (
+									<a
+										key={i}
+										href={channel.link}
+										className="flex justify-start items-center gap-2"
+									>
+										<img
+											src={`/icons/${channel.type}.svg`}
+											alt={channel.name}
+											width={26}
+											height={26}
+										/>
+										{channel.name}
+									</a>
+								);
+							})}
 						</AccordionContent>
 					</AccordionItem>
 					<AccordionItem value="voice-channels" className="border-none">
 						<AccordionTrigger className="pt-0">
 							VOICE CHANNELS
 						</AccordionTrigger>
-						<AccordionContent>
-							Yes. It comes with default styles that matches the other
-							components&apos; aesthetic.
+						<AccordionContent className="px-3 flex flex-col gap-3">
+							{voiceChannels.map((channel, i) => {
+								return (
+									<a
+										key={i}
+										href={channel.link}
+										className="flex justify-start items-center gap-2"
+									>
+										<img
+											src={`/icons/${channel.type}.svg`}
+											alt={channel.name}
+											width={26}
+											height={26}
+										/>
+										{channel.name}
+									</a>
+								);
+							})}
 						</AccordionContent>
 					</AccordionItem>
 				</Accordion>
