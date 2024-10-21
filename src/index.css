@@ -4,7 +4,7 @@
 
 @layer base {
 	@font-face {
-			font-family: 'OpenSans';
+		font-family: 'OpenSans';
 			font-style: normal;
 			font-weight: 400;
 			font-display: swap;
@@ -26,7 +26,8 @@
 			font-display: swap;
 			src: url(./font/OpenSans-Bold.ttf) format('truetype');
 		}
-  :root {
+
+		:root {
 		--sidebar-background: 0 0% 98%;
 		--sidebar-foreground: 240 5.3% 26.1%;
 		--sidebar-primary: 240 5.9% 10%;
@@ -36,7 +37,8 @@
 		--sidebar-border: 220 13% 91%;
 		--sidebar-ring: 217.2 91.2% 59.8%;
 	}
-  .dark {
+
+		.dark {
 		--sidebar-background: 240 5.9% 10%;
 		--sidebar-foreground: 240 4.8% 95.9%;
 		--sidebar-primary: 224.3 76.3% 48%;
@@ -47,6 +49,7 @@
 		--sidebar-ring: 217.2 91.2% 59.8%;
 	}
 }
+
 .scrollbar-hidden {
 	overflow-y: scroll;
 	scrollbar-width: none;

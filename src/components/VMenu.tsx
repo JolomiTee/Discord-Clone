@@ -15,7 +15,7 @@ const VMenu = () => {
 		switchAppState("server");
 	};
 	return (
-		<section className="lg:min-w-[6%] bg-onyx py-3 flex flex-col gap-y-[16px] h-screen">
+		<section className="min-w-[6%] bg-onyx py-3 flex flex-col gap-y-[16px] h-screen z-20">
 			<div className="flex flex-col items-center gap-y-[10px]">
 				<IconButtons src="search" alt="Search" sizes="w-[25px h-[25px]" />
 				<IconButtons

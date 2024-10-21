@@ -6,7 +6,7 @@ interface AppStateProps {
 }
 
 export const useStore = create<AppStateProps>((set) => ({
-	appState: "null", // Initial state
+	appState: "messages", // Initial state
 	switchAppState: (newAppState: string) =>
 		set(() => ({
 			appState: newAppState,

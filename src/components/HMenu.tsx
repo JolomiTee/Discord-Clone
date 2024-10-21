@@ -1,14 +1,20 @@
+import { ReactElement } from "react";
 import IconButtons from "./IconButtons";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { useStore } from "@/hooks/base-context";
 
-const HMenu = () => {
+interface props {
+	sideBarTrigger?: ReactElement;
+}
+
+const HMenu = ({ sideBarTrigger }: props) => {
 	const appState = useStore((state) => state.appState);
 
 	return (
 		<header className="flex justify-between items-center gap-3 h-full max-h-[50px] px-4 bg-onyx w-full">
 			<div className="flex items-center gap-3">
-				<IconButtons src="sidebar" alt="Sidebar" />
+				{/* <IconButtons src="sidebar" alt="Sidebar" /> */}
+				{sideBarTrigger}
 
 				<div className="flex items-center justify-start gap-3 bg-transparent shadow-none">
 					<div className="relative">
