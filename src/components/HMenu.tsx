@@ -2,11 +2,11 @@ import IconButtons from "./IconButtons";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { useStore } from "@/hooks/base-context";
 
-const Header = () => {
+const HMenu = () => {
 	const appState = useStore((state) => state.appState);
 
 	return (
-		<header className="flex justify-between items-center gap-3 h-[100px] px-4 bg-onyx w-full">
+		<header className="flex justify-between items-center gap-3 h-full max-h-[50px] px-4 bg-onyx w-full">
 			<div className="flex items-center gap-3">
 				<IconButtons src="sidebar" alt="Sidebar" />
 
@@ -69,4 +69,4 @@ const Header = () => {
 	);
 };
 
-export default Header;
+export default HMenu;

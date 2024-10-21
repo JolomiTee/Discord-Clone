@@ -6,7 +6,7 @@ import ProfileHolder from "./sidebar/ProfileHolder";
 import { useState } from "react";
 import { useStore } from "@/hooks/base-context";
 
-const Sidebar = () => {
+const VMenu = () => {
 	const [clickedServer, setClickedServer] = useState("");
 	const switchAppState = useStore((state) => state.switchAppState);
 
@@ -62,4 +62,4 @@ const Sidebar = () => {
 	);
 };
 
-export default Sidebar;
+export default VMenu;

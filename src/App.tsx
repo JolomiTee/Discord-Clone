@@ -1,18 +1,18 @@
-import Sidebar from "./components/Sidebar";
 import Sidelist from "./components/Sidelist";
 import { Badge } from "./components/ui/badge";
 import ChatBubble from "./components/common/ChatBubble";
 import { chatConversation, textChannelConversation } from "./data";
-import Header from "./components/Header";
+import HMenu from "./components/HMenu";
 import Keyboard from "./components/Keyboard";
 import { useStore } from "./hooks/base-context";
+import VMenu from "./components/VMenu";
 
 function App() {
 	const appState = useStore((state) => state.appState);
 
 	return (
-		<div className="flex w-screen h-screen">
-			<Sidebar />
+		<div className="flex w-screen h-screen overflow-hidden">
+			<VMenu />
 			<Sidelist />
 
 			<section
@@ -24,7 +24,7 @@ function App() {
 			>
 				{appState === "messages" ? (
 					<>
-						<Header />
+						<HMenu />
 						<main className="p-6 relative flex flex-col gap-[30px] justify-between overflow-y-auto w-full scrollbar-hidden pb-[50px] my-1.5 rounded">
 							<Badge className="mx-auto bg-charcoal rounded-[8px] px-3 py-2 sticky top-0 z-10">
 								September 26, 2024
@@ -49,7 +49,7 @@ function App() {
 					</>
 				) : appState === "server" ? (
 					<>
-						<Header />
+						<HMenu />
 						<main className="p-6 relative flex flex-col gap-[30px] justify-between overflow-y-auto w-full scrollbar-hidden pb-[50px] my-1.5 rounded">
 							<Badge className="mx-auto bg-charcoal rounded-[8px] px-3 py-2 sticky top-0 z-10">
 								October 10, 2024
