@@ -5,7 +5,7 @@ import {
 	MessageCircleWarning,
 	Pin,
 } from "lucide-react";
-import { AspectRatio } from "../ui/aspect-ratio";
+import { AspectRatio } from "../../ui/aspect-ratio";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -14,8 +14,8 @@ import {
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import IconButtons from "../IconButtons";
-import { Separator } from "../ui/separator";
+import IconButtons from "../../IconButtons";
+import { Separator } from "../../ui/separator";
 import {
 	Accordion,
 	AccordionContent,

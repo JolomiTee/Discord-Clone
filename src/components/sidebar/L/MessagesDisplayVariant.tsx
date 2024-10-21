@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/select";
 
 import { messageList } from "@/data";
-import IconButtons from "../IconButtons";
+import IconButtons from "../../IconButtons";
 import FriendProfileCard from "./FriendProfileCard";
 import { useStore } from "@/hooks/base-context";
 const MessagesDisplayVariant = () => {

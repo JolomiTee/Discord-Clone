@@ -1,12 +1,12 @@
 import { serverList } from "@/data";
 import { Separator } from "./ui/separator";
 import IconButtons from "./IconButtons";
-import SidebarServerIcon from "./sidebar/SidebarServerIcon";
-import ProfileHolder from "./sidebar/ProfileHolder";
+import SidebarServerIcon from "./server_tray/SidebarServerIcon";
+import ProfileHolder from "./server_tray/ProfileHolder";
 import { useState } from "react";
 import { useStore } from "@/hooks/base-context";
 
-const VMenu = () => {
+const ServerTray = () => {
 	const [clickedServer, setClickedServer] = useState("");
 	const switchAppState = useStore((state) => state.switchAppState);
 
@@ -62,4 +62,4 @@ const VMenu = () => {
 	);
 };
 
-export default VMenu;
+export default ServerTray;

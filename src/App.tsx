@@ -1,12 +1,12 @@
-import Sidelist from "./components/Sidelist";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import { Badge } from "./components/ui/badge";
 import ChatBubble from "./components/common/ChatBubble";
-import { chatConversation, textChannelConversation } from "./data";
 import HMenu from "./components/HMenu";
 import Keyboard from "./components/Keyboard";
+import ServerTray from "./components/ServerTray";
+import { LSidebar, RSidebar } from "./components/Sidebars";
+import { Badge } from "./components/ui/badge";
+import { chatConversation, textChannelConversation } from "./data";
 import { useStore } from "./hooks/base-context";
-import VMenu from "./components/VMenu";
 
 function App() {
 	const appState = useStore((state) => state.appState);
@@ -15,10 +15,10 @@ function App() {
 		<div className="flex relative w-screen h-screen overflow-hidden bg-charcoal">
 			<SidebarProvider>
 				{/* The server icons tray */}
-				<VMenu />
+				<ServerTray />
 
 				{/* component containing the sidebar */}
-				<Sidelist />
+				<LSidebar />
 
 				<section
 					className={`bg-charcoal w-full h-full font-open-sans overflow-hidden ${
@@ -55,7 +55,6 @@ function App() {
 						</>
 					) : appState === "server" ? (
 						<>
-							<HMenu sideBarTrigger={<SidebarTrigger />} />
 							<main className="p-6 relative flex flex-col gap-[30px] justify-between overflow-y-auto w-full scrollbar-hidden pb-[50px] my-1.5 rounded">
 								<Badge className="mx-auto bg-charcoal rounded-[8px] px-3 py-2 sticky top-0 z-10">
 									October 10, 2024
@@ -91,6 +90,8 @@ function App() {
 						</>
 					)}
 				</section>
+
+				<RSidebar />
 			</SidebarProvider>
 		</div>
 	);
