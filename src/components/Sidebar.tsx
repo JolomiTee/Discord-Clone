@@ -22,7 +22,9 @@ const Sidebar = () => {
 					src="messages"
 					alt="Messages"
 					sizes="w-[35px h-[35px]"
-					action={() => switchAppState("messages")}
+					action={() => {
+						switchAppState("messages");
+					}}
 				/>
 
 				<Separator className="w-[70%] rounded-full bg-charcoal h-1 mx-auto" />
@@ -41,7 +43,9 @@ const Sidebar = () => {
 							serverImage={serverImage}
 							hasNotification={hasNotification}
 							isClicked={clickedServer === name}
-							onClick={() => handleServerClick(name)}
+							onClick={() => {
+								handleServerClick(name);
+							}}
 						/>
 					);
 				})}

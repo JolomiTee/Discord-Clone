@@ -80,7 +80,9 @@ const MessagesDisplayVariant = () => {
 								hasMessage={hasMessage}
 								messageCount={messageCount}
 								pinned={pinned}
-								action={() => switchAppState("messages")}
+								action={() => {
+									switchAppState("messages");
+								}}
 							/>
 						);
 					})}

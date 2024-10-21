@@ -1,9 +1,9 @@
-import { useState } from "react";
 import IconButtons from "./IconButtons";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { useStore } from "@/hooks/base-context";
 
 const Header = () => {
-	const [headerContext, setHeaderContext] = useState("messages");
+	const appState = useStore((state) => state.appState);
 
 	return (
 		<header className="flex justify-between items-center gap-3 h-[100px] px-4 bg-onyx w-full">
@@ -33,7 +33,7 @@ const Header = () => {
 			</div>
 
 			<div className="flex items-center gap-3">
-				{headerContext === "server" ? (
+				{appState === "server" ? (
 					<>
 						<IconButtons
 							src="disable_notification"

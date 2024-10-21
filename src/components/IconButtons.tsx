@@ -9,7 +9,7 @@ const IconButtons = ({
 }: {
 	src: string;
 	alt: string;
-	sizes?: string;
+	sizes?: string | "w-6 h-6";
 	buttonStyles?: string;
 	action?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }) => {
@@ -21,11 +21,7 @@ const IconButtons = ({
 			size={"icon"}
 			onClick={action}
 		>
-			<img
-				src={`/icons/${src}.svg`}
-				alt={alt}
-				className={sizes ? sizes : "w-6 h-6"}
-			/>
+			<img src={`/icons/${src}.svg`} alt={alt} className={sizes} />
 		</Button>
 	);
 };

@@ -63,7 +63,7 @@ const FriendProfileCard = ({
 					} rounded-full w-4 h-4 border-[3px] border-solid border-onyx`}
 				></div>
 			</div>
-			<span className={`${hasMessage ? "font-bold" : "font-normal"}`}>
+			<span className={hasMessage ? "font-bold" : "font-normal"}>
 				{user}
 			</span>
 

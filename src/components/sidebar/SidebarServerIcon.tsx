@@ -48,11 +48,11 @@ const SidebarServerIcon = ({
 						className="mx-auto my-auto object-fill p-0"
 					/>
 					<AvatarFallback
-						className={`${
+						className={
 							isClicked
 								? "bg-discord-blue rounded-[15px]"
 								: "bg-graphite group-hover:rounded-[12px]"
-						}`}
+						}
 					>
 						<img
 							src="/icons/discord.svg"
