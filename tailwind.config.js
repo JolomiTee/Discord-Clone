@@ -19,7 +19,17 @@ export default {
     			emerald: '#3BA55C',
     			gray: '#898989',
     			'soft-blue': '#B5BFE7',
-    			'discord-blue': '#5865F2'
+    			'discord-blue': '#5865F2',
+    			sidebar: {
+    				DEFAULT: 'hsl(var(--sidebar-background))',
+    				foreground: 'hsl(var(--sidebar-foreground))',
+    				primary: 'hsl(var(--sidebar-primary))',
+    				'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
+    				accent: 'hsl(var(--sidebar-accent))',
+    				'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
+    				border: 'hsl(var(--sidebar-border))',
+    				ring: 'hsl(var(--sidebar-ring))'
+    			}
     		},
     		fontFamily: {
     			'open-sans': ["OpenSans", "serif"]
