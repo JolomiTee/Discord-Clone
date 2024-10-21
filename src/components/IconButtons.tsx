@@ -1,18 +1,19 @@
 import { Button } from "./ui/button";
+interface props {
+	src: string;
+	alt: string;
+	sizes?: string;
+	buttonStyles?: string;
+	action?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+}
 
 const IconButtons = ({
 	src,
 	alt,
-	sizes,
+	sizes = "w-6 h-6",
 	buttonStyles,
 	action,
-}: {
-	src: string;
-	alt: string;
-	sizes?: string | "w-6 h-6";
-	buttonStyles?: string;
-	action?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-}) => {
+}: props) => {
 	return (
 		<Button
 			role="button"
