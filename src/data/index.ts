@@ -226,3 +226,95 @@ export const voiceChannels = [
 		link: "#"
 	}
 ]
+
+export const membersList = [
+	{
+		group: "admins",
+		count: 2,
+		members: [
+			{
+				id: 1,
+				profile: "",
+				name: "grass master 1"
+			},
+			{
+				id: 2,
+				profile: "",
+				name: "grass master 2"
+			}
+		]
+	},
+	{
+		group: "mods",
+		count: 3,
+		members: [
+			{
+				id: 1,
+				profile: "",
+				name: "grass mod 1"
+			},
+			{
+				id: 2,
+				profile: "",
+				name: "grass mod 2"
+			},
+			{
+				id: 3,
+				profile: "",
+				name: "grass mod 3"
+			}
+		]
+	},
+	{
+		group: "guides",
+		count: 4,
+		members: [
+			{
+				id: 1,
+				profile: "",
+				name: "grass guide 1"
+			},
+			{
+				id: 2,
+				profile: "",
+				name: "grass guide 2"
+			},
+			{
+				id: 3,
+				profile: "",
+				name: "grass guide 3"
+			},
+			{
+				id: 4,
+				profile: "",
+				name: "grass guide 4"
+			}
+		]
+	},
+	{
+		group: "members",
+		count: '12k',
+		members: [
+			{
+				id: 1,
+				profile: "",
+				name: "grass man 1"
+			},
+			{
+				id: 2,
+				profile: "",
+				name: "grass man 2"
+			},
+			{
+				id: 3,
+				profile: "",
+				name: "grass man 3"
+			},
+			{
+				id: 4,
+				profile: "",
+				name: "grass man 4"
+			}
+		]
+	},
+]
