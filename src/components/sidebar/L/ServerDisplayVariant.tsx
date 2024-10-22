@@ -102,7 +102,7 @@ const ServerDisplayVariant = () => {
 								return (
 									<a
 										key={i}
-										href={channel.link}
+										href={"/channels"}
 										className="flex justify-start items-center gap-2"
 									>
 										<img
@@ -126,7 +126,7 @@ const ServerDisplayVariant = () => {
 								return (
 									<a
 										key={i}
-										href={channel.link}
+										href={"/channels"}
 										className="flex justify-start items-center gap-2"
 									>
 										<img
