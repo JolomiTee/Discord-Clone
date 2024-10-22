@@ -8,7 +8,8 @@ const Main = () => {
 	return (
 		<section
 			className={`bg-charcoal w-full h-full font-open-sans overflow-hidden ${
-				appState === "messages" || appState === "server"
+				(appState === "messages" && location.pathname === "/messages") ||
+				(appState === "server" && location.pathname === "/channels")
 					? "flex flex-col h-full"
 					: "flex flex-col items-center justify-center text-center"
 			}`}

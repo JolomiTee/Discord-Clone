@@ -1,6 +1,7 @@
 import { getRandomColor } from "@/lib/utils";
 import IconButtons from "../../IconButtons";
 import { Avatar, AvatarFallback, AvatarImage } from "../../ui/avatar";
+import { Link } from "react-router-dom";
 
 interface props {
 	profileImg: string;
@@ -20,7 +21,8 @@ const FriendProfileCard = ({
 	action,
 }: props) => {
 	return (
-		<div
+		<Link
+			to={"/messages"}
 			className="flex items-center justify-start h-[55px] gap-3 bg-transparent shadow-none"
 			onClick={action}
 		>
@@ -55,7 +57,7 @@ const FriendProfileCard = ({
 			<div className="flex items-center justify-start gap-3 ms-auto me-0 ">
 				{pinned && <IconButtons src="pin" alt="Pinned" />}
 			</div>
-		</div>
+		</Link>
 	);
 };
 

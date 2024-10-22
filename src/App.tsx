@@ -15,13 +15,13 @@ function App() {
 	return (
 		<div className="flex relative w-screen h-screen overflow-hidden bg-charcoal">
 			{/* The server icons tray */}
-			<ServerTray />
-
-			<SidebarProvider className="w-fit" open={l_sidebar_state}>
-				<LSidebar />
-			</SidebarProvider>
-
 			<BrowserRouter>
+				<ServerTray />
+
+				<SidebarProvider className="w-fit" open={l_sidebar_state}>
+					<LSidebar />
+				</SidebarProvider>
+
 				<Routes>
 					<Route element={<Main />}>
 						<Route index element={<Wumpus />} />
@@ -31,11 +31,11 @@ function App() {
 						{/* <Route path="messages/:userId" element={<RoomInfo />} /> */}
 					</Route>
 				</Routes>
-			</BrowserRouter>
 
-			<SidebarProvider className="w-fit" open={r_sidebar_state}>
-				<RSidebar />
-			</SidebarProvider>
+				<SidebarProvider className="w-fit" open={r_sidebar_state}>
+					<RSidebar />
+				</SidebarProvider>
+			</BrowserRouter>
 		</div>
 	);
 }
