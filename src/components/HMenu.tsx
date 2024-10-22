@@ -1,20 +1,19 @@
-import { ReactElement } from "react";
 import IconButtons from "./IconButtons";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { useStore } from "@/hooks/base-context";
 
-interface props {
-	sideBarTrigger?: ReactElement;
-}
-
-const HMenu = ({ sideBarTrigger }: props) => {
+const HMenu = () => {
 	const appState = useStore((state) => state.appState);
-
+	const toggle_l_sidebar = useStore((state) => state.toggle_l_sidebar);
+	const toggle_r_sidebar = useStore((state) => state.toggle_r_sidebar);
 	return (
 		<header className="flex justify-between items-center gap-3 h-full max-h-[50px] px-4 bg-onyx w-full">
 			<div className="flex items-center gap-3">
-				{/* <IconButtons src="sidebar" alt="Sidebar" /> */}
-				{sideBarTrigger}
+				<IconButtons
+					src="sidebar"
+					alt="Sidebar"
+					action={toggle_l_sidebar}
+				/>
 
 				<div className="flex items-center justify-start gap-3 bg-transparent shadow-none">
 					<div className="relative">
@@ -50,6 +49,7 @@ const HMenu = ({ sideBarTrigger }: props) => {
 						<IconButtons src="pin" alt="Pinned" sizes="w-7 h-7" />
 						<IconButtons src="search" alt="Search" sizes="w-5 h-5" />
 						<IconButtons src="members" alt="Members" sizes="w-8 h-8" />
+						<IconButtons src="sidebar" alt="Sidebar" />
 					</>
 				) : (
 					<>
@@ -66,9 +66,13 @@ const HMenu = ({ sideBarTrigger }: props) => {
 						/>
 						<IconButtons src="pin" alt="Pinned" sizes="w-7 h-7" />
 						<IconButtons src="search" alt="Search" sizes="w-5 h-5" />
+						<IconButtons
+							src="sidebar"
+							alt="Sidebar"
+							action={toggle_r_sidebar}
+						/>
 					</>
 				)}
-				{sideBarTrigger}
 			</div>
 		</header>
 	);
