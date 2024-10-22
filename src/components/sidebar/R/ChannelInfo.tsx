@@ -1,7 +1,5 @@
-import React from "react";
-
 const ChInfoDisplayVariant = () => {
-	return <div>ChInfoDisplayVariant</div>;
+	return <div>ChannelInfo</div>;
 };
 
 export default ChInfoDisplayVariant;

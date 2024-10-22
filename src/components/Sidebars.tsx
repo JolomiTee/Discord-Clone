@@ -1,10 +1,11 @@
 import { useStore } from "@/hooks/base-context";
+
+import Members from "./sidebar/R/Members";
+import ChInfoDisplayVariant from "./sidebar/R/ChannelInfo";
 import MessagesDisplayVariant from "./sidebar/L/MessagesDisplayVariant";
 import ServerDisplayVariant from "./sidebar/L/ServerDisplayVariant";
 
 import { Sidebar, SidebarContent } from "@/components/ui/sidebar";
-import ChInfoDisplayVariant from "./sidebar/R/ChInfoDisplayVariant";
-import MembersDisplayVariant from "./sidebar/R/MembersDisplayVariant";
 
 export const LSidebar = () => {
 	const l_sidebar_display_context = useStore(
@@ -34,10 +35,12 @@ export const RSidebar = () => {
 		<Sidebar id="rsidebar" side="right">
 			<SidebarContent id="sidebar-content">
 				<section className="bg-carbon relative text-[#FFFFFF99] h-full">
-					{r_sidebar_display_context === "server" ? (
+					{r_sidebar_display_context === "channel_info" ? (
 						<ChInfoDisplayVariant />
+					) : r_sidebar_display_context === "members" ? (
+						<Members />
 					) : (
-						<MembersDisplayVariant />
+						<MessagesDisplayVariant />
 					)}
 				</section>
 			</SidebarContent>

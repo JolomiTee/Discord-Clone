@@ -11,6 +11,7 @@ interface AppStateProps {
 	toggle_r_sidebar: () => void;
 
 	switchLeftSidebarContext: (newAppState: string) => void;
+	switchRightSidebarContext: (newAppState: string) => void;
 }
 
 export const useStore = create<AppStateProps>((set) => ({
@@ -24,7 +25,6 @@ export const useStore = create<AppStateProps>((set) => ({
 		set((state) => ({
 			l_sidebar_state: !state.l_sidebar_state,
 		})),
-
 	toggle_r_sidebar: () =>
 		set((state) => ({
 			r_sidebar_state: !state.r_sidebar_state,
@@ -34,7 +34,6 @@ export const useStore = create<AppStateProps>((set) => ({
 		set(() => ({
 			l_sidebar_display_context: newAppState,
 		})),
-
 	switchRightSidebarContext: (newAppState: string) =>
 		set(() => ({
 			r_sidebar_display_context: newAppState,
