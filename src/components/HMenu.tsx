@@ -1,11 +1,22 @@
 import { useStore } from "@/hooks/base-context";
 import IconButtons from "./IconButtons";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { useLocation } from "react-router-dom";
 
 const HMenu = () => {
-	const appState = useStore((state) => state.appState);
+	const location = useLocation();
+	const r_sidebar_state = useStore((state) => state.r_sidebar_state);
+	const r_sidebar_display_context = useStore(
+		(state) => state.r_sidebar_display_context
+	);
+
+	const switchRightSidebarContext = useStore(
+		(state) => state.switchRightSidebarContext
+	);
+
 	const toggle_l_sidebar = useStore((state) => state.toggle_l_sidebar);
 	const toggle_r_sidebar = useStore((state) => state.toggle_r_sidebar);
+
 	return (
 		<header className="flex justify-between items-center gap-3 h-full max-h-[50px] px-4 bg-onyx w-full">
 			<div className="flex items-center gap-3">
@@ -38,7 +49,7 @@ const HMenu = () => {
 			</div>
 
 			<div className="flex items-center gap-3">
-				{appState === "server" ? (
+				{location.pathname.includes("channels") ? (
 					<>
 						<IconButtons
 							src="disable_notification"
@@ -48,7 +59,22 @@ const HMenu = () => {
 						<IconButtons src="threads" alt="Threads" sizes="w-7 h-7" />
 						<IconButtons src="pin" alt="Pinned" sizes="w-7 h-7" />
 						<IconButtons src="search" alt="Search" sizes="w-5 h-5" />
-						<IconButtons src="members" alt="Members" sizes="w-8 h-8" />
+						<IconButtons
+							src="members"
+							alt="Members"
+							sizes="w-8 h-8"
+							action={() => {
+								if (r_sidebar_display_context !== "members") {
+									// Open the sidebar only if the context isn't "members"
+									if (!r_sidebar_state) {
+										toggle_r_sidebar(); // Open the sidebar if it's closed
+									}
+									switchRightSidebarContext("members"); // Set the context to "members"
+								} else {
+									toggle_r_sidebar(); // Close the sidebar if it's already showing "members"
+								}
+							}}
+						/>
 					</>
 				) : (
 					<>
@@ -67,10 +93,21 @@ const HMenu = () => {
 						<IconButtons src="search" alt="Search" sizes="w-5 h-5" />
 					</>
 				)}
+
 				<IconButtons
 					src="sidebar"
 					alt="Sidebar"
-					action={toggle_r_sidebar}
+					action={() => {
+						if (r_sidebar_display_context !== "channel_info") {
+							// Open the sidebar only if the context isn't "channel_info"
+							if (!r_sidebar_state) {
+								toggle_r_sidebar(); // Open the sidebar if it's closed
+							}
+							switchRightSidebarContext("channel_info"); // Set the context to "channel_info"
+						} else {
+							toggle_r_sidebar(); // Close the sidebar if it's already showing "channel_info"
+						}
+					}}
 				/>
 			</div>
 		</header>
