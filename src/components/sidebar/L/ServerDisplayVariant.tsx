@@ -23,6 +23,7 @@ import {
 import IconButtons from "../../IconButtons";
 import { AspectRatio } from "../../ui/aspect-ratio";
 import { Separator } from "../../ui/separator";
+import { Link } from "react-router-dom";
 
 const ServerDisplayVariant = () => {
 	return (
@@ -100,9 +101,9 @@ const ServerDisplayVariant = () => {
 						<AccordionContent className="px-3 flex flex-col gap-3">
 							{textChannels.map((channel, i) => {
 								return (
-									<a
+									<Link
 										key={i}
-										href={"/channels"}
+										to={"/channels"}
 										className="flex justify-start items-center gap-2"
 									>
 										<img
@@ -112,7 +113,7 @@ const ServerDisplayVariant = () => {
 											height={26}
 										/>
 										{channel.name}
-									</a>
+									</Link>
 								);
 							})}
 						</AccordionContent>

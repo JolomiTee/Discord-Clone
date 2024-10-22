@@ -12,7 +12,9 @@ import { useStore } from "@/hooks/base-context";
 import IconButtons from "../../IconButtons";
 import FriendProfileCard from "./FriendProfileCard";
 const MessagesDisplayVariant = () => {
-	const switchAppState = useStore((state) => state.switchAppState);
+	const switchLeftSidebarContext = useStore(
+		(state) => state.switchLeftSidebarContext
+	);
 	return (
 		<Tabs
 			defaultValue="messages"
@@ -81,7 +83,7 @@ const MessagesDisplayVariant = () => {
 								messageCount={messageCount}
 								pinned={pinned}
 								action={() => {
-									switchAppState("messages");
+									switchLeftSidebarContext("messages");
 								}}
 							/>
 						);
