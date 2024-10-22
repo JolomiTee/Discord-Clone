@@ -1,6 +1,9 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { getRandomColor } from "@/lib/utils";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { getRandomColor } from "@/lib/utils";
+import Files from "./ChannelInfo/Files";
+import Links from "./ChannelInfo/Links";
+import Media from "./ChannelInfo/Media";
 
 const ChInfoDisplayVariant = () => {
 	const tabstyles = `w-full h-full data-[state=active]:rounded-none data-[state=active]:bg-transparent data-[state=active]:text-discord-blue data-[state=active]:shadow-none data-[state=active]:border-b-[3px] data-[state=active]:border-b-discord-blue`;
@@ -48,11 +51,16 @@ const ChInfoDisplayVariant = () => {
 						Files
 					</TabsTrigger>
 				</TabsList>
+
 				<TabsContent value="media">
-					Make changes to your media here.
+					<Media />
 				</TabsContent>
-				<TabsContent value="links">Change your links here.</TabsContent>
-				<TabsContent value="files">Change your files here.</TabsContent>
+				<TabsContent value="links">
+					<Links />
+				</TabsContent>
+				<TabsContent value="files">
+					<Files />
+				</TabsContent>
 			</Tabs>
 		</div>
 	);
