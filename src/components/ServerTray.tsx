@@ -8,11 +8,13 @@ import { Separator } from "./ui/separator";
 
 const ServerTray = () => {
 	const [clickedServer, setClickedServer] = useState("");
-	const switchAppState = useStore((state) => state.switchAppState);
+	const switchLeftSidebarContext = useStore(
+		(state) => state.switchLeftSidebarContext
+	);
 
 	const handleServerClick = (server: string) => {
 		setClickedServer(server);
-		switchAppState("server");
+		switchLeftSidebarContext("server");
 	};
 	return (
 		<section className="min-w-[6%] bg-onyx py-3 flex flex-col gap-y-[16px] h-screen z-20">
@@ -23,7 +25,7 @@ const ServerTray = () => {
 					alt="Messages"
 					sizes="w-[35px h-[35px]"
 					action={() => {
-						switchAppState("messages");
+						switchLeftSidebarContext("messages");
 					}}
 				/>
 

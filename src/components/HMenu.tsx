@@ -3,7 +3,9 @@ import IconButtons from "./IconButtons";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
 const HMenu = () => {
-	const appState = useStore((state) => state.appState);
+	const r_sidebar_display_context = useStore(
+		(state) => state.r_sidebar_display_context
+	);
 	const toggle_l_sidebar = useStore((state) => state.toggle_l_sidebar);
 	const toggle_r_sidebar = useStore((state) => state.toggle_r_sidebar);
 	return (
@@ -38,7 +40,7 @@ const HMenu = () => {
 			</div>
 
 			<div className="flex items-center gap-3">
-				{appState === "server" ? (
+				{r_sidebar_display_context === "server" ? (
 					<>
 						<IconButtons
 							src="disable_notification"
