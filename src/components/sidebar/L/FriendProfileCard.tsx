@@ -1,23 +1,6 @@
-import { Button } from "../ui/button";
-import {
-	DropdownMenu,
-	DropdownMenuContent,
-	DropdownMenuItem,
-	DropdownMenuLabel,
-	DropdownMenuSeparator,
-	DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import {
-	Pin,
-	FileDown,
-	MessageCircleWarning,
-	Archive,
-	Ellipsis,
-} from "lucide-react";
-import IconButtons from "../IconButtons";
 import { getRandomColor } from "@/lib/utils";
+import IconButtons from "../../IconButtons";
+import { Avatar, AvatarFallback, AvatarImage } from "../../ui/avatar";
 
 interface props {
 	profileImg: string;
@@ -37,7 +20,7 @@ const FriendProfileCard = ({
 	action,
 }: props) => {
 	return (
-		<Button
+		<div
 			className="flex items-center justify-start h-[55px] gap-3 bg-transparent shadow-none"
 			onClick={action}
 		>
@@ -63,37 +46,16 @@ const FriendProfileCard = ({
 					} rounded-full w-4 h-4 border-[3px] border-solid border-onyx`}
 				></div>
 			</div>
-			<span className={hasMessage ? "font-bold" : "font-normal"}>
+			<span
+				className={hasMessage ? "font-bold text-sm" : "font-normal text-sm"}
+			>
 				{user}
 			</span>
 
 			<div className="flex items-center justify-start gap-3 ms-auto me-0 ">
 				{pinned && <IconButtons src="pin" alt="Pinned" />}
-
-				<DropdownMenu>
-					<DropdownMenuTrigger>
-						<Ellipsis />
-					</DropdownMenuTrigger>
-					<DropdownMenuContent className="rounded-[8px]">
-						<DropdownMenuLabel>Actions</DropdownMenuLabel>
-						<DropdownMenuSeparator />
-						<DropdownMenuItem>
-							<Archive /> Archive
-						</DropdownMenuItem>
-						<DropdownMenuItem>
-							<FileDown />
-							Export{" "}
-						</DropdownMenuItem>
-						<DropdownMenuItem>
-							<Pin /> Pin
-						</DropdownMenuItem>
-						<DropdownMenuItem>
-							<MessageCircleWarning /> Report
-						</DropdownMenuItem>
-					</DropdownMenuContent>
-				</DropdownMenu>
 			</div>
-		</Button>
+		</div>
 	);
 };
 

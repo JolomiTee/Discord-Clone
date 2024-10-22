@@ -1,4 +1,3 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
 	Select,
 	SelectContent,
@@ -6,11 +5,12 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import { messageList } from "@/data";
-import IconButtons from "../IconButtons";
-import FriendProfileCard from "./FriendProfileCard";
 import { useStore } from "@/hooks/base-context";
+import IconButtons from "../../IconButtons";
+import FriendProfileCard from "./FriendProfileCard";
 const MessagesDisplayVariant = () => {
 	const switchAppState = useStore((state) => state.switchAppState);
 	return (
@@ -19,7 +19,7 @@ const MessagesDisplayVariant = () => {
 			className="w-full overflow-y-auto max-h-full scrollbar-hidden"
 		>
 			<div className="absolute bg-carbon w-full z-10 h-[120px]">
-				<TabsList className="w-full h-[50px] justify-center px-3 gap-4">
+				<TabsList className="w-full h-[50px] justify-center px-2 gap-4">
 					<TabsTrigger value="messages" className="px-5 py-1.5 w-1/2">
 						Messages
 					</TabsTrigger>
@@ -59,7 +59,7 @@ const MessagesDisplayVariant = () => {
 
 			<TabsContent
 				value="messages"
-				className="text-[#FFFFFF99] pt-[120px] pb-[50px]"
+				className="text-[#FFFFFF99] pt-[120px] pb-[50px] px-3"
 			>
 				<div className=" grid overflow-y-auto max-h-full scrollbar-hidden">
 					{messageList.map((message, i) => {

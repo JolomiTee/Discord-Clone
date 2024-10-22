@@ -1,11 +1,9 @@
 import {
-	Archive,
-	Ellipsis,
-	FileDown,
-	MessageCircleWarning,
-	Pin,
-} from "lucide-react";
-import { AspectRatio } from "../ui/aspect-ratio";
+	Accordion,
+	AccordionContent,
+	AccordionItem,
+	AccordionTrigger,
+} from "@/components/ui/accordion";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -14,15 +12,17 @@ import {
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import IconButtons from "../IconButtons";
-import { Separator } from "../ui/separator";
-import {
-	Accordion,
-	AccordionContent,
-	AccordionItem,
-	AccordionTrigger,
-} from "@/components/ui/accordion";
 import { textChannels, voiceChannels } from "@/data";
+import {
+	Archive,
+	Ellipsis,
+	FileDown,
+	MessageCircleWarning,
+	Pin,
+} from "lucide-react";
+import IconButtons from "../../IconButtons";
+import { AspectRatio } from "../../ui/aspect-ratio";
+import { Separator } from "../../ui/separator";
 
 const ServerDisplayVariant = () => {
 	return (
