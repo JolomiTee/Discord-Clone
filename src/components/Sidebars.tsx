@@ -34,7 +34,7 @@ export const RSidebar = () => {
 	return (
 		<Sidebar id="rsidebar" side="right">
 			<SidebarContent id="sidebar-content">
-				<section className="bg-carbon relative text-[#FFFFFF99] h-full">
+				<section className="bg-carbon relative text-white h-full">
 					{r_sidebar_display_context === "channel_info" ? (
 						<ChInfoDisplayVariant />
 					) : r_sidebar_display_context === "members" ? (
