@@ -291,10 +291,9 @@ export const membersList = [
 			}
 		]
 	},
-	{
-		group: "members",
-		count: '12k',
-		members: [
+]
+
+export const membersList2 = [
 			{
 				id: 1,
 				profile: "",
@@ -316,5 +315,3 @@ export const membersList = [
 				name: "grass man 4"
 			}
 		]
-	},
-]
