@@ -1,6 +1,6 @@
+import { useStore } from "@/hooks/base-context";
 import IconButtons from "./IconButtons";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import { useStore } from "@/hooks/base-context";
 
 const HMenu = () => {
 	const appState = useStore((state) => state.appState);

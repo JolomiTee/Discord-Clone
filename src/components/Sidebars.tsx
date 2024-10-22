@@ -2,16 +2,7 @@ import { useStore } from "@/hooks/base-context";
 import MessagesDisplayVariant from "./sidebar/L/MessagesDisplayVariant";
 import ServerDisplayVariant from "./sidebar/L/ServerDisplayVariant";
 
-import {
-	Sidebar,
-	SidebarContent,
-	SidebarGroup,
-	SidebarGroupContent,
-	SidebarGroupLabel,
-	SidebarMenu,
-	SidebarMenuButton,
-	SidebarMenuItem,
-} from "@/components/ui/sidebar";
+import { Sidebar, SidebarContent } from "@/components/ui/sidebar";
 
 export const LSidebar = () => {
 	const appState = useStore((state) => state.appState);

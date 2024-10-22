@@ -1,10 +1,10 @@
 import { serverList } from "@/data";
-import { Separator } from "./ui/separator";
-import IconButtons from "./IconButtons";
-import SidebarServerIcon from "./server_tray/SidebarServerIcon";
-import ProfileHolder from "./server_tray/ProfileHolder";
-import { useState } from "react";
 import { useStore } from "@/hooks/base-context";
+import { useState } from "react";
+import IconButtons from "./IconButtons";
+import ProfileHolder from "./server_tray/ProfileHolder";
+import SidebarServerIcon from "./server_tray/SidebarServerIcon";
+import { Separator } from "./ui/separator";
 
 const ServerTray = () => {
 	const [clickedServer, setClickedServer] = useState("");

@@ -1,6 +1,6 @@
-import { Avatar, AvatarFallback, AvatarImage } from "../../ui/avatar";
-import IconButtons from "../../IconButtons";
 import { getRandomColor } from "@/lib/utils";
+import IconButtons from "../../IconButtons";
+import { Avatar, AvatarFallback, AvatarImage } from "../../ui/avatar";
 
 interface props {
 	profileImg: string;

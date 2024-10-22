@@ -1,4 +1,3 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
 	Select,
 	SelectContent,
@@ -6,11 +5,12 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import { messageList } from "@/data";
+import { useStore } from "@/hooks/base-context";
 import IconButtons from "../../IconButtons";
 import FriendProfileCard from "./FriendProfileCard";
-import { useStore } from "@/hooks/base-context";
 const MessagesDisplayVariant = () => {
 	const switchAppState = useStore((state) => state.switchAppState);
 	return (
