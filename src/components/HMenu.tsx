@@ -49,7 +49,6 @@ const HMenu = () => {
 						<IconButtons src="pin" alt="Pinned" sizes="w-7 h-7" />
 						<IconButtons src="search" alt="Search" sizes="w-5 h-5" />
 						<IconButtons src="members" alt="Members" sizes="w-8 h-8" />
-						<IconButtons src="sidebar" alt="Sidebar" />
 					</>
 				) : (
 					<>
@@ -66,13 +65,13 @@ const HMenu = () => {
 						/>
 						<IconButtons src="pin" alt="Pinned" sizes="w-7 h-7" />
 						<IconButtons src="search" alt="Search" sizes="w-5 h-5" />
-						<IconButtons
-							src="sidebar"
-							alt="Sidebar"
-							action={toggle_r_sidebar}
-						/>
 					</>
 				)}
+				<IconButtons
+					src="sidebar"
+					alt="Sidebar"
+					action={toggle_r_sidebar}
+				/>
 			</div>
 		</header>
 	);

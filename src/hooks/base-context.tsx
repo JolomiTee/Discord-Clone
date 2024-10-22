@@ -10,25 +10,22 @@ interface AppStateProps {
 }
 
 export const useStore = create<AppStateProps>((set) => ({
-	appState: "messages", // Initial state
+	appState: "null", // Initial state
 	l_sidebar: true,
 	r_sidebar: false,
 
-	// Switch the main app state
 	switchAppState: (newAppState: string) =>
 		set(() => ({
 			appState: newAppState,
 		})),
 
-	// Toggle left sidebar visibility
 	toggle_l_sidebar: () =>
 		set((state) => ({
-			l_sidebar: !state.l_sidebar, // Toggle based on current state
+			l_sidebar: !state.l_sidebar,
 		})),
 
-	// Toggle right sidebar visibility
 	toggle_r_sidebar: () =>
 		set((state) => ({
-			r_sidebar: !state.r_sidebar, // Toggle based on current state
+			r_sidebar: !state.r_sidebar,
 		})),
 }));
