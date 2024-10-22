@@ -21,7 +21,7 @@ const MemberList = () => {
 					{membersList2.map((member, j) => {
 						return (
 							<div
-								key={`${j}`}
+								key={j}
 								className="flex items-center justify-star gap-3 bg-transparent shadow-none"
 							>
 								<div className="relative">

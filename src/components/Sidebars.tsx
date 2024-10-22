@@ -9,12 +9,9 @@ import {
 	Sidebar,
 	SidebarContent,
 	SidebarFooter,
-	SidebarHeader,
 } from "@/components/ui/sidebar";
 import FooterCard from "./sidebar/R/Members/FooterCard";
 import MemberList from "./sidebar/R/Members/MemberList";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import { getRandomColor } from "@/lib/utils";
 
 export const LSidebar = () => {
 	const l_sidebar_display_context = useStore(

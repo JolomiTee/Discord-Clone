@@ -33,7 +33,8 @@ const Members = () => {
 
 									return (
 										<div
-											key={`${j}-${id}`}
+											key={j}
+											id={id.toString()}
 											className="flex items-center justify-star gap-3 bg-transparent shadow-none"
 										>
 											<div className="relative">
