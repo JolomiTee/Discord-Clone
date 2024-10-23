@@ -1,30 +1,30 @@
 export const serverList = [
 	{
 		name: "MidJourney",
-		serverImage: "/midjourney.png",
+		serverImage: "/servers/midjour ney.png",
 		hasNotification: true
 	},
 	{
 		name: "Roblox",
-		serverImage: "/roblox.png",
+		serverImage: "/servers/roblox .png",
 		hasNotification: false
 
 	},
 	{
 		name: "One Piece",
-		serverImage: "/onepiece.png",
+		serverImage: "/servers/onepiece .png",
 		hasNotification: true
 
 	},
 	{
 		name: "LinusTechTips",
-		serverImage: "/linustechtips.png",
+		serverImage: "/servers/linustechtips .png",
 		hasNotification: false
 
 	},
 	{
 		name: "Apex Legends",
-		serverImage: "/apelegends.png",
+		serverImage: "/servers/apexlegends .png",
 		hasNotification: false
 
 	},
@@ -320,182 +320,183 @@ export const membersList2 = [
 export const discordServers = [
   {
     name: "Midjourney",
-    online: 200000,
-    members: 2000000,
-    lastSeen: "5:30 pm, September 26, 2024",
+    online: 175432,
+    members: 1843921,
+    lastSeen: "7:15 am, August 14, 2023",
     link: "https://discord.com/invite/midjourney",
     muted: false,
-    server_img: "/path/to/midjourney_image.png"
+    server_img: "/servers/midjourney.png"
   },
   {
     name: "HELLDIVERS II",
-    online: 200000,
-    members: 2000000,
-    lastSeen: "5:30 pm, September 26, 2024",
+    online: 145678,
+    members: 1543920,
+    lastSeen: "9:42 pm, June 28, 2024",
     link: "https://discord.com/invite/helldivers2",
     muted: false,
-    server_img: "/path/to/helldivers2_image.png"
+    server_img: "/servers/helldivers.png"
   },
   {
     name: "Minecraft",
-    online: 200000,
-    members: 2000000,
-    lastSeen: "5:30 pm, September 26, 2024",
+    online: 193476,
+    members: 1987654,
+    lastSeen: "2:37 am, December 5, 2022",
     link: "https://discord.com/invite/minecraft",
     muted: false,
-    server_img: "/path/to/minecraft_image.png"
+    server_img: "/servers/minecraft.png"
   },
   {
     name: "Fortnite",
-    online: 200000,
-    members: 2000000,
-    lastSeen: "5:30 pm, September 26, 2024",
+    online: 189204,
+    members: 1754321,
+    lastSeen: "11:13 pm, February 20, 2023",
     link: "https://discord.com/invite/fortnite",
     muted: false,
-    server_img: "/path/to/fortnite_image.png"
+    server_img: "/servers/fortnite.png"
   },
   {
     name: "Roblox",
-    online: 200000,
-    members: 2000000,
-    lastSeen: "5:30 pm, September 26, 2024",
+    online: 168943,
+    members: 1520831,
+    lastSeen: "4:23 pm, October 3, 2024",
     link: "https://discord.com/invite/roblox",
     muted: false,
-    server_img: "/path/to/roblox_image.png"
+    server_img: "/servers/roblox.png"
   },
   {
     name: "Terraria",
-    online: 200000,
-    members: 2000000,
-    lastSeen: "5:30 pm, September 26, 2024",
+    online: 149876,
+    members: 1402834,
+    lastSeen: "8:09 am, May 15, 2022",
     link: "https://discord.com/invite/terraria",
     muted: false,
-    server_img: "/path/to/terraria_image.png"
+    server_img: "/servers/terraria.png"
   },
   {
     name: "Linkin Park",
-    online: 200000,
-    members: 2000000,
-    lastSeen: "5:30 pm, September 26, 2024",
+    online: 132867,
+    members: 1674029,
+    lastSeen: "6:45 pm, January 18, 2024",
     link: "https://discord.com/invite/linkinpark",
     muted: false,
-    server_img: "/path/to/linkinpark_image.png"
+    server_img: "/servers/linkinpark.png"
   },
   {
     name: "Memeology",
-    online: 200000,
-    members: 2000000,
-    lastSeen: "5:30 pm, September 26, 2024",
+    online: 147892,
+    members: 1934827,
+    lastSeen: "3:16 am, April 7, 2023",
     link: "https://discord.com/invite/memeology",
     muted: false,
-    server_img: "/path/to/memeology_image.png"
+    server_img: "/servers/memeology.png"
   },
   {
     name: "One Piece",
-    online: 200000,
-    members: 2000000,
-    lastSeen: "5:30 pm, September 26, 2024",
+    online: 154321,
+    members: 1750293,
+    lastSeen: "1:30 pm, July 10, 2024",
     link: "https://discord.com/invite/onepiece",
     muted: false,
-    server_img: "/path/to/onepiece_image.png"
+    server_img: "/servers/onepiece.png"
   },
   {
     name: "BeluGANG",
-    online: 200000,
-    members: 2000000,
-    lastSeen: "5:30 pm, September 26, 2024",
+    online: 110872,
+    members: 1384957,
+    lastSeen: "10:41 am, September 19, 2023",
     link: "https://discord.com/invite/belugang",
     muted: false,
-    server_img: "/path/to/belugang_image.png"
+    server_img: "/servers/belugang.png"
   },
   {
     name: "Jojo’s Bizarre Adventure",
-    online: 200000,
-    members: 2000000,
-    lastSeen: "5:30 pm, September 26, 2024",
+    online: 178923,
+    members: 1984301,
+    lastSeen: "5:18 pm, November 30, 2022",
     link: "https://discord.com/invite/jojosbizarreadventure",
     muted: false,
-    server_img: "/path/to/jojos_image.png"
+    server_img: "/servers/jojo.png"
   },
   {
     name: "OperaGX",
-    online: 200000,
-    members: 2000000,
-    lastSeen: "5:30 pm, September 26, 2024",
+    online: 134591,
+    members: 1739201,
+    lastSeen: "9:25 am, March 2, 2024",
     link: "https://discord.com/invite/operagx",
     muted: false,
-    server_img: "/path/to/operagx_image.png"
+    server_img: "/servers/operagx.png"
   },
   {
     name: "LinusTechTips",
-    online: 200000,
-    members: 2000000,
-    lastSeen: "5:30 pm, September 26, 2024",
+    online: 182745,
+    members: 1934872,
+    lastSeen: "11:59 pm, May 24, 2023",
     link: "https://discord.com/invite/linustech",
     muted: false,
-    server_img: "/path/to/linustechtips_image.png"
+    server_img: "/servers/linustechtips.png"
   },
   {
     name: "PCMasterRace",
-    online: 200000,
-    members: 2000000,
-    lastSeen: "5:30 pm, September 26, 2024",
+    online: 141234,
+    members: 1429387,
+    lastSeen: "6:03 pm, December 12, 2023",
     link: "https://discord.com/invite/pcmasterrace",
     muted: false,
-    server_img: "/path/to/pcmasterrace_image.png"
+    server_img: "/servers/pcmasterrace.png"
   },
   {
     name: "RAZER",
-    online: 200000,
-    members: 2000000,
-    lastSeen: "5:30 pm, September 26, 2024",
+    online: 136578,
+    members: 1764382,
+    lastSeen: "7:33 am, July 22, 2024",
     link: "https://discord.com/invite/razer",
     muted: false,
-    server_img: "/path/to/razer_image.png"
+    server_img: "/servers/razer.png"
   },
   {
     name: "DESTINY 2",
-    online: 200000,
-    members: 2000000,
-    lastSeen: "5:30 pm, September 26, 2024",
+    online: 120984,
+    members: 1647389,
+    lastSeen: "8:26 pm, September 1, 2022",
     link: "https://discord.com/invite/destiny2",
     muted: false,
-    server_img: "/path/to/destiny2_image.png"
+    server_img: "/servers/destiny.png"
   },
   {
     name: "Apex Legends",
-    online: 200000,
-    members: 2000000,
-    lastSeen: "5:30 pm, September 26, 2024",
+    online: 158902,
+    members: 1904872,
+    lastSeen: "9:11 am, October 17, 2024",
     link: "https://discord.com/invite/apexlegends",
     muted: false,
-    server_img: "/path/to/apexlegends_image.png"
+    server_img: "/servers/apexlegends.png"
   },
   {
     name: "VALORANT",
-    online: 200000,
-    members: 2000000,
-    lastSeen: "5:30 pm, September 26, 2024",
+    online: 165493,
+    members: 1728934,
+    lastSeen: "10:22 pm, January 9, 2023",
     link: "https://discord.com/invite/valorant",
     muted: false,
-    server_img: "/path/to/valorant_image.png"
+    server_img: "/servers/valorant.png"
   },
   {
     name: "Lofi Girl",
-    online: 200000,
-    members: 2000000,
-    lastSeen: "5:30 pm, September 26, 2024",
+    online: 143682,
+    members: 1624831,
+    lastSeen: "4:18 am, August 23, 2024",
     link: "https://discord.com/invite/lofigirl",
     muted: false,
-    server_img: "/path/to/lofigirl_image.png"
+    server_img: "/servers/lofigirl.png"
   },
   {
     name: "Rythm",
-    online: 200000,
-    members: 2000000,
-    lastSeen: "5:30 pm, September 26, 2024",
+    online: 191237,
+    members: 1847239,
+    lastSeen: "12:01 pm, November 14, 2022",
     link: "https://discord.com/invite/rythm",
     muted: false,
-    server_img: "/path/to/rythm_image.png"
+    server_img: "/servers/rythm.png"
   }
 ];
+

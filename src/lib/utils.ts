@@ -14,3 +14,13 @@ export const getRandomColor = () => {
   }
   return color;
 };
+
+export function formatNumber(value: number): string {
+  if (value >= 1000000) {
+    return (value / 1000000).toFixed(1) + 'M';  // Millions
+  } else if (value >= 1000) {
+    return (value / 1000).toFixed(1) + 'K';  // Thousands
+  } else {
+    return value.toString();  // Less than 1000, return as is
+  }
+}
