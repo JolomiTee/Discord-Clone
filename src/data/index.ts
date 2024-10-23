@@ -314,4 +314,188 @@ export const membersList2 = [
 				profile: "",
 				name: "grass man 4"
 			}
-		]
+]
+
+
+export const discordServers = [
+  {
+    name: "Midjourney",
+    online: 200000,
+    members: 2000000,
+    lastSeen: "5:30 pm, September 26, 2024",
+    link: "https://discord.com/invite/midjourney",
+    muted: false,
+    server_img: "/path/to/midjourney_image.png"
+  },
+  {
+    name: "HELLDIVERS II",
+    online: 200000,
+    members: 2000000,
+    lastSeen: "5:30 pm, September 26, 2024",
+    link: "https://discord.com/invite/helldivers2",
+    muted: false,
+    server_img: "/path/to/helldivers2_image.png"
+  },
+  {
+    name: "Minecraft",
+    online: 200000,
+    members: 2000000,
+    lastSeen: "5:30 pm, September 26, 2024",
+    link: "https://discord.com/invite/minecraft",
+    muted: false,
+    server_img: "/path/to/minecraft_image.png"
+  },
+  {
+    name: "Fortnite",
+    online: 200000,
+    members: 2000000,
+    lastSeen: "5:30 pm, September 26, 2024",
+    link: "https://discord.com/invite/fortnite",
+    muted: false,
+    server_img: "/path/to/fortnite_image.png"
+  },
+  {
+    name: "Roblox",
+    online: 200000,
+    members: 2000000,
+    lastSeen: "5:30 pm, September 26, 2024",
+    link: "https://discord.com/invite/roblox",
+    muted: false,
+    server_img: "/path/to/roblox_image.png"
+  },
+  {
+    name: "Terraria",
+    online: 200000,
+    members: 2000000,
+    lastSeen: "5:30 pm, September 26, 2024",
+    link: "https://discord.com/invite/terraria",
+    muted: false,
+    server_img: "/path/to/terraria_image.png"
+  },
+  {
+    name: "Linkin Park",
+    online: 200000,
+    members: 2000000,
+    lastSeen: "5:30 pm, September 26, 2024",
+    link: "https://discord.com/invite/linkinpark",
+    muted: false,
+    server_img: "/path/to/linkinpark_image.png"
+  },
+  {
+    name: "Memeology",
+    online: 200000,
+    members: 2000000,
+    lastSeen: "5:30 pm, September 26, 2024",
+    link: "https://discord.com/invite/memeology",
+    muted: false,
+    server_img: "/path/to/memeology_image.png"
+  },
+  {
+    name: "One Piece",
+    online: 200000,
+    members: 2000000,
+    lastSeen: "5:30 pm, September 26, 2024",
+    link: "https://discord.com/invite/onepiece",
+    muted: false,
+    server_img: "/path/to/onepiece_image.png"
+  },
+  {
+    name: "BeluGANG",
+    online: 200000,
+    members: 2000000,
+    lastSeen: "5:30 pm, September 26, 2024",
+    link: "https://discord.com/invite/belugang",
+    muted: false,
+    server_img: "/path/to/belugang_image.png"
+  },
+  {
+    name: "Jojo’s Bizarre Adventure",
+    online: 200000,
+    members: 2000000,
+    lastSeen: "5:30 pm, September 26, 2024",
+    link: "https://discord.com/invite/jojosbizarreadventure",
+    muted: false,
+    server_img: "/path/to/jojos_image.png"
+  },
+  {
+    name: "OperaGX",
+    online: 200000,
+    members: 2000000,
+    lastSeen: "5:30 pm, September 26, 2024",
+    link: "https://discord.com/invite/operagx",
+    muted: false,
+    server_img: "/path/to/operagx_image.png"
+  },
+  {
+    name: "LinusTechTips",
+    online: 200000,
+    members: 2000000,
+    lastSeen: "5:30 pm, September 26, 2024",
+    link: "https://discord.com/invite/linustech",
+    muted: false,
+    server_img: "/path/to/linustechtips_image.png"
+  },
+  {
+    name: "PCMasterRace",
+    online: 200000,
+    members: 2000000,
+    lastSeen: "5:30 pm, September 26, 2024",
+    link: "https://discord.com/invite/pcmasterrace",
+    muted: false,
+    server_img: "/path/to/pcmasterrace_image.png"
+  },
+  {
+    name: "RAZER",
+    online: 200000,
+    members: 2000000,
+    lastSeen: "5:30 pm, September 26, 2024",
+    link: "https://discord.com/invite/razer",
+    muted: false,
+    server_img: "/path/to/razer_image.png"
+  },
+  {
+    name: "DESTINY 2",
+    online: 200000,
+    members: 2000000,
+    lastSeen: "5:30 pm, September 26, 2024",
+    link: "https://discord.com/invite/destiny2",
+    muted: false,
+    server_img: "/path/to/destiny2_image.png"
+  },
+  {
+    name: "Apex Legends",
+    online: 200000,
+    members: 2000000,
+    lastSeen: "5:30 pm, September 26, 2024",
+    link: "https://discord.com/invite/apexlegends",
+    muted: false,
+    server_img: "/path/to/apexlegends_image.png"
+  },
+  {
+    name: "VALORANT",
+    online: 200000,
+    members: 2000000,
+    lastSeen: "5:30 pm, September 26, 2024",
+    link: "https://discord.com/invite/valorant",
+    muted: false,
+    server_img: "/path/to/valorant_image.png"
+  },
+  {
+    name: "Lofi Girl",
+    online: 200000,
+    members: 2000000,
+    lastSeen: "5:30 pm, September 26, 2024",
+    link: "https://discord.com/invite/lofigirl",
+    muted: false,
+    server_img: "/path/to/lofigirl_image.png"
+  },
+  {
+    name: "Rythm",
+    online: 200000,
+    members: 2000000,
+    lastSeen: "5:30 pm, September 26, 2024",
+    link: "https://discord.com/invite/rythm",
+    muted: false,
+    server_img: "/path/to/rythm_image.png"
+  }
+];

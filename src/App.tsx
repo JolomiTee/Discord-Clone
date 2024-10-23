@@ -7,6 +7,7 @@ import ChannelsLayout from "./layouts/Channels";
 import Main from "./layouts/Layout";
 import MessagesLayout from "./layouts/Messages";
 import Wumpus from "./layouts/Wumpus";
+import Servers from "./pages/Servers";
 
 function App() {
 	const l_sidebar_state = useStore((state) => state.l_sidebar_state);
@@ -30,6 +31,8 @@ function App() {
 
 						{/* <Route path="messages/:userId" element={<RoomInfo />} /> */}
 					</Route>
+
+					<Route path="servers" element={<Servers />} />
 				</Routes>
 
 				<SidebarProvider className="w-fit" open={r_sidebar_state}>
