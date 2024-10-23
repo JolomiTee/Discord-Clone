@@ -57,6 +57,7 @@ const Servers = () => {
 
 						return (
 							<ServerCard
+								key={i}
 								name={name}
 								online={online}
 								members={members}

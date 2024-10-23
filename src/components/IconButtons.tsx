@@ -11,7 +11,7 @@ const IconButtons = ({
 	src,
 	alt,
 	sizes = "size-6",
-	buttonStyles,
+	buttonStyles = "",
 	action,
 }: props) => {
 	return (

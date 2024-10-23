@@ -1,8 +1,16 @@
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { AvatarFallback } from "@radix-ui/react-avatar";
+import { useEffect, useState } from "react";
 
 const FooterCard = () => {
-	const online = true;
+	const [online, setonline] = useState(false);
+
+	useEffect(() => {
+		setTimeout(() => {
+			setonline((prev) => !prev);
+		}, 5000);
+	}, []);
+
 	return (
 		<div className="flex items-center justify-start h-[55px] gap-3 bg-transparent shadow-none bg-gradient-to-l from-charcoal via-gray-200 to-gray-200 w-full py-3">
 			<div className="relative">
