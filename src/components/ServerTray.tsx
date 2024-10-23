@@ -5,6 +5,16 @@ import IconButtons from "./IconButtons";
 import ProfileHolder from "./server_tray/ProfileHolder";
 import SidebarServerIcon from "./server_tray/SidebarServerIcon";
 import { Separator } from "./ui/separator";
+import {
+	Sidebar,
+	SidebarContent,
+	SidebarFooter,
+	SidebarHeader,
+	SidebarMenu,
+	SidebarMenuButton,
+	SidebarMenuItem,
+	SidebarTrigger,
+} from "./ui/sidebar";
 
 const ServerTray = () => {
 	const [clickedServer, setClickedServer] = useState("");
@@ -17,24 +27,71 @@ const ServerTray = () => {
 		switchLeftSidebarContext("server");
 	};
 	return (
-		<section className="min-w-[6%] bg-onyx py-3 flex flex-col gap-y-[16px] h-screen z-20">
-			<div className="flex flex-col items-center gap-y-[10px]">
-				<IconButtons src="search" alt="Search" sizes="w-[25px h-[25px]" />
-				<IconButtons
-					src="messages"
-					alt="Messages"
-					sizes="w-[35px h-[35px]"
-					action={() => {
-						switchLeftSidebarContext("messages");
-					}}
-				/>
+		<Sidebar collapsible="icon" className="z-20">
+			<SidebarHeader className="bg-onyx">
+				<SidebarMenu className="">
+					<SidebarMenuItem>
+						<SidebarMenuButton
+							size="lg"
+							className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+						>
+							<div className="flex aspect-square size-8 items-center justify-center rounded-lg ">
+								<img
+									src="/icons/search.svg"
+									alt="Search"
+									className="w-[25px] h-[25px]"
+								/>
+							</div>
 
-				<Separator className="w-[70%] rounded-full bg-charcoal h-1 mx-auto" />
+							<div className="grid flex-1 text-left text-sm leading-tight">
+								<span className="truncate font-semibold">Search</span>
+							</div>
+						</SidebarMenuButton>
+					</SidebarMenuItem>
 
-				<IconButtons src="servers" alt="Servers" sizes="w-[35px h-[35px]" />
-			</div>
+					<SidebarMenuItem>
+						<SidebarMenuButton
+							size="lg"
+							className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+						>
+							<div className="flex aspect-square size-8 items-center justify-center rounded-lg ">
+								<img
+									src="/icons/messages.svg"
+									alt="Menu"
+									className="w-[40px] h-[40px]"
+								/>
+							</div>
 
-			<div className="flex flex-col gap-y-[10px] overflow-y-auto max-h-full scrollbar-hidden">
+							<div className="grid flex-1 text-left text-sm leading-tight">
+								<span className="truncate font-semibold">Messages</span>
+							</div>
+						</SidebarMenuButton>
+					</SidebarMenuItem>
+
+					<SidebarMenuItem>
+						<SidebarMenuButton
+							size="lg"
+							className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+						>
+							<div className="flex aspect-square size-8 items-center justify-center rounded-lg ">
+								<img
+									src="/icons/servers.svg"
+									alt="Servers"
+									className="w-[35px] h-[35px]"
+								/>
+							</div>
+
+							<div className="grid flex-1 text-left text-sm leading-tight">
+								<span className="truncate font-semibold">Servers</span>
+							</div>
+						</SidebarMenuButton>
+					</SidebarMenuItem>
+				</SidebarMenu>
+			</SidebarHeader>
+			<Separator className="rounded-full bg-charcoal h-1 mx-auto" />
+			<SidebarTrigger className="-ml-1" />
+
+			{/* <SidebarContent className="bg-onyx flex flex-col gap-y-[10px] overflow-y-auto max-h-full scrollbar-hidden">
 				{serverList.map((server, index) => {
 					const { name, serverImage, hasNotification } = server;
 
@@ -51,16 +108,50 @@ const ServerTray = () => {
 						/>
 					);
 				})}
-			</div>
+			</SidebarContent> */}
 
-			<div className="flex flex-col items-center gap-y-[15px] mt-auto mb-0">
-				<Separator className="w-[70%] rounded-full bg-charcoal h-1 mx-auto" />
+			<SidebarFooter className="bg-onyx flex flex-col items-center gap-y-[15px] mt-auto mb-0">
+				<Separator className="rounded-full bg-charcoal h-1 mx-auto" />
+				<SidebarMenu>
+					<SidebarMenuItem>
+						<SidebarMenuButton
+							size="lg"
+							className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+						>
+							<div className="flex aspect-square size-8 items-center justify-center rounded-lg ">
+								<img
+									src="/icons/mail.svg"
+									alt="Mail"
+									className="w-[35px] h-[35px]"
+								/>
+							</div>
 
-				<IconButtons src="mail" alt="Mail" sizes="w-[40px h-[40px]" />
+							<div className="grid flex-1 text-left text-sm leading-tight">
+								<span className="truncate font-semibold">Archives</span>
+							</div>
+						</SidebarMenuButton>
+					</SidebarMenuItem>
+				</SidebarMenu>
+				<SidebarMenu>
+					<SidebarMenuItem>
+						<SidebarMenuButton
+							size="lg"
+							className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+						>
+							<div className="flex aspect-square size-8 items-center justify-center rounded-lg ">
+								<ProfileHolder />
+							</div>
 
-				<ProfileHolder />
-			</div>
-		</section>
+							<div className="grid flex-1 text-left text-sm leading-tight">
+								<span className="truncate font-semibold">
+									InflexibleTow9
+								</span>
+							</div>
+						</SidebarMenuButton>
+					</SidebarMenuItem>
+				</SidebarMenu>
+			</SidebarFooter>
+		</Sidebar>
 	);
 };
 

@@ -16,7 +16,9 @@ function App() {
 		<div className="flex relative w-screen h-screen overflow-hidden bg-charcoal">
 			{/* The server icons tray */}
 			<BrowserRouter>
-				<ServerTray />
+				<SidebarProvider className="w-fit bg-onyx">
+					<ServerTray />
+				</SidebarProvider>
 
 				<SidebarProvider className="w-fit" open={l_sidebar_state}>
 					<LSidebar />
