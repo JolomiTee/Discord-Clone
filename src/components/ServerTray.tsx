@@ -29,7 +29,7 @@ const ServerTray = () => {
 	return (
 		<Sidebar collapsible="icon" className="z-20">
 			<SidebarHeader className="bg-onyx">
-				<SidebarMenu className="">
+				<SidebarMenu className="gap-3">
 					<SidebarMenuItem>
 						<SidebarMenuButton
 							size="lg"
@@ -88,27 +88,44 @@ const ServerTray = () => {
 					</SidebarMenuItem>
 				</SidebarMenu>
 			</SidebarHeader>
+
 			<Separator className="rounded-full bg-charcoal h-1 mx-auto" />
 			<SidebarTrigger className="-ml-1" />
 
-			{/* <SidebarContent className="bg-onyx flex flex-col gap-y-[10px] overflow-y-auto max-h-full scrollbar-hidden">
-				{serverList.map((server, index) => {
-					const { name, serverImage, hasNotification } = server;
+			<SidebarContent className="bg-onyx flex flex-col gap-y-[10px]  overflow-y-auto max-h-full scrollbar-hidden">
+				<SidebarMenu className="gap-3">
+					{serverList.map((server, index) => {
+						const { name, serverImage, hasNotification } = server;
 
-					return (
-						<SidebarServerIcon
-							key={index}
-							name={name}
-							serverImage={serverImage}
-							hasNotification={hasNotification}
-							isClicked={clickedServer === name}
-							onClick={() => {
-								handleServerClick(name);
-							}}
-						/>
-					);
-				})}
-			</SidebarContent> */}
+						return (
+							<SidebarMenuItem key={index}>
+								<SidebarMenuButton
+									size="lg"
+									className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+								>
+									<div className="flex aspect-square items-center justify-center rounded-full ">
+										<SidebarServerIcon
+											name={name}
+											serverImage={serverImage}
+											hasNotification={hasNotification}
+											isClicked={clickedServer === name}
+											onClick={() => {
+												handleServerClick(name);
+											}}
+										/>
+									</div>
+
+									<div className="grid flex-1 text-left text-sm leading-tight">
+										<span className="truncate font-semibold">
+											{name}
+										</span>
+									</div>
+								</SidebarMenuButton>
+							</SidebarMenuItem>
+						);
+					})}
+				</SidebarMenu>
+			</SidebarContent>
 
 			<SidebarFooter className="bg-onyx flex flex-col items-center gap-y-[15px] mt-auto mb-0">
 				<Separator className="rounded-full bg-charcoal h-1 mx-auto" />
