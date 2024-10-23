@@ -17,10 +17,10 @@ const Media = () => {
 						className="rounded-md object-cover w-full h-full"
 					/>
 
-					<Avatar className="absolute top-0.5 right-0.5 flex items-center justify-center w-[30px] h-[30px]">
+					<Avatar className="absolute top-0.5 right-0.5 flex items-center justify-center size-[30px]">
 						<AvatarImage
 							src={"sender_img"}
-							className="w-[18px] h-[18px] rounded-full"
+							className="size-[18px] rounded-full"
 						/>
 						<AvatarFallback
 							className="flex items-center justify-center"
@@ -30,7 +30,7 @@ const Media = () => {
 						>
 							<img
 								src="/icons/discord.svg"
-								className="w-[18px] h-[18px] rounded-full"
+								className="size-[18px] rounded-full"
 							/>
 						</AvatarFallback>
 					</Avatar>

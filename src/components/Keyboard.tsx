@@ -4,7 +4,7 @@ import IconButtons from "./IconButtons";
 const Keyboard = () => {
 	return (
 		<div className="mb-4 mt-auto m-4 bg-[#FFFFFF0D] rounded-full py-2 px-4 flex items-center gap-4">
-			<IconButtons src="add" alt="Add attachment" sizes="w-10 h-10" />
+			<IconButtons src="add" alt="Add attachment" sizes="size-10" />
 
 			<Textarea
 				className="flex-1 bg-transparent border-0 focus-visible:ring-0 p-2 shadow-none text-white placeholder-primary/50"

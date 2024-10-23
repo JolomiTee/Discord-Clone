@@ -30,7 +30,7 @@ const FriendProfileCard = ({
 				<Avatar className="flex items-center justify-center">
 					<AvatarImage
 						src={profileImg}
-						className="w-[35px] h-[35px]  rounded-full"
+						className="size-[35px]  rounded-full"
 					/>
 					<AvatarFallback
 						className="flex items-center justify-center"
@@ -38,14 +38,14 @@ const FriendProfileCard = ({
 					>
 						<img
 							src="/icons/discord.svg"
-							className="w-[35px] h-[35px] rounded-full"
+							className="size-[35px] rounded-full"
 						/>
 					</AvatarFallback>
 				</Avatar>
 				<div
 					className={`absolute -right-1 bottom-0 ${
 						online ? "bg-emerald" : "bg-gray"
-					} rounded-full w-4 h-4 border-[3px] border-solid border-onyx`}
+					} rounded-full size-4 border-[3px] border-solid border-onyx`}
 				></div>
 			</div>
 			<span

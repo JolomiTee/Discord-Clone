@@ -14,15 +14,15 @@ const ChatBubble = ({ user, time, message, profileImg }: props) => {
 				<Avatar className="flex items-center justify-center">
 					<AvatarImage
 						src={profileImg}
-						className="w-[50px] h-[50px] rounded-full"
+						className="size-[50px] rounded-full"
 					/>
 					<AvatarFallback
 						style={{ backgroundColor: getRandomColor() }}
-						className="flex items-center justify-center w-[50px] h-[50px] "
+						className="flex items-center justify-center size-[50px] "
 					>
 						<img
 							src="/icons/discord.svg"
-							className="w-[30px] h-[30px] rounded-full m-auto"
+							className="size-[30px] rounded-full m-auto"
 						/>
 					</AvatarFallback>
 				</Avatar>

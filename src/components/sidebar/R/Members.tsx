@@ -38,15 +38,15 @@ const Members = () => {
 											className="flex items-center justify-star gap-3 bg-transparent shadow-none"
 										>
 											<div className="relative">
-												<Avatar className="flex items-center justify-center w-[40px] h-[40px]">
+												<Avatar className="flex items-center justify-center size-[40px]">
 													<AvatarImage
 														src={profile}
-														className="w-[20px] h-[20px] rounded-full"
+														className="size-[20px] rounded-full"
 													/>
 													<AvatarFallback className="flex items-center justify-center bg-discord-blue">
 														<img
 															src="/icons/discord.svg"
-															className="w-[25px] h-[25px] rounded-full"
+															className="size-[25px] rounded-full"
 														/>
 													</AvatarFallback>
 												</Avatar>

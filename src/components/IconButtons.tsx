@@ -10,7 +10,7 @@ interface props {
 const IconButtons = ({
 	src,
 	alt,
-	sizes = "w-6 h-6",
+	sizes = "size-6",
 	buttonStyles,
 	action,
 }: props) => {

@@ -45,15 +45,15 @@ const MessagesDisplayVariant = () => {
 						<IconButtons
 							src="search"
 							alt="Search"
-							sizes="w-[18px] h-[18px]"
-							buttonStyles="rounded-full w-[35px] h-[35px] p-0 bg-[#FFFFFF08] border border-solid border-[#FFFFFF0F]"
+							sizes="size-[18px]"
+							buttonStyles="rounded-full size-[35px] p-0 bg-[#FFFFFF08] border border-solid border-[#FFFFFF0F]"
 						/>
 
 						<IconButtons
 							src="plus"
 							alt="Add"
-							sizes="w-[18px] h-[18px]"
-							buttonStyles="rounded-full w-[35px] h-[35px] p-0 bg-[#FFFFFF08] border border-solid border-[#FFFFFF0F]"
+							sizes="size-[18px]"
+							buttonStyles="rounded-full size-[35px] p-0 bg-[#FFFFFF08] border border-solid border-[#FFFFFF0F]"
 						/>
 					</div>
 				</div>

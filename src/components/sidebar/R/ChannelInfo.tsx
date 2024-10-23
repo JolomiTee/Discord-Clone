@@ -11,10 +11,10 @@ const ChInfoDisplayVariant = () => {
 		<div className="grid gap-4 p-4">
 			<div className="flex items-center justify-star gap-3 bg-transparent shadow-none">
 				<div className="relative">
-					<Avatar className="flex items-center justify-center w-[30px] h-[30px]">
+					<Avatar className="flex items-center justify-center size-[30px]">
 						<AvatarImage
 							src={"icons/text_chanel.svg"}
-							className="w-[20px] h-[20px] rounded-full"
+							className="size-[20px] rounded-full"
 						/>
 						<AvatarFallback
 							className="flex items-center justify-center"
@@ -24,7 +24,7 @@ const ChInfoDisplayVariant = () => {
 						>
 							<img
 								src="/icons/discord.svg"
-								className="w-[20px] h-[20px] rounded-full"
+								className="size-[20px] rounded-full"
 							/>
 						</AvatarFallback>
 					</Avatar>

@@ -70,19 +70,19 @@ const ServerDisplayVariant = () => {
 					<IconButtons
 						src="notification"
 						alt="Notifications"
-						sizes="w-7 h-7"
+						sizes="size-7"
 					/>
 					<IconButtons
 						src="server_guide"
 						alt="Notifications"
-						sizes="w-7 h-7"
+						sizes="size-7"
 					/>
 					<IconButtons
 						src="browse_channels"
 						alt="Notifications"
-						sizes="w-7 h-7"
+						sizes="size-7"
 					/>
-					<IconButtons src="events" alt="Notifications" sizes="w-7 h-7" />
+					<IconButtons src="events" alt="Notifications" sizes="size-7" />
 					<IconButtons src="search" alt="Notifications" />
 				</div>
 

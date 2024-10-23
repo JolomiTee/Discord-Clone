@@ -42,7 +42,7 @@ const Servers = () => {
 					</Select>
 
 					<Button className="rounded-full bg-[#54414108] border border-solid border-[#FFFFFF0F] text-[#FFFFFF99]">
-						<img src="/icons/check.svg" className="w-5 h-5" />
+						<img src="/icons/check.svg" className="size-5" />
 						Hide muted servers from sidebar
 					</Button>
 				</div>
