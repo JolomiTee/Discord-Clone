@@ -9,6 +9,7 @@ import Main from "./layouts/Layout";
 import MessagesLayout from "./layouts/Messages";
 import Wumpus from "./layouts/Wumpus";
 import Servers from "./pages/Servers";
+import CollapsibleSidebar from "./components/CollapsibleSidebar";
 
 function App() {
 	const location = useLocation();
@@ -28,12 +29,11 @@ function App() {
 
 	return (
 		<div className="flex relative w-screen h-screen overflow-hidden bg-charcoal">
-			{/* The server icons tray */}
+			{/*
+			 */}
 			<ServerTray />
-
-			<SidebarProvider className="w-fit" open={l_sidebar_state}>
-				<LSidebar />
-			</SidebarProvider>
+			<CollapsibleSidebar />
+			<LSidebar open={l_sidebar_state} />
 
 			<Routes>
 				<Route element={<Main />}>
@@ -47,9 +47,7 @@ function App() {
 				<Route path="/servers" element={<Servers />} />
 			</Routes>
 
-			<SidebarProvider className="w-fit" open={r_sidebar_state}>
-				<RSidebar />
-			</SidebarProvider>
+			<RSidebar open={r_sidebar_state} />
 		</div>
 	);
 }
