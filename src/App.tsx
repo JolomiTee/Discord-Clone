@@ -1,7 +1,6 @@
-import { SidebarProvider } from "@/components/ui/sidebar";
 import { useEffect } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
-import ServerTray from "./components/ServerTray";
+import CollapsibleSidebar from "./components/CollapsibleSidebar";
 import { LSidebar, RSidebar } from "./components/Sidebars";
 import { useStore } from "./hooks/base-context";
 import ChannelsLayout from "./layouts/Channels";
@@ -9,7 +8,6 @@ import Main from "./layouts/Layout";
 import MessagesLayout from "./layouts/Messages";
 import Wumpus from "./layouts/Wumpus";
 import Servers from "./pages/Servers";
-import CollapsibleSidebar from "./components/CollapsibleSidebar";
 
 function App() {
 	const location = useLocation();

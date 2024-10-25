@@ -1,6 +1,11 @@
 "use client";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { Separator } from "@/components/ui/separator";
 import {
 	Sidebar,
@@ -13,18 +18,9 @@ import {
 	SidebarMenuItem,
 	SidebarProvider,
 } from "@/components/ui/sidebar";
-import { serverList } from "@/data";
-import IconButtons from "./IconButtons";
-import {
-	DropdownMenu,
-	DropdownMenuContent,
-	DropdownMenuItem,
-	DropdownMenuLabel,
-	DropdownMenuSeparator,
-	DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { MenuIcon } from "lucide-react";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { serverList } from "@/data";
+import { MenuIcon } from "lucide-react";
 
 export default function CollapsibleSidebar({ open }: { open: boolean }) {
 	return (

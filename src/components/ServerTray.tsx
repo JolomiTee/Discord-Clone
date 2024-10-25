@@ -36,17 +36,17 @@ const ServerTray = () => {
 
 			<div className="flex flex-col gap-y-[10px] overflow-y-auto max-h-full scrollbar-hidden">
 				{serverList.map((server, index) => {
-					const { name, serverImage, hasNotification } = server;
+					const { title, serverIcon, hasNotification } = server;
 
 					return (
 						<SidebarServerIcon
 							key={index}
-							name={name}
-							serverImage={serverImage}
+							name={title}
+							serverImage={serverIcon}
 							hasNotification={hasNotification}
-							isClicked={clickedServer === name}
+							isClicked={clickedServer === title}
 							onClick={() => {
-								handleServerClick(name);
+								handleServerClick(title);
 							}}
 						/>
 					);
