@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import CollapsibleSidebar from "./components/CollapsibleSidebar";
-import { LSidebar, RSidebar } from "./components/Sidebars";
 import { useStore } from "./hooks/base-context";
 import ChannelsLayout from "./layouts/Channels";
 import Main from "./layouts/Layout";
@@ -12,7 +11,7 @@ import Servers from "./pages/Servers";
 function App() {
 	const location = useLocation();
 	const l_sidebar_state = useStore((state) => state.l_sidebar_state);
-	const r_sidebar_state = useStore((state) => state.r_sidebar_state);
+	const c_sidebar_state = useStore((state) => state.c_sidebar_state);
 	const toggle_l_sidebar = useStore((state) => state.toggle_l_sidebar);
 
 	useEffect(() => {
@@ -29,9 +28,7 @@ function App() {
 		<div className="flex relative w-screen h-screen overflow-hidden bg-charcoal">
 			{/* <ServerTray /> */}
 
-			<CollapsibleSidebar open={l_sidebar_state} />
-
-			<LSidebar open={l_sidebar_state} />
+			<CollapsibleSidebar open={c_sidebar_state} />
 
 			<Routes>
 				<Route element={<Main />}>
@@ -44,8 +41,6 @@ function App() {
 
 				<Route path="/servers" element={<Servers />} />
 			</Routes>
-
-			<RSidebar open={r_sidebar_state} />
 		</div>
 	);
 }

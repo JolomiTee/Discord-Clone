@@ -20,9 +20,22 @@ import {
 } from "@/components/ui/sidebar";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { serverList } from "@/data";
+import { useStore } from "@/hooks/base-context";
 import { MenuIcon } from "lucide-react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function CollapsibleSidebar({ open }: { open: boolean }) {
+	const [clickedServer, setClickedServer] = useState("");
+	const switchLeftSidebarContext = useStore(
+		(state) => state.switchLeftSidebarContext
+	);
+
+	const handleServerClick = (server: string) => {
+		setClickedServer(server);
+		switchLeftSidebarContext(server);
+	};
+	console.log(clickedServer);
 	return (
 		<SidebarProvider className="w-fit z-20 text-[#B5BFE7]" open={open}>
 			<Sidebar id="sidebar" collapsible="icon" className="bg-transparent">
@@ -32,7 +45,7 @@ export default function CollapsibleSidebar({ open }: { open: boolean }) {
 							<SidebarMenuItem className="group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center ">
 								<SidebarMenuButton
 									tooltip="Search"
-									className="gap-8 group-data-[collapsible=icon]:ps-0 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden  p-0 ps-3"
+									className="gap-3 group-data-[collapsible=icon]:ps-0 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden  p-0 ps-3"
 								>
 									<Avatar className="size-[50px] flex justify-center items-center ">
 										<AvatarImage
@@ -46,16 +59,22 @@ export default function CollapsibleSidebar({ open }: { open: boolean }) {
 
 							<SidebarMenuItem className="group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center ">
 								<SidebarMenuButton
-									tooltip="Messahes"
-									className="gap-8 group-data-[collapsible=icon]:ps-0 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden  p-0 ps-3"
+									asChild
+									tooltip="Messages"
+									className="gap-3 group-data-[collapsible=icon]:ps-0 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden  p-0 ps-3"
+									onClick={() => {
+										handleServerClick("messages");
+									}}
 								>
-									<Avatar className="size-[50px] flex justify-center items-center ">
-										<AvatarImage
-											src="/icons/messages.svg"
-											className="w-[30px]"
-										/>
-									</Avatar>
-									<span>Messages</span>
+									<Link to={"/messages"}>
+										<Avatar className="size-[50px] flex justify-center items-center ">
+											<AvatarImage
+												src="/icons/messages.svg"
+												className="w-[30px]"
+											/>
+										</Avatar>
+										<span>Messages</span>
+									</Link>
 								</SidebarMenuButton>
 							</SidebarMenuItem>
 
@@ -63,16 +82,19 @@ export default function CollapsibleSidebar({ open }: { open: boolean }) {
 
 							<SidebarMenuItem className="group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center ">
 								<SidebarMenuButton
+									asChild
 									tooltip="Servers"
-									className="gap-8 group-data-[collapsible=icon]:ps-0 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden  p-0 ps-3"
+									className="gap-3 group-data-[collapsible=icon]:ps-0 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden  p-0 ps-3"
 								>
-									<Avatar className="size-[50px] flex justify-center items-center ">
-										<AvatarImage
-											src="/icons/servers.svg"
-											className="w-[30px]"
-										/>
-									</Avatar>
-									<span>Servers</span>
+									<Link to={"/servers"}>
+										<Avatar className="size-[50px] flex justify-center items-center ">
+											<AvatarImage
+												src="/icons/servers.svg"
+												className="w-[30px]"
+											/>
+										</Avatar>
+										<span>Servers</span>
+									</Link>
 								</SidebarMenuButton>
 							</SidebarMenuItem>
 						</SidebarMenu>
@@ -88,19 +110,25 @@ export default function CollapsibleSidebar({ open }: { open: boolean }) {
 									className="group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center "
 								>
 									<SidebarMenuButton
+										asChild
 										tooltip={item.title}
-										className="gap-8 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden p-0 ps-3"
+										className="gap-3 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden p-0 ps-3"
+										onClick={() => {
+											handleServerClick("server");
+										}}
 									>
-										<Avatar className="size-[50px]">
-											<AvatarImage src={item.serverIcon} />
-											<AvatarFallback className="bg-discord-blue">
-												<img
-													src="/icons/discord.svg"
-													className="size-[30px] "
-												/>
-											</AvatarFallback>
-										</Avatar>
-										<span>{item.title}</span>
+										<Link to={"channels"}>
+											<Avatar className="size-[50px]">
+												<AvatarImage src={item.serverIcon} />
+												<AvatarFallback className="bg-discord-blue">
+													<img
+														src="/icons/discord.svg"
+														className="size-[30px] "
+													/>
+												</AvatarFallback>
+											</Avatar>
+											<span>{item.title}</span>
+										</Link>
 									</SidebarMenuButton>
 								</SidebarMenuItem>
 							))}
@@ -112,16 +140,19 @@ export default function CollapsibleSidebar({ open }: { open: boolean }) {
 					<SidebarMenu>
 						<SidebarMenuItem className="group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center ">
 							<SidebarMenuButton
+								asChild
 								tooltip="Inbox"
-								className="gap-8 group-data-[collapsible=icon]:ps-0 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden  p-0 ps-3"
+								className="gap-3 group-data-[collapsible=icon]:ps-0 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden  p-0 ps-3"
 							>
-								<Avatar className="size-[50px] flex justify-center items-center ">
-									<AvatarImage
-										src="/icons/inbox.svg"
-										className="w-[40px]"
-									/>
-								</Avatar>
-								<span>Inbox</span>
+								<Link to={"inbox"}>
+									<Avatar className="size-[50px] flex justify-center items-center ">
+										<AvatarImage
+											src="/icons/inbox.svg"
+											className="w-[40px]"
+										/>
+									</Avatar>
+									<span>Inbox</span>
+								</Link>
 							</SidebarMenuButton>
 						</SidebarMenuItem>
 

@@ -2,6 +2,7 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 interface AppStateProps {
+	c_sidebar_state: boolean;
 	l_sidebar_state: boolean;
 	r_sidebar_state: boolean;
 	pageIsServer: boolean;
@@ -17,12 +18,17 @@ interface AppStateProps {
 export const useStore = create<AppStateProps>()(
 	persist(
 		(set) => ({
+			c_sidebar_state: false,
 			l_sidebar_state: true,
 			r_sidebar_state: false,
 			pageIsServer: false,
 			l_sidebar_display_context: "null", // Initial state
 			r_sidebar_display_context: "null", // Initial state
 
+			toggle_c_sidebar: () =>
+				set((state) => ({
+					l_sidebar_state: !state.l_sidebar_state,
+				})),
 			toggle_l_sidebar: () =>
 				set((state) => ({
 					l_sidebar_state: !state.l_sidebar_state,

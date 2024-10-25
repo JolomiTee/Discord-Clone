@@ -18,7 +18,7 @@ const HMenu = () => {
 	const toggle_r_sidebar = useStore((state) => state.toggle_r_sidebar);
 
 	return (
-		<header className="flex justify-between items-center gap-3 h-full max-h-[50px] px-4 bg-onyx w-full">
+		<header className="flex justify-between items-center gap-3 h-full max-h-[50px] px-4 bg-onyx w-full flex-shrink-0">
 			<div className="flex items-center gap-3">
 				<IconButtons
 					src="sidebar"
