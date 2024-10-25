@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import CollapsibleSidebar from "./components/CollapsibleSidebar";
-import { LSidebar } from "./components/Sidebars";
 import { useStore } from "./hooks/base-context";
 import ChannelsLayout from "./layouts/Channels";
 import Main from "./layouts/Layout";

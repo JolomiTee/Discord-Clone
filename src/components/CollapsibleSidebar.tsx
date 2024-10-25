@@ -35,6 +35,7 @@ export default function CollapsibleSidebar({ open }: { open: boolean }) {
 		setClickedServer(server);
 		switchLeftSidebarContext(server);
 	};
+	console.log(clickedServer);
 	return (
 		<SidebarProvider className="w-fit z-20 text-[#B5BFE7]" open={open}>
 			<Sidebar id="sidebar" collapsible="icon" className="bg-transparent">
