@@ -15,6 +15,16 @@ import {
 } from "@/components/ui/sidebar";
 import { serverList } from "@/data";
 import IconButtons from "./IconButtons";
+import {
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuItem,
+	DropdownMenuLabel,
+	DropdownMenuSeparator,
+	DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { MenuIcon } from "lucide-react";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 
 export default function CollapsibleSidebar({ open }: { open: boolean }) {
 	return (
@@ -136,23 +146,61 @@ export default function CollapsibleSidebar({ open }: { open: boolean }) {
 									</AvatarFallback>
 								</Avatar>
 
-								<div className="flex justify-center items-center bg-charcoal rounded-[15px] rounded-l-none p-2 h-full w-full">
+								<div className="flex justify-center items-center bg-charcoal rounded-[15px] rounded-l-none p-2 pe-4 h-full w-full">
 									<div className="grid flex-1 text-left text-sm leading-tight">
 										<span className="truncate font-semibold text-white">
-											InflexibleTow9
+											GrassMaster333
 										</span>
 										<span className="truncate text-sm font-semibold">
 											Online
 										</span>
 									</div>
 
-									<div className="flex justify-center items-center gap-1">
-										<IconButtons
-											src="servers"
-											alt="Servers"
-											sizes="size-[16px]"
-										/>
-									</div>
+									<DropdownMenu>
+										<DropdownMenuTrigger>
+											<MenuIcon />
+										</DropdownMenuTrigger>
+										<DropdownMenuContent className="rounded-[15px] bg-charcoal p-2">
+											<ToggleGroup type="multiple" className="gap-3">
+												<ToggleGroupItem
+													value="a"
+													className="rounded-[10px] size-10 p-0"
+												>
+													<img
+														src="/icons/mute_true.svg"
+														className="size-8"
+													/>
+												</ToggleGroupItem>
+												<ToggleGroupItem
+													value="b"
+													className="rounded-[10px]  size-10 p-0"
+												>
+													<img
+														src="/icons/deafen_false.svg"
+														className="size-8"
+													/>
+												</ToggleGroupItem>
+												<ToggleGroupItem
+													value="c"
+													className="rounded-[10px]  size-10 p-0"
+												>
+													<img
+														src="/icons/settings.svg"
+														className="size-6"
+													/>
+												</ToggleGroupItem>
+												<ToggleGroupItem
+													value="c"
+													className="rounded-[10px] size-10 p-0"
+												>
+													<img
+														src="/icons/pin.svg"
+														className="size-8"
+													/>
+												</ToggleGroupItem>
+											</ToggleGroup>
+										</DropdownMenuContent>
+									</DropdownMenu>
 								</div>
 							</SidebarMenuButton>
 						</SidebarMenuItem>
