@@ -24,7 +24,31 @@ export const serverList = [
 	},
 	{
 		title: "Apex Legends",
-		serverIcon: "/servers/apexlegends.png",
+		serverIcon: "/servers/apex legends.png",
+		hasNotification: false
+
+	},
+	{
+		title: "Roblox",
+		serverIcon: "/servers/roblox.png",
+		hasNotification: false
+
+	},
+	{
+		title: "One Piece",
+		serverIcon: "/servers/onepiece.png",
+		hasNotification: true
+
+	},
+	{
+		title: "LinusTechTips",
+		serverIcon: "/servers/linustechtips.png",
+		hasNotification: false
+
+	},
+	{
+		title: "Apex Legends",
+		serverIcon: "/servers/apex legends.png",
 		hasNotification: false
 
 	},

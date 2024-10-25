@@ -53,7 +53,7 @@ export default function CollapsibleSidebar({ open }: { open: boolean }) {
 								</SidebarMenuButton>
 							</SidebarMenuItem>
 
-							<Separator className="group-data-[collapsible=icon]:w-[70%] group-data-[collapsible=icon]:mx-auto rounded-full bg-charcoal h-1 w-[55px] my-2 ms-3" />
+							<Separator className="group-data-[collapsible=icon]:w-[70%] group-data-[collapsible=icon]:mx-auto rounded-full bg-charcoal h-1 w-[52px] my-2 ms-3" />
 
 							<SidebarMenuItem className="group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center ">
 								<SidebarMenuButton
@@ -73,7 +73,7 @@ export default function CollapsibleSidebar({ open }: { open: boolean }) {
 					</SidebarGroup>
 				</SidebarHeader>
 
-				<SidebarContent className="bg-onyx scrollbar-hidden pt-2">
+				<SidebarContent className="bg-onyx scrollbar-hidden group-data-[collapsible=icon]:overflow-scroll pt-2">
 					<SidebarGroup className="p-0">
 						<SidebarMenu className="gap-y-3">
 							{serverList.map((item) => (
@@ -99,28 +99,31 @@ export default function CollapsibleSidebar({ open }: { open: boolean }) {
 					</SidebarGroup>
 				</SidebarContent>
 
-				<SidebarFooter className="bg-onyx">
-					<Separator className="group-data-[collapsible=icon]:w-[70%] group-data-[collapsible=icon]:mx-auto rounded-full bg-charcoal h-1 w-[55px] my-2" />
-
+				<SidebarFooter className="bg-onyx p-0 pb-5">
 					<SidebarMenu>
+						<Separator className="group-data-[collapsible=icon]:w-[70%] group-data-[collapsible=icon]:mx-auto rounded-full bg-charcoal h-1 w-[52px] my-2 ms-3" />
+
 						<SidebarMenuItem className="group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center ">
 							<SidebarMenuButton
 								tooltip="Inbox"
-								className="h-[60px] gap-10 group-data-[collapsible=icon]:ps-1.5 items-center text-base"
+								className="gap-8 group-data-[collapsible=icon]:ps-0 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden  p-0 ps-3"
 							>
-								<img src="/icons/inbox.svg" className="size-[35px]" />
+								<Avatar className="size-[50px] flex justify-center items-center ">
+									<AvatarImage
+										src="/icons/inbox.svg"
+										className="w-[40px]"
+									/>
+								</Avatar>
 								<span>Inbox</span>
 							</SidebarMenuButton>
 						</SidebarMenuItem>
-					</SidebarMenu>
 
-					<SidebarMenu>
-						<SidebarMenuItem>
+						<SidebarMenuItem className="group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:items-center">
 							<SidebarMenuButton
 								size="lg"
-								className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+								className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground h-[70px] group-data-[collapsible=icon]:[&>div:last-child]:hidden group-data-[collapsible=icon]:overflow-visible"
 							>
-								<div className="relative rounded-full size-[50px] flex items-center justify-center">
+								<div className="relative group-data-[collapsible=icon]:rounded-full size-[50px] flex items-center justify-center bg-charcoal rounded-[8px] p-1">
 									<div className="absolute -right-1 top-0 bg-crimson rounded-full size-4 border-[3px] border-solid border-onyx"></div>
 									<div className="absolute -right-1 bottom-0 bg-emerald rounded-full size-4 border-[3px] border-solid border-onyx"></div>
 									<Avatar className="">
@@ -137,7 +140,7 @@ export default function CollapsibleSidebar({ open }: { open: boolean }) {
 									</Avatar>
 								</div>
 
-								<div className="flex justify-center items-center">
+								<div className="flex justify-center items-center bg-charcoal rounded-[8px] p-1">
 									<div className="grid flex-1 text-left text-sm leading-tight">
 										<span className="truncate font-semibold">
 											InflexibleTow9
