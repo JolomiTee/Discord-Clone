@@ -87,7 +87,10 @@ export default function CollapsibleSidebar({ open }: { open: boolean }) {
 					<SidebarGroup className="p-0">
 						<SidebarMenu className="gap-y-3">
 							{serverList.map((item) => (
-								<SidebarMenuItem className="group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center ">
+								<SidebarMenuItem
+									key={item.title}
+									className="group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center "
+								>
 									<SidebarMenuButton
 										tooltip={item.title}
 										className="gap-8 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden p-0 ps-3"
