@@ -30,8 +30,6 @@ function App() {
 
 			<CollapsibleSidebar open={l_sidebar_state} />
 
-			<LSidebar open={l_sidebar_state} />
-
 			<Routes>
 				<Route element={<Main />}>
 					<Route index element={<Wumpus />} />
