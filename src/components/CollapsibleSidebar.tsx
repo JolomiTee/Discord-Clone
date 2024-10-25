@@ -257,11 +257,11 @@ export default function CollapsibleSidebar({ open }: { open: boolean }) {
 							<SidebarMenuItem className="group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center ">
 								<SidebarMenuButton
 									tooltip="Search"
-									className="h-[60px] gap-10 group-data-[collapsible=icon]:ps-1.5 text-base"
+									className="gap-10 group-data-[collapsible=icon]:ps-0 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden"
 								>
 									<img
 										src="/icons/search.svg"
-										className="size-[30px]"
+										className="size-[30px] group-data-[collapsible=icon]:mx-auto"
 									/>
 									<span>Search</span>
 								</SidebarMenuButton>
@@ -272,11 +272,11 @@ export default function CollapsibleSidebar({ open }: { open: boolean }) {
 							<SidebarMenuItem className="group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center ">
 								<SidebarMenuButton
 									tooltip="Messages"
-									className="h-[60px] gap-10 group-data-[collapsible=icon]:ps-1.5 items-center text-base"
+									className="gap-10 group-data-[collapsible=icon]:ps-0 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden"
 								>
 									<img
 										src="/icons/messages.svg"
-										className="size-[35px]"
+										className="size-[30px] group-data-[collapsible=icon]:mx-auto"
 									/>
 									<span>Messages</span>
 								</SidebarMenuButton>
@@ -289,11 +289,11 @@ export default function CollapsibleSidebar({ open }: { open: boolean }) {
 							<SidebarMenuItem className="group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center ">
 								<SidebarMenuButton
 									tooltip="Servers"
-									className="h-[60px] gap-10 group-data-[collapsible=icon]:ps-1.5 items-center text-base"
+									className="gap-10 group-data-[collapsible=icon]:ps-0 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden"
 								>
 									<img
 										src="/icons/servers.svg"
-										className="size-[35px]"
+										className="size-[30px] group-data-[collapsible=icon]:mx-auto"
 									/>
 									<span>Servers</span>
 								</SidebarMenuButton>
@@ -302,30 +302,25 @@ export default function CollapsibleSidebar({ open }: { open: boolean }) {
 					</SidebarGroup>
 				</SidebarHeader>
 
-				<SidebarContent className="bg-onyx ">
-					<SidebarGroup>
-						<SidebarGroupLabel>Servers</SidebarGroupLabel>
+				<SidebarContent className="bg-onyx scrollbar-hidden pt-2">
+					<SidebarGroup className="p-0">
 						<SidebarMenu className="gap-y-3">
 							{data.navMain.map((item) => (
-								<SidebarMenuItem className="group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center">
+								<SidebarMenuItem className="group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center ">
 									<SidebarMenuButton
-										tooltip={item.title}
-										className="h-[60px] "
+										tooltip="Servers"
+										className="gap-8 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden p-0 ps-3"
 									>
-										<Avatar className="">
-											<AvatarImage
-												src="/beuga.png"
-												className="size-[40px] mx-auto my-auto object-cover"
-											/>
+										<Avatar className="size-[50px]">
+											<AvatarImage src="/beuga.png" />
 											<AvatarFallback className="bg-discord-blue">
 												<img
 													src="/icons/discord.svg"
-													className="size-[35px] mx-auto my-auto"
+													className="size-[30px] "
 												/>
 											</AvatarFallback>
 										</Avatar>
 										<span>{item.title}</span>
-										<ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
 									</SidebarMenuButton>
 								</SidebarMenuItem>
 							))}
