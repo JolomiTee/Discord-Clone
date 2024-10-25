@@ -32,7 +32,7 @@ export default function CollapsibleSidebar({ open }: { open: boolean }) {
 							<SidebarMenuItem className="group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center ">
 								<SidebarMenuButton
 									tooltip="Search"
-									className="gap-8 group-data-[collapsible=icon]:ps-0 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden  p-0 ps-3"
+									className="gap-3 group-data-[collapsible=icon]:ps-0 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden  p-0 ps-3"
 								>
 									<Avatar className="size-[50px] flex justify-center items-center ">
 										<AvatarImage
@@ -47,7 +47,7 @@ export default function CollapsibleSidebar({ open }: { open: boolean }) {
 							<SidebarMenuItem className="group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center ">
 								<SidebarMenuButton
 									tooltip="Messahes"
-									className="gap-8 group-data-[collapsible=icon]:ps-0 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden  p-0 ps-3"
+									className="gap-3 group-data-[collapsible=icon]:ps-0 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden  p-0 ps-3"
 								>
 									<Avatar className="size-[50px] flex justify-center items-center ">
 										<AvatarImage
@@ -64,7 +64,7 @@ export default function CollapsibleSidebar({ open }: { open: boolean }) {
 							<SidebarMenuItem className="group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center ">
 								<SidebarMenuButton
 									tooltip="Servers"
-									className="gap-8 group-data-[collapsible=icon]:ps-0 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden  p-0 ps-3"
+									className="gap-3 group-data-[collapsible=icon]:ps-0 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden  p-0 ps-3"
 								>
 									<Avatar className="size-[50px] flex justify-center items-center ">
 										<AvatarImage
@@ -89,7 +89,7 @@ export default function CollapsibleSidebar({ open }: { open: boolean }) {
 								>
 									<SidebarMenuButton
 										tooltip={item.title}
-										className="gap-8 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden p-0 ps-3"
+										className="gap-3 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden p-0 ps-3"
 									>
 										<Avatar className="size-[50px]">
 											<AvatarImage src={item.serverIcon} />
