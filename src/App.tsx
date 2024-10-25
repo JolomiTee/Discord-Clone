@@ -1,7 +1,6 @@
-import { SidebarProvider } from "@/components/ui/sidebar";
 import { useEffect } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
-import ServerTray from "./components/ServerTray";
+import CollapsibleSidebar from "./components/CollapsibleSidebar";
 import { LSidebar, RSidebar } from "./components/Sidebars";
 import { useStore } from "./hooks/base-context";
 import ChannelsLayout from "./layouts/Channels";
@@ -28,12 +27,11 @@ function App() {
 
 	return (
 		<div className="flex relative w-screen h-screen overflow-hidden bg-charcoal">
-			{/* The server icons tray */}
-			<ServerTray />
+			{/* <ServerTray /> */}
 
-			<SidebarProvider className="w-fit" open={l_sidebar_state}>
-				<LSidebar />
-			</SidebarProvider>
+			<CollapsibleSidebar open={l_sidebar_state} />
+
+			<LSidebar open={l_sidebar_state} />
 
 			<Routes>
 				<Route element={<Main />}>
@@ -47,9 +45,7 @@ function App() {
 				<Route path="/servers" element={<Servers />} />
 			</Routes>
 
-			<SidebarProvider className="w-fit" open={r_sidebar_state}>
-				<RSidebar />
-			</SidebarProvider>
+			<RSidebar open={r_sidebar_state} />
 		</div>
 	);
 }

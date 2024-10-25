@@ -17,7 +17,7 @@ const ServerTray = () => {
 		switchLeftSidebarContext("server");
 	};
 	return (
-		<section className="min-w-[6%] bg-onyx py-3 flex flex-col gap-y-[16px] h-screen z-20">
+		<section className="min-w-[6%] bg-onyx py-3 flex flex-col gap-y-[16px] h-screen z-20 border-r-2">
 			<div className="flex flex-col items-center gap-y-[10px]">
 				<IconButtons src="search" alt="Search" sizes="size-[25px]" />
 				<IconButtons
@@ -36,17 +36,17 @@ const ServerTray = () => {
 
 			<div className="flex flex-col gap-y-[10px] overflow-y-auto max-h-full scrollbar-hidden">
 				{serverList.map((server, index) => {
-					const { name, serverImage, hasNotification } = server;
+					const { title, serverIcon, hasNotification } = server;
 
 					return (
 						<SidebarServerIcon
 							key={index}
-							name={name}
-							serverImage={serverImage}
+							name={title}
+							serverImage={serverIcon}
 							hasNotification={hasNotification}
-							isClicked={clickedServer === name}
+							isClicked={clickedServer === title}
 							onClick={() => {
-								handleServerClick(name);
+								handleServerClick(title);
 							}}
 						/>
 					);
