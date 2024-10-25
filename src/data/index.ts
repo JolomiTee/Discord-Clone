@@ -1,30 +1,30 @@
 export const serverList = [
 	{
-		name: "MidJourney",
-		serverImage: "/servers/midjour ney.png",
+		title: "MidJourney",
+		serverIcon: "/servers/midjourney.png",
 		hasNotification: true
 	},
 	{
-		name: "Roblox",
-		serverImage: "/servers/roblox .png",
+		title: "Roblox",
+		serverIcon: "/servers/roblox.png",
 		hasNotification: false
 
 	},
 	{
-		name: "One Piece",
-		serverImage: "/servers/onepiece .png",
+		title: "One Piece",
+		serverIcon: "/servers/onepiece.png",
 		hasNotification: true
 
 	},
 	{
-		name: "LinusTechTips",
-		serverImage: "/servers/linustechtips .png",
+		title: "LinusTechTips",
+		serverIcon: "/servers/linustechtips.png",
 		hasNotification: false
 
 	},
 	{
-		name: "Apex Legends",
-		serverImage: "/servers/apexlegends .png",
+		title: "Apex Legends",
+		serverIcon: "/servers/apexlegends.png",
 		hasNotification: false
 
 	},

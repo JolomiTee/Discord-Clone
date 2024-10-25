@@ -1,300 +1,71 @@
 "use client";
 
-import {
-	AudioWaveform,
-	BadgeCheck,
-	Bell,
-	BookOpen,
-	Bot,
-	ChevronRight,
-	ChevronsUpDown,
-	Command,
-	CreditCard,
-	Folder,
-	Forward,
-	Frame,
-	GalleryVerticalEnd,
-	LogOut,
-	Map,
-	MoreHorizontal,
-	PieChart,
-	Plus,
-	Settings2,
-	Sparkles,
-	SquareTerminal,
-	Trash2,
-} from "lucide-react";
-
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import {
-	Collapsible,
-	CollapsibleContent,
-	CollapsibleTrigger,
-} from "@/components/ui/collapsible";
-import {
-	DropdownMenu,
-	DropdownMenuContent,
-	DropdownMenuGroup,
-	DropdownMenuItem,
-	DropdownMenuLabel,
-	DropdownMenuSeparator,
-	DropdownMenuShortcut,
-	DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { Separator } from "@/components/ui/separator";
 import {
 	Sidebar,
 	SidebarContent,
 	SidebarFooter,
 	SidebarGroup,
-	SidebarGroupLabel,
 	SidebarHeader,
-	SidebarInset,
 	SidebarMenu,
-	SidebarMenuAction,
 	SidebarMenuButton,
 	SidebarMenuItem,
-	SidebarMenuSub,
-	SidebarMenuSubButton,
-	SidebarMenuSubItem,
 	SidebarProvider,
-	SidebarRail,
-	SidebarTrigger,
 } from "@/components/ui/sidebar";
+import { serverList } from "@/data";
 import IconButtons from "./IconButtons";
-// This is sample data.
-const data = {
-	user: {
-		name: "shadcn",
-		email: "m@example.com",
-		avatar: "/avatars/shadcn.jpg",
-	},
-	teams: [
-		{
-			name: "Acme Inc",
-			logo: GalleryVerticalEnd,
-			plan: "Enterprise",
-		},
-		{
-			name: "Acme Corp.",
-			logo: AudioWaveform,
-			plan: "Startup",
-		},
-		{
-			name: "Evil Corp.",
-			logo: Command,
-			plan: "Free",
-		},
-	],
-	navMain: [
-		{
-			title: "Playground",
-			url: "#",
-			icon: SquareTerminal,
-			isActive: true,
-			items: [
-				{
-					title: "History",
-					url: "#",
-				},
-				{
-					title: "Starred",
-					url: "#",
-				},
-				{
-					title: "Settings",
-					url: "#",
-				},
-			],
-		},
-		{
-			title: "Playground",
-			url: "#",
-			icon: SquareTerminal,
-			isActive: true,
-			items: [
-				{
-					title: "History",
-					url: "#",
-				},
-				{
-					title: "Starred",
-					url: "#",
-				},
-				{
-					title: "Settings",
-					url: "#",
-				},
-			],
-		},
-		{
-			title: "Playground",
-			url: "#",
-			icon: SquareTerminal,
-			isActive: true,
-			items: [
-				{
-					title: "History",
-					url: "#",
-				},
-				{
-					title: "Starred",
-					url: "#",
-				},
-				{
-					title: "Settings",
-					url: "#",
-				},
-			],
-		},
-		{
-			title: "Playground",
-			url: "#",
-			icon: SquareTerminal,
-			isActive: true,
-			items: [
-				{
-					title: "History",
-					url: "#",
-				},
-				{
-					title: "Starred",
-					url: "#",
-				},
-				{
-					title: "Settings",
-					url: "#",
-				},
-			],
-		},
-		{
-			title: "Playground",
-			url: "#",
-			icon: SquareTerminal,
-			isActive: true,
-			items: [
-				{
-					title: "History",
-					url: "#",
-				},
-				{
-					title: "Starred",
-					url: "#",
-				},
-				{
-					title: "Settings",
-					url: "#",
-				},
-			],
-		},
-		{
-			title: "Playground",
-			url: "#",
-			icon: SquareTerminal,
-			isActive: true,
-			items: [
-				{
-					title: "History",
-					url: "#",
-				},
-				{
-					title: "Starred",
-					url: "#",
-				},
-				{
-					title: "Settings",
-					url: "#",
-				},
-			],
-		},
-		{
-			title: "Playground",
-			url: "#",
-			icon: SquareTerminal,
-			isActive: true,
-			items: [
-				{
-					title: "History",
-					url: "#",
-				},
-				{
-					title: "Starred",
-					url: "#",
-				},
-				{
-					title: "Settings",
-					url: "#",
-				},
-			],
-		},
-	],
-	projects: [
-		{
-			name: "Design Engineering",
-			url: "#",
-			icon: Frame,
-		},
-		{
-			name: "Sales & Marketing",
-			url: "#",
-			icon: PieChart,
-		},
-		{
-			name: "Travel",
-			url: "#",
-			icon: Map,
-		},
-	],
-};
 
 export default function CollapsibleSidebar({ open }: { open: boolean }) {
 	return (
 		<SidebarProvider className="w-fit z-20 text-[#B5BFE7]" open={open}>
 			<Sidebar id="sidebar" collapsible="icon" className="bg-transparent">
-				<SidebarHeader id="sidebar_header" className="bg-onyx pb-0">
+				<SidebarHeader id="sidebar_header" className="bg-onyx p-0 pt-2">
 					<SidebarGroup className="p-0">
-						<SidebarMenu>
+						<SidebarMenu className="gap-0">
 							<SidebarMenuItem className="group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center ">
 								<SidebarMenuButton
 									tooltip="Search"
-									className="gap-10 group-data-[collapsible=icon]:ps-0 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden"
+									className="gap-8 group-data-[collapsible=icon]:ps-0 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden  p-0 ps-3"
 								>
-									<img
-										src="/icons/search.svg"
-										className="size-[30px] group-data-[collapsible=icon]:mx-auto"
-									/>
+									<Avatar className="size-[50px] flex justify-center items-center ">
+										<AvatarImage
+											src="/icons/search.svg"
+											className="w-[30px]"
+										/>
+									</Avatar>
 									<span>Search</span>
 								</SidebarMenuButton>
 							</SidebarMenuItem>
-						</SidebarMenu>
 
-						<SidebarMenu>
 							<SidebarMenuItem className="group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center ">
 								<SidebarMenuButton
-									tooltip="Messages"
-									className="gap-10 group-data-[collapsible=icon]:ps-0 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden"
+									tooltip="Messahes"
+									className="gap-8 group-data-[collapsible=icon]:ps-0 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden  p-0 ps-3"
 								>
-									<img
-										src="/icons/messages.svg"
-										className="size-[30px] group-data-[collapsible=icon]:mx-auto"
-									/>
+									<Avatar className="size-[50px] flex justify-center items-center ">
+										<AvatarImage
+											src="/icons/messages.svg"
+											className="w-[30px]"
+										/>
+									</Avatar>
 									<span>Messages</span>
 								</SidebarMenuButton>
 							</SidebarMenuItem>
-						</SidebarMenu>
 
-						<Separator className="group-data-[collapsible=icon]:w-[70%] group-data-[collapsible=icon]:mx-auto rounded-full bg-charcoal h-1 w-[55px] my-2" />
+							<Separator className="group-data-[collapsible=icon]:w-[70%] group-data-[collapsible=icon]:mx-auto rounded-full bg-charcoal h-1 w-[55px] my-2 ms-3" />
 
-						<SidebarMenu>
 							<SidebarMenuItem className="group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center ">
 								<SidebarMenuButton
 									tooltip="Servers"
-									className="gap-10 group-data-[collapsible=icon]:ps-0 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden"
+									className="gap-8 group-data-[collapsible=icon]:ps-0 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden  p-0 ps-3"
 								>
-									<img
-										src="/icons/servers.svg"
-										className="size-[30px] group-data-[collapsible=icon]:mx-auto"
-									/>
+									<Avatar className="size-[50px] flex justify-center items-center ">
+										<AvatarImage
+											src="/icons/servers.svg"
+											className="w-[30px]"
+										/>
+									</Avatar>
 									<span>Servers</span>
 								</SidebarMenuButton>
 							</SidebarMenuItem>
@@ -305,14 +76,14 @@ export default function CollapsibleSidebar({ open }: { open: boolean }) {
 				<SidebarContent className="bg-onyx scrollbar-hidden pt-2">
 					<SidebarGroup className="p-0">
 						<SidebarMenu className="gap-y-3">
-							{data.navMain.map((item) => (
+							{serverList.map((item) => (
 								<SidebarMenuItem className="group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center ">
 									<SidebarMenuButton
-										tooltip="Servers"
+										tooltip={item.title}
 										className="gap-8 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden p-0 ps-3"
 									>
 										<Avatar className="size-[50px]">
-											<AvatarImage src="/beuga.png" />
+											<AvatarImage src={item.serverIcon} />
 											<AvatarFallback className="bg-discord-blue">
 												<img
 													src="/icons/discord.svg"
