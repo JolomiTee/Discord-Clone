@@ -101,8 +101,6 @@ export default function CollapsibleSidebar({ open }: { open: boolean }) {
 
 				<SidebarFooter className="bg-onyx p-0 pb-5">
 					<SidebarMenu>
-						<Separator className="group-data-[collapsible=icon]:w-[70%] group-data-[collapsible=icon]:mx-auto rounded-full bg-charcoal h-1 w-[52px] my-2 ms-3" />
-
 						<SidebarMenuItem className="group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center ">
 							<SidebarMenuButton
 								tooltip="Inbox"
@@ -121,53 +119,38 @@ export default function CollapsibleSidebar({ open }: { open: boolean }) {
 						<SidebarMenuItem className="group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:items-center">
 							<SidebarMenuButton
 								size="lg"
-								className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground h-[70px] group-data-[collapsible=icon]:[&>div:last-child]:hidden group-data-[collapsible=icon]:overflow-visible"
+								className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground h-[60px] group-data-[collapsible=icon]:[&>div:last-child]:hidden group-data-[collapsible=icon]:overflow-visible py-0 px-3 shrink-0 gap-0"
 							>
-								<div className="relative group-data-[collapsible=icon]:rounded-full size-[50px] flex items-center justify-center bg-charcoal rounded-[8px] p-1">
-									<div className="absolute -right-1 top-0 bg-crimson rounded-full size-4 border-[3px] border-solid border-onyx"></div>
-									<div className="absolute -right-1 bottom-0 bg-emerald rounded-full size-4 border-[3px] border-solid border-onyx"></div>
-									<Avatar className="">
-										<AvatarImage
-											src="/beluga.png"
-											className="size-[40px] mx-auto my-auto object-cover"
+								<Avatar className="relative group-data-[collapsible=icon]:rounded-full size-[60px] group-data-[collapsible=icon]:size-[55px] flex items-center justify-center bg-charcoal rounded-[15px] p-[10px] group-data-[collapsible=icon]:p-1.5 overflow-visible rounded-r-none">
+									<div className="absolute right-0.5 group-data-[collapsible=icon]:-right-1 top-1 bg-crimson rounded-full size-[14px] border-[3px] border-solid border-onyx"></div>
+									<div className="absolute right-0.5 group-data-[collapsible=icon]:-right-1 bottom-1 bg-emerald rounded-full size-[14px] border-[3px] border-solid border-onyx"></div>
+									<AvatarImage
+										src="/beluga.png"
+										className="rounded-full"
+									/>
+									<AvatarFallback className="bg-discord-blue">
+										<img
+											src="/icons/discord.svg"
+											className="size-[30px] "
 										/>
-										<AvatarFallback className="bg-transparent">
-											<img
-												src="/icons/discord.svg"
-												className="size-[35px] mx-auto my-auto"
-											/>
-										</AvatarFallback>
-									</Avatar>
-								</div>
+									</AvatarFallback>
+								</Avatar>
 
-								<div className="flex justify-center items-center bg-charcoal rounded-[8px] p-1">
+								<div className="flex justify-center items-center bg-charcoal rounded-[15px] rounded-l-none p-2 h-full w-full">
 									<div className="grid flex-1 text-left text-sm leading-tight">
-										<span className="truncate font-semibold">
+										<span className="truncate font-semibold text-white">
 											InflexibleTow9
 										</span>
-										<span className="truncate text-xs">online</span>
+										<span className="truncate text-sm font-semibold">
+											Online
+										</span>
 									</div>
 
-									<div className="flex justify-center items-center gap-2">
+									<div className="flex justify-center items-center gap-1">
 										<IconButtons
 											src="servers"
 											alt="Servers"
-											sizes="size-[20px]"
-										/>
-										<IconButtons
-											src="servers"
-											alt="Servers"
-											sizes="size-[20px]"
-										/>
-										<IconButtons
-											src="servers"
-											alt="Servers"
-											sizes="size-[20px]"
-										/>
-										<IconButtons
-											src="servers"
-											alt="Servers"
-											sizes="size-[20px]"
+											sizes="size-[16px]"
 										/>
 									</div>
 								</div>
