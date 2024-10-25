@@ -12,6 +12,7 @@ import Servers from "./pages/Servers";
 function App() {
 	const location = useLocation();
 	const l_sidebar_state = useStore((state) => state.l_sidebar_state);
+	const c_sidebar_state = useStore((state) => state.c_sidebar_state);
 	const toggle_l_sidebar = useStore((state) => state.toggle_l_sidebar);
 
 	useEffect(() => {
@@ -28,7 +29,7 @@ function App() {
 		<div className="flex relative w-screen h-screen overflow-hidden bg-charcoal">
 			{/* <ServerTray /> */}
 
-			<CollapsibleSidebar open={l_sidebar_state} />
+			<CollapsibleSidebar open={c_sidebar_state} />
 
 			<Routes>
 				<Route element={<Main />}>
