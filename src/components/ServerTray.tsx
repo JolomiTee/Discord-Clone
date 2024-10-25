@@ -17,7 +17,7 @@ const ServerTray = () => {
 		switchLeftSidebarContext("server");
 	};
 	return (
-		<section className="min-w-[6%] bg-onyx py-3 flex flex-col gap-y-[16px] h-screen z-20">
+		<section className="min-w-[6%] bg-onyx py-3 flex flex-col gap-y-[16px] h-screen z-20 border-r-2">
 			<div className="flex flex-col items-center gap-y-[10px]">
 				<IconButtons src="search" alt="Search" sizes="size-[25px]" />
 				<IconButtons

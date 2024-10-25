@@ -1,6 +1,5 @@
 "use client";
 
-import * as React from "react";
 import {
 	AudioWaveform,
 	BadgeCheck,
@@ -62,6 +61,7 @@ import {
 	SidebarRail,
 	SidebarTrigger,
 } from "@/components/ui/sidebar";
+import IconButtons from "./IconButtons";
 // This is sample data.
 const data = {
 	user: {
@@ -107,6 +107,126 @@ const data = {
 				},
 			],
 		},
+		{
+			title: "Playground",
+			url: "#",
+			icon: SquareTerminal,
+			isActive: true,
+			items: [
+				{
+					title: "History",
+					url: "#",
+				},
+				{
+					title: "Starred",
+					url: "#",
+				},
+				{
+					title: "Settings",
+					url: "#",
+				},
+			],
+		},
+		{
+			title: "Playground",
+			url: "#",
+			icon: SquareTerminal,
+			isActive: true,
+			items: [
+				{
+					title: "History",
+					url: "#",
+				},
+				{
+					title: "Starred",
+					url: "#",
+				},
+				{
+					title: "Settings",
+					url: "#",
+				},
+			],
+		},
+		{
+			title: "Playground",
+			url: "#",
+			icon: SquareTerminal,
+			isActive: true,
+			items: [
+				{
+					title: "History",
+					url: "#",
+				},
+				{
+					title: "Starred",
+					url: "#",
+				},
+				{
+					title: "Settings",
+					url: "#",
+				},
+			],
+		},
+		{
+			title: "Playground",
+			url: "#",
+			icon: SquareTerminal,
+			isActive: true,
+			items: [
+				{
+					title: "History",
+					url: "#",
+				},
+				{
+					title: "Starred",
+					url: "#",
+				},
+				{
+					title: "Settings",
+					url: "#",
+				},
+			],
+		},
+		{
+			title: "Playground",
+			url: "#",
+			icon: SquareTerminal,
+			isActive: true,
+			items: [
+				{
+					title: "History",
+					url: "#",
+				},
+				{
+					title: "Starred",
+					url: "#",
+				},
+				{
+					title: "Settings",
+					url: "#",
+				},
+			],
+		},
+		{
+			title: "Playground",
+			url: "#",
+			icon: SquareTerminal,
+			isActive: true,
+			items: [
+				{
+					title: "History",
+					url: "#",
+				},
+				{
+					title: "Starred",
+					url: "#",
+				},
+				{
+					title: "Settings",
+					url: "#",
+				},
+			],
+		},
 	],
 	projects: [
 		{
@@ -127,191 +247,162 @@ const data = {
 	],
 };
 
-export default function CollapsibleSidebar() {
-	const [activeTeam, setActiveTeam] = React.useState(data.teams[0]);
-
+export default function CollapsibleSidebar({ open }: { open: boolean }) {
 	return (
-		<SidebarProvider className="w-fit z-20">
+		<SidebarProvider className="w-fit z-20 text-[#B5BFE7]" open={open}>
 			<Sidebar id="sidebar" collapsible="icon" className="bg-transparent">
-				{/* <SidebarHeader id="sidebar_header" className="bg-onyx">
-					<SidebarMenu id="sidebar_menu">
-						<SidebarMenuItem id="SidebarMenuItem">
-							<DropdownMenu>
-								<DropdownMenuTrigger asChild>
-									<SidebarMenuButton id="SidebarMenuButton"
-										size="lg"
-										className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
-									>
-										<div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
-											<activeTeam.logo className="size-4" />
-										</div>
-										<div className="grid flex-1 text-left text-sm leading-tight">
-											<span className="truncate font-semibold">
-												{activeTeam.name}
-											</span>
-											<span className="truncate text-xs">
-												{activeTeam.plan}
-											</span>
-										</div>
-										<ChevronsUpDown className="ml-auto" />
-									</SidebarMenuButton>
-								</DropdownMenuTrigger>
-								<DropdownMenuContent
-									className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg"
-									align="start"
-									side="bottom"
-									sideOffset={4}
-								>
-									<DropdownMenuLabel className="text-xs text-muted-foreground">
-										Teams
-									</DropdownMenuLabel>
-									{data.teams.map((team, index) => (
-										<DropdownMenuItem
-											key={team.name}
-											onClick={() => setActiveTeam(team)}
-											className="gap-2 p-2"
-										>
-											<div className="flex size-6 items-center justify-center rounded-sm border">
-												<team.logo className="size-4 shrink-0" />
-											</div>
-											{team.name}
-											<DropdownMenuShortcut>
-												⌘{index + 1}
-											</DropdownMenuShortcut>
-										</DropdownMenuItem>
-									))}
-									<DropdownMenuSeparator />
-									<DropdownMenuItem className="gap-2 p-2">
-										<div className="flex size-6 items-center justify-center rounded-md border bg-background">
-											<Plus className="size-4" />
-										</div>
-										<div className="font-medium text-muted-foreground">
-											Add team
-										</div>
-									</DropdownMenuItem>
-								</DropdownMenuContent>
-							</DropdownMenu>
-						</SidebarMenuItem>
-					</SidebarMenu>
-				</SidebarHeader> */}
-
-				<SidebarTrigger className="-ml-1" />
-
-				<SidebarContent className="bg-onyx">
-					<SidebarGroup>
-						<SidebarGroupLabel>Platform</SidebarGroupLabel>
+				<SidebarHeader id="sidebar_header" className="bg-onyx pb-0">
+					<SidebarGroup className="p-0">
 						<SidebarMenu>
-							{data.navMain.map((item) => (
-								<Collapsible
-									key={item.title}
-									asChild
-									defaultOpen={item.isActive}
-									className="group/collapsible"
+							<SidebarMenuItem className="group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center ">
+								<SidebarMenuButton
+									tooltip="Search"
+									className="h-[60px] gap-10 group-data-[collapsible=icon]:ps-1.5 text-base"
 								>
-									<SidebarMenuItem className="group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center">
-										<SidebarMenuButton
-											tooltip={item.title}
-											className="h-[60px] "
-										>
-											<img
-												src="/servers/midjourney.png"
-												className="rounded-full size-[50px]"
+									<img
+										src="/icons/search.svg"
+										className="size-[30px]"
+									/>
+									<span>Search</span>
+								</SidebarMenuButton>
+							</SidebarMenuItem>
+						</SidebarMenu>
+
+						<SidebarMenu>
+							<SidebarMenuItem className="group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center ">
+								<SidebarMenuButton
+									tooltip="Messages"
+									className="h-[60px] gap-10 group-data-[collapsible=icon]:ps-1.5 items-center text-base"
+								>
+									<img
+										src="/icons/messages.svg"
+										className="size-[35px]"
+									/>
+									<span>Messages</span>
+								</SidebarMenuButton>
+							</SidebarMenuItem>
+						</SidebarMenu>
+
+						<Separator className="group-data-[collapsible=icon]:w-[70%] group-data-[collapsible=icon]:mx-auto rounded-full bg-charcoal h-1 w-[55px] my-2" />
+
+						<SidebarMenu>
+							<SidebarMenuItem className="group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center ">
+								<SidebarMenuButton
+									tooltip="Servers"
+									className="h-[60px] gap-10 group-data-[collapsible=icon]:ps-1.5 items-center text-base"
+								>
+									<img
+										src="/icons/servers.svg"
+										className="size-[35px]"
+									/>
+									<span>Servers</span>
+								</SidebarMenuButton>
+							</SidebarMenuItem>
+						</SidebarMenu>
+					</SidebarGroup>
+				</SidebarHeader>
+
+				<SidebarContent className="bg-onyx ">
+					<SidebarGroup>
+						<SidebarGroupLabel>Servers</SidebarGroupLabel>
+						<SidebarMenu className="gap-y-3">
+							{data.navMain.map((item) => (
+								<SidebarMenuItem className="group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center">
+									<SidebarMenuButton
+										tooltip={item.title}
+										className="h-[60px] "
+									>
+										<Avatar className="">
+											<AvatarImage
+												src="/beuga.png"
+												className="size-[40px] mx-auto my-auto object-cover"
 											/>
-											<span>{item.title}</span>
-											<ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
-										</SidebarMenuButton>
-									</SidebarMenuItem>
-								</Collapsible>
+											<AvatarFallback className="bg-discord-blue">
+												<img
+													src="/icons/discord.svg"
+													className="size-[35px] mx-auto my-auto"
+												/>
+											</AvatarFallback>
+										</Avatar>
+										<span>{item.title}</span>
+										<ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+									</SidebarMenuButton>
+								</SidebarMenuItem>
 							))}
 						</SidebarMenu>
 					</SidebarGroup>
 				</SidebarContent>
 
 				<SidebarFooter className="bg-onyx">
+					<Separator className="group-data-[collapsible=icon]:w-[70%] group-data-[collapsible=icon]:mx-auto rounded-full bg-charcoal h-1 w-[55px] my-2" />
+
+					<SidebarMenu>
+						<SidebarMenuItem className="group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center ">
+							<SidebarMenuButton
+								tooltip="Inbox"
+								className="h-[60px] gap-10 group-data-[collapsible=icon]:ps-1.5 items-center text-base"
+							>
+								<img src="/icons/inbox.svg" className="size-[35px]" />
+								<span>Inbox</span>
+							</SidebarMenuButton>
+						</SidebarMenuItem>
+					</SidebarMenu>
+
 					<SidebarMenu>
 						<SidebarMenuItem>
-							<DropdownMenu>
-								<DropdownMenuTrigger asChild>
-									<SidebarMenuButton
-										size="lg"
-										className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
-									>
-										<Avatar className="h-8 w-8 rounded-lg">
-											<AvatarImage
-												src={data.user.avatar}
-												alt={data.user.name}
+							<SidebarMenuButton
+								size="lg"
+								className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+							>
+								<div className="relative rounded-full size-[50px] flex items-center justify-center">
+									<div className="absolute -right-1 top-0 bg-crimson rounded-full size-4 border-[3px] border-solid border-onyx"></div>
+									<div className="absolute -right-1 bottom-0 bg-emerald rounded-full size-4 border-[3px] border-solid border-onyx"></div>
+									<Avatar className="">
+										<AvatarImage
+											src="/beluga.png"
+											className="size-[40px] mx-auto my-auto object-cover"
+										/>
+										<AvatarFallback className="bg-transparent">
+											<img
+												src="/icons/discord.svg"
+												className="size-[35px] mx-auto my-auto"
 											/>
-											<AvatarFallback className="rounded-lg">
-												CN
-											</AvatarFallback>
-										</Avatar>
-										<div className="grid flex-1 text-left text-sm leading-tight">
-											<span className="truncate font-semibold">
-												{data.user.name}
-											</span>
-											<span className="truncate text-xs">
-												{data.user.email}
-											</span>
-										</div>
-										<ChevronsUpDown className="ml-auto size-4" />
-									</SidebarMenuButton>
-								</DropdownMenuTrigger>
-								<DropdownMenuContent
-									className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg"
-									side="bottom"
-									align="end"
-									sideOffset={4}
-								>
-									<DropdownMenuLabel className="p-0 font-normal">
-										<div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
-											<Avatar className="h-8 w-8 rounded-lg">
-												<AvatarImage
-													src={data.user.avatar}
-													alt={data.user.name}
-												/>
-												<AvatarFallback className="rounded-lg">
-													CN
-												</AvatarFallback>
-											</Avatar>
-											<div className="grid flex-1 text-left text-sm leading-tight">
-												<span className="truncate font-semibold">
-													{data.user.name}
-												</span>
-												<span className="truncate text-xs">
-													{data.user.email}
-												</span>
-											</div>
-										</div>
-									</DropdownMenuLabel>
-									<DropdownMenuSeparator />
-									<DropdownMenuGroup>
-										<DropdownMenuItem>
-											<Sparkles />
-											Upgrade to Pro
-										</DropdownMenuItem>
-									</DropdownMenuGroup>
-									<DropdownMenuSeparator />
-									<DropdownMenuGroup>
-										<DropdownMenuItem>
-											<BadgeCheck />
-											Account
-										</DropdownMenuItem>
-										<DropdownMenuItem>
-											<CreditCard />
-											Billing
-										</DropdownMenuItem>
-										<DropdownMenuItem>
-											<Bell />
-											Notifications
-										</DropdownMenuItem>
-									</DropdownMenuGroup>
-									<DropdownMenuSeparator />
-									<DropdownMenuItem>
-										<LogOut />
-										Log out
-									</DropdownMenuItem>
-								</DropdownMenuContent>
-							</DropdownMenu>
+										</AvatarFallback>
+									</Avatar>
+								</div>
+
+								<div className="flex justify-center items-center">
+									<div className="grid flex-1 text-left text-sm leading-tight">
+										<span className="truncate font-semibold">
+											InflexibleTow9
+										</span>
+										<span className="truncate text-xs">online</span>
+									</div>
+
+									<div className="flex justify-center items-center gap-2">
+										<IconButtons
+											src="servers"
+											alt="Servers"
+											sizes="size-[20px]"
+										/>
+										<IconButtons
+											src="servers"
+											alt="Servers"
+											sizes="size-[20px]"
+										/>
+										<IconButtons
+											src="servers"
+											alt="Servers"
+											sizes="size-[20px]"
+										/>
+										<IconButtons
+											src="servers"
+											alt="Servers"
+											sizes="size-[20px]"
+										/>
+									</div>
+								</div>
+							</SidebarMenuButton>
 						</SidebarMenuItem>
 					</SidebarMenu>
 				</SidebarFooter>

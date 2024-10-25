@@ -29,11 +29,11 @@ function App() {
 
 	return (
 		<div className="flex relative w-screen h-screen overflow-hidden bg-charcoal">
-			{/*
-			 */}
-			<ServerTray />
-			<CollapsibleSidebar />
-			<LSidebar open={l_sidebar_state} />
+			{/* <ServerTray /> */}
+
+			<CollapsibleSidebar open={l_sidebar_state} />
+
+			{/* <LSidebar open={l_sidebar_state} /> */}
 
 			<Routes>
 				<Route element={<Main />}>
