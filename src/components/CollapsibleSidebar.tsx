@@ -1,5 +1,3 @@
-"use client";
-
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
 	DropdownMenu,
@@ -28,13 +26,20 @@ import { Link } from "react-router-dom";
 export default function CollapsibleSidebar({ open }: { open: boolean }) {
 	const [clickedServer, setClickedServer] = useState("");
 	const toggle_c_sidebar = useStore((state) => state.toggle_c_sidebar);
+	const toggle_l_sidebar = useStore((state) => state.toggle_l_sidebar);
 	const switchLeftSidebarContext = useStore(
 		(state) => state.switchLeftSidebarContext
 	);
+	const l_sidebar_state = useStore((state) => state.l_sidebar_state);
 
-	const handleServerClick = (server: string) => {
-		setClickedServer(server);
-		switchLeftSidebarContext(server);
+	const handleSidbarContext = (context: string) => {
+		setClickedServer(context);
+		switchLeftSidebarContext(context);
+		if (!l_sidebar_state) {
+			toggle_l_sidebar();
+		} else {
+			return;
+		}
 	};
 	console.log(clickedServer);
 	return (
@@ -60,22 +65,19 @@ export default function CollapsibleSidebar({ open }: { open: boolean }) {
 
 							<SidebarMenuItem className="group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center ">
 								<SidebarMenuButton
-									asChild
 									tooltip="Messages"
 									className="gap-3 group-data-[collapsible=icon]:ps-0 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden  p-0 ps-3"
 									onClick={() => {
-										handleServerClick("messages");
+										handleSidbarContext("messages");
 									}}
 								>
-									<Link to={"/messages"}>
-										<Avatar className="size-[50px] flex justify-center items-center ">
-											<AvatarImage
-												src="/icons/messages.svg"
-												className="w-[30px]"
-											/>
-										</Avatar>
-										<span>Messages</span>
-									</Link>
+									<Avatar className="size-[50px] flex justify-center items-center ">
+										<AvatarImage
+											src="/icons/messages.svg"
+											className="w-[30px]"
+										/>
+									</Avatar>
+									<span>Messages</span>
 								</SidebarMenuButton>
 							</SidebarMenuItem>
 
@@ -111,25 +113,22 @@ export default function CollapsibleSidebar({ open }: { open: boolean }) {
 									className="group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center "
 								>
 									<SidebarMenuButton
-										asChild
 										tooltip={item.title}
 										className="gap-3 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden p-0 ps-3"
 										onClick={() => {
-											handleServerClick("server");
+											handleSidbarContext("server");
 										}}
 									>
-										<Link to={"channels"}>
-											<Avatar className="size-[50px]">
-												<AvatarImage src={item.serverIcon} />
-												<AvatarFallback className="bg-discord-blue">
-													<img
-														src="/icons/discord.svg"
-														className="size-[30px] "
-													/>
-												</AvatarFallback>
-											</Avatar>
-											<span>{item.title}</span>
-										</Link>
+										<Avatar className="size-[50px]">
+											<AvatarImage src={item.serverIcon} />
+											<AvatarFallback className="bg-discord-blue">
+												<img
+													src="/icons/discord.svg"
+													className="size-[30px] "
+												/>
+											</AvatarFallback>
+										</Avatar>
+										<span>{item.title}</span>
 									</SidebarMenuButton>
 								</SidebarMenuItem>
 							))}

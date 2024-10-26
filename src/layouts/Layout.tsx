@@ -13,10 +13,11 @@ const Main = () => {
 	);
 	return (
 		<div className="flex relative w-screen h-screen overflow-hidden bg-charcoal">
-			{(location.pathname === "/messages" ||
+			{/* // ! Tracking - l_sidebar_ showing by default */}
+			{/* {(location.pathname === "/messages" ||
 				location.pathname === "/channels") && (
-				<LSidebar open={l_sidebar_state} />
-			)}
+				)} */}
+			<LSidebar open={l_sidebar_state} />
 
 			<div className="bg-charcoal w-full h-screen font-open-sans overflow-hidden flex flex-col">
 				{(location.pathname === "/messages" ||

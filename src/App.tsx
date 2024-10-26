@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { Route, Routes, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import CollapsibleSidebar from "./components/CollapsibleSidebar";
 import { useStore } from "./hooks/base-context";
 import ChannelsLayout from "./layouts/Channels";
@@ -32,7 +32,8 @@ function App() {
 
 			<Routes>
 				<Route element={<Main />}>
-					<Route index element={<Wumpus />} />
+					<Route index element={<Navigate to="@me" />} />
+					<Route path="@me" element={<Wumpus />} />
 					<Route path="/messages" element={<MessagesLayout />} />
 					<Route path="/channels" element={<ChannelsLayout />} />
 
