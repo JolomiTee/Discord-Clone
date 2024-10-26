@@ -27,6 +27,7 @@ import { Link } from "react-router-dom";
 
 export default function CollapsibleSidebar({ open }: { open: boolean }) {
 	const [clickedServer, setClickedServer] = useState("");
+	const toggle_c_sidebar = useStore((state) => state.toggle_c_sidebar);
 	const switchLeftSidebarContext = useStore(
 		(state) => state.switchLeftSidebarContext
 	);
@@ -160,6 +161,7 @@ export default function CollapsibleSidebar({ open }: { open: boolean }) {
 							<SidebarMenuButton
 								size="lg"
 								className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground h-[60px] group-data-[collapsible=icon]:[&>div:last-child]:hidden group-data-[collapsible=icon]:overflow-visible py-0 px-3 shrink-0 gap-0"
+								onClick={toggle_c_sidebar}
 							>
 								<Avatar className="relative group-data-[collapsible=icon]:rounded-full size-[60px] group-data-[collapsible=icon]:size-[55px] flex items-center justify-center bg-charcoal rounded-[15px] p-[10px] group-data-[collapsible=icon]:p-1.5 overflow-visible rounded-r-none">
 									<div className="absolute right-0.5 group-data-[collapsible=icon]:-right-1 top-1 bg-crimson rounded-full size-[14px] border-[3px] border-solid border-onyx"></div>

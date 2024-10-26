@@ -10,6 +10,7 @@ interface AppStateProps {
 	r_sidebar_display_context: string;
 	toggle_l_sidebar: () => void;
 	toggle_r_sidebar: () => void;
+	toggle_c_sidebar: () => void;
 	toggle_page_is_server: () => void;
 	switchLeftSidebarContext: (newAppState: string) => void;
 	switchRightSidebarContext: (newAppState: string) => void;
@@ -27,7 +28,7 @@ export const useStore = create<AppStateProps>()(
 
 			toggle_c_sidebar: () =>
 				set((state) => ({
-					l_sidebar_state: !state.l_sidebar_state,
+					c_sidebar_state: !state.c_sidebar_state,
 				})),
 			toggle_l_sidebar: () =>
 				set((state) => ({
