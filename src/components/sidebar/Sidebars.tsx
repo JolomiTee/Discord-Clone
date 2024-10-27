@@ -1,9 +1,9 @@
-import { useStore } from "@/hooks/base-context";
+import { useSidebarStateStore } from "@/hooks/base-context";
 
-import MessagesDisplayVariant from "./sidebar/L/MessagesDisplayVariant";
-import ServerDisplayVariant from "./sidebar/L/ServerDisplayVariant";
-import ChInfoDisplayVariant from "./sidebar/R/ChannelInfo";
-import Members from "./sidebar/R/Members";
+import MessagesDisplayVariant from "./L/MessagesDisplayVariant";
+import ServerDisplayVariant from "./L/ServerDisplayVariant";
+import ChInfoDisplayVariant from "./R/ChannelInfo";
+import Members from "./R/Members";
 
 import {
 	Sidebar,
@@ -11,14 +11,16 @@ import {
 	SidebarFooter,
 	SidebarProvider,
 } from "@/components/ui/sidebar";
-import FooterCard from "./sidebar/R/Members/FooterCard";
-import MemberList from "./sidebar/R/Members/MemberList";
+import FooterCard from "./R/Members/FooterCard";
+import MemberList from "./R/Members/MemberList";
 
 export const LSidebar = () => {
-	const l_sidebar_display_context = useStore(
+	const l_sidebar_display_context = useSidebarStateStore(
 		(state) => state.l_sidebar_display_context
 	);
-	const l_sidebar_state = useStore((state) => state.l_sidebar_state);
+	const l_sidebar_state = useSidebarStateStore(
+		(state) => state.l_sidebar_state
+	);
 	console.log(l_sidebar_state);
 
 	return (
@@ -26,7 +28,7 @@ export const LSidebar = () => {
 			<Sidebar id="lsidebar">
 				<SidebarContent id="sidebar-content">
 					<section className="bg-carbon relative text-[#FFFFFF99] h-full">
-						{l_sidebar_display_context === "channels" ? (
+						{l_sidebar_display_context === "server" ? (
 							<ServerDisplayVariant />
 						) : (
 							<MessagesDisplayVariant />
@@ -39,10 +41,12 @@ export const LSidebar = () => {
 };
 
 export const RSidebar = () => {
-	const r_sidebar_display_context = useStore(
+	const r_sidebar_display_context = useSidebarStateStore(
 		(state) => state.r_sidebar_display_context
 	);
-	const r_sidebar_state = useStore((state) => state.r_sidebar_state);
+	const r_sidebar_state = useSidebarStateStore(
+		(state) => state.r_sidebar_state
+	);
 
 	return (
 		<SidebarProvider open={r_sidebar_state} className="w-fit">
