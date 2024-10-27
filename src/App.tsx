@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes, useLocation } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import CollapsibleSidebar from "./components/CollapsibleSidebar";
 import { useStore } from "./hooks/base-context";
 import ChannelsLayout from "./layouts/Channels";
@@ -8,7 +8,6 @@ import Wumpus from "./layouts/Wumpus";
 import Servers from "./pages/Servers";
 
 function App() {
-	const location = useLocation();
 	const c_sidebar_state = useStore((state) => state.c_sidebar_state);
 
 	return (

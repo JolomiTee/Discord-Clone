@@ -26,11 +26,9 @@ import { useNavigate } from "react-router-dom";
 export default function CollapsibleSidebar({ open }: { open: boolean }) {
 	const navigate = useNavigate();
 	const toggle_c_sidebar = useStore((state) => state.toggle_c_sidebar);
-	const toggle_l_sidebar = useStore((state) => state.toggle_l_sidebar);
 	const switchLeftSidebarContext = useStore(
 		(state) => state.switchLeftSidebarContext
 	);
-	const l_sidebar_state = useStore((state) => state.l_sidebar_state);
 
 	const handleSidbarContext = (context: string) => {
 		switchLeftSidebarContext(context);

@@ -5,8 +5,6 @@ import { Outlet, useLocation } from "react-router-dom";
 
 const Main = () => {
 	const location = useLocation();
-	const r_sidebar_state = useStore((state) => state.r_sidebar_state);
-	const l_sidebar_state = useStore((state) => state.l_sidebar_state);
 
 	const r_sidebar_display_context = useStore(
 		(state) => state.r_sidebar_display_context
