@@ -1,5 +1,5 @@
 import { getRandomColor } from "@/lib/utils";
-import IconButtons from "../../IconButtons";
+import IconButtons from "../../common/IconButtons";
 import { Avatar, AvatarFallback, AvatarImage } from "../../ui/avatar";
 import { Link } from "react-router-dom";
 

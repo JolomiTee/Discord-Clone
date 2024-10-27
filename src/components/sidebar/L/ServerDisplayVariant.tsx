@@ -20,7 +20,7 @@ import {
 	MessageCircleWarning,
 	Pin,
 } from "lucide-react";
-import IconButtons from "../../IconButtons";
+import IconButtons from "../../common/IconButtons";
 import { AspectRatio } from "../../ui/aspect-ratio";
 import { Separator } from "../../ui/separator";
 import { Link } from "react-router-dom";

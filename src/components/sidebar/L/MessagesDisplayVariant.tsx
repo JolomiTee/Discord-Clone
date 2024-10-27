@@ -8,7 +8,7 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import { messageList } from "@/data";
-import IconButtons from "../../IconButtons";
+import IconButtons from "../../common/IconButtons";
 import FriendProfileCard from "./FriendProfileCard";
 const MessagesDisplayVariant = () => {
 	return (
