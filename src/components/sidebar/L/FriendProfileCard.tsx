@@ -1,11 +1,12 @@
 import { getRandomColor } from "@/lib/utils";
-import IconButtons from "../../IconButtons";
+import IconButtons from "../../common/IconButtons";
 import { Avatar, AvatarFallback, AvatarImage } from "../../ui/avatar";
 import { Link } from "react-router-dom";
 
 interface props {
 	profileImg: string;
 	user: string;
+	id: number;
 	online: boolean;
 	hasMessage: boolean;
 	messageCount?: number;
@@ -14,6 +15,7 @@ interface props {
 }
 const FriendProfileCard = ({
 	profileImg,
+	id,
 	user,
 	online,
 	hasMessage,
@@ -22,7 +24,7 @@ const FriendProfileCard = ({
 }: props) => {
 	return (
 		<Link
-			to={"/messages"}
+			to={`@me/dm/${String(id)}`}
 			className="flex items-center justify-start h-[55px] gap-3 bg-transparent shadow-none"
 			onClick={action}
 		>

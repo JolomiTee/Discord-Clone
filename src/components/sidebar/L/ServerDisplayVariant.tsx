@@ -20,12 +20,13 @@ import {
 	MessageCircleWarning,
 	Pin,
 } from "lucide-react";
-import IconButtons from "../../IconButtons";
+import IconButtons from "../../common/IconButtons";
 import { AspectRatio } from "../../ui/aspect-ratio";
 import { Separator } from "../../ui/separator";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const ServerDisplayVariant = () => {
+	const { id } = useParams();
 	return (
 		<div>
 			<AspectRatio ratio={16 / 6}>
@@ -103,7 +104,7 @@ const ServerDisplayVariant = () => {
 								return (
 									<Link
 										key={i}
-										to={"/channels"}
+										to={`@server/${String(id)}/@channel/${String(i)}`}
 										className="flex justify-start items-center gap-2"
 									>
 										<img

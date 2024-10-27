@@ -1,5 +1,5 @@
 import { useStore } from "@/hooks/base-context";
-import IconButtons from "./IconButtons";
+import IconButtons from "./common/IconButtons";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { useLocation } from "react-router-dom";
 

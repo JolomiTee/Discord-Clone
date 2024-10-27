@@ -1,5 +1,3 @@
-"use client";
-
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
 	DropdownMenu,
@@ -22,21 +20,22 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { serverList } from "@/data";
 import { useStore } from "@/hooks/base-context";
 import { MenuIcon } from "lucide-react";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function CollapsibleSidebar({ open }: { open: boolean }) {
-	const [clickedServer, setClickedServer] = useState("");
 	const toggle_c_sidebar = useStore((state) => state.toggle_c_sidebar);
 	const switchLeftSidebarContext = useStore(
 		(state) => state.switchLeftSidebarContext
 	);
 
-	const handleServerClick = (server: string) => {
-		setClickedServer(server);
-		switchLeftSidebarContext(server);
+	const handleSidbarContext = (context: string) => {
+		switchLeftSidebarContext(context);
+		// if (l_sidebar_state === false) {
+		// 	toggle_l_sidebar();
+		// } else {
+		// 	return;
+		// }
 	};
-	console.log(clickedServer);
 	return (
 		<SidebarProvider className="w-fit z-20 text-[#B5BFE7]" open={open}>
 			<Sidebar id="sidebar" collapsible="icon" className="bg-transparent">
@@ -64,10 +63,10 @@ export default function CollapsibleSidebar({ open }: { open: boolean }) {
 									tooltip="Messages"
 									className="gap-3 group-data-[collapsible=icon]:ps-0 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden  p-0 ps-3"
 									onClick={() => {
-										handleServerClick("messages");
+										handleSidbarContext("messages");
 									}}
 								>
-									<Link to={"/messages"}>
+									<Link to={`/@me`}>
 										<Avatar className="size-[50px] flex justify-center items-center ">
 											<AvatarImage
 												src="/icons/messages.svg"
@@ -105,7 +104,7 @@ export default function CollapsibleSidebar({ open }: { open: boolean }) {
 				<SidebarContent className="bg-onyx scrollbar-hidden group-data-[collapsible=icon]:overflow-scroll pt-2">
 					<SidebarGroup className="p-0">
 						<SidebarMenu className="gap-y-3">
-							{serverList.map((item) => (
+							{serverList.map((item, i) => (
 								<SidebarMenuItem
 									key={item.title}
 									className="group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center "
@@ -115,10 +114,10 @@ export default function CollapsibleSidebar({ open }: { open: boolean }) {
 										tooltip={item.title}
 										className="gap-3 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden p-0 ps-3"
 										onClick={() => {
-											handleServerClick("server");
+											handleSidbarContext("channels");
 										}}
 									>
-										<Link to={"channels"}>
+										<Link to={`/@server/${String(i)}`}>
 											<Avatar className="size-[50px]">
 												<AvatarImage src={item.serverIcon} />
 												<AvatarFallback className="bg-discord-blue">
