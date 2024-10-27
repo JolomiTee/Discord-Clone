@@ -1,7 +1,10 @@
 import { NavLink } from "react-router-dom";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { SidebarMenuItem, SidebarMenuButton } from "@/components/ui/sidebar";
-import { useCollapsibleIconStore } from "@/hooks/base-context";
+import {
+	useCollapsibleIconStore,
+	useSidebarStateStore,
+} from "@/hooks/base-context";
 
 interface SidebarNavLinkProps {
 	to: string;
@@ -18,6 +21,18 @@ export default function SidebarNavLink({
 	const toggle_selected_tab = useCollapsibleIconStore(
 		(state) => state.toggle_selected_tab
 	);
+	const toggle_selected_server = useCollapsibleIconStore(
+		(state) => state.toggle_selected_server
+	);
+	const switchLeftSidebarContext = useSidebarStateStore(
+		(state) => state.switchLeftSidebarContext
+	);
+
+	const handleClick = () => {
+		toggle_selected_tab(label.toLowerCase());
+		toggle_selected_server(null);
+		switchLeftSidebarContext("messages");
+	};
 	return (
 		<SidebarMenuItem className="group relative group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center">
 			<div
@@ -30,10 +45,7 @@ export default function SidebarNavLink({
 					clipPath: "inset(0 0 0 50%)",
 				}}
 			/>
-			<NavLink
-				to={to}
-				onClick={() => toggle_selected_tab(label.toLowerCase())}
-			>
+			<NavLink to={to} onClick={handleClick}>
 				<SidebarMenuButton
 					tooltip={label}
 					className="w-full gap-3 group-data-[collapsible=icon]:ps-0 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden p-0 ps-3"

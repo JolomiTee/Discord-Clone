@@ -9,9 +9,9 @@ import {
 	SidebarProvider,
 } from "@/components/ui/sidebar";
 import { serverList } from "@/data";
-import ProfileHolder from "./server/ProfileHolder";
-import SidebarNavLink from "./server/SidebarNavTab";
-import SidebarServerIcon from "./server/SidebarServerIcon";
+import ProfileHolder from "../server/ProfileHolder";
+import SidebarNavLink from "../server/SidebarNavTab";
+import SidebarServerIcon from "../server/SidebarServerIcon";
 
 export default function CollapsibleSidebar({ open }: { open: boolean }) {
 	return (

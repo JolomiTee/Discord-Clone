@@ -1,9 +1,9 @@
 import { useSidebarStateStore } from "@/hooks/base-context";
 
-import MessagesDisplayVariant from "./sidebar/L/MessagesDisplayVariant";
-import ServerDisplayVariant from "./sidebar/L/ServerDisplayVariant";
-import ChInfoDisplayVariant from "./sidebar/R/ChannelInfo";
-import Members from "./sidebar/R/Members";
+import MessagesDisplayVariant from "./L/MessagesDisplayVariant";
+import ServerDisplayVariant from "./L/ServerDisplayVariant";
+import ChInfoDisplayVariant from "./R/ChannelInfo";
+import Members from "./R/Members";
 
 import {
 	Sidebar,
@@ -11,8 +11,8 @@ import {
 	SidebarFooter,
 	SidebarProvider,
 } from "@/components/ui/sidebar";
-import FooterCard from "./sidebar/R/Members/FooterCard";
-import MemberList from "./sidebar/R/Members/MemberList";
+import FooterCard from "./R/Members/FooterCard";
+import MemberList from "./R/Members/MemberList";
 
 export const LSidebar = () => {
 	const l_sidebar_display_context = useSidebarStateStore(
@@ -28,7 +28,7 @@ export const LSidebar = () => {
 			<Sidebar id="lsidebar">
 				<SidebarContent id="sidebar-content">
 					<section className="bg-carbon relative text-[#FFFFFF99] h-full">
-						{l_sidebar_display_context === "channels" ? (
+						{l_sidebar_display_context === "server" ? (
 							<ServerDisplayVariant />
 						) : (
 							<MessagesDisplayVariant />

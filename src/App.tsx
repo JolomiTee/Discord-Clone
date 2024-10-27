@@ -1,5 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import CollapsibleSidebar from "./components/CollapsibleSidebar";
+import CollapsibleSidebar from "./components/sidebar/CollapsibleSidebar";
 import { useSidebarStateStore } from "./hooks/base-context";
 import ChannelsLayout from "./layouts/Channels";
 import Main from "./layouts/Layout";

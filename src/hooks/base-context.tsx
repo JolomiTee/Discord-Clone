@@ -12,6 +12,13 @@ interface AppStateProps {
 	switchRightSidebarContext: (newAppState: string) => void;
 }
 
+interface CollapsibleSidebarState {
+	selectedTab: string | null;
+	selectedServer: number | null;
+	toggle_selected_tab: (newAppState: string | null) => void;
+	toggle_selected_server: (newAppState: number | null) => void;
+}
+
 // ! Tracking - removed the persistence
 
 export const useSidebarStateStore = create<AppStateProps>()((set) => ({
@@ -44,25 +51,16 @@ export const useSidebarStateStore = create<AppStateProps>()((set) => ({
 		})),
 }));
 
-interface CollapsibleSidebarState {
-	selectedTab: string | null;
-	selectedServer: number | null;
-	toggle_selected_tab: (newAppState: string) => void;
-	toggle_selected_server: (newAppState: number) => void;
-}
+export const useCollapsibleIconStore = create<CollapsibleSidebarState>()((set) => ({
+	selectedTab: "messages",
+	selectedServer: null,
 
-export const useCollapsibleIconStore = create<CollapsibleSidebarState>()(
-	(set) => ({
-		selectedTab: "servers",
-		selectedServer: null,
-
-		toggle_selected_tab: (selected_tab) =>
-			set(() => ({
-				selectedTab: selected_tab,
-			})),
-		toggle_selected_server: (selected_server) =>
-			set(() => ({
-				selectedServer: selected_server,
-			})),
-	})
-);
+	toggle_selected_tab: (selected_tab) =>
+		set(() => ({
+			selectedTab: selected_tab,
+		})),
+	toggle_selected_server: (selected_server) =>
+		set(() => ({
+			selectedServer: selected_server,
+		})),
+}));

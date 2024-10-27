@@ -24,9 +24,18 @@ const SidebarServerIcon = ({
 	const toggle_selected_server = useCollapsibleIconStore(
 		(state) => state.toggle_selected_server
 	);
+	const toggle_selected_tab = useCollapsibleIconStore(
+		(state) => state.toggle_selected_tab
+	);
 	const switchLeftSidebarContext = useSidebarStateStore(
 		(state) => state.switchLeftSidebarContext
 	);
+
+	const handleClick = () => {
+		toggle_selected_tab(null);
+		toggle_selected_server(i);
+		switchLeftSidebarContext("server");
+	};
 	return (
 		<SidebarMenuItem
 			key={title}
@@ -45,13 +54,7 @@ const SidebarServerIcon = ({
 				}}
 			/>
 
-			<Link
-				to={`/@server/${String(i)}`}
-				onClick={() => {
-					toggle_selected_server(i);
-					switchLeftSidebarContext("server");
-				}}
-			>
+			<Link to={`/@server/${String(i)}`} onClick={handleClick}>
 				<SidebarMenuButton
 					tooltip={title}
 					className="gap-3 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden p-0 ps-3"
