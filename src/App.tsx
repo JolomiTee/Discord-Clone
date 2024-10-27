@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import CollapsibleSidebar from "./components/CollapsibleSidebar";
 import { useStore } from "./hooks/base-context";
 import ChannelsLayout from "./layouts/Channels";
@@ -16,6 +16,8 @@ function App() {
 
 			<Routes>
 				<Route element={<Main />}>
+					<Route index element={<Navigate to="@me" replace />} />
+
 					<Route path="@me">
 						<Route index element={<Wumpus />} />
 						<Route path="dm/:id" element={<MessagesLayout />} />
