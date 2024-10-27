@@ -14,6 +14,7 @@ function App() {
 
 	return (
 		<div className="flex relative w-screen h-screen overflow-hidden bg-charcoal">
+			{/* <ServerTray /> */}
 			<CollapsibleSidebar open={c_sidebar_state} />
 
 			<Routes>

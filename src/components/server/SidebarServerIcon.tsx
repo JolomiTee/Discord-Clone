@@ -1,25 +1,40 @@
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import { Button } from "../ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar";
+import {
+	useCollapsibleIconStore,
+	useSidebarStateStore,
+} from "@/hooks/base-context";
+import { Link } from "react-router-dom";
 
 interface props {
-	name: string;
-	serverImage: string;
+	title: string;
+	serverIcon: string;
 	hasNotification: boolean;
-	isClicked: boolean;
-	onClick: () => void;
+	i: number;
 }
 const SidebarServerIcon = ({
-	name,
-	serverImage,
+	title,
+	serverIcon,
 	hasNotification,
-	isClicked,
-	onClick,
+	i,
 }: props) => {
+	const selectedServer = useCollapsibleIconStore(
+		(state) => state.selectedServer
+	);
+	const toggle_selected_server = useCollapsibleIconStore(
+		(state) => state.toggle_selected_server
+	);
+	const switchLeftSidebarContext = useSidebarStateStore(
+		(state) => state.switchLeftSidebarContext
+	);
 	return (
-		<div className="w-full flex relative group">
+		<SidebarMenuItem
+			key={title}
+			className="group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center "
+		>
 			<div
 				className={`absolute top-1/2 -translate-y-1/2 -left-[1px] w-2 rounded-full transition-all duration-100 ${
-					isClicked
+					selectedServer === i
 						? "h-10 bg-discord-blue"
 						: hasNotification
 						? "h-2 bg-white dark:bg-white"
@@ -30,38 +45,39 @@ const SidebarServerIcon = ({
 				}}
 			/>
 
-			{/* Button */}
-			<Button
-				className={`rounded-full size-[50px] p-0 mx-auto transition-all duration-100 overflow-hidden ${
-					isClicked ? "rounded-[15px]" : "group-hover:rounded-[15px]"
-				} focus-visible:ring-0`}
-				title={name}
-				onClick={onClick}
+			<Link
+				to={`/@server/${String(i)}`}
+				onClick={() => {
+					toggle_selected_server(i);
+					switchLeftSidebarContext("server");
+				}}
 			>
-				<Avatar
-					className={`w-full h-full ${
-						isClicked ? "rounded-[12px]" : "group-hover:rounded-[12px]"
-					}`}
+				<SidebarMenuButton
+					tooltip={title}
+					className="gap-3 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden p-0 ps-3"
 				>
-					<AvatarImage
-						src={serverImage}
-						className="mx-auto my-auto object-fill p-0"
-					/>
-					<AvatarFallback
-						className={
-							isClicked
-								? "bg-discord-blue rounded-[15px]"
-								: "bg-graphite group-hover:rounded-[12px]"
-						}
+					<Avatar
+						className={`size-[50px] ${
+							selectedServer === i
+								? "rounded-[12px]"
+								: "group-hover:rounded-[12px]"
+						}`}
 					>
-						<img
-							src="/icons/discord.svg"
-							className="size-[30px] mx-auto my-auto"
-						/>
-					</AvatarFallback>
-				</Avatar>
-			</Button>
-		</div>
+						<AvatarImage src={serverIcon} />
+						<AvatarFallback
+							className={
+								selectedServer === i
+									? "bg-discord-blue rounded-[15px]"
+									: "bg-graphite group-hover:rounded-[12px]"
+							}
+						>
+							<img src="/icons/discord.svg" className="size-[30px] " />
+						</AvatarFallback>
+					</Avatar>
+					<span>{title}</span>
+				</SidebarMenuButton>
+			</Link>
+		</SidebarMenuItem>
 	);
 };
 
