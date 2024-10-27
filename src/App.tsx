@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import CollapsibleSidebar from "./components/CollapsibleSidebar";
 import { useStore } from "./hooks/base-context";
 import ChannelsLayout from "./layouts/Channels";
@@ -12,20 +12,18 @@ function App() {
 
 	return (
 		<div className="flex relative w-screen h-screen overflow-hidden bg-charcoal">
-			{/* <ServerTray /> */}
-
 			<CollapsibleSidebar open={c_sidebar_state} />
 
 			<Routes>
 				<Route element={<Main />}>
-					<Route index element={<Navigate to="@me" />} />
-					<Route path="@me" element={<Wumpus />}>
-						<Route path=":id" element={<MessagesLayout />} />{" "}
-						{/* No leading slash */}
+					<Route path="@me">
+						<Route index element={<Wumpus />} />
+						<Route path="dm/:id" element={<MessagesLayout />} />
 					</Route>
-					<Route path="@channels" element={<ChannelsLayout />} />
 
-					{/* <Route path="messages/:userId" element={<RoomInfo />} /> */}
+					<Route path="@channels">
+						<Route path="channel:id" element={<ChannelsLayout />} />
+					</Route>
 				</Route>
 
 				<Route path="/servers" element={<Servers />} />
@@ -35,3 +33,7 @@ function App() {
 }
 
 export default App;
+
+{
+	/* <Route path="messages/:userId" element={<RoomInfo />} /> */
+}
