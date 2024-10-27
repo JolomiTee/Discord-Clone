@@ -34,12 +34,12 @@ export default function SidebarNavLink({
 		switchLeftSidebarContext("messages");
 	};
 	return (
-		<SidebarMenuItem className="group relative group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center">
+		<SidebarMenuItem className="group/item group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center">
 			<div
 				className={`absolute top-1/2 -translate-y-1/2 -left-[1px] w-2 rounded-full transition-all duration-100 ${
 					selected_tab === label.toLocaleLowerCase()
 						? "h-10 bg-discord-blue"
-						: "h-0 group-hover:h-5 bg-white opacity-0 group-hover:opacity-100"
+						: "h-0 group-hover/item:h-5 bg-white opacity-0 group-hover/item:opacity-100"
 				}`}
 				style={{
 					clipPath: "inset(0 0 0 50%)",

@@ -55,7 +55,7 @@ const HMenu = () => {
 			</div>
 
 			<div className="flex items-center gap-3">
-				{location.pathname.includes("channels") ? (
+				{location.pathname.includes("@channel") ? (
 					<>
 						<IconButtons
 							src="disable_notification"

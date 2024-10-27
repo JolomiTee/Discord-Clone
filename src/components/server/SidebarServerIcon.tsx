@@ -39,15 +39,15 @@ const SidebarServerIcon = ({
 	return (
 		<SidebarMenuItem
 			key={title}
-			className="group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center "
+			className="group/item group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center "
 		>
 			<div
 				className={`absolute top-1/2 -translate-y-1/2 -left-[1px] w-2 rounded-full transition-all duration-100 ${
 					selectedServer === i
 						? "h-10 bg-discord-blue"
 						: hasNotification
-						? "h-2 bg-white dark:bg-white"
-						: "group-hover:h-5 group-hover:bg-white"
+						? "h-2 bg-white dark:bg-white group-hover/item:h-5 group-hover/item:bg-white"
+						: "group-hover/item:h-5 group-hover/item:bg-white"
 				}`}
 				style={{
 					clipPath: "inset(0 0 0 50%)",
@@ -63,7 +63,7 @@ const SidebarServerIcon = ({
 						className={`size-[50px] ${
 							selectedServer === i
 								? "rounded-[12px]"
-								: "group-hover:rounded-[12px]"
+								: "group-hover/item:rounded-[12px]"
 						}`}
 					>
 						<AvatarImage src={serverIcon} />
@@ -71,7 +71,7 @@ const SidebarServerIcon = ({
 							className={
 								selectedServer === i
 									? "bg-discord-blue rounded-[15px]"
-									: "bg-graphite group-hover:rounded-[12px]"
+									: "bg-graphite group-hover/item:rounded-[12px]"
 							}
 						>
 							<img src="/icons/discord.svg" className="size-[30px] " />
