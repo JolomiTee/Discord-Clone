@@ -1,4 +1,4 @@
-import { useStore } from "@/hooks/base-context";
+import { useSidebarStateStore } from "@/hooks/base-context";
 
 import MessagesDisplayVariant from "./sidebar/L/MessagesDisplayVariant";
 import ServerDisplayVariant from "./sidebar/L/ServerDisplayVariant";
@@ -15,10 +15,12 @@ import FooterCard from "./sidebar/R/Members/FooterCard";
 import MemberList from "./sidebar/R/Members/MemberList";
 
 export const LSidebar = () => {
-	const l_sidebar_display_context = useStore(
+	const l_sidebar_display_context = useSidebarStateStore(
 		(state) => state.l_sidebar_display_context
 	);
-	const l_sidebar_state = useStore((state) => state.l_sidebar_state);
+	const l_sidebar_state = useSidebarStateStore(
+		(state) => state.l_sidebar_state
+	);
 	console.log(l_sidebar_state);
 
 	return (
@@ -39,10 +41,12 @@ export const LSidebar = () => {
 };
 
 export const RSidebar = () => {
-	const r_sidebar_display_context = useStore(
+	const r_sidebar_display_context = useSidebarStateStore(
 		(state) => state.r_sidebar_display_context
 	);
-	const r_sidebar_state = useStore((state) => state.r_sidebar_state);
+	const r_sidebar_state = useSidebarStateStore(
+		(state) => state.r_sidebar_state
+	);
 
 	return (
 		<SidebarProvider open={r_sidebar_state} className="w-fit">

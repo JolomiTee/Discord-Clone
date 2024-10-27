@@ -1,21 +1,27 @@
-import { useStore } from "@/hooks/base-context";
+import { useSidebarStateStore } from "@/hooks/base-context";
 import IconButtons from "./common/IconButtons";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { useLocation } from "react-router-dom";
 
 const HMenu = () => {
 	const location = useLocation();
-	const r_sidebar_state = useStore((state) => state.r_sidebar_state);
-	const r_sidebar_display_context = useStore(
+	const r_sidebar_state = useSidebarStateStore(
+		(state) => state.r_sidebar_state
+	);
+	const r_sidebar_display_context = useSidebarStateStore(
 		(state) => state.r_sidebar_display_context
 	);
 
-	const switchRightSidebarContext = useStore(
+	const switchRightSidebarContext = useSidebarStateStore(
 		(state) => state.switchRightSidebarContext
 	);
 
-	const toggle_l_sidebar = useStore((state) => state.toggle_l_sidebar);
-	const toggle_r_sidebar = useStore((state) => state.toggle_r_sidebar);
+	const toggle_l_sidebar = useSidebarStateStore(
+		(state) => state.toggle_l_sidebar
+	);
+	const toggle_r_sidebar = useSidebarStateStore(
+		(state) => state.toggle_r_sidebar
+	);
 
 	return (
 		<header className="flex justify-between items-center gap-3 h-full max-h-[50px] px-4 bg-onyx w-full flex-shrink-0">

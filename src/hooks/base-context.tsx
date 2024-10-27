@@ -14,7 +14,7 @@ interface AppStateProps {
 
 // ! Tracking - removed the persistence
 
-export const useStore = create<AppStateProps>()((set) => ({
+export const useSidebarStateStore = create<AppStateProps>()((set) => ({
 	c_sidebar_state: false,
 	l_sidebar_state: true,
 	r_sidebar_state: false,
@@ -34,12 +34,35 @@ export const useStore = create<AppStateProps>()((set) => ({
 			r_sidebar_state: !state.r_sidebar_state,
 		})),
 
-	switchLeftSidebarContext: (newAppState: string) =>
+	switchLeftSidebarContext: (newAppState) =>
 		set(() => ({
 			l_sidebar_display_context: newAppState,
 		})),
-	switchRightSidebarContext: (newAppState: string) =>
+	switchRightSidebarContext: (newAppState) =>
 		set(() => ({
 			r_sidebar_display_context: newAppState,
 		})),
 }));
+
+interface CollapsibleSidebarState {
+	selectedTab: string | null;
+	selectedServer: number | null;
+	toggle_selected_tab: (newAppState: string) => void;
+	toggle_selected_server: (newAppState: string) => void;
+}
+
+export const useCollapsibleIconStore = create<CollapsibleSidebarState>()(
+	(set) => ({
+		selectedTab: "messages",
+		selectedServer: null,
+
+		toggle_selected_tab: (selected_tab) =>
+			set(() => ({
+				selectedTab: selected_tab,
+			})),
+		toggle_selected_server: (selected_server) =>
+			set(() => ({
+				selectedTab: selected_server,
+			})),
+	})
+);
