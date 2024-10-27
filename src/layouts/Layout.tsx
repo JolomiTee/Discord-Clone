@@ -1,5 +1,5 @@
 import HMenu from "@/components/HMenu";
-import { LSidebar, RSidebar } from "@/components/Sidebars";
+import { LSidebar, RSidebar } from "@/components/sidebar/Sidebars";
 import { Outlet, useLocation } from "react-router-dom";
 
 const Main = () => {
@@ -10,7 +10,7 @@ const Main = () => {
 
 			<div className="bg-charcoal w-full h-screen font-open-sans overflow-hidden flex flex-col">
 				{(location.pathname.includes("@me/dm") ||
-					location.pathname.includes("/@channels")) && <HMenu />}
+					location.pathname.includes("/@channel")) && <HMenu />}
 				<div className="flex-grow flex overflow-hidden ">
 					<div className="flex-grow flex overflow-hidden">
 						<div className="flex-grow overflow-auto scrollbar-hidden">

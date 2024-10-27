@@ -1,4 +1,4 @@
-import ServerCard from "@/components/server_tray/ServerCard";
+import ServerCard from "@/components/server/ServerCard";
 import { Button } from "@/components/ui/button";
 
 import { Input } from "@/components/ui/input";
