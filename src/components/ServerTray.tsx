@@ -1,5 +1,5 @@
 import { serverList } from "@/data";
-import { useStore } from "@/hooks/base-context";
+import { useSidebarStateStore } from "@/hooks/base-context";
 import { useState } from "react";
 import IconButtons from "./common/IconButtons";
 import ProfileHolder from "./server_tray/ProfileHolder";
@@ -8,7 +8,7 @@ import { Separator } from "./ui/separator";
 
 const ServerTray = () => {
 	const [clickedServer, setClickedServer] = useState("");
-	const switchLeftSidebarContext = useStore(
+	const switchLeftSidebarContext = useSidebarStateStore(
 		(state) => state.switchLeftSidebarContext
 	);
 

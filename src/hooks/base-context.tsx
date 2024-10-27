@@ -51,18 +51,16 @@ interface CollapsibleSidebarState {
 	toggle_selected_server: (newAppState: string) => void;
 }
 
-export const useCollapsibleIconStore = create<CollapsibleSidebarState>()(
-	(set) => ({
-		selectedTab: "messages",
-		selectedServer: null,
+export const useCollapsibleIconStore = create<CollapsibleSidebarState>()((set) => ({
+	selectedTab: "servers",
+	selectedServer: null,
 
-		toggle_selected_tab: (selected_tab) =>
-			set(() => ({
-				selectedTab: selected_tab,
-			})),
-		toggle_selected_server: (selected_server) =>
-			set(() => ({
-				selectedTab: selected_server,
-			})),
-	})
-);
+	toggle_selected_tab: (selected_tab) =>
+		set(() => ({
+			selectedTab: selected_tab,
+		})),
+	toggle_selected_server: (selected_server) =>
+		set(() => ({
+			selectedTab: selected_server,
+		})),
+}));

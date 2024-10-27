@@ -18,13 +18,15 @@ import {
 } from "@/components/ui/sidebar";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { serverList } from "@/data";
-import { useStore } from "@/hooks/base-context";
+import { useSidebarStateStore } from "@/hooks/base-context";
 import { MenuIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function CollapsibleSidebar({ open }: { open: boolean }) {
-	const toggle_c_sidebar = useStore((state) => state.toggle_c_sidebar);
-	const switchLeftSidebarContext = useStore(
+	const toggle_c_sidebar = useSidebarStateStore(
+		(state) => state.toggle_c_sidebar
+	);
+	const switchLeftSidebarContext = useSidebarStateStore(
 		(state) => state.switchLeftSidebarContext
 	);
 
