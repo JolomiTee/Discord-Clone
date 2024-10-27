@@ -1,7 +1,7 @@
 import { serverList } from "@/data";
 import { useStore } from "@/hooks/base-context";
 import { useState } from "react";
-import IconButtons from "./IconButtons";
+import IconButtons from "./common/IconButtons";
 import ProfileHolder from "./server_tray/ProfileHolder";
 import SidebarServerIcon from "./server_tray/SidebarServerIcon";
 import { Separator } from "./ui/separator";
