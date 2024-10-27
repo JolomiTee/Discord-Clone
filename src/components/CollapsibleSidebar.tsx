@@ -20,11 +20,11 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { serverList } from "@/data";
 import { useStore } from "@/hooks/base-context";
 import { MenuIcon } from "lucide-react";
-import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function CollapsibleSidebar({ open }: { open: boolean }) {
-	const [clickedServer, setClickedServer] = useState("");
+	const navigate = useNavigate();
 	const toggle_c_sidebar = useStore((state) => state.toggle_c_sidebar);
 	const toggle_l_sidebar = useStore((state) => state.toggle_l_sidebar);
 	const switchLeftSidebarContext = useStore(
@@ -33,15 +33,13 @@ export default function CollapsibleSidebar({ open }: { open: boolean }) {
 	const l_sidebar_state = useStore((state) => state.l_sidebar_state);
 
 	const handleSidbarContext = (context: string) => {
-		setClickedServer(context);
 		switchLeftSidebarContext(context);
-		if (!l_sidebar_state) {
-			toggle_l_sidebar();
-		} else {
-			return;
-		}
+		// if (l_sidebar_state === false) {
+		// 	toggle_l_sidebar();
+		// } else {
+		// 	return;
+		// }
 	};
-	console.log(clickedServer);
 	return (
 		<SidebarProvider className="w-fit z-20 text-[#B5BFE7]" open={open}>
 			<Sidebar id="sidebar" collapsible="icon" className="bg-transparent">
@@ -69,6 +67,7 @@ export default function CollapsibleSidebar({ open }: { open: boolean }) {
 									className="gap-3 group-data-[collapsible=icon]:ps-0 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden  p-0 ps-3"
 									onClick={() => {
 										handleSidbarContext("messages");
+										navigate("/@me");
 									}}
 								>
 									<Avatar className="size-[50px] flex justify-center items-center ">
@@ -116,7 +115,8 @@ export default function CollapsibleSidebar({ open }: { open: boolean }) {
 										tooltip={item.title}
 										className="gap-3 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden p-0 ps-3"
 										onClick={() => {
-											handleSidbarContext("server");
+											handleSidbarContext("channels");
+											navigate("/@channels");
 										}}
 									>
 										<Avatar className="size-[50px]">

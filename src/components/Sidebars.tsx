@@ -14,17 +14,19 @@ import {
 import FooterCard from "./sidebar/R/Members/FooterCard";
 import MemberList from "./sidebar/R/Members/MemberList";
 
-export const LSidebar = ({ open }: { open: boolean }) => {
+export const LSidebar = () => {
 	const l_sidebar_display_context = useStore(
 		(state) => state.l_sidebar_display_context
 	);
+	const l_sidebar_state = useStore((state) => state.l_sidebar_state);
+	console.log(l_sidebar_state);
 
 	return (
-		<SidebarProvider open={open} className="w-fit">
+		<SidebarProvider open={l_sidebar_state} className="w-fit">
 			<Sidebar id="lsidebar">
 				<SidebarContent id="sidebar-content">
 					<section className="bg-carbon relative text-[#FFFFFF99] h-full">
-						{l_sidebar_display_context === "server" ? (
+						{l_sidebar_display_context === "channels" ? (
 							<ServerDisplayVariant />
 						) : (
 							<MessagesDisplayVariant />
@@ -36,12 +38,14 @@ export const LSidebar = ({ open }: { open: boolean }) => {
 	);
 };
 
-export const RSidebar = ({ open }: { open: boolean }) => {
+export const RSidebar = () => {
 	const r_sidebar_display_context = useStore(
 		(state) => state.r_sidebar_display_context
 	);
+	const r_sidebar_state = useStore((state) => state.r_sidebar_state);
+
 	return (
-		<SidebarProvider open={open} className="w-fit">
+		<SidebarProvider open={r_sidebar_state} className="w-fit">
 			<Sidebar id="rsidebar" side="right">
 				<SidebarContent
 					id="sidebar-content"

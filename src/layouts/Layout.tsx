@@ -17,7 +17,7 @@ const Main = () => {
 			{/* {(location.pathname === "/messages" ||
 				location.pathname === "/channels") && (
 				)} */}
-			<LSidebar open={l_sidebar_state} />
+			<LSidebar />
 
 			<div className="bg-charcoal w-full h-screen font-open-sans overflow-hidden flex flex-col">
 				{(location.pathname === "/messages" ||
@@ -28,7 +28,7 @@ const Main = () => {
 							<div className="flex-grow overflow-auto scrollbar-hidden">
 								<Outlet />
 							</div>
-							<RSidebar open={r_sidebar_state} />
+							<RSidebar />
 						</div>
 					) : (
 						<div className="flex-grow flex items-center justify-center">

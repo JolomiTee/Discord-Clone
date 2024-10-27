@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import CollapsibleSidebar from "./components/CollapsibleSidebar";
 import { useStore } from "./hooks/base-context";
@@ -10,19 +9,7 @@ import Servers from "./pages/Servers";
 
 function App() {
 	const location = useLocation();
-	const l_sidebar_state = useStore((state) => state.l_sidebar_state);
 	const c_sidebar_state = useStore((state) => state.c_sidebar_state);
-	const toggle_l_sidebar = useStore((state) => state.toggle_l_sidebar);
-
-	useEffect(() => {
-		const shouldCloseLeftSidebar = location.pathname === "/servers";
-
-		if (shouldCloseLeftSidebar && l_sidebar_state) {
-			toggle_l_sidebar(); // Open sidebar if it's not already open
-		} else if (!shouldCloseLeftSidebar && !l_sidebar_state) {
-			toggle_l_sidebar(); // Close sidebar if it's open
-		}
-	}, []);
 
 	return (
 		<div className="flex relative w-screen h-screen overflow-hidden bg-charcoal">
@@ -33,9 +20,11 @@ function App() {
 			<Routes>
 				<Route element={<Main />}>
 					<Route index element={<Navigate to="@me" />} />
-					<Route path="@me" element={<Wumpus />} />
-					<Route path="/messages" element={<MessagesLayout />} />
-					<Route path="/channels" element={<ChannelsLayout />} />
+					<Route path="@me" element={<Wumpus />}>
+						<Route path=":id" element={<MessagesLayout />} />{" "}
+						{/* No leading slash */}
+					</Route>
+					<Route path="@channels" element={<ChannelsLayout />} />
 
 					{/* <Route path="messages/:userId" element={<RoomInfo />} /> */}
 				</Route>

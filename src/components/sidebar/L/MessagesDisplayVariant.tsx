@@ -8,13 +8,9 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import { messageList } from "@/data";
-import { useStore } from "@/hooks/base-context";
 import IconButtons from "../../IconButtons";
 import FriendProfileCard from "./FriendProfileCard";
 const MessagesDisplayVariant = () => {
-	const switchLeftSidebarContext = useStore(
-		(state) => state.switchLeftSidebarContext
-	);
 	return (
 		<Tabs
 			defaultValue="messages"
@@ -76,15 +72,13 @@ const MessagesDisplayVariant = () => {
 						return (
 							<FriendProfileCard
 								key={i}
+								id={i}
 								user={user}
 								profileImg={profileImg}
 								online={online}
 								hasMessage={hasMessage}
 								messageCount={messageCount}
 								pinned={pinned}
-								action={() => {
-									switchLeftSidebarContext("messages");
-								}}
 							/>
 						);
 					})}

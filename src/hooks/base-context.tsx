@@ -3,13 +3,11 @@ interface AppStateProps {
 	c_sidebar_state: boolean;
 	l_sidebar_state: boolean;
 	r_sidebar_state: boolean;
-	pageIsServer: boolean;
 	l_sidebar_display_context: string;
 	r_sidebar_display_context: string;
 	toggle_l_sidebar: () => void;
 	toggle_r_sidebar: () => void;
 	toggle_c_sidebar: () => void;
-	toggle_page_is_server: () => void;
 	switchLeftSidebarContext: (newAppState: string) => void;
 	switchRightSidebarContext: (newAppState: string) => void;
 }
@@ -20,7 +18,6 @@ export const useStore = create<AppStateProps>()((set) => ({
 	c_sidebar_state: false,
 	l_sidebar_state: true,
 	r_sidebar_state: false,
-	pageIsServer: false,
 	l_sidebar_display_context: "null", // Initial state
 	r_sidebar_display_context: "null", // Initial state
 
@@ -35,11 +32,6 @@ export const useStore = create<AppStateProps>()((set) => ({
 	toggle_r_sidebar: () =>
 		set((state) => ({
 			r_sidebar_state: !state.r_sidebar_state,
-		})),
-
-	toggle_page_is_server: () =>
-		set((state) => ({
-			pageIsServer: !state.pageIsServer,
 		})),
 
 	switchLeftSidebarContext: (newAppState: string) =>
