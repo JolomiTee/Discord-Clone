@@ -23,9 +23,10 @@ import {
 import IconButtons from "../../common/IconButtons";
 import { AspectRatio } from "../../ui/aspect-ratio";
 import { Separator } from "../../ui/separator";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const ServerDisplayVariant = () => {
+	const { id } = useParams();
 	return (
 		<div>
 			<AspectRatio ratio={16 / 6}>
@@ -103,7 +104,7 @@ const ServerDisplayVariant = () => {
 								return (
 									<Link
 										key={i}
-										to={"/channels"}
+										to={`@server/${id}/@channel/${i}`}
 										className="flex justify-start items-center gap-2"
 									>
 										<img

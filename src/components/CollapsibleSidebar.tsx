@@ -20,7 +20,7 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { serverList } from "@/data";
 import { useStore } from "@/hooks/base-context";
 import { MenuIcon } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 export default function CollapsibleSidebar({ open }: { open: boolean }) {
@@ -61,20 +61,22 @@ export default function CollapsibleSidebar({ open }: { open: boolean }) {
 
 							<SidebarMenuItem className="group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center ">
 								<SidebarMenuButton
+									asChild
 									tooltip="Messages"
 									className="gap-3 group-data-[collapsible=icon]:ps-0 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden  p-0 ps-3"
 									onClick={() => {
 										handleSidbarContext("messages");
-										navigate("/@me");
 									}}
 								>
-									<Avatar className="size-[50px] flex justify-center items-center ">
-										<AvatarImage
-											src="/icons/messages.svg"
-											className="w-[30px]"
-										/>
-									</Avatar>
-									<span>Messages</span>
+									<Link to={`/@me`}>
+										<Avatar className="size-[50px] flex justify-center items-center ">
+											<AvatarImage
+												src="/icons/messages.svg"
+												className="w-[30px]"
+											/>
+										</Avatar>
+										<span>Messages</span>
+									</Link>
 								</SidebarMenuButton>
 							</SidebarMenuItem>
 
@@ -104,29 +106,31 @@ export default function CollapsibleSidebar({ open }: { open: boolean }) {
 				<SidebarContent className="bg-onyx scrollbar-hidden group-data-[collapsible=icon]:overflow-scroll pt-2">
 					<SidebarGroup className="p-0">
 						<SidebarMenu className="gap-y-3">
-							{serverList.map((item) => (
+							{serverList.map((item, i) => (
 								<SidebarMenuItem
 									key={item.title}
 									className="group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center "
 								>
 									<SidebarMenuButton
+										asChild
 										tooltip={item.title}
 										className="gap-3 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden p-0 ps-3"
 										onClick={() => {
 											handleSidbarContext("channels");
-											navigate("/@channels");
 										}}
 									>
-										<Avatar className="size-[50px]">
-											<AvatarImage src={item.serverIcon} />
-											<AvatarFallback className="bg-discord-blue">
-												<img
-													src="/icons/discord.svg"
-													className="size-[30px] "
-												/>
-											</AvatarFallback>
-										</Avatar>
-										<span>{item.title}</span>
+										<Link to={`/@server/${i}`}>
+											<Avatar className="size-[50px]">
+												<AvatarImage src={item.serverIcon} />
+												<AvatarFallback className="bg-discord-blue">
+													<img
+														src="/icons/discord.svg"
+														className="size-[30px] "
+													/>
+												</AvatarFallback>
+											</Avatar>
+											<span>{item.title}</span>
+										</Link>
 									</SidebarMenuButton>
 								</SidebarMenuItem>
 							))}

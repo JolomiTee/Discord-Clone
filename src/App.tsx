@@ -21,8 +21,9 @@ function App() {
 						<Route path="dm/:id" element={<MessagesLayout />} />
 					</Route>
 
-					<Route path="@channels">
-						<Route path="channel:id" element={<ChannelsLayout />} />
+					<Route path="@server/:id">
+						<Route index element={<Wumpus />} />
+						<Route path="@channel/:id" element={<ChannelsLayout />} />
 					</Route>
 				</Route>
 
