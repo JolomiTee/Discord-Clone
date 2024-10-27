@@ -24,7 +24,7 @@ const FriendProfileCard = ({
 }: props) => {
 	return (
 		<Link
-			to={`@me/dm/${id}`}
+			to={`@me/dm/${String(id)}`}
 			className="flex items-center justify-start h-[55px] gap-3 bg-transparent shadow-none"
 			onClick={action}
 		>

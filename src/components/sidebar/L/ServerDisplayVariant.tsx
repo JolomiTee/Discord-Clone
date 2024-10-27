@@ -104,7 +104,7 @@ const ServerDisplayVariant = () => {
 								return (
 									<Link
 										key={i}
-										to={`@server/${id}/@channel/${i}`}
+										to={`@server/${String(id)}/@channel/${String(i)}`}
 										className="flex justify-start items-center gap-2"
 									>
 										<img

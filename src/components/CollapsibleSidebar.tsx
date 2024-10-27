@@ -20,11 +20,9 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { serverList } from "@/data";
 import { useStore } from "@/hooks/base-context";
 import { MenuIcon } from "lucide-react";
-import { Link, NavLink } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function CollapsibleSidebar({ open }: { open: boolean }) {
-	const navigate = useNavigate();
 	const toggle_c_sidebar = useStore((state) => state.toggle_c_sidebar);
 	const switchLeftSidebarContext = useStore(
 		(state) => state.switchLeftSidebarContext
@@ -119,7 +117,7 @@ export default function CollapsibleSidebar({ open }: { open: boolean }) {
 											handleSidbarContext("channels");
 										}}
 									>
-										<Link to={`/@server/${i}`}>
+										<Link to={`/@server/${String(i)}`}>
 											<Avatar className="size-[50px]">
 												<AvatarImage src={item.serverIcon} />
 												<AvatarFallback className="bg-discord-blue">
