@@ -17,7 +17,9 @@ import {
 	useSidebarStateStore,
 } from "@/hooks/base-context";
 import { Button } from "../ui/button";
-import { SidebarClose } from "lucide-react";
+import { ChevronDown, Search, SidebarClose, X } from "lucide-react";
+import { Input } from "../ui/input";
+import ChatBubble from "../common/ChatBubble";
 
 export default function CollapsibleSidebar() {
 	const c_sidebar_state = useSidebarStateStore(
@@ -43,22 +45,119 @@ export default function CollapsibleSidebar() {
 		>
 			{collapsible_sidebar_display_context === "search" ? (
 				<Sidebar id="sidebar" collapsible="icon" className="bg-transparent">
-					<Button
-						onClick={() => {
-							toggle_c_sidebar();
-							toggle_selected_tab(selectedTab);
-							switchCollapsibleSidebarContext("menu");
-						}}
-					>
-						<SidebarClose />
-					</Button>
 					<SidebarHeader id="sidebar_header" className="bg-onyx p-0 pt-2">
-						<SidebarGroup className="p-0"></SidebarGroup>
+						<SidebarGroup className="py-0 flex flex-row items-center gap-1 relative">
+							<Search
+								className="absolute left-4 top-1/2 -translate-y-1/2"
+								width={20}
+							/>
+							<Input
+								type="search"
+								placeholder="Search Discord"
+								className="bg-black rounded-[11px] ring-0 border-0 w-full ps-10"
+							/>
+							<Button
+								onClick={() => {
+									toggle_c_sidebar();
+									toggle_selected_tab(selectedTab);
+									switchCollapsibleSidebarContext("menu");
+								}}
+								className="w-fit h-fit rounded-full p-2 shadow-none bg-black"
+							>
+								<SidebarClose />
+							</Button>
+						</SidebarGroup>
+
+						<SidebarGroup className="gap-2 flex-row flex-wrap">
+							<Button className="w-fit h-fit text-sm rounded-full px-2 py-1">
+								#general-chat <ChevronDown />
+							</Button>
+							<Button className="w-fit h-fit text-sm rounded-full px-2 py-1">
+								New
+							</Button>
+							<Button className="w-fit h-fit text-sm rounded-full px-2 py-1">
+								Old
+							</Button>
+							<Button className="w-fit h-fit text-sm rounded-full px-2 py-1">
+								Relevant
+							</Button>
+						</SidebarGroup>
 					</SidebarHeader>
 
-					<SidebarContent className="bg-onyx scrollbar-hidden group-data-[collapsible=icon]:overflow-scroll pt-2">
-						<SidebarGroup className="p-0">
-							<SidebarMenu className="gap-y-3 h-10 bg-blue-500"></SidebarMenu>
+					<SidebarContent className="bg-onyx scrollbar-hidden group-data-[collapsible=icon]:overflow-scroll">
+						<SidebarGroup className="gap-3">
+							<ChatBubble
+								profileImg="/public/touchgrasshq.png"
+								time="10:33am"
+								message="no??? to go out and enjoy the sun and touch grass"
+								user="grass enjoyer"
+							/>
+							<ChatBubble
+								profileImg="/public/touchgrasshq.png"
+								time="10:33am"
+								message="no??? to go out and enjoy the sun and touch grass"
+								user="grass enjoyer"
+							/>
+							<ChatBubble
+								profileImg="/public/touchgrasshq.png"
+								time="10:33am"
+								message="no??? to go out and enjoy the sun and touch grass"
+								user="grass enjoyer"
+							/>
+							<ChatBubble
+								profileImg="/public/touchgrasshq.png"
+								time="10:33am"
+								message="no??? to go out and enjoy the sun and touch grass"
+								user="grass enjoyer"
+							/>
+							<ChatBubble
+								profileImg="/public/touchgrasshq.png"
+								time="10:33am"
+								message="no??? to go out and enjoy the sun and touch grass"
+								user="grass enjoyer"
+							/>
+							<ChatBubble
+								profileImg="/public/touchgrasshq.png"
+								time="10:33am"
+								message="no??? to go out and enjoy the sun and touch grass"
+								user="grass enjoyer"
+							/>
+							<ChatBubble
+								profileImg="/public/touchgrasshq.png"
+								time="10:33am"
+								message="no??? to go out and enjoy the sun and touch grass"
+								user="grass enjoyer"
+							/>
+							<ChatBubble
+								profileImg="/public/touchgrasshq.png"
+								time="10:33am"
+								message="no??? to go out and enjoy the sun and touch grass"
+								user="grass enjoyer"
+							/>
+							<ChatBubble
+								profileImg="/public/touchgrasshq.png"
+								time="10:33am"
+								message="no??? to go out and enjoy the sun and touch grass"
+								user="grass enjoyer"
+							/>
+							<ChatBubble
+								profileImg="/public/touchgrasshq.png"
+								time="10:33am"
+								message="no??? to go out and enjoy the sun and touch grass"
+								user="grass enjoyer"
+							/>
+							<ChatBubble
+								profileImg="/public/touchgrasshq.png"
+								time="10:33am"
+								message="no??? to go out and enjoy the sun and touch grass"
+								user="grass enjoyer"
+							/>
+							<ChatBubble
+								profileImg="/public/touchgrasshq.png"
+								time="10:33am"
+								message="no??? to go out and enjoy the sun and touch grass"
+								user="grass enjoyer"
+							/>
 						</SidebarGroup>
 					</SidebarContent>
 				</Sidebar>

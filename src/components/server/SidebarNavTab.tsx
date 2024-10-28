@@ -26,6 +26,9 @@ export default function SidebarNavLink({
 	const toggle_selected_server = useCollapsibleSidebarStore(
 		(state) => state.toggle_selected_server
 	);
+	const c_sidebar_state = useSidebarStateStore(
+		(state) => state.c_sidebar_state
+	);
 	const switchLeftSidebarContext = useSidebarStateStore(
 		(state) => state.switchLeftSidebarContext
 	);
@@ -38,13 +41,14 @@ export default function SidebarNavLink({
 
 	const handleClick = () => {
 		if (label.toLowerCase() === "search") {
-			toggle_c_sidebar();
+			c_sidebar_state !== true && toggle_c_sidebar();
 			switchCollapsibleSidebarContext("search");
 		} else {
 			toggle_selected_tab(label.toLowerCase());
 			toggle_selected_server(null);
 		}
-		switchLeftSidebarContext("messages");
+
+		switchLeftSidebarContext(label.toLowerCase());
 	};
 
 	return (
