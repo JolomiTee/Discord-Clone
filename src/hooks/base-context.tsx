@@ -67,6 +67,7 @@ export const useCollapsibleSidebarStore = create<CollapsibleSidebarState>()(
 			set(() => ({
 				selectedServer: selected_server,
 			})),
+
 		switchCollapsibleSidebarContext: (newAppState) =>
 			set(() => ({
 				collapsible_sidebar_display_context: newAppState,
