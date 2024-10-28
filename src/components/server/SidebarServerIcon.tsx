@@ -1,7 +1,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar";
 import {
-	useCollapsibleIconStore,
+	useCollapsibleSidebarStore,
 	useSidebarStateStore,
 } from "@/hooks/base-context";
 import { Link } from "react-router-dom";
@@ -18,13 +18,13 @@ const SidebarServerIcon = ({
 	hasNotification,
 	i,
 }: props) => {
-	const selectedServer = useCollapsibleIconStore(
+	const selectedServer = useCollapsibleSidebarStore(
 		(state) => state.selectedServer
 	);
-	const toggle_selected_server = useCollapsibleIconStore(
+	const toggle_selected_server = useCollapsibleSidebarStore(
 		(state) => state.toggle_selected_server
 	);
-	const toggle_selected_tab = useCollapsibleIconStore(
+	const toggle_selected_tab = useCollapsibleSidebarStore(
 		(state) => state.toggle_selected_tab
 	);
 	const switchLeftSidebarContext = useSidebarStateStore(
