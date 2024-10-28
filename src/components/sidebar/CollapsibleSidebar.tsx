@@ -9,17 +9,17 @@ import {
 	SidebarProvider,
 } from "@/components/ui/sidebar";
 import { serverList } from "@/data";
-import ProfileHolder from "../server/ProfileHolder";
-import SidebarNavLink from "../server/SidebarNavTab";
-import SidebarServerIcon from "../server/SidebarServerIcon";
 import {
 	useCollapsibleSidebarStore,
 	useSidebarStateStore,
 } from "@/hooks/base-context";
-import { Button } from "../ui/button";
-import { ChevronDown, Search, SidebarClose, X } from "lucide-react";
-import { Input } from "../ui/input";
+import { ChevronDown, Search, SidebarClose } from "lucide-react";
 import ChatBubble from "../common/ChatBubble";
+import ProfileHolder from "../server/ProfileHolder";
+import SidebarNavLink from "../server/SidebarNavTab";
+import SidebarServerIcon from "../server/SidebarServerIcon";
+import { Button } from "../ui/button";
+import { Input } from "../ui/input";
 
 export default function CollapsibleSidebar() {
 	const c_sidebar_state = useSidebarStateStore(
@@ -87,73 +87,73 @@ export default function CollapsibleSidebar() {
 					<SidebarContent className="bg-onyx scrollbar-hidden group-data-[collapsible=icon]:overflow-scroll">
 						<SidebarGroup className="gap-3">
 							<ChatBubble
-								profileImg="/public/touchgrasshq.png"
+								profileImg="/touchgrasshq.png"
 								time="10:33am"
 								message="no??? to go out and enjoy the sun and touch grass"
 								user="grass enjoyer"
 							/>
 							<ChatBubble
-								profileImg="/public/touchgrasshq.png"
+								profileImg="/touchgrasshq.png"
 								time="10:33am"
 								message="no??? to go out and enjoy the sun and touch grass"
 								user="grass enjoyer"
 							/>
 							<ChatBubble
-								profileImg="/public/touchgrasshq.png"
+								profileImg="/touchgrasshq.png"
 								time="10:33am"
 								message="no??? to go out and enjoy the sun and touch grass"
 								user="grass enjoyer"
 							/>
 							<ChatBubble
-								profileImg="/public/touchgrasshq.png"
+								profileImg="/touchgrasshq.png"
 								time="10:33am"
 								message="no??? to go out and enjoy the sun and touch grass"
 								user="grass enjoyer"
 							/>
 							<ChatBubble
-								profileImg="/public/touchgrasshq.png"
+								profileImg="/touchgrasshq.png"
 								time="10:33am"
 								message="no??? to go out and enjoy the sun and touch grass"
 								user="grass enjoyer"
 							/>
 							<ChatBubble
-								profileImg="/public/touchgrasshq.png"
+								profileImg="/touchgrasshq.png"
 								time="10:33am"
 								message="no??? to go out and enjoy the sun and touch grass"
 								user="grass enjoyer"
 							/>
 							<ChatBubble
-								profileImg="/public/touchgrasshq.png"
+								profileImg="/touchgrasshq.png"
 								time="10:33am"
 								message="no??? to go out and enjoy the sun and touch grass"
 								user="grass enjoyer"
 							/>
 							<ChatBubble
-								profileImg="/public/touchgrasshq.png"
+								profileImg="/touchgrasshq.png"
 								time="10:33am"
 								message="no??? to go out and enjoy the sun and touch grass"
 								user="grass enjoyer"
 							/>
 							<ChatBubble
-								profileImg="/public/touchgrasshq.png"
+								profileImg="/touchgrasshq.png"
 								time="10:33am"
 								message="no??? to go out and enjoy the sun and touch grass"
 								user="grass enjoyer"
 							/>
 							<ChatBubble
-								profileImg="/public/touchgrasshq.png"
+								profileImg="/touchgrasshq.png"
 								time="10:33am"
 								message="no??? to go out and enjoy the sun and touch grass"
 								user="grass enjoyer"
 							/>
 							<ChatBubble
-								profileImg="/public/touchgrasshq.png"
+								profileImg="/touchgrasshq.png"
 								time="10:33am"
 								message="no??? to go out and enjoy the sun and touch grass"
 								user="grass enjoyer"
 							/>
 							<ChatBubble
-								profileImg="/public/touchgrasshq.png"
+								profileImg="/touchgrasshq.png"
 								time="10:33am"
 								message="no??? to go out and enjoy the sun and touch grass"
 								user="grass enjoyer"
