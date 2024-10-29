@@ -21,7 +21,6 @@ export const LSidebar = () => {
 	const l_sidebar_state = useSidebarStateStore(
 		(state) => state.l_sidebar_state
 	);
-	console.log(l_sidebar_state);
 
 	return (
 		<SidebarProvider open={l_sidebar_state} className="w-fit">

@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { SidebarMenuItem, SidebarMenuButton } from "@/components/ui/sidebar";
 import {
-	useCollapsibleIconStore,
+	useCollapsibleSidebarStore,
 	useSidebarStateStore,
 } from "@/hooks/base-context";
 
@@ -17,22 +17,40 @@ export default function SidebarNavLink({
 	icon,
 	label,
 }: SidebarNavLinkProps) {
-	const selected_tab = useCollapsibleIconStore((state) => state.selectedTab);
-	const toggle_selected_tab = useCollapsibleIconStore(
+	const selected_tab = useCollapsibleSidebarStore(
+		(state) => state.selectedTab
+	);
+	const toggle_selected_tab = useCollapsibleSidebarStore(
 		(state) => state.toggle_selected_tab
 	);
-	const toggle_selected_server = useCollapsibleIconStore(
+	const toggle_selected_server = useCollapsibleSidebarStore(
 		(state) => state.toggle_selected_server
+	);
+	const c_sidebar_state = useSidebarStateStore(
+		(state) => state.c_sidebar_state
 	);
 	const switchLeftSidebarContext = useSidebarStateStore(
 		(state) => state.switchLeftSidebarContext
 	);
+	const toggle_c_sidebar = useSidebarStateStore(
+		(state) => state.toggle_c_sidebar
+	);
+	const switchCollapsibleSidebarContext = useCollapsibleSidebarStore(
+		(state) => state.switchCollapsibleSidebarContext
+	);
 
 	const handleClick = () => {
-		toggle_selected_tab(label.toLowerCase());
-		toggle_selected_server(null);
-		switchLeftSidebarContext("messages");
+		if (label.toLowerCase() === "search") {
+			!c_sidebar_state && toggle_c_sidebar();
+			switchCollapsibleSidebarContext("search");
+		} else {
+			toggle_selected_tab(label.toLowerCase());
+			toggle_selected_server(null);
+		}
+
+		switchLeftSidebarContext(label.toLowerCase());
 	};
+
 	return (
 		<SidebarMenuItem className="group/item group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center">
 			<div
