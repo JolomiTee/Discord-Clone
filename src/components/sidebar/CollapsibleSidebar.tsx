@@ -133,6 +133,7 @@ export default function CollapsibleSidebar() {
 									const { title, serverIcon, hasNotification } = item;
 									return (
 										<SidebarServerIcon
+											key={i}
 											title={title}
 											serverIcon={serverIcon}
 											hasNotification={hasNotification}
