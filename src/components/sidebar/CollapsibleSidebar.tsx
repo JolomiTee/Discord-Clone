@@ -53,6 +53,7 @@ export default function CollapsibleSidebar() {
 							/>
 							<Input
 								type="search"
+								defaultValue={"grass"}
 								placeholder="Search Discord"
 								className="bg-black rounded-[11px] ring-0 border-0 w-full ps-10"
 							/>
@@ -95,68 +96,8 @@ export default function CollapsibleSidebar() {
 							<ChatBubble
 								profileImg="/touchgrasshq.png"
 								time="10:33am"
-								message="no??? to go out and enjoy the sun and touch grass"
-								user="grass enjoyer"
-							/>
-							<ChatBubble
-								profileImg="/touchgrasshq.png"
-								time="10:33am"
-								message="no??? to go out and enjoy the sun and touch grass"
-								user="grass enjoyer"
-							/>
-							<ChatBubble
-								profileImg="/touchgrasshq.png"
-								time="10:33am"
-								message="no??? to go out and enjoy the sun and touch grass"
-								user="grass enjoyer"
-							/>
-							<ChatBubble
-								profileImg="/touchgrasshq.png"
-								time="10:33am"
-								message="no??? to go out and enjoy the sun and touch grass"
-								user="grass enjoyer"
-							/>
-							<ChatBubble
-								profileImg="/touchgrasshq.png"
-								time="10:33am"
-								message="no??? to go out and enjoy the sun and touch grass"
-								user="grass enjoyer"
-							/>
-							<ChatBubble
-								profileImg="/touchgrasshq.png"
-								time="10:33am"
-								message="no??? to go out and enjoy the sun and touch grass"
-								user="grass enjoyer"
-							/>
-							<ChatBubble
-								profileImg="/touchgrasshq.png"
-								time="10:33am"
-								message="no??? to go out and enjoy the sun and touch grass"
-								user="grass enjoyer"
-							/>
-							<ChatBubble
-								profileImg="/touchgrasshq.png"
-								time="10:33am"
-								message="no??? to go out and enjoy the sun and touch grass"
-								user="grass enjoyer"
-							/>
-							<ChatBubble
-								profileImg="/touchgrasshq.png"
-								time="10:33am"
-								message="no??? to go out and enjoy the sun and touch grass"
-								user="grass enjoyer"
-							/>
-							<ChatBubble
-								profileImg="/touchgrasshq.png"
-								time="10:33am"
-								message="no??? to go out and enjoy the sun and touch grass"
-								user="grass enjoyer"
-							/>
-							<ChatBubble
-								profileImg="/touchgrasshq.png"
-								time="10:33am"
-								message="no??? to go out and enjoy the sun and touch grass"
-								user="grass enjoyer"
+								message="nuh uh grass is for losers you can't trick me"
+								user="NOT a grass enjoyer"
 							/>
 						</SidebarGroup>
 					</SidebarContent>
@@ -192,6 +133,7 @@ export default function CollapsibleSidebar() {
 									const { title, serverIcon, hasNotification } = item;
 									return (
 										<SidebarServerIcon
+											key={i}
 											title={title}
 											serverIcon={serverIcon}
 											hasNotification={hasNotification}

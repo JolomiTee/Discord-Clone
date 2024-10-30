@@ -39,7 +39,7 @@ const ProfileHolder = () => {
 					</div>
 
 					<DropdownMenu>
-						<DropdownMenuTrigger>
+						<DropdownMenuTrigger asChild>
 							<MenuIcon />
 						</DropdownMenuTrigger>
 						<DropdownMenuContent className="rounded-[15px] bg-charcoal p-2">
