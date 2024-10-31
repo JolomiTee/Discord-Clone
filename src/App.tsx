@@ -8,6 +8,7 @@ import Wumpus from "./layouts/Wumpus";
 import Help from "./pages/Help";
 import Inbox from "./pages/Inbox";
 import Servers from "./pages/Servers";
+import Profile from "./pages/Profile";
 
 function App() {
 	return (
@@ -38,6 +39,7 @@ function App() {
 				<Route path="/servers" element={<Servers />} />
 				<Route path="/inbox" element={<Inbox />} />
 				<Route path="/help" element={<Help />} />
+				<Route path="/profile/:id" element={<Profile />} />
 			</Routes>
 		</div>
 	);

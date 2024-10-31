@@ -1,0 +1,70 @@
+/* From Uiverse.io by mobinkakei */
+.box-bg {
+	width: 100%;
+	height: 100%;
+	/* control ize */
+	--u: 5px;
+	--c1: #ededee;
+	--c2: #000000;
+	--c3: #1e1e1e;
+	--gp: 50% / calc(var(--u) * 16.9) calc(var(--u) * 12.8);
+	background: conic-gradient(from 122deg at 50% 85.15%,
+			var(--c2) 0 58deg,
+			var(--c3) 0 116deg,
+			#fff0 0 100%) var(--gp),
+		conic-gradient(from 122deg at 50% 72.5%, var(--c1) 0 116deg, #fff0 0 100%) var(--gp),
+		conic-gradient(from 58deg at 82.85% 50%, var(--c3) 0 64deg, #fff0 0 100%) var(--gp),
+		conic-gradient(from 58deg at 66.87% 50%,
+			var(--c1) 0 64deg,
+			var(--c2) 0 130deg,
+			#fff0 0 100%) var(--gp),
+		conic-gradient(from 238deg at 17.15% 50%, var(--c2) 0 64deg, #fff0 0 100%) var(--gp),
+		conic-gradient(from 172deg at 33.13% 50%,
+			var(--c3) 0 66deg,
+			var(--c1) 0 130deg,
+			#fff0 0 100%) var(--gp),
+		linear-gradient(98deg, var(--c3) 0 15%, #fff0 calc(15% + 1px) 100%) var(--gp),
+		linear-gradient(-98deg, var(--c2) 0 15%, #fff0 calc(15% + 1px) 100%) var(--gp),
+		conic-gradient(from -58deg at 50.25% 14.85%,
+			var(--c3) 0 58deg,
+			var(--c2) 0 116deg,
+			#fff0 0 100%) var(--gp),
+		conic-gradient(from -58deg at 50% 28.125%, var(--c1) 0 116deg, #fff0 0 100%) var(--gp),
+		linear-gradient(90deg, var(--c2) 0 50%, var(--c3) 0 100%) var(--gp);
+}
+
+/* From Uiverse.io by aadium */
+.ankara {
+	--color1: rgb(0, 3, 49, 0.6);
+	--color2: rgba(248, 255, 182, 0.6);
+	--color3: rgb(255, 0, 0, 0.6);
+	--color4: rgb(0, 255, 0, 0.6);
+	--color5: rgb(0, 0, 255, 0.6);
+	--color6: rgb(255, 255, 0, 0.6);
+	background-image: linear-gradient(45deg, var(--color2) 25%, transparent 25%, transparent 75%, var(--color2) 75%, var(--color2)),
+		linear-gradient(135deg, var(--color2) 25%, var(--color1) 25%, var(--color1) 75%, var(--color2) 75%, var(--color2)),
+		linear-gradient(225deg, var(--color3) 25%, var(--color4) 25%, var(--color4) 75%, var(--color3) 75%, var(--color3)),
+		linear-gradient(315deg, var(--color5) 25%, var(--color6) 25%, var(--color6) 75%, var(--color5) 75%, var(--color5));
+	background-size: 90px 90px;
+	background-position: 0 0, 135px 135px, -135px -135px, 0 0;
+}
+
+/* From Uiverse.io by csemszepp */
+.container {
+	--s: 75px;
+	/* control the size */
+
+	--_c: #0000, #fff 1deg 79deg, #0000 81deg;
+	--g0: conic-gradient(from 140deg at 50% 87.5%, var(--_c));
+	--g1: conic-gradient(from 140deg at 50% 81.25%, var(--_c));
+	--g2: conic-gradient(from 140deg at 50% 75%, var(--_c));
+	--g3: conic-gradient(at 10% 20%, #0000 75%, #fff 0);
+	background: var(--g0) 0 calc(var(--s) / -4),
+		var(--g0) var(--s) calc(3 * var(--s) / 4), var(--g1),
+		var(--g1) var(--s) var(--s), var(--g2) 0 calc(var(--s) / 4),
+		var(--g2) var(--s) calc(5 * var(--s) / 4),
+		var(--g3) calc(var(--s) / -10) var(--s),
+		var(--g3) calc(9 * var(--s) / 10) calc(2 * var(--s)),
+		repeating-conic-gradient(from 45deg, #a31e39 0 25%, #31570e 0 50%);
+	background-size: calc(2 * var(--s)) calc(2 * var(--s));
+}
