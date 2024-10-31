@@ -5,21 +5,18 @@ import { Outlet, useLocation } from "react-router-dom";
 const Main = () => {
 	const location = useLocation();
 	return (
-		<div className="flex relative w-screen h-screen overflow-hidden bg-charcoal">
+		<div className="bg-charcoal w-full h-screen font-open-sans overflow-hidden flex relative">
 			<LSidebar />
 
-			<div className="bg-charcoal w-full h-screen font-open-sans overflow-hidden flex flex-col">
+			<div className="w-full">
 				{(location.pathname.includes("@me/dm") ||
 					location.pathname.includes("/@channel")) && <HMenu />}
-				<div className="flex-grow flex overflow-hidden ">
-					<div className="flex-grow flex overflow-hidden">
-						<div className="flex-grow overflow-auto scrollbar-hidden">
-							<Outlet />
-						</div>
-						<RSidebar />
-					</div>
+				<div className=" ">
+					<Outlet />
 				</div>
 			</div>
+
+			<RSidebar />
 		</div>
 	);
 };
