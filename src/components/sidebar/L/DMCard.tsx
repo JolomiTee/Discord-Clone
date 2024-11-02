@@ -13,7 +13,7 @@ interface props {
 	pinned: boolean;
 	action?: () => void;
 }
-const FriendProfileCard = ({
+const DMCard = ({
 	profileImg,
 	id,
 	user,
@@ -63,4 +63,4 @@ const FriendProfileCard = ({
 	);
 };
 
-export default FriendProfileCard;
+export default DMCard;

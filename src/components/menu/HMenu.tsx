@@ -1,7 +1,8 @@
 import { useSidebarStateStore } from "@/hooks/base-context";
-import IconButtons from "./common/IconButtons";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import IconButtons from "../common/IconButtons";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { useLocation } from "react-router-dom";
+import { MenuItems } from "@/components/menu/MenuItems";
 
 const HMenu = () => {
 	const location = useLocation();
@@ -54,7 +55,7 @@ const HMenu = () => {
 				</div>
 			</div>
 
-			<div className="flex items-center gap-3">
+			<div className="items-center gap-3 hidden md:flex">
 				{location.pathname.includes("@channel") ? (
 					<>
 						<IconButtons
@@ -115,6 +116,9 @@ const HMenu = () => {
 						}
 					}}
 				/>
+			</div>
+			<div className="md:hidden flex items-center">
+				<MenuItems />
 			</div>
 		</header>
 	);

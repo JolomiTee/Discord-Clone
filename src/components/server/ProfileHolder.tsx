@@ -8,6 +8,7 @@ import { SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { useSidebarStateStore } from "@/hooks/base-context";
 import { MenuIcon } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const ProfileHolder = () => {
 	const toggle_c_sidebar = useSidebarStateStore(
@@ -22,7 +23,7 @@ const ProfileHolder = () => {
 				onClick={toggle_c_sidebar}
 			>
 				<Avatar className="relative group-data-[collapsible=icon]:rounded-full size-[60px] group-data-[collapsible=icon]:size-[55px] flex items-center justify-center bg-charcoal rounded-[15px] p-[10px] group-data-[collapsible=icon]:p-1.5 overflow-visible rounded-r-none">
-					<div className="absolute right-0.5 group-data-[collapsible=icon]:-right-1 top-1 bg-crimson rounded-full size-[14px] border-[3px] border-solid border-onyx"></div>
+					{/* <div className="absolute right-0.5 group-data-[collapsible=icon]:-right-1 top-1 bg-crimson rounded-full size-[14px] border-[3px] border-solid border-onyx"></div> */}
 					<div className="absolute right-0.5 group-data-[collapsible=icon]:-right-1 bottom-1 bg-emerald rounded-full size-[14px] border-[3px] border-solid border-onyx"></div>
 					<AvatarImage src="/beluga.png" className="rounded-full" />
 					<AvatarFallback className="bg-discord-blue">
@@ -33,13 +34,13 @@ const ProfileHolder = () => {
 				<div className="flex justify-center items-center bg-charcoal rounded-[15px] rounded-l-none p-2 pe-4 h-full w-full">
 					<div className="grid flex-1 text-left text-sm leading-tight">
 						<span className="truncate font-semibold text-white">
-							GrassMaster333
+							<Link to={"/profile/12345"}>GrassMaster333</Link>
 						</span>
 						<span className="truncate text-sm font-semibold">Online</span>
 					</div>
 
 					<DropdownMenu>
-						<DropdownMenuTrigger>
+						<DropdownMenuTrigger asChild>
 							<MenuIcon />
 						</DropdownMenuTrigger>
 						<DropdownMenuContent className="rounded-[15px] bg-charcoal p-2">
