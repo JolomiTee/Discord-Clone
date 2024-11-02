@@ -8,6 +8,7 @@ import { SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { useSidebarStateStore } from "@/hooks/base-context";
 import { MenuIcon } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const ProfileHolder = () => {
 	const toggle_c_sidebar = useSidebarStateStore(
@@ -33,7 +34,7 @@ const ProfileHolder = () => {
 				<div className="flex justify-center items-center bg-charcoal rounded-[15px] rounded-l-none p-2 pe-4 h-full w-full">
 					<div className="grid flex-1 text-left text-sm leading-tight">
 						<span className="truncate font-semibold text-white">
-							GrassMaster333
+							<Link to={"/profile/12345"}>GrassMaster333</Link>
 						</span>
 						<span className="truncate text-sm font-semibold">Online</span>
 					</div>

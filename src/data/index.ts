@@ -500,3 +500,26 @@ export const discordServers = [
   }
 ];
 
+
+export const serverSearchResults = [
+	{
+		type: "text_channel",
+		name: "grass update",
+		link: "#"
+	},
+	{
+		type: "text_channel",
+		name: "grass discussions",
+		link: "#"
+	},
+	{
+		type: "text_channel",
+		name: "grass pictures",
+		link: "#"
+	},
+	{
+		type: "text_channel",
+		name: "grass faq",
+		link: "#"
+	},
+]

@@ -29,7 +29,9 @@ const ChatBubble = ({ user, time, message, profileImg }: props) => {
 			</div>
 			<div>
 				<div className="flex items-baseline gap-4">
-					<span className="font-bold text-[#FFFFFFE5]">{user}</span>
+					<span className="font-bold text-[#FFFFFFE5] text-[14px]">
+						{user}
+					</span>
 					<span className="font-bold text-[#FFFFFF80] text-xs">
 						{time}
 					</span>
