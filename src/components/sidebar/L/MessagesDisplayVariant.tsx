@@ -11,7 +11,9 @@ import { messageList } from "@/data";
 import IconButtons from "../../common/IconButtons";
 import FriendCard from "./FriendCard";
 import DMCard from "./DMCard";
+import { useOpenSearchBar } from "@/hooks/use-open-sidebar";
 const MessagesDisplayVariant = () => {
+	const openSearchBar = useOpenSearchBar();
 	return (
 		<Tabs
 			defaultValue="messages"
@@ -44,6 +46,7 @@ const MessagesDisplayVariant = () => {
 							alt="Search"
 							sizes="size-[18px]"
 							buttonStyles="rounded-full size-[35px] p-0 bg-[#FFFFFF08] border border-solid border-[#FFFFFF0F]"
+							action={openSearchBar}
 						/>
 
 						<IconButtons

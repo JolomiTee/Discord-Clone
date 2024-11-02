@@ -3,6 +3,7 @@ import IconButtons from "../common/IconButtons";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { useLocation } from "react-router-dom";
 import { MenuItems } from "@/components/menu/MenuItems";
+import { useOpenSearchBar } from "@/hooks/use-open-sidebar";
 
 const HMenu = () => {
 	const location = useLocation();
@@ -23,7 +24,7 @@ const HMenu = () => {
 	const toggle_r_sidebar = useSidebarStateStore(
 		(state) => state.toggle_r_sidebar
 	);
-
+	const openSearchBar = useOpenSearchBar();
 	return (
 		<header className="flex justify-between items-center gap-3 h-full max-h-[50px] px-4 bg-onyx w-full flex-shrink-0">
 			<div className="flex items-center gap-3">
@@ -65,7 +66,12 @@ const HMenu = () => {
 						/>
 						<IconButtons src="threads" alt="Threads" sizes="size-7" />
 						<IconButtons src="pin" alt="Pinned" sizes="size-7" />
-						<IconButtons src="search" alt="Search" sizes="size-5" />
+						<IconButtons
+							src="search"
+							alt="Search"
+							sizes="size-5"
+							action={openSearchBar}
+						/>
 						<IconButtons
 							src="members"
 							alt="Members"

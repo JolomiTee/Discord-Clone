@@ -24,9 +24,11 @@ import IconButtons from "../../common/IconButtons";
 import { AspectRatio } from "../../ui/aspect-ratio";
 import { Separator } from "../../ui/separator";
 import { Link, useParams } from "react-router-dom";
+import { useOpenSearchBar } from "@/hooks/use-open-sidebar";
 
 const ServerDisplayVariant = () => {
 	const { id } = useParams();
+	const openSearchBar = useOpenSearchBar();
 	return (
 		<div>
 			<AspectRatio ratio={16 / 6}>
@@ -84,7 +86,11 @@ const ServerDisplayVariant = () => {
 						sizes="size-7"
 					/>
 					<IconButtons src="events" alt="Notifications" sizes="size-7" />
-					<IconButtons src="search" alt="Notifications" />
+					<IconButtons
+						src="search"
+						alt="Notifications"
+						action={openSearchBar}
+					/>
 				</div>
 
 				<Separator className="bg-[#FFFFFF26] h-0.5" />
