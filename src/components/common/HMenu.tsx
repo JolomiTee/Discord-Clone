@@ -1,6 +1,6 @@
 import { useSidebarStateStore } from "@/hooks/base-context";
-import IconButtons from "./common/IconButtons";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import IconButtons from "./IconButtons";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { useLocation } from "react-router-dom";
 
 const HMenu = () => {
