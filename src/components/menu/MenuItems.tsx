@@ -18,8 +18,10 @@ import {
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useOpenSearchBar } from "@/hooks/use-open-sidebar";
 
 export function MenuItems() {
+	const openSearchBar = useOpenSearchBar();
 	return (
 		<Dialog>
 			<DropdownMenu>
@@ -39,7 +41,7 @@ export function MenuItems() {
 						<IconButtons src="pin" alt="Pinned" sizes="size-7" />
 						Pin
 					</DropdownMenuItem>
-					<DropdownMenuItem>
+					<DropdownMenuItem onClick={openSearchBar}>
 						<IconButtons src="search" alt="Search" sizes="size-5" />
 						Search
 					</DropdownMenuItem>
