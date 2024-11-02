@@ -1,23 +1,14 @@
-import { getRandomColor } from "@/lib/utils";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
-	DropdownMenuGroup,
 	DropdownMenuItem,
-	DropdownMenuLabel,
-	DropdownMenuPortal,
-	DropdownMenuSeparator,
-	DropdownMenuShortcut,
-	DropdownMenuSub,
-	DropdownMenuSubContent,
-	DropdownMenuSubTrigger,
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { getRandomColor } from "@/lib/utils";
 
-import { Avatar, AvatarFallback, AvatarImage } from "../../ui/avatar";
-import { Link } from "react-router-dom";
-import IconButtons from "@/components/common/IconButtons";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import { Avatar, AvatarFallback, AvatarImage } from "../../ui/avatar";
 
 interface props {
 	profileImg: string;
