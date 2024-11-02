@@ -9,7 +9,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import { messageList } from "@/data";
 import IconButtons from "../../common/IconButtons";
-import FriendProfileCard from "./FriendProfileCard";
+import FriendCard from "./FriendCard";
+import DMCard from "./DMCard";
 const MessagesDisplayVariant = () => {
 	return (
 		<Tabs
@@ -70,7 +71,7 @@ const MessagesDisplayVariant = () => {
 							pinned,
 						} = message;
 						return (
-							<FriendProfileCard
+							<DMCard
 								key={i}
 								id={i}
 								user={user}
@@ -88,7 +89,30 @@ const MessagesDisplayVariant = () => {
 				value="friends"
 				className="px-3 text-[#FFFFFF99]  pt-[120px] pb-[50px]"
 			>
-				Change your friends here.
+				<div className=" grid overflow-y-auto max-h-full scrollbar-hidden">
+					{messageList.map((message, i) => {
+						const {
+							profileImg,
+							user,
+							online,
+							hasMessage,
+							messageCount,
+							pinned,
+						} = message;
+						return (
+							<FriendCard
+								key={i}
+								id={i}
+								user={user}
+								profileImg={profileImg}
+								online={online}
+								hasMessage={hasMessage}
+								messageCount={messageCount}
+								pinned={pinned}
+							/>
+						);
+					})}
+				</div>
 			</TabsContent>
 		</Tabs>
 	);
