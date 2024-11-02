@@ -4,6 +4,7 @@ import {
 	SidebarContent,
 	SidebarFooter,
 	SidebarGroup,
+	SidebarGroupLabel,
 	SidebarHeader,
 	SidebarMenu,
 	SidebarProvider,
@@ -20,6 +21,7 @@ import SidebarNavLink from "../server/SidebarNavTab";
 import SidebarServerIcon from "../server/SidebarServerIcon";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
+import ServerSearch from "../search/ServerSearch";
 
 export default function CollapsibleSidebar() {
 	const c_sidebar_state = useSidebarStateStore(
@@ -85,20 +87,52 @@ export default function CollapsibleSidebar() {
 						</SidebarGroup>
 					</SidebarHeader>
 
-					<SidebarContent className="bg-onyx scrollbar-hidden group-data-[collapsible=icon]:overflow-scroll">
-						<SidebarGroup className="gap-3">
-							<ChatBubble
-								profileImg="/touchgrasshq.png"
-								time="10:33am"
-								message="no??? to go out and enjoy the sun and touch grass"
-								user="grass enjoyer"
-							/>
-							<ChatBubble
-								profileImg="/touchgrasshq.png"
-								time="10:33am"
-								message="nuh uh grass is for losers you can't trick me"
-								user="NOT a grass enjoyer"
-							/>
+					<SidebarContent className="bg-onyx scrollbar-hidden">
+						<SidebarGroup className="px-0">
+							<SidebarGroupLabel className="text-white text-[14px] mb-2">
+								Servers
+							</SidebarGroupLabel>
+							<SidebarMenu className="gap-3 px-0  text-white">
+								<SidebarServerIcon
+									title="Planters of Grass"
+									serverIcon="/servers/midjourney.png"
+									hasNotification={true}
+									i={1}
+								/>
+								<SidebarServerIcon
+									title="Harvesters of Grass"
+									serverIcon="/servers/apex-legends.png"
+									hasNotification={true}
+									i={2}
+								/>
+							</SidebarMenu>
+						</SidebarGroup>
+						<SidebarGroup>
+							<SidebarGroupLabel className="text-white text-[14px] mb-2">
+								Channels
+							</SidebarGroupLabel>
+							<SidebarMenu className="gap-3 text-white">
+								<ServerSearch />
+							</SidebarMenu>
+						</SidebarGroup>
+						<SidebarGroup>
+							<SidebarGroupLabel className="text-white text-[14px] mb-2">
+								Chats
+							</SidebarGroupLabel>
+							<SidebarMenu className="gap-3">
+								<ChatBubble
+									profileImg="/touchgrasshq.png"
+									time="10:33am"
+									message="no??? to go out and enjoy the sun and touch grass"
+									user="grass enjoyer"
+								/>
+								<ChatBubble
+									profileImg="/touchgrasshq.png"
+									time="10:33am"
+									message="nuh uh grass is for losers you can't trick me"
+									user="NOT a grass enjoyer"
+								/>
+							</SidebarMenu>
 						</SidebarGroup>
 					</SidebarContent>
 				</Sidebar>
