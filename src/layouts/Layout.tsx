@@ -1,4 +1,4 @@
-import HMenu from "@/components/common/HMenu";
+import HMenu from "@/components/menu/HMenu";
 import { LSidebar, RSidebar } from "@/components/sidebar/Sidebars";
 import { Outlet, useLocation } from "react-router-dom";
 
