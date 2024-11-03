@@ -51,6 +51,7 @@ const SidebarProvider = React.forwardRef<
 		defaultOpen?: boolean;
 		open?: boolean;
 		onOpenChange?: (open: boolean) => void;
+		name: string;
 	}
 >(
 	(
@@ -61,6 +62,7 @@ const SidebarProvider = React.forwardRef<
 			className,
 			style,
 			children,
+			name,
 			...props
 		},
 		ref
@@ -70,22 +72,28 @@ const SidebarProvider = React.forwardRef<
 
 		// This is the internal state of the sidebar.
 		// We use openProp and setOpenProp for control from outside the component.
-		const [_open, _setOpen] = React.useState(defaultOpen);
+		const [_open, _setOpen] = React.useState(() => {
+			const cookieValue = document.cookie
+				.split("; ")
+				.find((row) => row.startsWith(`${name}:state=`))
+				?.split("=")[1];
+			return cookieValue === "true" ? true : defaultOpen;
+		});
 		const open = openProp ?? _open;
+
 		const setOpen = React.useCallback(
 			(value: boolean | ((value: boolean) => boolean)) => {
+				const openState = typeof value === "function" ? value(open) : value;
 				if (setOpenProp) {
-					return setOpenProp?.(
-						typeof value === "function" ? value(open) : value
-					);
+					setOpenProp(openState);
+				} else {
+					_setOpen(openState);
 				}
 
-				_setOpen(value);
-
 				// This sets the cookie to keep the sidebar state.
-				document.cookie = `${SIDEBAR_COOKIE_NAME}=${open}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`;
+				document.cookie = `${name}:state=${openState}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`;
 			},
-			[setOpenProp, open]
+			[setOpenProp, open, name]
 		);
 
 		// Helper to toggle the sidebar.
@@ -161,6 +169,7 @@ const SidebarProvider = React.forwardRef<
 		);
 	}
 );
+
 SidebarProvider.displayName = "SidebarProvider";
 
 const Sidebar = React.forwardRef<
