@@ -41,7 +41,9 @@ export default function SidebarNavLink({
 
 	const handleClick = () => {
 		if (label.toLowerCase() === "search") {
-			!c_sidebar_state && toggle_c_sidebar();
+			if (!c_sidebar_state) {
+				toggle_c_sidebar();
+			}
 			switchCollapsibleSidebarContext("search");
 		} else {
 			toggle_selected_tab(label.toLowerCase());

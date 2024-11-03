@@ -1,6 +1,6 @@
 const Wumpus = () => {
 	return (
-		<div className="w-full h-full flex flex-col items-center justify-center">
+		<div className="w-full h-screen flex flex-col items-center justify-center">
 			<div className="max-w-[500px]">
 				<img src="/wumpus.png" alt="Wumpus" className="mx-auto w-auto" />
 			</div>
