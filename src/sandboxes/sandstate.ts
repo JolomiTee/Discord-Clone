@@ -10,7 +10,7 @@ interface SandStateProps {
 
 export const useSandStateStore = create<SandStateProps>()((set) => ({
 	c_sidebar_state: false,
-	l_sidebar_state: false,
+	l_sidebar_state: true,
 	r_sidebar_state: false,
 
 	toggle_c_sidebar: () =>

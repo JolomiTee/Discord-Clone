@@ -10,7 +10,7 @@ import { SidebarProvider } from "./components/ui/sidebar.tsx";
 createRoot(document.getElementById("root")!).render(
 	<StrictMode>
 		<BrowserRouter>
-			<SidebarProvider name="ere-sidebar">
+			<SidebarProvider name="rediscord-sidebar">
 				<Sandbox />
 			</SidebarProvider>
 		</BrowserRouter>

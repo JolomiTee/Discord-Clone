@@ -52,6 +52,7 @@ const Sandbox = () => {
 						src="sidebar"
 						alt="sidebar"
 						action={() => toggle_r_sidebar()}
+						sizes="rotate-180 size-6"
 					/>
 				</header>
 
@@ -79,6 +80,7 @@ const Collapsible = () => {
 	return (
 		<SidebarProvider
 			name="collapsible-sidebar"
+			defaultOpen={false}
 			className="w-fit overflow-hidden max-h-dvh"
 		>
 			<ColSidebar />
@@ -101,6 +103,7 @@ const Right = () => {
 	return (
 		<SidebarProvider
 			name="right-sidebar"
+			defaultOpen={false}
 			className="w-fit overflow-hidden max-h-dvh"
 		>
 			<RightSidebar />
@@ -201,15 +204,19 @@ const ColSidebar = () => {
 
 const ChanSidebar = () => {
 	const l_sidebar_state = useSandStateStore((state) => state.l_sidebar_state);
-	const { toggleSidebar } = useSidebar();
+	const { open, toggleSidebar } = useSidebar();
 
 	useEffect(() => {
-		toggleSidebar();
-		console.log(l_sidebar_state);
-	}, [l_sidebar_state]);
+		// Only toggle if the desired state doesn't match the current open state
+		if (l_sidebar_state && !open) {
+			toggleSidebar();
+		} else if (!l_sidebar_state && open) {
+			toggleSidebar();
+		}
+	}, [l_sidebar_state, open]);
 
 	return (
-		<Sidebar collapsible="offcanvas" className="border-r bg-red-400">
+		<Sidebar className="border-r bg-red-400">
 			<SidebarHeader>
 				<SidebarMenu>
 					<SidebarMenuItem>
@@ -249,16 +256,19 @@ const ChanSidebar = () => {
 
 const RightSidebar = () => {
 	const r_sidebar_state = useSandStateStore((state) => state.r_sidebar_state);
-	const { toggleSidebar } = useSidebar();
+	const { open, toggleSidebar } = useSidebar();
 
 	useEffect(() => {
-		toggleSidebar();
-		console.log(r_sidebar_state);
-	}, [r_sidebar_state]);
+		// Only toggle if the desired state doesn't match the current open state
+		if (r_sidebar_state && !open) {
+			toggleSidebar();
+		} else if (!r_sidebar_state && open) {
+			toggleSidebar();
+		}
+	}, [r_sidebar_state, open]);
 
 	return (
 		<Sidebar
-			collapsible="offcanvas"
 			side="right"
 			className="border-l bg-green-400 h-full overflow-scroll scrollbar-hidden"
 		>
