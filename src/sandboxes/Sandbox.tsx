@@ -35,7 +35,6 @@ const Sandbox = () => {
 
 			<SidebarInset className="w-full">
 				<header className="sticky top-0 flex shrink-0 items-center justify-end gap-2 border-b bg-background px-3 py-2">
-					{/* Toggle the Collapsible */}
 					<IconButtons
 						src="sidebar"
 						alt="sidebar"
@@ -46,7 +45,6 @@ const Sandbox = () => {
 					<Separator orientation="vertical" className="mr-2 h-4" />
 					<MenuItems />
 
-					{/* toggles all sidebars */}
 					<Separator orientation="vertical" className="mr-2 h-4" />
 					<IconButtons
 						src="sidebar"
@@ -88,28 +86,6 @@ const Collapsible = () => {
 	);
 };
 
-const Channels = () => {
-	return (
-		<SidebarProvider
-			name="left-sidebar"
-			className="w-fit overflow-hidden max-h-dvh"
-		>
-			<ChanSidebar />
-		</SidebarProvider>
-	);
-};
-
-const Right = () => {
-	return (
-		<SidebarProvider
-			name="right-sidebar"
-			defaultOpen={false}
-			className="w-fit overflow-hidden max-h-dvh"
-		>
-			<RightSidebar />
-		</SidebarProvider>
-	);
-};
 
 const ColSidebar = () => {
 	const toggle_l_sidebar = useSandStateStore(
@@ -202,6 +178,28 @@ const ColSidebar = () => {
 	);
 };
 
+const Channels = () => {
+	return (
+		<SidebarProvider
+			name="left-sidebar"
+			className="w-fit overflow-hidden max-h-dvh"
+		>
+			<ChanSidebar />
+		</SidebarProvider>
+	);
+};
+
+const Right = () => {
+	return (
+		<SidebarProvider
+			name="right-sidebar"
+			defaultOpen={false}
+			className="w-fit overflow-hidden max-h-dvh"
+		>
+			<RightSidebar />
+		</SidebarProvider>
+	);
+};
 const ChanSidebar = () => {
 	const l_sidebar_state = useSandStateStore((state) => state.l_sidebar_state);
 	const { open, toggleSidebar } = useSidebar();

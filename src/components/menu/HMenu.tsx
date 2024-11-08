@@ -123,6 +123,7 @@ const HMenu = () => {
 					}}
 				/>
 			</div>
+
 			<div className="md:hidden flex items-center">
 				<MenuItems />
 			</div>

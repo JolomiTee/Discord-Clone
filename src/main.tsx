@@ -12,6 +12,7 @@ createRoot(document.getElementById("root")!).render(
 		<BrowserRouter>
 			<SidebarProvider name="rediscord-sidebar">
 				<Sandbox />
+				<App />
 			</SidebarProvider>
 		</BrowserRouter>
 		<Analytics />
