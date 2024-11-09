@@ -65,9 +65,9 @@ const Sandbox = () => {
 					</div>
 
 					{/* sidebar 3 */}
-					<Right />
 				</div>
 			</SidebarInset>
+			<Right />
 		</div>
 	);
 };
@@ -85,7 +85,6 @@ const Collapsible = () => {
 		</SidebarProvider>
 	);
 };
-
 
 const ColSidebar = () => {
 	const toggle_l_sidebar = useSandStateStore(
@@ -205,7 +204,6 @@ const ChanSidebar = () => {
 	const { open, toggleSidebar } = useSidebar();
 
 	useEffect(() => {
-		// Only toggle if the desired state doesn't match the current open state
 		if (l_sidebar_state && !open) {
 			toggleSidebar();
 		} else if (!l_sidebar_state && open) {

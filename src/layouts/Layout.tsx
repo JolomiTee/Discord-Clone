@@ -15,9 +15,9 @@ const Main = () => {
 
 				<div className="flex overflow-hidden bg-charcoal">
 					<Outlet />
-					<RSidebar />
 				</div>
 			</SidebarInset>
+			<RSidebar />
 		</>
 	);
 };

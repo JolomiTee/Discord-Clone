@@ -126,10 +126,7 @@ const ResponsiveProfileButton = () => {
 				<div className="flex gap-4">
 					<div className="grid flex-1 text-left text-sm leading-tight">
 						<span className="truncate font-semibold text-white">
-							<Link
-								to={"/profile/12345"}
-								// className="flex items-center justify-center gap-1"
-							>
+							<Link to={"/profile/12345"}>
 								GrassMaster333{" "}
 								<ExternalLink className="inline-flex size-4" />
 							</Link>
