@@ -26,7 +26,7 @@ const HMenu = () => {
 	);
 	const openSearchBar = useOpenSearchBar();
 	return (
-		<header className="flex justify-between items-center gap-3 h-full max-h-[50px] px-4 bg-onyx w-full flex-shrink-0">
+		<header className="flex justify-between items-center gap-3 h-full max-h-[50px] px-4 bg-onyx w-full sticky top-0 shrink-0 border-b bg-background py-2">
 			<div className="flex items-center gap-3">
 				<IconButtons
 					src="sidebar"
@@ -78,13 +78,12 @@ const HMenu = () => {
 							sizes="size-8"
 							action={() => {
 								if (r_sidebar_display_context !== "members") {
-									// Open the sidebar only if the context isn't "members"
 									if (!r_sidebar_state) {
-										toggle_r_sidebar(); // Open the sidebar if it's closed
+										toggle_r_sidebar();
 									}
-									switchRightSidebarContext("members"); // Set the context to "members"
+									switchRightSidebarContext("members");
 								} else {
-									toggle_r_sidebar(); // Close the sidebar if it's already showing "members"
+									toggle_r_sidebar();
 								}
 							}}
 						/>
@@ -106,19 +105,17 @@ const HMenu = () => {
 						<IconButtons src="search" alt="Search" sizes="size-5" />
 					</>
 				)}
-
 				<IconButtons
 					src="sidebar"
 					alt="Sidebar"
 					action={() => {
 						if (r_sidebar_display_context !== "channel_info") {
-							// Open the sidebar only if the context isn't "channel_info"
 							if (!r_sidebar_state) {
-								toggle_r_sidebar(); // Open the sidebar if it's closed
+								toggle_r_sidebar();
 							}
-							switchRightSidebarContext("channel_info"); // Set the context to "channel_info"
+							switchRightSidebarContext("channel_info");
 						} else {
-							toggle_r_sidebar(); // Close the sidebar if it's already showing "channel_info"
+							toggle_r_sidebar();
 						}
 					}}
 				/>

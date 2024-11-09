@@ -15,7 +15,8 @@ export default function CollapsibleSidebar() {
 	);
 	return (
 		<SidebarProvider
-			className="w-fit z-20 text-[#B5BFE7]"
+			name="collapsible-sidebar"
+			className="text-[#B5BFE7] overflow-hidden max-h-dvh max-w-fit"
 			open={c_sidebar_state}
 		>
 			{collapsible_sidebar_display_context === "search" ? (

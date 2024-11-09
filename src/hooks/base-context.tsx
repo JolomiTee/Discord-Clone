@@ -16,8 +16,8 @@ export const useSidebarStateStore = create<AppStateProps>()((set) => ({
 	c_sidebar_state: false,
 	l_sidebar_state: true,
 	r_sidebar_state: false,
-	l_sidebar_display_context: "null", // Initial state
-	r_sidebar_display_context: "null", // Initial state
+	l_sidebar_display_context: "null",
+	r_sidebar_display_context: "null",
 
 	toggle_c_sidebar: () =>
 		set((state) => ({

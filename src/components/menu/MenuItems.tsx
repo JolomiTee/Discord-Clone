@@ -19,8 +19,23 @@ import { CalendarIcon } from "lucide-react";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Link } from "react-router-dom";
 import { Separator } from "../ui/separator";
+import { useSidebarStateStore } from "@/hooks/base-context";
 
 export function MenuItems() {
+	const r_sidebar_state = useSidebarStateStore(
+		(state) => state.r_sidebar_state
+	);
+	const r_sidebar_display_context = useSidebarStateStore(
+		(state) => state.r_sidebar_display_context
+	);
+
+	const switchRightSidebarContext = useSidebarStateStore(
+		(state) => state.switchRightSidebarContext
+	);
+
+	const toggle_r_sidebar = useSidebarStateStore(
+		(state) => state.toggle_r_sidebar
+	);
 	const openSearchBar = useOpenSearchBar();
 	return (
 		<Dialog>
@@ -70,41 +85,34 @@ export function MenuItems() {
 						</DropdownMenuItem>
 					</DropdownMenuGroup>
 					<DropdownMenuGroup>
-						<DropdownMenuItem>
-							<IconButtons
-								src="members"
-								alt="Members"
-								sizes="size-8"
-								// action={() => {
-								// 	if (r_sidebar_display_context !== "members") {
-								// 		// Open the sidebar only if the context isn't "members"
-								// 		if (!r_sidebar_state) {
-								// 			toggle_r_sidebar(); // Open the sidebar if it's closed
-								// 		}
-								// 		switchRightSidebarContext("members"); // Set the context to "members"
-								// 	} else {
-								// 		toggle_r_sidebar(); // Close the sidebar if it's already showing "members"
-								// 	}
-								// }}
-							/>
+						<DropdownMenuItem
+							onClick={() => {
+								if (r_sidebar_display_context !== "members") {
+									if (!r_sidebar_state) {
+										toggle_r_sidebar();
+									}
+									switchRightSidebarContext("members");
+								} else {
+									toggle_r_sidebar();
+								}
+							}}
+						>
+							<IconButtons src="members" alt="Members" sizes="size-8" />
 							Members
 						</DropdownMenuItem>
-						<DropdownMenuItem>
-							<IconButtons
-								src="sidebar"
-								alt="Sidebar"
-								// action={() => {
-								// 	if (r_sidebar_display_context !== "channel_info") {
-								// 		// Open the sidebar only if the context isn't "channel_info"
-								// 		if (!r_sidebar_state) {
-								// 			toggle_r_sidebar(); // Open the sidebar if it's closed
-								// 		}
-								// 		switchRightSidebarContext("channel_info"); // Set the context to "channel_info"
-								// 	} else {
-								// 		toggle_r_sidebar(); // Close the sidebar if it's already showing "channel_info"
-								// 	}
-								// }}
-							/>
+						<DropdownMenuItem
+							onClick={() => {
+								if (r_sidebar_display_context !== "channel_info") {
+									if (!r_sidebar_state) {
+										toggle_r_sidebar();
+									}
+									switchRightSidebarContext("channel_info");
+								} else {
+									toggle_r_sidebar();
+								}
+							}}
+						>
+							<IconButtons src="sidebar" alt="Sidebar" />
 							Channel Info
 						</DropdownMenuItem>
 					</DropdownMenuGroup>
