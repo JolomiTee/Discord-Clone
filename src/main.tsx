@@ -11,7 +11,7 @@ createRoot(document.getElementById("root")!).render(
 	<StrictMode>
 		<BrowserRouter>
 			<SidebarProvider name="rediscord-sidebar">
-				<Sandbox />
+				{/* <Sandbox /> */}
 				<App />
 			</SidebarProvider>
 		</BrowserRouter>

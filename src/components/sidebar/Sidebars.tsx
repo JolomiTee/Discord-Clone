@@ -10,31 +10,27 @@ import {
 	SidebarContent,
 	SidebarFooter,
 	SidebarProvider,
+	useSidebar,
 } from "@/components/ui/sidebar";
 import FooterCard from "./R/Members/FooterCard";
 import MemberList from "./R/Members/MemberList";
+import { useEffect } from "react";
 
 export const LSidebar = () => {
 	const l_sidebar_display_context = useSidebarStateStore(
 		(state) => state.l_sidebar_display_context
 	);
-	const l_sidebar_state = useSidebarStateStore(
-		(state) => state.l_sidebar_state
-	);
 
 	return (
-		<SidebarProvider open={l_sidebar_state} className="w-fit">
-			<Sidebar id="lsidebar">
-				<SidebarContent id="sidebar-content">
-					<section className="bg-carbon relative text-[#FFFFFF99] h-full">
-						{l_sidebar_display_context === "server" ? (
-							<ServerDisplayVariant />
-						) : (
-							<MessagesDisplayVariant />
-						)}
-					</section>
-				</SidebarContent>
-			</Sidebar>
+		<SidebarProvider
+			name="left-sidebar"
+			className="w-fit overflow-hidden max-h-dvh"
+		>
+			{l_sidebar_display_context === "server" ? (
+				<ServerDisplayVariant />
+			) : (
+				<MessagesDisplayVariant />
+			)}
 		</SidebarProvider>
 	);
 };
@@ -48,7 +44,11 @@ export const RSidebar = () => {
 	);
 
 	return (
-		<SidebarProvider open={r_sidebar_state} className="w-fit">
+		<SidebarProvider
+			name="right-sidebar"
+			defaultOpen={false}
+			className="w-fit overflow-hidden max-h-dvh"
+		>
 			<Sidebar id="rsidebar" side="right">
 				<SidebarContent
 					id="sidebar-content"
