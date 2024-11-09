@@ -1,11 +1,11 @@
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import { formatNumber } from "@/lib/utils";
-import { Link } from "react-router-dom";
 import {
 	useCollapsibleSidebarStore,
 	useSidebarStateStore,
 } from "@/hooks/base-context";
+import { formatNumber } from "@/lib/utils";
+import { Link } from "react-router-dom";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 interface DiscordServerProps {
 	name: string;
 	id: number;

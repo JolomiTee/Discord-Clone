@@ -17,10 +17,10 @@ export const getRandomColor = () => {
 
 export function formatNumber(value: number): string {
   if (value >= 1000000) {
-    return (value / 1000000).toFixed(1) + 'M';  // Millions
+    return (value / 1000000).toFixed(1) + 'M';
   } else if (value >= 1000) {
-    return (value / 1000).toFixed(1) + 'K';  // Thousands
+    return (value / 1000).toFixed(1) + 'K';
   } else {
-    return value.toString();  // Less than 1000, return as is
+    return value.toString();
   }
 }
