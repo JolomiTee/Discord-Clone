@@ -1,20 +1,13 @@
 import {
 	Dialog,
 	DialogContent,
-	DialogDescription,
 	DialogHeader,
-	DialogTitle,
 	DialogTrigger,
 } from "@/components/ui/dialog";
-import { SidebarMenuButton, SidebarMenuItem } from "../ui/sidebar";
-import { Avatar, AvatarImage } from "../ui/avatar";
+import { serverList, voiceChannels } from "@/data";
 import { useCollapsibleSidebarStore } from "@/hooks/base-context";
-import { Input } from "../ui/input";
-import { Button } from "../ui/button";
 import { ChevronDown, Filter, Search } from "lucide-react";
-import SidebarServerIcon from "../server/SidebarServerIcon";
-import { Label } from "../ui/label";
-import ServerSearch from "./ServerSearch";
+import { Link } from "react-router-dom";
 import ChatBubble from "../common/ChatBubble";
 import {
 	Accordion,
@@ -22,8 +15,11 @@ import {
 	AccordionItem,
 	AccordionTrigger,
 } from "../ui/accordion";
-import { voiceChannels } from "@/data";
-import { Link } from "react-router-dom";
+import { Avatar, AvatarImage } from "../ui/avatar";
+import { Button } from "../ui/button";
+import { Input } from "../ui/input";
+import { SidebarMenuButton, SidebarMenuItem } from "../ui/sidebar";
+import SearchResultServerIcon from "./result_ui/SearchResultServerIcon";
 
 const MobileSearchModal = () => {
 	const selected_tab = useCollapsibleSidebarStore(
@@ -59,7 +55,7 @@ const MobileSearchModal = () => {
 				</SidebarMenuItem>
 			</DialogTrigger>
 
-			<DialogContent className="rounded-[15px] w-[90%] sm:rounded-[15px] min-h-[50dvh] overflow-hidden bg-onyx text-[#B5BFE7] px-5">
+			<DialogContent className="rounded-[15px] w-[90%] sm:rounded-[15px] min-h-[50dvh] max-h-[90dvh] scrollbar-hidden bg-onyx text-[#B5BFE7] px-5">
 				<DialogHeader className="gap-2">
 					<div className="flex flex-row items-center justify-center h-fit gap-3">
 						<div className="py-0 flex flex-row items-center gap-1 relative">
@@ -98,7 +94,12 @@ const MobileSearchModal = () => {
 				</DialogHeader>
 
 				{/* Search Results */}
-				<div className="h-[50dvh]">
+				<div
+					className="scrollbar-hidden h-full"
+					style={{
+						maxHeight: "calc(90dvh - 200px)",
+					}}
+				>
 					<Accordion
 						type="multiple"
 						defaultValue={["servers", "channels", "chats"]}
@@ -109,19 +110,19 @@ const MobileSearchModal = () => {
 							<AccordionTrigger className="pt-0 ">
 								SERVERS
 							</AccordionTrigger>
-							<AccordionContent className="px-3 flex flex-col gap-3">
-								<SidebarServerIcon
-									title="Planters of Grass"
-									serverIcon="/servers/midjourney.png"
-									hasNotification={true}
-									i={1}
-								/>
-								<SidebarServerIcon
-									title="Harvesters of Grass"
-									serverIcon="/servers/apex-legends.png"
-									hasNotification={true}
-									i={2}
-								/>
+							<AccordionContent className="pe-3 flex flex-col gap-3">
+								{serverList.map((item, i) => {
+									const { title, serverIcon, hasNotification } = item;
+									return (
+										<SearchResultServerIcon
+											key={i}
+											title={title}
+											serverIcon={serverIcon}
+											hasNotification={hasNotification}
+											i={i}
+										/>
+									);
+								})}
 							</AccordionContent>
 						</AccordionItem>
 
@@ -154,42 +155,17 @@ const MobileSearchModal = () => {
 						<AccordionItem value="chats" className="border-none">
 							<AccordionTrigger className="pt-0">CHATS</AccordionTrigger>
 							<AccordionContent className="px-3 flex flex-col gap-3">
-								<ChatBubble
-									profileImg="/touchgrasshq.png"
-									time="10:33am"
-									message="no??? to go out and enjoy the sun and touch grass"
-									user="grass enjoyer"
-								/>
-								<ChatBubble
-									profileImg="/touchgrasshq.png"
-									time="10:33am"
-									message="nuh uh grass is for losers you can't trick me"
-									user="NOT a grass enjoyer"
-								/>
-								<ChatBubble
-									profileImg="/touchgrasshq.png"
-									time="10:33am"
-									message="nuh uh grass is for losers you can't trick me"
-									user="NOT a grass enjoyer"
-								/>
-								<ChatBubble
-									profileImg="/touchgrasshq.png"
-									time="10:33am"
-									message="nuh uh grass is for losers you can't trick me"
-									user="NOT a grass enjoyer"
-								/>
-								<ChatBubble
-									profileImg="/touchgrasshq.png"
-									time="10:33am"
-									message="nuh uh grass is for losers you can't trick me"
-									user="NOT a grass enjoyer"
-								/>
-								<ChatBubble
-									profileImg="/touchgrasshq.png"
-									time="10:33am"
-									message="nuh uh grass is for losers you can't trick me"
-									user="NOT a grass enjoyer"
-								/>
+								{Array.from([1, 2, 3, 4, 5]).map((_, i) => {
+									return (
+										<ChatBubble
+											key={i}
+											profileImg="/touchgrasshq.png"
+											time="10:33am"
+											message="no??? to go out and enjoy the sun and touch grass"
+											user="grass enjoyer"
+										/>
+									);
+								})}
 							</AccordionContent>
 						</AccordionItem>
 					</Accordion>
