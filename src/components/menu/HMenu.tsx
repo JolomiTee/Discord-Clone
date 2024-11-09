@@ -1,7 +1,9 @@
 import { useSidebarStateStore } from "@/hooks/base-context";
-import IconButtons from "./common/IconButtons";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import IconButtons from "../common/IconButtons";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { useLocation } from "react-router-dom";
+import { MenuItems } from "@/components/menu/MenuItems";
+import { useOpenSearchBar } from "@/hooks/use-open-sidebar";
 
 const HMenu = () => {
 	const location = useLocation();
@@ -22,9 +24,9 @@ const HMenu = () => {
 	const toggle_r_sidebar = useSidebarStateStore(
 		(state) => state.toggle_r_sidebar
 	);
-
+	const openSearchBar = useOpenSearchBar();
 	return (
-		<header className="flex justify-between items-center gap-3 h-full max-h-[50px] px-4 bg-onyx w-full flex-shrink-0">
+		<header className="flex justify-between items-center gap-3 h-full max-h-[50px] px-4 bg-onyx w-full sticky top-0 shrink-0 border-b bg-background py-2">
 			<div className="flex items-center gap-3">
 				<IconButtons
 					src="sidebar"
@@ -54,7 +56,7 @@ const HMenu = () => {
 				</div>
 			</div>
 
-			<div className="flex items-center gap-3">
+			<div className="items-center gap-3 hidden md:flex">
 				{location.pathname.includes("@channel") ? (
 					<>
 						<IconButtons
@@ -64,20 +66,24 @@ const HMenu = () => {
 						/>
 						<IconButtons src="threads" alt="Threads" sizes="size-7" />
 						<IconButtons src="pin" alt="Pinned" sizes="size-7" />
-						<IconButtons src="search" alt="Search" sizes="size-5" />
+						<IconButtons
+							src="search"
+							alt="Search"
+							sizes="size-5"
+							action={openSearchBar}
+						/>
 						<IconButtons
 							src="members"
 							alt="Members"
 							sizes="size-8"
 							action={() => {
 								if (r_sidebar_display_context !== "members") {
-									// Open the sidebar only if the context isn't "members"
 									if (!r_sidebar_state) {
-										toggle_r_sidebar(); // Open the sidebar if it's closed
+										toggle_r_sidebar();
 									}
-									switchRightSidebarContext("members"); // Set the context to "members"
+									switchRightSidebarContext("members");
 								} else {
-									toggle_r_sidebar(); // Close the sidebar if it's already showing "members"
+									toggle_r_sidebar();
 								}
 							}}
 						/>
@@ -99,22 +105,24 @@ const HMenu = () => {
 						<IconButtons src="search" alt="Search" sizes="size-5" />
 					</>
 				)}
-
 				<IconButtons
 					src="sidebar"
 					alt="Sidebar"
 					action={() => {
 						if (r_sidebar_display_context !== "channel_info") {
-							// Open the sidebar only if the context isn't "channel_info"
 							if (!r_sidebar_state) {
-								toggle_r_sidebar(); // Open the sidebar if it's closed
+								toggle_r_sidebar();
 							}
-							switchRightSidebarContext("channel_info"); // Set the context to "channel_info"
+							switchRightSidebarContext("channel_info");
 						} else {
-							toggle_r_sidebar(); // Close the sidebar if it's already showing "channel_info"
+							toggle_r_sidebar();
 						}
 					}}
 				/>
+				;
+			</div>
+			<div className="md:hidden flex items-center">
+				<MenuItems />
 			</div>
 		</header>
 	);

@@ -4,11 +4,14 @@ import ChannelsLayout from "./layouts/Channels";
 import Main from "./layouts/Layout";
 import MessagesLayout from "./layouts/Messages";
 import Wumpus from "./layouts/Wumpus";
+import Help from "./pages/Help";
+import Inbox from "./pages/Inbox";
+import Profile from "./pages/Profile";
 import Servers from "./pages/Servers";
 
 function App() {
 	return (
-		<div className="flex relative w-screen h-screen overflow-hidden bg-charcoal">
+		<div className="w-full flex overflow-hidden max-h-dvh font-open-sans">
 			<CollapsibleSidebar />
 
 			<Routes>
@@ -27,6 +30,9 @@ function App() {
 				</Route>
 
 				<Route path="/servers" element={<Servers />} />
+				<Route path="/inbox" element={<Inbox />} />
+				<Route path="/help" element={<Help />} />
+				<Route path="/profile/:id" element={<Profile />} />
 			</Routes>
 		</div>
 	);

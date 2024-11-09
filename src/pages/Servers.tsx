@@ -49,7 +49,7 @@ const Servers = () => {
 
 				<TabsContent
 					value="myservers"
-					className="grid grid-cols-4 gap-x-4 gap-y-6 p-3"
+					className="grid grid-cols-3 gap-x-4 gap-y-10 p-3"
 				>
 					{discordServers.map((servers, i) => {
 						const { name, online, members, lastSeen, server_img } =
@@ -58,6 +58,7 @@ const Servers = () => {
 						return (
 							<ServerCard
 								key={i}
+								id={i}
 								name={name}
 								online={online}
 								members={members}

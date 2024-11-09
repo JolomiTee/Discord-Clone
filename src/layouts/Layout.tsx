@@ -1,26 +1,24 @@
-import HMenu from "@/components/HMenu";
+import HMenu from "@/components/menu/HMenu";
 import { LSidebar, RSidebar } from "@/components/sidebar/Sidebars";
+import { SidebarInset } from "@/components/ui/sidebar";
 import { Outlet, useLocation } from "react-router-dom";
 
 const Main = () => {
 	const location = useLocation();
 	return (
-		<div className="flex relative w-screen h-screen overflow-hidden bg-charcoal">
+		<>
 			<LSidebar />
 
-			<div className="bg-charcoal w-full h-screen font-open-sans overflow-hidden flex flex-col">
+			<SidebarInset className="w-full">
 				{(location.pathname.includes("@me/dm") ||
 					location.pathname.includes("/@channel")) && <HMenu />}
-				<div className="flex-grow flex overflow-hidden ">
-					<div className="flex-grow flex overflow-hidden">
-						<div className="flex-grow overflow-auto scrollbar-hidden">
-							<Outlet />
-						</div>
-						<RSidebar />
-					</div>
+
+				<div className="flex overflow-hidden bg-charcoal">
+					<Outlet />
 				</div>
-			</div>
-		</div>
+			</SidebarInset>
+			<RSidebar />
+		</>
 	);
 };
 
