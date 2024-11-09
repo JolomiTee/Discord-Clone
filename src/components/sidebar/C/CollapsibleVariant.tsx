@@ -6,6 +6,7 @@ import {
 	SidebarGroup,
 	SidebarHeader,
 	SidebarMenu,
+	useSidebar,
 } from "@/components/ui/sidebar";
 import { serverList } from "@/data";
 import ProfileHolder from "../../server/ProfileHolder";
@@ -13,16 +14,20 @@ import SidebarNavLink from "../../server/SidebarNavTab";
 import SidebarServerIcon from "../../server/SidebarServerIcon";
 
 const CollapsibleVariant = () => {
+	const { isMobile } = useSidebar();
 	return (
-		<Sidebar id="sidebar" collapsible="icon" className="bg-transparent">
-			<SidebarHeader id="sidebar_header" className="bg-onyx p-0 pt-2">
+		<Sidebar
+			collapsible={!isMobile ? "icon" : "none"}
+			className={`bg-transparent border-none ${isMobile ? "w-[60px]" : ""}`}
+		>
+			<SidebarHeader className="bg-onyx p-0 md:pt-1">
 				<SidebarGroup className="p-0">
 					<SidebarMenu className="gap-0">
 						<SidebarNavLink to="#" icon="search" label="Search" />
 
 						<SidebarNavLink to="/@me" icon="messages" label="Messages" />
 
-						<Separator className="group-data-[collapsible=icon]:w-[70%] group-data-[collapsible=icon]:mx-auto rounded-full bg-charcoal h-1 w-[52px] my-2 ms-3" />
+						<Separator className="lg:group-data-[collapsible=icon]:w-[70%] group-data-[collapsible=icon]:mx-auto rounded-full bg-charcoal h-1 md:w-[52px] my-2 md:ms-3" />
 
 						<SidebarNavLink
 							to="/servers"
@@ -52,7 +57,7 @@ const CollapsibleVariant = () => {
 				</SidebarGroup>
 			</SidebarContent>
 
-			<SidebarFooter className="bg-onyx p-0 pb-5">
+			<SidebarFooter className="bg-onyx p-0 pb-3">
 				<SidebarMenu>
 					<SidebarNavLink to="/inbox" icon="inbox" label="Inbox" />
 

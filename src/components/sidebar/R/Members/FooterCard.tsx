@@ -29,7 +29,7 @@ const FooterCard = () => {
 					} rounded-full w-4 h-4 border-[3px] border-solid border-onyx`}
 				></div>
 			</div>
-			<span className={"font-bold text-sm"}>Juxtopposed</span>
+			<span className={"font-bold text-sm"}>Grassmaster333</span>
 		</div>
 	);
 };

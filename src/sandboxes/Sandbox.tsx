@@ -35,23 +35,25 @@ const Sandbox = () => {
 
 			<SidebarInset className="w-full">
 				<header className="sticky top-0 flex shrink-0 items-center justify-end gap-2 border-b bg-background px-3 py-2">
-					{/* Toggle the Collapsible */}
 					<IconButtons
 						src="sidebar"
 						alt="sidebar"
-						action={() => toggle_l_sidebar()}
+						action={() => {
+							toggle_l_sidebar();
+						}}
 					/>
 					<Separator orientation="vertical" className="mr-2 h-4" />
 					<button>Ch</button>
 					<Separator orientation="vertical" className="mr-2 h-4" />
 					<MenuItems />
 
-					{/* toggles all sidebars */}
 					<Separator orientation="vertical" className="mr-2 h-4" />
 					<IconButtons
 						src="sidebar"
 						alt="sidebar"
-						action={() => toggle_r_sidebar()}
+						action={() => {
+							toggle_r_sidebar();
+						}}
 						sizes="rotate-180 size-6"
 					/>
 				</header>
@@ -67,9 +69,9 @@ const Sandbox = () => {
 					</div>
 
 					{/* sidebar 3 */}
-					<Right />
 				</div>
 			</SidebarInset>
+			<Right />
 		</div>
 	);
 };
@@ -88,29 +90,6 @@ const Collapsible = () => {
 	);
 };
 
-const Channels = () => {
-	return (
-		<SidebarProvider
-			name="left-sidebar"
-			className="w-fit overflow-hidden max-h-dvh"
-		>
-			<ChanSidebar />
-		</SidebarProvider>
-	);
-};
-
-const Right = () => {
-	return (
-		<SidebarProvider
-			name="right-sidebar"
-			defaultOpen={false}
-			className="w-fit overflow-hidden max-h-dvh"
-		>
-			<RightSidebar />
-		</SidebarProvider>
-	);
-};
-
 const ColSidebar = () => {
 	const toggle_l_sidebar = useSandStateStore(
 		(state) => state.toggle_l_sidebar
@@ -122,7 +101,13 @@ const ColSidebar = () => {
 				<Sidebar collapsible="icon" className="border-r bg-blue-600 z-50">
 					<SidebarHeader>
 						{/* <SidebarTrigger className="-ml-1" /> */}
-						<Button onClick={() => toggleSidebar()}>Toggle</Button>
+						<Button
+							onClick={() => {
+								toggleSidebar();
+							}}
+						>
+							Toggle
+						</Button>
 						<SidebarMenu>
 							<SidebarMenuItem>
 								<SidebarMenuButton
@@ -190,7 +175,9 @@ const ColSidebar = () => {
 					<SidebarContent className="scrollbar-hidden p-4 ">
 						{Array.from({ length: 20 }).map((_, index) => (
 							<div
-								onClick={() => toggle_l_sidebar()}
+								onClick={() => {
+									toggle_l_sidebar();
+								}}
 								key={index}
 								className="aspect-video h-12 w-full bg-red-400 rounded-lg bg-muted/50"
 							/>
@@ -202,12 +189,33 @@ const ColSidebar = () => {
 	);
 };
 
+const Channels = () => {
+	return (
+		<SidebarProvider
+			name="left-sidebar"
+			className="w-fit overflow-hidden max-h-dvh"
+		>
+			<ChanSidebar />
+		</SidebarProvider>
+	);
+};
+
+const Right = () => {
+	return (
+		<SidebarProvider
+			name="right-sidebar"
+			defaultOpen={false}
+			className="w-fit overflow-hidden max-h-dvh"
+		>
+			<RightSidebar />
+		</SidebarProvider>
+	);
+};
 const ChanSidebar = () => {
 	const l_sidebar_state = useSandStateStore((state) => state.l_sidebar_state);
 	const { open, toggleSidebar } = useSidebar();
 
 	useEffect(() => {
-		// Only toggle if the desired state doesn't match the current open state
 		if (l_sidebar_state && !open) {
 			toggleSidebar();
 		} else if (!l_sidebar_state && open) {
