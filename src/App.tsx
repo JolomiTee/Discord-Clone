@@ -12,13 +12,7 @@ import Profile from "./pages/Profile";
 
 function App() {
 	return (
-		<div className="flex relative w-full max-h-dvh overflow-hidden bg-charcoal">
-			<Link
-				to={"help"}
-				className="absolute z-[100] bottom-2 right-2 rounded-full size-8 bg-onyx flex justify-center items-center text-white"
-			>
-				<QuestionMarkIcon />
-			</Link>
+		<div className="w-full flex overflow-hidden max-h-dvh font-open-sans">
 			<CollapsibleSidebar />
 
 			<Routes>

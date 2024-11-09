@@ -36,6 +36,18 @@ export const LSidebar = () => {
 };
 
 export const RSidebar = () => {
+	return (
+		<SidebarProvider
+			name="right-sidebar"
+			defaultOpen={false}
+			className="text-[#B5BFE7] overflow-hidden max-h-dvh max-w-fit"
+		>
+			<RSidebarContexts />
+		</SidebarProvider>
+	);
+};
+
+const RSidebarContexts = () => {
 	const r_sidebar_display_context = useSidebarStateStore(
 		(state) => state.r_sidebar_display_context
 	);
@@ -43,33 +55,37 @@ export const RSidebar = () => {
 		(state) => state.r_sidebar_state
 	);
 
-	return (
-		<SidebarProvider
-			name="right-sidebar"
-			defaultOpen={false}
-			className="w-fit overflow-hidden max-h-dvh"
-		>
-			<Sidebar id="rsidebar" side="right">
-				<SidebarContent
-					id="sidebar-content"
-					className="bg-carbon relative text-white"
-				>
-					<section className="bg-carbon relative text-white  overflow-y-auto max-h-full scrollbar-hidden">
-						{r_sidebar_display_context === "channel_info" ? (
-							<ChInfoDisplayVariant />
-						) : r_sidebar_display_context === "members" ? (
-							<Members />
-						) : null}
-					</section>
-				</SidebarContent>
+	const { open, toggleSidebar } = useSidebar();
+	useEffect(() => {
+		// Only toggle if the desired state doesn't match the current open state
+		if (r_sidebar_state && !open) {
+			toggleSidebar();
+		} else if (!r_sidebar_state && open) {
+			toggleSidebar();
+		}
+	}, [r_sidebar_state, open]);
 
-				{r_sidebar_display_context === "members" && (
-					<SidebarFooter className="border-t-2 border-t-white/[8%] border-dashed bg-carbon relative text-white p-3 pe-0 ">
-						<MemberList />
-						<FooterCard />
-					</SidebarFooter>
-				)}
-			</Sidebar>
-		</SidebarProvider>
+	return (
+		<Sidebar side="right" className=" border-none">
+			<SidebarContent
+				id="sidebar-content"
+				className="bg-carbon relative text-white"
+			>
+				<section className="bg-carbon relative text-white  overflow-y-auto max-h-full scrollbar-hidden">
+					{r_sidebar_display_context === "channel_info" ? (
+						<ChInfoDisplayVariant />
+					) : r_sidebar_display_context === "members" ? (
+						<Members />
+					) : null}
+				</section>
+			</SidebarContent>
+
+			{r_sidebar_display_context === "members" && (
+				<SidebarFooter className="border-t-2 border-t-white/[8%] border-dashed bg-carbon relative text-white p-3 pe-0 ">
+					<MemberList />
+					<FooterCard />
+				</SidebarFooter>
+			)}
+		</Sidebar>
 	);
 };
