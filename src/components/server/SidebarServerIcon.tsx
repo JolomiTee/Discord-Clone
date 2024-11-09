@@ -30,8 +30,12 @@ const SidebarServerIcon = ({
 	const switchLeftSidebarContext = useSidebarStateStore(
 		(state) => state.switchLeftSidebarContext
 	);
+	const toggle_l_sidebar = useSidebarStateStore(
+		(state) => state.toggle_l_sidebar
+	);
 
 	const handleClick = () => {
+		toggle_l_sidebar();
 		toggle_selected_tab(null);
 		toggle_selected_server(i);
 		switchLeftSidebarContext("server");
@@ -42,7 +46,7 @@ const SidebarServerIcon = ({
 			className="group/item group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center "
 		>
 			<div
-				className={`absolute top-1/2 -translate-y-1/2 -left-[1px] w-2 rounded-full transition-all duration-100 ${
+				className={`absolute top-1/2 -translate-y-1/2 -left-[1px] w-1.5 md:w-2 rounded-full transition-all duration-100 ${
 					selectedServer === i
 						? "h-10 bg-discord-blue"
 						: hasNotification
@@ -57,10 +61,10 @@ const SidebarServerIcon = ({
 			<Link to={`/@server/${String(i)}`} onClick={handleClick}>
 				<SidebarMenuButton
 					tooltip={title}
-					className="gap-3 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden p-0 ps-3"
+					className="gap-3 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden p-0 ps-2 md:ps-3"
 				>
 					<Avatar
-						className={`size-[50px] ${
+						className={`size-[45px] ${
 							selectedServer === i
 								? "rounded-[12px]"
 								: "group-hover/item:rounded-[12px]"

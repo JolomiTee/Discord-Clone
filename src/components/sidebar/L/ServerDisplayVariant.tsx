@@ -45,7 +45,7 @@ const ServerDisplayVariant = () => {
 		}
 	}, [l_sidebar_state, open]);
 	return (
-		<Sidebar>
+		<Sidebar className=" border-none">
 			<SidebarContent>
 				<section className="bg-carbon relative text-[#FFFFFF99] h-full">
 					<div>
