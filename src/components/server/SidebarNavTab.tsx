@@ -1,10 +1,10 @@
-import { NavLink } from "react-router-dom";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
-import { SidebarMenuItem, SidebarMenuButton } from "@/components/ui/sidebar";
+import { SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar";
 import {
 	useCollapsibleSidebarStore,
 	useSidebarStateStore,
 } from "@/hooks/base-context";
+import { NavLink } from "react-router-dom";
 
 interface SidebarNavLinkProps {
 	to: string;

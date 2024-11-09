@@ -1,5 +1,4 @@
-import { QuestionMarkIcon } from "@radix-ui/react-icons";
-import { Link, Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import CollapsibleSidebar from "./components/sidebar/CollapsibleSidebar";
 import ChannelsLayout from "./layouts/Channels";
 import Main from "./layouts/Layout";
@@ -7,8 +6,8 @@ import MessagesLayout from "./layouts/Messages";
 import Wumpus from "./layouts/Wumpus";
 import Help from "./pages/Help";
 import Inbox from "./pages/Inbox";
-import Servers from "./pages/Servers";
 import Profile from "./pages/Profile";
+import Servers from "./pages/Servers";
 
 function App() {
 	return (

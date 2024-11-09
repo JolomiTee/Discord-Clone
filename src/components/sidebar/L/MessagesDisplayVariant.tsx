@@ -7,14 +7,14 @@ import {
 } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-import { messageList } from "@/data";
-import IconButtons from "../../common/IconButtons";
-import FriendCard from "./FriendCard";
-import DMCard from "./DMCard";
-import { useOpenSearchBar } from "@/hooks/use-open-sidebar";
 import { Sidebar, SidebarContent, useSidebar } from "@/components/ui/sidebar";
+import { messageList } from "@/data";
 import { useSidebarStateStore } from "@/hooks/base-context";
+import { useOpenSearchBar } from "@/hooks/use-open-sidebar";
 import { useEffect } from "react";
+import IconButtons from "../../common/IconButtons";
+import DMCard from "./DMCard";
+import FriendCard from "./FriendCard";
 const MessagesDisplayVariant = () => {
 	const openSearchBar = useOpenSearchBar();
 	const l_sidebar_state = useSidebarStateStore(

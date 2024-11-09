@@ -12,9 +12,9 @@ import {
 	SidebarProvider,
 	useSidebar,
 } from "@/components/ui/sidebar";
+import { useEffect } from "react";
 import FooterCard from "./R/Members/FooterCard";
 import MemberList from "./R/Members/MemberList";
-import { useEffect } from "react";
 
 export const LSidebar = () => {
 	const l_sidebar_display_context = useSidebarStateStore(

@@ -12,7 +12,10 @@ import {
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Sidebar, SidebarContent, useSidebar } from "@/components/ui/sidebar";
 import { textChannels, voiceChannels } from "@/data";
+import { useSidebarStateStore } from "@/hooks/base-context";
+import { useOpenSearchBar } from "@/hooks/use-open-sidebar";
 import {
 	Archive,
 	Ellipsis,
@@ -20,14 +23,11 @@ import {
 	MessageCircleWarning,
 	Pin,
 } from "lucide-react";
+import { useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 import IconButtons from "../../common/IconButtons";
 import { AspectRatio } from "../../ui/aspect-ratio";
 import { Separator } from "../../ui/separator";
-import { Link, useParams } from "react-router-dom";
-import { useOpenSearchBar } from "@/hooks/use-open-sidebar";
-import { Sidebar, SidebarContent, useSidebar } from "@/components/ui/sidebar";
-import { useSidebarStateStore } from "@/hooks/base-context";
-import { useEffect } from "react";
 
 const ServerDisplayVariant = () => {
 	const { id } = useParams();
