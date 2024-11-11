@@ -1,5 +1,4 @@
 import IconButtons from "@/components/common/IconButtons";
-import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import {
 	DropdownMenu,
@@ -17,9 +16,9 @@ import { MobileIcon } from "@radix-ui/react-icons";
 import { CalendarIcon, MoreHorizontal } from "lucide-react";
 
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { useSidebarStateStore } from "@/hooks/base-context";
 import { Link } from "react-router-dom";
 import { Separator } from "../ui/separator";
-import { useSidebarStateStore } from "@/hooks/base-context";
 
 export function MenuItems() {
 	const r_sidebar_state = useSidebarStateStore(
