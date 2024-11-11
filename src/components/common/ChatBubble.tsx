@@ -10,10 +10,10 @@ interface props {
 const ChatBubble = ({ user, time, message, profileImg }: props) => {
 	return (
 		<div className="flex items-start justify-start gap-2 md:gap-3 bg-transparent shadow-none">
-			<Avatar className="flex items-center justify-center size-[35px]">
+			<Avatar className="flex items-center justify-center size-[35px] md:size-[40px]">
 				<AvatarImage
 					src={profileImg}
-					className="size-[40px] lg:size-[30px] rounded-full"
+					className="size-[40px] lg:size-[50px] rounded-full"
 				/>
 				<AvatarFallback
 					style={{ backgroundColor: getRandomColor() }}
