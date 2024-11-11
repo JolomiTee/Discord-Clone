@@ -43,7 +43,7 @@ const MobileSearchModal = () => {
 						tooltip={"search"}
 						className="w-full gap-3 group-data-[collapsible=icon]:ps-0 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden p-0 ps-1.5"
 					>
-						<Avatar className="size-[50px] flex justify-center items-center">
+						<Avatar className="size-[45px] flex justify-center items-center">
 							<AvatarImage
 								src={`/icons/search.svg`}
 								alt={`search icon`}

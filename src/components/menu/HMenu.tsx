@@ -26,37 +26,38 @@ const HMenu = () => {
 	);
 	const openSearchBar = useOpenSearchBar();
 	return (
-		<header className="flex justify-between items-center gap-3 h-full max-h-[50px] px-4 bg-onyx w-full sticky top-0 shrink-0 border-b bg-background py-2">
-			<div className="flex items-center gap-3">
+		<header className="flex justify-between items-center gap-3 h-full max-h-[50px] px-2 md:px-3 lg:px-4 bg-onyx w-full sticky top-0 shrink-0 bg-background py-2">
+			<div className="flex items-center gap-2">
 				<IconButtons
 					src="sidebar"
 					alt="Sidebar"
 					action={toggle_l_sidebar}
 				/>
 
-				<div className="flex items-center justify-start gap-3 bg-transparent shadow-none">
-					<div className="relative">
-						<Avatar className="flex items-center justify-center">
-							<AvatarImage
-								src={"/silly.png"}
-								className="size-8  rounded-full"
+				<div className="flex items-center justify-start gap-2 md:gap-3 bg-transparent shadow-none w-fit">
+					<Avatar className="flex items-center justify-center">
+						<AvatarImage
+							src={"/silly.png"}
+							className="size-7  rounded-full"
+						/>
+						<AvatarFallback className="flex items-center justify-center">
+							<img
+								src="/icons/discord.svg"
+								className="size-[35px]  rounded-full"
 							/>
-							<AvatarFallback className="flex items-center justify-center">
-								<img
-									src="/icons/discord.svg"
-									className="size-[35px]  rounded-full"
-								/>
-							</AvatarFallback>
-						</Avatar>
+						</AvatarFallback>
 						<div
-							className={`absolute -right-1 bottom-0 bg-emerald rounded-full size-4 border-[3px] border-solid border-onyx`}
+							className={`absolute right-1 bottom-0.5 bg-emerald rounded-full size-3 lg:size-4 border-[3px] border-solid border-onyx`}
 						></div>
-					</div>
-					<span className="font-bold text-[#FFFFFF99]">Shepard</span>
+					</Avatar>
+					{/* Acceptable name or nickname should be less than 30 characters */}
+					<p className="font-bold text-[#FFFFFF99] text-[14px] max-w-[100px] sm:max-w-[200px] lg:max-w-[300px] truncate">
+						Big time forward ever backward never
+					</p>
 				</div>
 			</div>
 
-			<div className="items-center gap-3 hidden md:flex">
+			<div className="items-center gap-3 hidden lg:flex w-full justify-end">
 				{location.pathname.includes("@channel") ? (
 					<>
 						<IconButtons
@@ -120,7 +121,7 @@ const HMenu = () => {
 					}}
 				/>
 			</div>
-			<div className="md:hidden flex items-center">
+			<div className="lg:hidden flex items-center">
 				<MenuItems />
 			</div>
 		</header>

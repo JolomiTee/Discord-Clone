@@ -3,7 +3,7 @@ import IconButtons from "./IconButtons";
 
 const Keyboard = () => {
 	return (
-		<div className="mb-4 mt-auto m-4 bg-[#FFFFFF0D] rounded-full py-2 px-4 flex items-center gap-4">
+		<div className="bg-[#FFFFFF0D] rounded-full py-1 px-2 flex items-center gap-1 sticky bottom-0 bg-charcoal ring-1 ring-onyx shadow">
 			<IconButtons src="add" alt="Add attachment" sizes="size-10" />
 
 			<Textarea
