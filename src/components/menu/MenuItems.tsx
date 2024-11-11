@@ -14,7 +14,7 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useOpenSearchBar } from "@/hooks/use-open-sidebar";
 import { MobileIcon } from "@radix-ui/react-icons";
-import { CalendarIcon } from "lucide-react";
+import { CalendarIcon, MoreHorizontal } from "lucide-react";
 
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Link } from "react-router-dom";
@@ -41,9 +41,7 @@ export function MenuItems() {
 		<Dialog>
 			<DropdownMenu>
 				<DropdownMenuTrigger asChild>
-					<Button variant="ghost" size={"icon"}>
-						<img src="/icons/more_h.svg" />
-					</Button>
+					<MoreHorizontal className="text-white" size={25} />
 				</DropdownMenuTrigger>
 				<DropdownMenuContent className="w-56 bg-onyx text-sidebar-primary-foreground rounded-[15px] border-none shadow-lg">
 					<DropdownMenuLabel>Menu</DropdownMenuLabel>
