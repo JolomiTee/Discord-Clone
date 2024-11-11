@@ -1,5 +1,9 @@
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
-import { SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar";
+import {
+	SidebarMenuButton,
+	SidebarMenuItem,
+	useSidebar,
+} from "@/components/ui/sidebar";
 import {
 	useCollapsibleSidebarStore,
 	useSidebarStateStore,
@@ -41,8 +45,18 @@ export default function SidebarNavLink({
 	const toggle_l_sidebar = useSidebarStateStore(
 		(state) => state.toggle_l_sidebar
 	);
+	const l_sidebar_state = useSidebarStateStore(
+		(state) => state.l_sidebar_state
+	);
+
+	const { isMobile } = useSidebar();
 
 	const handleClick = () => {
+		// if on large screen and the sidebar collapse button has beem clicked, the clicking of the server navs or icons has to toggle the sidebar open:
+		if (isMobile || !l_sidebar_state) {
+			toggle_l_sidebar();
+		}
+
 		if (label.toLowerCase() === "search") {
 			if (!c_sidebar_state) {
 				toggle_c_sidebar();
@@ -52,7 +66,7 @@ export default function SidebarNavLink({
 			toggle_selected_tab(label.toLowerCase());
 			toggle_selected_server(null);
 		}
-		toggle_l_sidebar();
+
 		switchLeftSidebarContext(label.toLowerCase());
 	};
 

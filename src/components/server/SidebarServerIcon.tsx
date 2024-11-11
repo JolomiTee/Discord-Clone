@@ -1,5 +1,9 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar";
+import {
+	SidebarMenuButton,
+	SidebarMenuItem,
+	useSidebar,
+} from "@/components/ui/sidebar";
 import {
 	useCollapsibleSidebarStore,
 	useSidebarStateStore,
@@ -33,9 +37,18 @@ const SidebarServerIcon = ({
 	const toggle_l_sidebar = useSidebarStateStore(
 		(state) => state.toggle_l_sidebar
 	);
+	const l_sidebar_state = useSidebarStateStore(
+		(state) => state.l_sidebar_state
+	);
+
+	const { isMobile } = useSidebar();
 
 	const handleClick = () => {
-		toggle_l_sidebar();
+		// if on large screen and the sidebar collapse button has beem clicked, the clicking of the server navs or icons has to toggle the sidebar open:
+		if (isMobile || !l_sidebar_state) {
+			toggle_l_sidebar();
+		}
+
 		toggle_selected_tab(null);
 		toggle_selected_server(i);
 		switchLeftSidebarContext("server");

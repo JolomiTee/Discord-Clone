@@ -35,14 +35,23 @@ const ServerDisplayVariant = () => {
 	const l_sidebar_state = useSidebarStateStore(
 		(state) => state.l_sidebar_state
 	);
-	const { open, toggleSidebar } = useSidebar();
+	const setLSidebarState = useSidebarStateStore(
+		(state) => state.setLSidebarState
+	);
+	const { open, toggleSidebar, isMobile } = useSidebar();
+
 	useEffect(() => {
-		if (l_sidebar_state && !open) {
-			toggleSidebar();
-		} else if (!l_sidebar_state && open) {
+		if ((l_sidebar_state && !open) || (!l_sidebar_state && open)) {
 			toggleSidebar();
 		}
+
+		if (isMobile) {
+			setLSidebarState(false);
+		}
+
+		console.log("after:", l_sidebar_state, `\n \n \n`);
 	}, [l_sidebar_state, open]);
+
 	return (
 		<Sidebar className=" border-none">
 			<SidebarContent>
