@@ -65,6 +65,7 @@ const ProfileHolder = () => {
 									<ToggleGroup type="multiple" className="gap-3">
 										<ToggleGroupItem
 											value="a"
+											disabled
 											className="rounded-[10px] size-10 p-0"
 										>
 											<img
@@ -74,6 +75,7 @@ const ProfileHolder = () => {
 										</ToggleGroupItem>
 										<ToggleGroupItem
 											value="b"
+											disabled
 											className="rounded-[10px]  size-10 p-0"
 										>
 											<img
@@ -81,21 +83,15 @@ const ProfileHolder = () => {
 												className="size-8"
 											/>
 										</ToggleGroupItem>
-										<ToggleGroupItem
-											value="c"
-											className="rounded-[10px]  size-10 p-0"
+										<Link
+											to="settings"
+											className="rounded-[10px] px-3"
 										>
 											<img
 												src="/icons/settings.svg"
 												className="size-6"
 											/>
-										</ToggleGroupItem>
-										<ToggleGroupItem
-											value="c"
-											className="rounded-[10px] size-10 p-0"
-										>
-											<img src="/icons/pin.svg" className="size-8" />
-										</ToggleGroupItem>
+										</Link>
 									</ToggleGroup>
 								</DropdownMenuContent>
 							</DropdownMenu>
@@ -122,7 +118,7 @@ const ResponsiveProfileButton = () => {
 					</AvatarFallback>
 				</Avatar>
 			</PopoverTrigger>
-			<PopoverContent className="w-80 bg-onyx rounded-[15px] ms-2 text-[#B5BFE7] ps-3 pe-1">
+			<PopoverContent className="w-80 bg-onyx rounded-[15px] text-[#B5BFE7] ">
 				<div className="flex gap-4">
 					<div className="grid flex-1 text-left text-sm leading-tight">
 						<span className="truncate font-semibold text-white">
@@ -136,29 +132,22 @@ const ResponsiveProfileButton = () => {
 
 					<ToggleGroup type="multiple" className="gap-3">
 						<ToggleGroupItem
+							disabled
 							value="a"
 							className="rounded-[10px] size-7 p-0"
 						>
 							<img src="/icons/mute_true.svg" className="size-7" />
 						</ToggleGroupItem>
 						<ToggleGroupItem
+							disabled
 							value="b"
 							className="rounded-[10px]  size-7 p-0"
 						>
 							<img src="/icons/deafen_false.svg" className="size-7" />
 						</ToggleGroupItem>
-						<ToggleGroupItem
-							value="c"
-							className="rounded-[10px]  size-7 p-0"
-						>
+						<Link to="settings" className="rounded-[10px] p-0">
 							<img src="/icons/settings.svg" className="size-6" />
-						</ToggleGroupItem>
-						<ToggleGroupItem
-							value="c"
-							className="rounded-[10px] size-7 p-0"
-						>
-							<img src="/icons/pin.svg" className="size-7" />
-						</ToggleGroupItem>
+						</Link>
 					</ToggleGroup>
 				</div>
 			</PopoverContent>

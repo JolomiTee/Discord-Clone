@@ -3,11 +3,17 @@ interface AppStateProps {
 	c_sidebar_state: boolean;
 	l_sidebar_state: boolean;
 	r_sidebar_state: boolean;
+
 	l_sidebar_display_context: string;
 	r_sidebar_display_context: string;
+
 	toggle_l_sidebar: () => void;
 	toggle_r_sidebar: () => void;
 	toggle_c_sidebar: () => void;
+
+	setLSidebarState: (newAppState: boolean) => void;
+	setRSidebarState: (newAppState: boolean) => void;
+
 	switchLeftSidebarContext: (newAppState: string) => void;
 	switchRightSidebarContext: (newAppState: string) => void;
 }
@@ -30,6 +36,15 @@ export const useSidebarStateStore = create<AppStateProps>()((set) => ({
 	toggle_r_sidebar: () =>
 		set((state) => ({
 			r_sidebar_state: !state.r_sidebar_state,
+		})),
+
+	setLSidebarState: (newAppState) =>
+		set(() => ({
+			l_sidebar_state: newAppState,
+		})),
+	setRSidebarState: (newAppState) =>
+		set(() => ({
+			r_sidebar_state: newAppState,
 		})),
 
 	switchLeftSidebarContext: (newAppState) =>

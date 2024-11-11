@@ -77,7 +77,7 @@ const Servers = () => {
 					})}
 				</TabsContent>
 				<TabsContent value="discover" className=" p-3">
-					Change your password here.
+					Discover other servers here
 				</TabsContent>
 			</Tabs>
 		</div>
