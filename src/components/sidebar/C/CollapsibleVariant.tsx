@@ -12,6 +12,7 @@ import { serverList } from "@/data";
 import ProfileHolder from "../../server/ProfileHolder";
 import SidebarNavLink from "../../server/SidebarNavTab";
 import SidebarServerIcon from "../../server/SidebarServerIcon";
+import MobileSearchModal from "@/components/search/MobileSearchModal";
 
 const CollapsibleVariant = () => {
 	const { isMobile } = useSidebar();
@@ -23,7 +24,11 @@ const CollapsibleVariant = () => {
 			<SidebarHeader className="bg-onyx p-0 md:pt-1">
 				<SidebarGroup className="p-0">
 					<SidebarMenu className="gap-0">
-						<SidebarNavLink to="#" icon="search" label="Search" />
+						{isMobile ? (
+							<MobileSearchModal />
+						) : (
+							<SidebarNavLink to="#" icon="search" label="Search" />
+						)}
 
 						<SidebarNavLink to="/@me" icon="messages" label="Messages" />
 

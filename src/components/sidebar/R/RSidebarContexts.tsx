@@ -19,15 +19,22 @@ const RSidebarContexts = () => {
 		(state) => state.r_sidebar_state
 	);
 
-	const { open, toggleSidebar } = useSidebar();
+	const setRSidebarState = useSidebarStateStore(
+		(state) => state.setRSidebarState
+	);
+	const { open, toggleSidebar, isMobile } = useSidebar();
+
 	useEffect(() => {
-		if (r_sidebar_state && !open) {
-			toggleSidebar();
-		} else if (!r_sidebar_state && open) {
+		if ((r_sidebar_state && !open) || (!r_sidebar_state && open)) {
 			toggleSidebar();
 		}
-	}, [r_sidebar_state, open]);
 
+		if (isMobile) {
+			setRSidebarState(false);
+		}
+
+		console.log("after:", r_sidebar_state, "\n \n \n");
+	}, [r_sidebar_state, open]);
 	return (
 		<Sidebar side="right" className="border-none">
 			<SidebarContent className="bg-carbon relative text-white scrollbar-hidden">

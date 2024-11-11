@@ -40,7 +40,7 @@ const ServerCard = ({
 	};
 	return (
 		<Link to={`/@server/${String(id)}`} onClick={onclick}>
-			<Card className="flex items-start gap-4 bg-transparent border-0 shadow-none">
+			<Card className="flex items-start gap-2 bg-transparent border-0 shadow-none">
 				<Avatar className="rounded-[8px] size-12">
 					<AvatarImage
 						src={server_img}
@@ -54,19 +54,21 @@ const ServerCard = ({
 					</AvatarFallback>
 				</Avatar>
 
-				<CardContent className="grid gap-2 text-white/[60%] p-0">
+				<CardContent className="grid gap-2 text-white/[60%] text-sm p-0">
 					<CardTitle className="text-white">{name}</CardTitle>
-					<div className="flex items-center gap-3 text-sm">
+					<div className="flex flex-wrap items-start gap-1 sm:gap-3 text-xs sm:text-sm">
 						<div className="flex items-center gap-2">
-							<div className="bg-emerald size-3 rounded-full" />
+							<div className="bg-emerald size-2 rounded-full shrink-0" />
 							{formatNumber(online)} online
 						</div>
 						<div className="flex items-center gap-2">
-							<div className="bg-[#898989] size-3 rounded-full" />
+							<div className="bg-[#898989] size-2 rounded-full shrink-0" />
 							{formatNumber(members)} members
 						</div>
 					</div>
-					<p className="text-sm">Last seen: {lastSeen}</p>
+					<p className="text-xs sm:text-sm leading-none">
+						Last seen: {lastSeen}
+					</p>
 				</CardContent>
 			</Card>
 		</Link>
