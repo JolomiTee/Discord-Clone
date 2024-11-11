@@ -26,7 +26,7 @@ const HMenu = () => {
 	);
 	const openSearchBar = useOpenSearchBar();
 	return (
-		<header className="flex justify-between items-center gap-3 h-full max-h-[50px] px-4 bg-onyx w-full sticky top-0 shrink-0 border-b bg-background py-2">
+		<header className="flex justify-between items-center gap-3 h-full max-h-[50px] px-4 bg-onyx w-full sticky top-0 shrink-0 bg-background py-2">
 			<div className="flex items-center gap-3">
 				<IconButtons
 					src="sidebar"

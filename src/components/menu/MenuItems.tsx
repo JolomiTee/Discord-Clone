@@ -45,7 +45,7 @@ export function MenuItems() {
 						<img src="/icons/more_h.svg" />
 					</Button>
 				</DropdownMenuTrigger>
-				<DropdownMenuContent className="w-56 bg-onyx text-sidebar-primary-foreground">
+				<DropdownMenuContent className="w-56 bg-onyx text-sidebar-primary-foreground rounded-[15px] border-none shadow-lg">
 					<DropdownMenuLabel>Menu</DropdownMenuLabel>
 					<DropdownMenuSeparator />
 					<DropdownMenuItem>
