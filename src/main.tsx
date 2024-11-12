@@ -5,14 +5,11 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App.tsx";
 import "./index.css";
 import "./assets/backgrounds.css";
-import { SidebarProvider } from "./components/ui/sidebar.tsx";
 
 createRoot(document.getElementById("root")!).render(
 	<StrictMode>
 		<BrowserRouter>
-			<SidebarProvider name="rediscord-sidebar">
-				<App />
-			</SidebarProvider>
+			<App />
 		</BrowserRouter>
 		<Analytics />
 	</StrictMode>

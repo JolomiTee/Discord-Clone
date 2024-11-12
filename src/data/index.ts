@@ -36,7 +36,7 @@ export const messageList = [
 	{profileImg: "/silly.png", user: "Joloo", online: true, hasMessage: true, messageCount: 5, pinned: false },
 	{profileImg: "/juxtopposed.png", user: "Juxtopposed", online: true, hasMessage: false, messageCount: 0, pinned: false},
 	{profileImg: "/jojo.png", user: "Jojo", online: false, hasMessage: false, messageCount: 0, pinned: false},
-	{profileImg: "/silly.png", user: "Shepard", online: true, hasMessage: true, messageCount: 5, pinned: false},
+	{profileImg: "/shepard.png", user: "Shepard", online: true, hasMessage: true, messageCount: 5, pinned: false},
 ]
 
 export const chatConversation = [
@@ -50,7 +50,7 @@ export const chatConversation = [
     user: "Shepard",
     time: "15:35",
     message: "Roger that, Ghost. Head to the extraction point. We’re on our way.",
-    profileImg: "/silly.png"
+    profileImg: "/shepard.png"
   },
   {
     user: "Ghost",
@@ -62,7 +62,7 @@ export const chatConversation = [
     user: "Shepard",
     time: "15:37",
     message: "You did good, Ghost. Real good.",
-    profileImg: "/silly.png"
+    profileImg: "/shepard.png"
   },
   {
     user: "Ghost",
@@ -74,7 +74,7 @@ export const chatConversation = [
     user: "Shepard",
     time: "15:39",
     message: "But there’s one last thing you need to do for me.",
-    profileImg: "/silly.png"
+    profileImg: "/shepard.png"
   },
   {
     user: "Ghost",
@@ -86,7 +86,7 @@ export const chatConversation = [
     user: "Shepard",
     time: "15:40",
     message: "Sorry, Ghost... but this is the end of the line for you.",
-    profileImg: "/silly.png"
+    profileImg: "/shepard.png"
   },
   {
     user: "Ghost",
@@ -98,7 +98,7 @@ export const chatConversation = [
     user: "Shepard",
     time: "15:42",
     message: "It’s nothing personal. This is bigger than you or me.",
-    profileImg: "/silly.png"
+    profileImg: "/shepard.png"
   },
   {
     user: "Ghost",
@@ -110,7 +110,7 @@ export const chatConversation = [
     user: "Shepard",
     time: "15:44",
     message: "*Gunshots*",
-    profileImg: "/silly.png"
+    profileImg: "/shepard.png"
   },
   {
     user: "Ghost",
