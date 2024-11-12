@@ -1,5 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import CollapsibleSidebar from "./components/sidebar/CollapsibleSidebar";
+import AppLayout from "./layouts/AppLayout";
 import ChannelsLayout from "./layouts/Channels";
 import Main from "./layouts/Layout";
 import MessagesLayout from "./layouts/Messages";
@@ -8,13 +8,18 @@ import Help from "./pages/Help";
 import Inbox from "./pages/Inbox";
 import Profile from "./pages/Profile";
 import Servers from "./pages/Servers";
+import Home from "./pages/home/Home";
+import Login from "./pages/home/Login";
+import Signup from "./pages/home/Signup";
 
 function App() {
 	return (
-		<div className="w-full flex overflow-hidden max-h-dvh font-open-sans">
-			<CollapsibleSidebar />
+		<Routes>
+			<Route path="/" element={<Home />} />
+			<Route path="/login" element={<Login />} />
+			<Route path="/signup" element={<Signup />} />
 
-			<Routes>
+			<Route path="/user" element={<AppLayout />}>
 				<Route element={<Main />}>
 					<Route index element={<Navigate to="@me" replace />} />
 
@@ -29,12 +34,12 @@ function App() {
 					</Route>
 				</Route>
 
-				<Route path="/servers" element={<Servers />} />
-				<Route path="/inbox" element={<Inbox />} />
-				<Route path="/help" element={<Help />} />
-				<Route path="/profile/:id" element={<Profile />} />
-			</Routes>
-		</div>
+				<Route path="servers" element={<Servers />} />
+				<Route path="inbox" element={<Inbox />} />
+				<Route path="help" element={<Help />} />
+				<Route path="profile/:id" element={<Profile />} />
+			</Route>
+		</Routes>
 	);
 }
 
