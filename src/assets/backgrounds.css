@@ -34,7 +34,7 @@
 }
 
 /* From Uiverse.io by aadium */
-.ankara {
+.theme_ankara {
 	--color1: rgb(0, 3, 49, 0.6);
 	--color2: rgba(248, 255, 182, 0.6);
 	--color3: rgb(255, 0, 0, 0.6);
@@ -50,7 +50,7 @@
 }
 
 /* From Uiverse.io by csemszepp */
-.container {
+.theme_container {
 	--s: 75px;
 	/* control the size */
 

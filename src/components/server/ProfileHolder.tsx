@@ -84,7 +84,7 @@ const ProfileHolder = () => {
 											/>
 										</ToggleGroupItem>
 										<Link
-											to="settings"
+											to="profile/12345"
 											className="rounded-[10px] px-3"
 										>
 											<img
@@ -145,7 +145,7 @@ const ResponsiveProfileButton = () => {
 						>
 							<img src="/icons/deafen_false.svg" className="size-7" />
 						</ToggleGroupItem>
-						<Link to="settings" className="rounded-[10px] p-0">
+						<Link to="profile/12345" className="rounded-[10px] p-0">
 							<img src="/icons/settings.svg" className="size-6" />
 						</Link>
 					</ToggleGroup>
