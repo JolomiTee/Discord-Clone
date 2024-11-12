@@ -1,74 +1,105 @@
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import {
 	Accordion,
 	AccordionContent,
 	AccordionItem,
 	AccordionTrigger,
 } from "@/components/ui/accordion";
-import { MessageSquare, Users, Video, Zap, ChevronRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { MessageSquare, MoreHorizontal, Users, Video } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const Home = () => {
+	const isMobile = useIsMobile();
 	return (
 		<div className="flex flex-col min-h-screen">
-			<header className="px-4 lg:px-6 h-14 flex items-center">
-				<Link className="flex items-center justify-center" to="#">
+			<header className="px-4 lg:px-6 h-14 flex items-center justify-between sticky top-0 w-full bg-charcoal z-20">
+				<Link
+					className="flex items-center justify-center text-discord-blue"
+					to="#"
+				>
 					<MessageSquare className="h-6 w-6 text-primary" />
 					<span className="ml-2 text-2xl font-bold text-primary">
 						Rediscord
 					</span>
 				</Link>
-				<nav className="ml-auto flex items-center gap-4 sm:gap-6">
-					<Link
-						className="text-sm font-medium hover:underline underline-offset-4"
-						to="#features"
-					>
-						Features
-					</Link>
-					<Link
-						className="text-sm font-medium hover:underline underline-offset-4"
-						to="#testimonials"
-					>
-						Testimonials
-					</Link>
-					<Link
-						className="text-sm font-medium hover:underline underline-offset-4"
-						to="#faq"
-					>
-						FAQ
-					</Link>
+				{isMobile ? (
+					<SheetMenu />
+				) : (
+					<nav className="ml-auto flex items-center gap-4 sm:gap-6">
+						<Link
+							className="text-sm font-medium hover:underline underline-offset-4 text-white"
+							to="#features"
+							onClick={(e) => {
+								e.preventDefault();
+								document
+									.getElementById("features")
+									?.scrollIntoView({ behavior: "smooth" });
+							}}
+						>
+							Features
+						</Link>
+						<Link
+							className="text-sm font-medium hover:underline underline-offset-4 text-white"
+							to="#testimonials"
+							onClick={(e) => {
+								e.preventDefault();
+								document
+									.getElementById("testimonials")
+									?.scrollIntoView({ behavior: "smooth" });
+							}}
+						>
+							Testimonials
+						</Link>
+						<Link
+							className="text-sm font-medium hover:underline underline-offset-4 text-white"
+							to="#faq"
+							onClick={(e) => {
+								e.preventDefault();
+								document
+									.getElementById("faq")
+									?.scrollIntoView({ behavior: "smooth" });
+							}}
+						>
+							FAQ
+						</Link>
 
-					<Button asChild>
-						<Link to={"signup"}>Sign Up</Link>
-					</Button>
-					<Button asChild>
-						<Link to={"login"}>Log In</Link>
-					</Button>
-				</nav>
+						<Button className="bg-discord-blue rounded-[5px]" asChild>
+							<Link to={"signup"}>Sign Up</Link>
+						</Button>
+						<Button
+							variant={"ghost"}
+							className="border border-discord-blue rounded-[5px] text-discord-blue"
+							asChild
+						>
+							<Link to={"login"}>Log In</Link>
+						</Button>
+					</nav>
+				)}
 			</header>
-			<main className="flex-1">
+
+			<main className="flex-1 z-10">
 				<section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-primary">
 					<div className="container px-4 md:px-6 relative">
 						<div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
 							<div className="flex flex-col justify-center space-y-4">
 								<div className="space-y-2">
-									<h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
+									<h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none text-discord-blue">
 										Welcome to Rediscord
 									</h1>
-									<p className="max-w-[600px] md:text-xl">
+									<p className="max-w-[600px] md:text-xl ">
 										Connect, chat, and collaborate with your
 										community. Rediscord brings people together, just
 										like the platform you know and love.
 									</p>
 								</div>
 								<div className="flex flex-col gap-2 min-[400px]:flex-row">
-									<Button className="bg-white text-primary hover:bg-gray-100">
-										Get Started
+									<Button className="bg-discord-blue text-white rounded-[8px] hover:bg-gray-100">
+										<Link to={"signup"}>Get Started</Link>
 									</Button>
 									<Button
 										variant="outline"
-										className="border-white hover:bg-white/10"
+										className="border-white hover:bg-discord-blue/10 rounded-[8px]"
 									>
 										Learn More
 									</Button>
@@ -90,13 +121,13 @@ const Home = () => {
 					className="w-full py-12 md:py-24 lg:py-32 bg-white"
 				>
 					<div className="container px-4 md:px-6">
-						<h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">
+						<h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12 ">
 							Features
 						</h2>
 						<div className="grid gap-6 lg:grid-cols-3 lg:gap-12">
 							<div className="flex flex-col items-center space-y-4 text-center">
-								<Users className="h-12 w-12 text-primary" />
-								<h3 className="text-xl font-bold">
+								<Users className="h-12 w-12 text-fuchsia-600" />
+								<h3 className="text-xl font-bold text-fuchsia-600">
 									Community Building
 								</h3>
 								<p className="text-gray-500 dark:text-gray-400">
@@ -105,8 +136,8 @@ const Home = () => {
 								</p>
 							</div>
 							<div className="flex flex-col items-center space-y-4 text-center">
-								<MessageSquare className="h-12 w-12 text-primary" />
-								<h3 className="text-xl font-bold">
+								<MessageSquare className="h-12 w-12 text-discord-blue" />
+								<h3 className="text-xl font-bold text-discord-blue">
 									Real-time Messaging
 								</h3>
 								<p className="text-gray-500 dark:text-gray-400">
@@ -115,8 +146,8 @@ const Home = () => {
 								</p>
 							</div>
 							<div className="flex flex-col items-center space-y-4 text-center">
-								<Video className="h-12 w-12 text-primary" />
-								<h3 className="text-xl font-bold">
+								<Video className="h-12 w-12 text-green-600" />
+								<h3 className="text-xl font-bold text-green-600">
 									Voice & Video Calls
 								</h3>
 								<p className="text-gray-500 dark:text-gray-400">
@@ -137,19 +168,15 @@ const Home = () => {
 						</h2>
 						<div className="grid gap-6 lg:grid-cols-3 lg:gap-12">
 							<div className="flex flex-col items-center space-y-4 text-center">
-								<img
-									alt="User Avatar"
-									className="rounded-full"
-									height="100"
-									src="/placeholder.svg"
-									style={{
-										aspectRatio: "100/100",
-										objectFit: "cover",
-									}}
-									width="100"
-								/>
+								<Avatar className="w-[70px] h-[70px]">
+									<AvatarImage
+										src="https://github.com/brok3n.png"
+										alt="@shadcn"
+									/>
+									<AvatarFallback>BO</AvatarFallback>
+								</Avatar>
 								<div className="space-y-2">
-									<h3 className="text-xl font-bold">Alice Johnson</h3>
+									<h3 className="text-xl font-bold">Brok3n OG</h3>
 									<p className="text-sm text-gray-500 dark:text-gray-400">
 										"Rediscord has revolutionized how our gaming
 										community stays connected. It's intuitive and
@@ -158,19 +185,15 @@ const Home = () => {
 								</div>
 							</div>
 							<div className="flex flex-col items-center space-y-4 text-center">
-								<img
-									alt="User Avatar"
-									className="rounded-full"
-									height="100"
-									src="/placeholder.svg"
-									style={{
-										aspectRatio: "100/100",
-										objectFit: "cover",
-									}}
-									width="100"
-								/>
+								<Avatar className="w-[70px] h-[70px]">
+									<AvatarImage
+										src="https://github.com/jamesgunn.png"
+										alt="@shadcn"
+									/>
+									<AvatarFallback>JG</AvatarFallback>
+								</Avatar>
 								<div className="space-y-2">
-									<h3 className="text-xl font-bold">Bob Smith</h3>
+									<h3 className="text-xl font-bold">James Gunn</h3>
 									<p className="text-sm text-gray-500 dark:text-gray-400">
 										"As a project manager, Rediscord has streamlined
 										our team communication. It's a game-changer!"
@@ -178,19 +201,17 @@ const Home = () => {
 								</div>
 							</div>
 							<div className="flex flex-col items-center space-y-4 text-center">
-								<img
-									alt="User Avatar"
-									className="rounded-full"
-									height="100"
-									src="/placeholder.svg"
-									style={{
-										aspectRatio: "100/100",
-										objectFit: "cover",
-									}}
-									width="100"
-								/>
+								<Avatar className="w-[70px] h-[70px]">
+									<AvatarImage
+										src="https://github.com/shardcn.png"
+										alt="@shadcn"
+									/>
+									<AvatarFallback>LS</AvatarFallback>
+								</Avatar>
 								<div className="space-y-2">
-									<h3 className="text-xl font-bold">Carol Davis</h3>
+									<h3 className="text-xl font-bold">
+										Lindsey Sterling
+									</h3>
 									<p className="text-sm text-gray-500 dark:text-gray-400">
 										"The voice quality on Rediscord is unmatched. It's
 										perfect for our virtual choir practices!"
@@ -253,28 +274,29 @@ const Home = () => {
 					</div>
 				</section>
 			</main>
+
 			<footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
 				<p className="text-xs text-gray-500 dark:text-gray-400">
-					© 2023 Rediscord. All rights reserved.
+					© 2024 Rediscord. All rights reserved.
 				</p>
 				<nav className="sm:ml-auto flex gap-4 sm:gap-6">
 					<Link
 						className="text-xs hover:underline underline-offset-4"
-						to="#"
+						to="https://jolomitee-v2.vercel.app/"
 					>
-						Terms of Service
+						JolomiTee
 					</Link>
 					<Link
 						className="text-xs hover:underline underline-offset-4"
-						to="#"
+						to="https://github.com/JolomiTee"
 					>
-						Privacy
+						Github
 					</Link>
 					<Link
 						className="text-xs hover:underline underline-offset-4"
-						to="#"
+						to="https://www.linkedin.com/in/jolomitee"
 					>
-						Contact
+						Linkedin
 					</Link>
 				</nav>
 			</footer>
@@ -283,3 +305,92 @@ const Home = () => {
 };
 
 export default Home;
+
+import {
+	Sheet,
+	SheetContent,
+	SheetHeader,
+	SheetTitle,
+	SheetTrigger,
+} from "@/components/ui/sheet";
+import { useIsMobile } from "@/hooks/use-mobile";
+
+export function SheetMenu() {
+	return (
+		<Sheet>
+			<SheetTrigger asChild>
+				<Button
+					variant="outline"
+					className="rounded-[8px] border-discord-blue/50 bg-transparent border-2 hover:bg-discord-blue"
+					size={"icon"}
+				>
+					<MoreHorizontal className="text-white " size={30} />
+				</Button>
+			</SheetTrigger>
+			<SheetContent>
+				<SheetHeader>
+					<SheetTitle>Menu</SheetTitle>
+				</SheetHeader>
+				<div className="grid gap-4 py-4">
+					<Link
+						className="flex items-center justify-center text-discord-blue"
+						to="#"
+					>
+						<MessageSquare className="h-6 w-6 text-primary" />
+						<span className="ml-2 text-2xl font-bold text-primary">
+							Rediscord
+						</span>
+					</Link>
+					<nav className="flex flex-col items-end gap-4 sm:gap-6">
+						<Link
+							className="text-sm font-medium hover:underline underline-offset-4"
+							to="#features"
+							onClick={(e) => {
+								e.preventDefault();
+								document
+									.getElementById("features")
+									?.scrollIntoView({ behavior: "smooth" });
+							}}
+						>
+							Features
+						</Link>
+						<Link
+							className="text-sm font-medium hover:underline underline-offset-4"
+							to="#testimonials"
+							onClick={(e) => {
+								e.preventDefault();
+								document
+									.getElementById("testimonials")
+									?.scrollIntoView({ behavior: "smooth" });
+							}}
+						>
+							Testimonials
+						</Link>
+						<Link
+							className="text-sm font-medium hover:underline underline-offset-4"
+							to="#faq"
+							onClick={(e) => {
+								e.preventDefault();
+								document
+									.getElementById("faq")
+									?.scrollIntoView({ behavior: "smooth" });
+							}}
+						>
+							FAQ
+						</Link>
+					</nav>
+					<Button className="bg-discord-blue rounded-[5px]" asChild>
+						<Link to={"signup"}>Sign Up</Link>
+					</Button>
+					<Button
+						variant={"ghost"}
+						className="border border-discord-blue rounded-[5px] text-discord-blue"
+						asChild
+					>
+						<Link to={"login"}>Log In</Link>
+					</Button>
+				</div>
+			</SheetContent>
+		</Sheet>
+	);
+}
