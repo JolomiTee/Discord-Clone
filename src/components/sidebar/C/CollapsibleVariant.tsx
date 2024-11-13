@@ -30,7 +30,7 @@ const CollapsibleVariant = () => {
 							<SidebarNavLink to="#" icon="search" label="Search" />
 						)}
 
-						<SidebarNavLink to="/@me" icon="messages" label="Messages" />
+						<SidebarNavLink to="@me" icon="messages" label="Messages" />
 
 						<Separator className="lg:group-data-[collapsible=icon]:w-[70%] group-data-[collapsible=icon]:mx-auto rounded-full bg-charcoal h-1 md:w-[52px] my-2 md:ms-3" />
 
@@ -64,7 +64,7 @@ const CollapsibleVariant = () => {
 
 			<SidebarFooter className="bg-onyx p-0 pb-5">
 				<SidebarMenu>
-					<SidebarNavLink to="/inbox" icon="inbox" label="Inbox" />
+					<SidebarNavLink to="inbox" icon="inbox" label="Inbox" />
 
 					<ProfileHolder />
 				</SidebarMenu>

@@ -52,7 +52,8 @@ const HMenu = () => {
 					</Avatar>
 					{/* Acceptable name or nickname should be less than 30 characters */}
 					<p className="font-bold text-[#FFFFFF99] text-[14px] max-w-[100px] sm:max-w-[200px] lg:max-w-[300px] truncate">
-						Big time forward ever backward never
+						{/* Big time forward ever backward never */}
+						Loose Ends - .44 Magnum
 					</p>
 				</div>
 			</div>

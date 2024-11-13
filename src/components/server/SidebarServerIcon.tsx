@@ -71,7 +71,7 @@ const SidebarServerIcon = ({
 				}}
 			/>
 
-			<Link to={`/@server/${String(i)}`} onClick={handleClick}>
+			<Link to={`@server/${String(i)}`} onClick={handleClick}>
 				<SidebarMenuButton
 					tooltip={title}
 					className="gap-3 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden p-0 ps-2 md:ps-3"
