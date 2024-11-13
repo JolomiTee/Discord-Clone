@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CheckCheck } from "lucide-react";
-import { useState } from "react";
 const Inbox = () => {
 	return (
 		<Tabs defaultValue="for_you" className="w-full bg-onyx text-white">
