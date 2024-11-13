@@ -1,3 +1,6 @@
+import ForYou from "@/components/inbox/wrappers/ForYou";
+import Mentions from "@/components/inbox/wrappers/Mentions";
+import Unread from "@/components/inbox/wrappers/Unread";
 import { Button } from "@/components/ui/button";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -17,32 +20,35 @@ const Inbox = () => {
 				</TabsTrigger>
 			</TabsList>
 
-			<div className="flex items-center justify-start gap-2 p-3 mb-3">
-				<Button className="rounded-[12px] bg-charcoal size-10 border border-solid border-[#FFFFFF0F] text-[#FFFFFF99]">
-					<CheckCheck />
-				</Button>
-			</div>
-
-			<TabsContent value="for_you" className="p-3">
-				<EmptyState text="You're all caught up!" />
+			<TabsContent value="for_you">
+				<div className="flex items-center justify-start gap-2 p-3 mb-3 text-[20px] font-bold">
+					For You
+					<Button className="rounded-[12px] bg-charcoal size-10 border border-solid border-[#FFFFFF0F] text-[#FFFFFF99]">
+						<CheckCheck />
+					</Button>
+				</div>
+				<ForYou />
 			</TabsContent>
-			<TabsContent value="unreads" className=" p-3">
-				<EmptyState text="You've seen it all! No unreads messages" />
+			<TabsContent value="unreads">
+				<div className="flex items-center justify-start gap-2 p-3 mb-3 text-[20px] font-bold">
+					Unreads
+					<Button className="rounded-[12px] bg-charcoal size-10 border border-solid border-[#FFFFFF0F] text-[#FFFFFF99]">
+						<CheckCheck />
+					</Button>
+				</div>
+				<Unread />
 			</TabsContent>
-			<TabsContent value="mentions" className=" p-3">
-				<EmptyState text="All quiet on the mentions front!" />
+			<TabsContent value="mentions">
+				<div className="flex items-center justify-start gap-2 p-3 mb-3 text-[20px] font-bold">
+					Mentions
+					<Button className="rounded-[12px] bg-charcoal size-10 border border-solid border-[#FFFFFF0F] text-[#FFFFFF99]">
+						<CheckCheck />
+					</Button>
+				</div>
+				<Mentions />
 			</TabsContent>
 		</Tabs>
 	);
 };
 
 export default Inbox;
-
-const EmptyState = ({ text }: { text: string }) => {
-	return (
-		<div className="w-full flex flex-col justify-center items-center gap-5">
-			<img src="/no-inbox.svg" className="w-1/2 md:w-1/3" />
-			<p>{text}</p>
-		</div>
-	);
-};
