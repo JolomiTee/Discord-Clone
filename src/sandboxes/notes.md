@@ -9,7 +9,7 @@
   - server activities
   - The getting started notification should contain these
 
-    - verify mail
+    - authentication
     - add profile image
     - join a server
     - discover server

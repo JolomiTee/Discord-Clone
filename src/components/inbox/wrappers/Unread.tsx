@@ -1,7 +1,5 @@
 import { for_you } from "@/data/notifications";
 import { AlertForYou } from "../for_you/Alert";
-import AccountSteps from "../for_you/AccountSteps";
-import RediscordPro from "../for_you/RediscordPro";
 import EmptyState from "@/components/common/EmptyNotificationState";
 
 const Unread = () => {
@@ -14,10 +12,7 @@ const Unread = () => {
 					<EmptyState text="You're all caught up!" />
 				)}
 			</div>
-			<div className="w-[50%] flex flex-col gap-10">
-				<AccountSteps />
-				<RediscordPro />
-			</div>
+			<div className="w-[50%] flex flex-col gap-10"></div>
 		</div>
 	);
 };
