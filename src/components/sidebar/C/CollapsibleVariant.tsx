@@ -34,11 +34,7 @@ const CollapsibleVariant = () => {
 
 						<Separator className="lg:group-data-[collapsible=icon]:w-[70%] group-data-[collapsible=icon]:mx-auto rounded-full bg-charcoal h-1 md:w-[52px] my-2 md:ms-3" />
 
-						<SidebarNavLink
-							to="/servers"
-							icon="servers"
-							label="Servers"
-						/>
+						<SidebarNavLink to="servers" icon="servers" label="Servers" />
 					</SidebarMenu>
 				</SidebarGroup>
 			</SidebarHeader>

@@ -1,3 +1,4 @@
+import AccountSteps from "@/components/inbox/for_you/AccountSteps";
 import { Button } from "@/components/ui/button";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -24,7 +25,8 @@ const Inbox = () => {
 			</div>
 
 			<TabsContent value="for_you" className="p-3">
-				<EmptyState text="You're all caught up!" />
+				{/* <EmptyState text="You're all caught up!" /> */}
+				<AccountSteps />
 			</TabsContent>
 			<TabsContent value="unreads" className=" p-3">
 				<EmptyState text="You've seen it all! No unreads messages" />

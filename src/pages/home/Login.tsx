@@ -30,12 +30,12 @@ export default function Login() {
 					<form className="mt-8 space-y-6" onSubmit={handleSubmit}>
 						<div className="space-y-4">
 							<div>
-								<Label htmlFor="email">Email address</Label>
+								<Label htmlFor="username">Username</Label>
 								<Input
-									id="email"
-									name="email"
-									type="email"
-									autoComplete="email"
+									id="username"
+									name="username"
+									type="username"
+									autoComplete="username"
 									required
 									className="mt-1"
 								/>
