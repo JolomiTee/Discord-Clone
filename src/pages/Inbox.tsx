@@ -35,10 +35,10 @@ const Inbox = () => {
 			<TabsContent value="for_you" className="flex-grow overflow-hidden">
 				<ForYou />
 			</TabsContent>
-			<TabsContent value="unreads">
+			<TabsContent value="unreads" className="flex-grow overflow-hidden">
 				<Unread />
 			</TabsContent>
-			<TabsContent value="mentions">
+			<TabsContent value="mentions" className="flex-grow overflow-hidden">
 				<Mentions />
 			</TabsContent>
 		</Tabs>
