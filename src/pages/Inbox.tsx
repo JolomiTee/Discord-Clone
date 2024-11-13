@@ -1,4 +1,5 @@
 import AccountSteps from "@/components/inbox/for_you/AccountSteps";
+import RediscordPro from "@/components/inbox/for_you/RediscordPro";
 import { Button } from "@/components/ui/button";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -24,9 +25,15 @@ const Inbox = () => {
 				</Button>
 			</div>
 
-			<TabsContent value="for_you" className="p-3">
-				{/* <EmptyState text="You're all caught up!" /> */}
-				<AccountSteps />
+			<TabsContent value="for_you" className="p-3 flex w-full gap-5">
+				<div className="w-full">
+					{}
+					<EmptyState text="You're all caught up!" />
+				</div>
+				<div className="w-[50%] flex flex-col gap-10">
+					<AccountSteps />
+					<RediscordPro />
+				</div>
 			</TabsContent>
 			<TabsContent value="unreads" className=" p-3">
 				<EmptyState text="You've seen it all! No unreads messages" />

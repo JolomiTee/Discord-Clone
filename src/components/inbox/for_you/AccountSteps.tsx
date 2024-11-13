@@ -3,11 +3,25 @@ import {
 	Card,
 	CardContent,
 	CardDescription,
-	CardFooter,
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
 import { CheckCircle2 } from "lucide-react";
+
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+
+import { Checkbox } from "@/components/ui/checkbox";
+import {
+	Form,
+	FormControl,
+	FormField,
+	FormItem,
+	FormLabel,
+	FormMessage,
+} from "@/components/ui/form";
+import { toast } from "../../../hooks/use-toast";
 
 const AccountSteps = () => {
 	return (
@@ -26,24 +40,6 @@ const AccountSteps = () => {
 };
 
 export default AccountSteps;
-
-("use client");
-
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-
-import { toast } from "../../../hooks/use-toast";
-import { Checkbox } from "@/components/ui/checkbox";
-import {
-	Form,
-	FormControl,
-	FormDescription,
-	FormField,
-	FormItem,
-	FormLabel,
-	FormMessage,
-} from "@/components/ui/form";
 
 const items = [
 	{
