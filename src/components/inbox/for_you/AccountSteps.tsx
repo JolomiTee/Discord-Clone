@@ -25,14 +25,14 @@ import { toast } from "../../../hooks/use-toast";
 
 const AccountSteps = () => {
 	return (
-		<Card className="bg-charcoal text-white">
-			<CardHeader>
+		<Card className="bg-charcoal text-white py-4 md:px-2 rounded-[10px]">
+			<CardHeader className="px-3 pt-0">
 				<CardTitle>Getting Started with Rediscord</CardTitle>
-				<CardDescription className="text-white">
+				<CardDescription className="text-white text-[13px]">
 					Follow some of these steps to get familiar with Rediscord
 				</CardDescription>
 			</CardHeader>
-			<CardContent>
+			<CardContent className="px-3 pb-0">
 				<AccountStepsCheckBoxes />
 			</CardContent>
 		</Card>
@@ -104,7 +104,7 @@ export function AccountStepsCheckBoxes() {
 										return (
 											<FormItem
 												key={item.id}
-												className="flex flex-row items-start space-x-3 space-y-0"
+												className="flex flex-row items-center space-x-3 space-y-0"
 											>
 												<FormControl>
 													<Checkbox
@@ -127,7 +127,7 @@ export function AccountStepsCheckBoxes() {
 														}}
 													/>
 												</FormControl>
-												<FormLabel className="text-sm font-normal">
+												<FormLabel className="text-xs font-normal my-auto">
 													{item.label}
 												</FormLabel>
 											</FormItem>
@@ -141,7 +141,7 @@ export function AccountStepsCheckBoxes() {
 				/>
 				<Button
 					type="submit"
-					className="me-0 ms-auto bg-discord-blue rounded-[5px]"
+					className="me-0 ms-auto bg-discord-blue rounded-[5px] text-xs font-bold"
 				>
 					<CheckCircle2 /> Mark as Complete
 				</Button>
