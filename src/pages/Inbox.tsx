@@ -1,5 +1,4 @@
 import ForYou from "@/components/inbox/wrappers/ForYou";
-import Mentions from "@/components/inbox/wrappers/Mentions";
 import Unread from "@/components/inbox/wrappers/Unread";
 import { Button } from "@/components/ui/button";
 
@@ -10,7 +9,6 @@ const Inbox = () => {
 	const tabData = [
 		{ value: "For You", label: "For You" },
 		{ value: "Unreads", label: "Unread" },
-		{ value: "Mentions", label: "Mentions" },
 	];
 	const selectedTab = useAppNotificationState((state) => state.selectedTab);
 	const toggle_selected_tab = useAppNotificationState(
@@ -56,9 +54,6 @@ const Inbox = () => {
 			</TabsContent>
 			<TabsContent value="Unreads" className="flex-grow overflow-hidden">
 				<Unread />
-			</TabsContent>
-			<TabsContent value="Mentions" className="flex-grow overflow-hidden">
-				<Mentions />
 			</TabsContent>
 		</Tabs>
 	);

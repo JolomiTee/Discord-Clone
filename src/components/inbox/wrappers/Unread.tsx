@@ -1,6 +1,6 @@
 import { unreads } from "@/data/notifications";
-import { AlertForYou } from "../for_you/Alert";
 import EmptyState from "@/components/common/EmptyNotificationState";
+import { AlertUnread } from "../unreads/Alert";
 
 const Unread = () => {
 	return (
@@ -9,7 +9,7 @@ const Unread = () => {
 				{unreads.length !== 0 ? (
 					unreads.map((notif, i) => {
 						const {} = notif;
-						return <AlertForYou key={i} notification={notif} />;
+						return <AlertUnread key={i} notification={notif} />;
 					})
 				) : (
 					<EmptyState text="You're all caught up!" />

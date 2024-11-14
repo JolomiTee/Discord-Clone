@@ -1,6 +1,6 @@
-import { Notification } from "@/types";
+import { ForYouNotification, MessageNotification } from "@/types";
 
-export const for_you_notification: Notification[] = [
+export const for_you_notification: ForYouNotification[] = [
 	{
 		id: "1",
 		type: "welcome",
@@ -8,11 +8,10 @@ export const for_you_notification: Notification[] = [
 		message: "We're excited to have you. Start by joining your first server.",
 		timestamp: new Date(),
 		read: false,
-		icon: "welcome-icon.png"
 	},
 	{
 		id: "2",
-		type: "auth",
+		type: "authentication",
 		title: "Please verify your mail",
 		message: "Hi GrassMaster333, you havent verified your mail, click here to verify",
 		timestamp: new Date(),
@@ -30,56 +29,32 @@ export const for_you_notification: Notification[] = [
 
 
 
-export const unreads: Notification[] = [
+export const unreads: MessageNotification[] = [
 	{
 		id: "1",
-		type: "welcome",
-		title: "Welcome to Rediscord!",
-		message: "We're excited to have you. Start by joining your first server.",
+		type: "dm",
+		channelId: "Beluga",
+		title: "New messages from",
+		message: "Where are you?",
 		timestamp: new Date(),
 		read: false,
-		icon: "welcome-icon.png"
 	},
 	{
 		id: "2",
-		type: "auth",
-		title: "Please verify your mail",
-		message: "Hi GrassMaster333, you havent verified your mail, click here to verify",
+		type: "channel_message",
+		serverId: "1",
+		channelId: "#general-text",
+		title: "New messages from #general-text channel",
+		message: "Where are you?",
 		timestamp: new Date(),
 		read: false,
 	},
 	{
 		id: "3",
-		type: "error",
-		title: "Mail verification error",
-		message: "GrassMaster333, your mail couldn't be verified",
-		timestamp: new Date(),
-		read: false,
-	}
-];
-export const mentions: Notification[] = [
-	{
-		id: "1",
-		type: "welcome",
-		title: "Welcome to Rediscord!",
-		message: "We're excited to have you. Start by joining your first server.",
-		timestamp: new Date(),
-		read: false,
-		icon: "welcome-icon.png"
-	},
-	{
-		id: "2",
-		type: "auth",
-		title: "Please verify your mail",
-		message: "Hi GrassMaster333, you havent verified your mail, click here to verify",
-		timestamp: new Date(),
-		read: false,
-	},
-	{
-		id: "3",
-		type: "error",
-		title: "Mail verification error",
-		message: "GrassMaster333, your mail couldn't be verified",
+		type: "dm",
+		channelId: "Shepard",
+		title: "New message from",
+		message: "It’s nothing personal. This is bigger than you or me.",
 		timestamp: new Date(),
 		read: false,
 	}

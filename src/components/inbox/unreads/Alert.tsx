@@ -1,27 +1,23 @@
 import { Button } from "@/components/ui/button";
-import { ForYouNotification } from "@/types";
-import { AlertCircle, Bell, Key, Shield, UserPlus } from "lucide-react";
+import { MessageNotification } from "@/types";
+import { AlertCircle, Hash, MessagesSquare } from "lucide-react";
 import {
 	Alert,
 	AlertDescription,
 	AlertTitle,
 } from "../../../components/ui/alert";
 
-export function AlertForYou({
+export function AlertUnread({
 	notification,
 }: {
-	notification: ForYouNotification;
+	notification: MessageNotification;
 }) {
 	const getIcon = () => {
 		switch (notification.type) {
-			case "authorization":
-				return <Shield className="size-6 stroke-discord-blue" />;
-			case "authentication":
-				return <Key className="size-6 stroke-soft-blue" />;
-			case "welcome":
-				return <Bell className="size-6 stroke-green-300" />;
-			case "invite":
-				return <UserPlus className="size-6  stroke-yellow-300" />;
+			case "dm":
+				return <MessagesSquare className="size-6 stroke-discord-blue" />;
+			case "channel_message":
+				return <Hash className="size-6 stroke-white" />;
 			default:
 				return <AlertCircle className="size-6 stroke-red-300" />;
 		}
@@ -29,8 +25,8 @@ export function AlertForYou({
 	return (
 		<Alert className="rounded-[10px] bg-charcoal text-white ">
 			{getIcon()}
-			<AlertTitle className="font-bold">
-				{notification.title || "Notification"}
+			<AlertTitle className="font-semibold">
+				{notification.title || "Notification"} {notification.channelId}
 			</AlertTitle>
 			<AlertDescription className="flex flex-col md:flex-row sm:gap-3 text-[13px] md:text-sm pt-1 md:w-full items-start">
 				<span className="w-full">{notification.message}</span>

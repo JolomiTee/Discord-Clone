@@ -1,10 +1,21 @@
-export interface Notification {
-  id: string; // Unique identifier for the notification
-  type: 'auth' | 'alert' | 'welcome' | 'message' | 'error' | 'invite' | 'role'; // Notification type
-  title?: string; // Optional title for the notification
-  message: string; // Main notification message
-  timestamp: Date; // Time of notification creation
-  read: boolean; // Whether the user has viewed this notification
-  actionUrl?: string; // URL for redirection, if relevant
-  icon?: string; // Optional icon URL or name based on type
+// Common properties
+interface BaseNotification {
+	id: string;
+	title: string
+  message: string;
+  timestamp: Date;
+  read: boolean;
+}
+
+// High-level notifications
+export interface ForYouNotification extends BaseNotification {
+  type: 'authentication' | 'invite' | 'authorization' | 'welcome' | 'server_action' | 'channel_action' | 'error';
+  actionUrl?: string; // For redirect links
+}
+
+// Mentions and unread messages
+export interface MessageNotification extends BaseNotification {
+  type: 'dm' | 'channel_message';
+  serverId?: string; // id of the server that will be fetched
+  channelId?: string; // Channel or DM ID
 }
