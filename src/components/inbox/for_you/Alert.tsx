@@ -1,11 +1,4 @@
-import {
-	AlertCircle,
-	Bell,
-	CheckIcon,
-	Key,
-	Shield,
-	UserPlus,
-} from "lucide-react";
+import { AlertCircle, Bell, Key, Shield, UserPlus } from "lucide-react";
 import {
 	Alert,
 	AlertDescription,
@@ -35,10 +28,10 @@ export function AlertForYou({ notification }: { notification: Notification }) {
 			<AlertTitle className="font-semibold">
 				{notification.title || "Notification"}
 			</AlertTitle>
-			<AlertDescription className="text-xs md:text-sm">
-				{notification.message}
-				<div className="flex w-full justify-end mt-2">
-					<Button className="w-fit px-2 py-1.5 text-xs rounded-[10px] h-fit">
+			<AlertDescription className="flex flex-col sm:gap-3 text-xs md:text-sm">
+				<span className="w-full">{notification.message}</span>
+				<div className="flex justify-end mt-2 w-full">
+					<Button className="w-fit px-2 py-1.5 text-xs rounded-[8px] h-fit">
 						Mark as read
 					</Button>
 				</div>
