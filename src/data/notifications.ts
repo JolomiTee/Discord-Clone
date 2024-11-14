@@ -53,6 +53,57 @@ export const for_you = [
 		text: "Discord user sent you an invite",
 		server: 1,
 	},
+	{
+		date: Date.now(),
+		type: "role",
+		title: "You have been given a role!",
+		roleInvolved: "member",
+		newRole: "admin",
+		isUpgrade: true,
+		server: 1,
+		channel: 1,
+	},
+	{
+		date: Date.now(),
+		type: "role",
+		title: "You role has been revoked!",
+		roleInvolved: "admin",
+		newRole: "member",
+		isUpgrade: false,
+		server: 1,
+		channel: 1,
+	},
+	{
+		date: Date.now(),
+		type: "authentication",
+		title: "Please verify your mail!",
+		text: "you are yet to verify your mail, if you don't, your account will be restricted soon",
+	},
+	{
+		date: Date.now(),
+		type: "authentication",
+		title: "Your mail has been verified",
+		text: "your mail has been verified, thank you. Enjoy Rediscord",
+	},
+	{
+		date: Date.now(),
+		type: "authentication",
+		title: "Your password has been updated",
+		text: "your mail has been verified, thank you. Enjoy Rediscord",
+	},
+	{
+		date: Date.now(),
+		type: "welcome",
+		title: "Welcome to Rediscord",
+		text: "thank you for trying out Rediscord, feel free to share your thoughts about it, dont forget to connect with your friends here and build meaningful relationships",
+	},
+	{
+		date: Date.now(),
+		type: "invite",
+		title: "You have been invited",
+		text: "Discord user sent you an invite",
+		server: 1,
+	},
 ];
 
 
