@@ -1,5 +1,5 @@
 import { create } from "zustand";
-interface AppStateProps {
+interface AppSidebarStateProps {
 	c_sidebar_state: boolean;
 	l_sidebar_state: boolean;
 	r_sidebar_state: boolean;
@@ -18,7 +18,7 @@ interface AppStateProps {
 	switchRightSidebarContext: (newAppState: string) => void;
 }
 
-export const useSidebarStateStore = create<AppStateProps>()((set) => ({
+export const useSidebarStateStore = create<AppSidebarStateProps>()((set) => ({
 	c_sidebar_state: false,
 	l_sidebar_state: true,
 	r_sidebar_state: false,
@@ -86,6 +86,22 @@ export const useCollapsibleSidebarStore = create<CollapsibleSidebarState>()(
 		switchCollapsibleSidebarContext: (newAppState) =>
 			set(() => ({
 				collapsible_sidebar_display_context: newAppState,
+			})),
+	})
+);
+
+interface AppNotificationStateProps {
+	selectedTab: string;
+	toggle_selected_tab: (newAppState: string) => void;
+}
+
+export const useAppNotificationState = create<AppNotificationStateProps>()(
+	(set) => ({
+		selectedTab: "For You",
+
+		toggle_selected_tab: (newAppState) =>
+			set(() => ({
+				selectedTab: newAppState,
 			})),
 	})
 );
