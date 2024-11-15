@@ -1,5 +1,5 @@
 const RediscordPro = () => {
-	return <div>RediscordPro</div>;
+	return <div>Show features of rediscord pro</div>;
 };
 
 export default RediscordPro;

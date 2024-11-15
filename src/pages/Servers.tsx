@@ -28,16 +28,16 @@ const Servers = () => {
 					<div className="flex flex-wrap items-center justify-start gap-2 p-3 bg-onyx ">
 						<Input
 							placeholder="Find a server"
-							className="ring-0 shadow-0 bg-black/[24%] border border-solid border-[#FFFFFF0F] text-[#FFFFFF99] rounded-full w-[200px]"
+							className="ring-0 shadow-0 bg-black/[24%] border border-solid border-[#FFFFFF0F] text-[#FFFFFF99] rounded-full w-[200px] placeholder:text-white/80"
 						/>
 						<Select>
-							<SelectTrigger className="h-[35px] rounded-full bg-[#54414108] border border-solid border-[#FFFFFF0F] text-[#FFFFFF99] text-xs sm:text-sm  flex-row-reverse justify-end font-semibold w-fit">
+							<SelectTrigger className="h-[35px] rounded-full bg-[#54414108] border border-solid border-[#FFFFFF0F] text-white text-xs sm:text-sm  flex-row-reverse justify-end font-semibold w-fit">
 								<SelectValue
 									className="placeholder:text-xs"
 									placeholder="Newest"
 								/>
 							</SelectTrigger>
-							<SelectContent>
+							<SelectContent className="bg-onyx text-white rounded-[8px] py-1">
 								<SelectItem value="activity">Last Active</SelectItem>
 								<SelectItem value="oldest">Oldest</SelectItem>
 								<SelectItem value="newest">Newest</SelectItem>
@@ -45,7 +45,7 @@ const Servers = () => {
 							</SelectContent>
 						</Select>
 
-						<Button className="rounded-full bg-[#54414108] border border-solid border-[#FFFFFF0F] text-[#FFFFFF99]  text-[12px]">
+						<Button className="rounded-full bg-[#54414108] border border-solid border-[#FFFFFF0F] text-white text-xs sm:text-sm ">
 							<img
 								src="/icons/check.svg"
 								className="size-5 hidden md:flex"

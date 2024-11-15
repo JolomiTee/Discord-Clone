@@ -5,7 +5,7 @@ import RediscordPro from "@/components/profile/RediscordPro";
 
 const Profile = () => {
 	return (
-		<div className="theme_container w-full h-full relative overflow-hidden scrollbar-hidden">
+		<div className="theme_container w-full h-dvh relative overflow-hidden scrollbar-hidden">
 			<div className="fixed top-0 w-full h-full z-10 bg-onyx/[98%]" />
 
 			<div className="text-white z-20 relative h-full w-full grid gap-5">
