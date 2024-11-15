@@ -11,6 +11,7 @@ import Servers from "./pages/Servers";
 import Home from "./pages/home/Home";
 import Login from "./pages/home/Login";
 import Signup from "./pages/home/Signup";
+import TnC from "./pages/home/TnC";
 
 function App() {
 	return (
@@ -18,6 +19,7 @@ function App() {
 			<Route path="/" element={<Home />} />
 			<Route path="/login" element={<Login />} />
 			<Route path="/signup" element={<Signup />} />
+			<Route path="/tnc" element={<TnC />} />
 
 			<Route path="/user" element={<AppLayout />}>
 				<Route element={<Main />}>

@@ -89,14 +89,14 @@ export default function Signup() {
 							>
 								I agree to the{" "}
 								<Link
-									to="#"
+									to="/tnc"
 									className="font-medium text-primary hover:text-primary/80"
 								>
 									Terms of Service
 								</Link>{" "}
 								and{" "}
 								<Link
-									to="#"
+									to="/tnc"
 									className="font-medium text-primary hover:text-primary/80"
 								>
 									Privacy Policy
