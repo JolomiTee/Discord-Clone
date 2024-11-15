@@ -59,7 +59,7 @@ const SidebarServerIcon = ({
 			className="group/item group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center "
 		>
 			<div
-				className={`absolute top-1/2 -translate-y-1/2 -left-[1px] w-1.5 md:w-2 rounded-full transition-all duration-100 ${
+				className={`absolute top-1/2 -translate-y-1/2 -left-0.5 w-1.5 md:w-2 rounded-full transition-all duration-100 ${
 					selectedServer === i
 						? "h-10 bg-discord-blue"
 						: hasNotification
@@ -74,7 +74,7 @@ const SidebarServerIcon = ({
 			<Link to={`@server/${String(i)}`} onClick={handleClick}>
 				<SidebarMenuButton
 					tooltip={title}
-					className="gap-3 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden p-0 ps-2 md:ps-3"
+					className="gap-3 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden p-0 ps-2"
 				>
 					<Avatar
 						className={`size-[45px] md:size-[50px] ${
