@@ -89,7 +89,7 @@ export default function SidebarNavLink({
 			<NavLink to={to} onClick={handleClick}>
 				<SidebarMenuButton
 					tooltip={label}
-					className="w-full gap-3 group-data-[collapsible=icon]:ps-0 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden p-0 ps-[7px]"
+					className="w-full gap-3  text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden p-0 group-data-[collapsible=icon]:ps-0 ps-[7px] md:ps-[12px]"
 				>
 					<Avatar className="size-[45px] flex justify-center items-center">
 						<AvatarImage
@@ -98,7 +98,7 @@ export default function SidebarNavLink({
 							className="w-[30px]"
 						/>
 					</Avatar>
-					<span>{label}</span>
+					<span className="text-[15px]">{label}</span>
 				</SidebarMenuButton>
 			</NavLink>
 		</SidebarMenuItem>

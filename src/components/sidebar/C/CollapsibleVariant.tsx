@@ -21,7 +21,7 @@ const CollapsibleVariant = () => {
 			collapsible={!isMobile ? "icon" : "none"}
 			className={`bg-transparent border-none ${isMobile ? "w-[60px]" : ""}`}
 		>
-			<SidebarHeader className="bg-onyx p-0 pt-1 md:pt-1">
+			<SidebarHeader className="bg-onyx p-0 pt-1">
 				<SidebarGroup className="p-0">
 					<SidebarMenu className="gap-0">
 						{isMobile ? (
@@ -32,7 +32,7 @@ const CollapsibleVariant = () => {
 
 						<SidebarNavLink to="@me" icon="messages" label="Messages" />
 
-						<Separator className="lg:group-data-[collapsible=icon]:w-[70%] group-data-[collapsible=icon]:mx-auto rounded-full bg-charcoal h-1 md:w-[52px] my-2 md:ms-3" />
+						<Separator className="lg:group-data-[collapsible=icon]:w-[80%] group-data-[collapsible=icon]:mx-auto rounded-full bg-charcoal h-1 md:w-[45px] my-2 md:ms-3" />
 
 						<SidebarNavLink to="servers" icon="servers" label="Servers" />
 					</SidebarMenu>
