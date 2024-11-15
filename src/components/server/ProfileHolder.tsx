@@ -37,7 +37,7 @@ const ProfileHolder = () => {
 						onClick={toggle_c_sidebar}
 					>
 						<Avatar className="relative group-data-[collapsible=icon]:rounded-full size-[60px] group-data-[collapsible=icon]:size-[55px] flex items-center justify-center bg-charcoal rounded-[15px] p-[10px] group-data-[collapsible=icon]:p-1.5 overflow-visible rounded-r-none">
-							<div className="absolute right-0.5 group-data-[collapsible=icon]:-right-1 bottom-1 bg-emerald rounded-full size-[14px] border-[3px] border-solid border-onyx"></div>
+							<div className="absolute right-2 group-data-[collapsible=icon]:-right-0 bottom-1.5 bg-emerald rounded-full size-[14px] border-[2px] border-charcoal"></div>
 							<AvatarImage src="/beluga.png" className="rounded-full" />
 							<AvatarFallback className="bg-discord-blue">
 								<img

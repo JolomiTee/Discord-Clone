@@ -45,9 +45,9 @@ const DMCard = ({
 					</AvatarFallback>
 				</Avatar>
 				<div
-					className={`absolute -right-1 bottom-0 ${
+					className={`absolute -right-0 bottom-0 ${
 						online ? "bg-emerald" : "bg-gray"
-					} rounded-full size-4 border-[3px] border-solid border-onyx`}
+					} rounded-full size-3 border-[2px] border-solid border-charcoal`}
 				></div>
 			</div>
 			<span

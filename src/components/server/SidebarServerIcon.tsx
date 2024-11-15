@@ -63,7 +63,7 @@ const SidebarServerIcon = ({
 					selectedServer === i
 						? "h-10 bg-discord-blue"
 						: hasNotification
-						? "h-2 bg-white dark:bg-white group-hover/item:h-5 group-hover/item:bg-white"
+						? "h-2 bg-white group-hover/item:h-5 group-hover/item:bg-white"
 						: "group-hover/item:h-5 group-hover/item:bg-white"
 				}`}
 				style={{
