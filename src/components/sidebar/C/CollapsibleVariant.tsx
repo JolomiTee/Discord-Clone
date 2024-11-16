@@ -10,8 +10,8 @@ import {
 } from "@/components/ui/sidebar";
 import { serverList } from "@/data";
 import ProfileHolder from "../../server/ProfileHolder";
-import SidebarNavLink from "../../server/SidebarNavTab";
-import SidebarServerIcon from "../../server/SidebarServerIcon";
+import SidebarNavLink from "../../common/sidebar_buttons/SidebarNavTab";
+import SidebarServerIcon from "../../common/sidebar_buttons/SidebarServerIcon";
 import MobileSearchModal from "@/components/mobile_v_comps/MobileSearchModal";
 
 const CollapsibleVariant = () => {

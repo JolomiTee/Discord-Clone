@@ -13,7 +13,7 @@ import {
 import { ChevronDown, Search, SidebarClose } from "lucide-react";
 import ChatBubble from "../../common/ChatBubble";
 import ServerSearch from "../../search/ServerSearch";
-import SidebarServerIcon from "../../server/SidebarServerIcon";
+import SidebarServerIcon from "../../common/sidebar_buttons/SidebarServerIcon";
 import { Button } from "../../ui/button";
 import { Input } from "../../ui/input";
 
