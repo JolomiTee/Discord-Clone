@@ -84,12 +84,12 @@ const Home = () => {
 				)}
 			</header>
 
-			<main className="flex-1 z-10">
+			<main className="flex-1 z-10 mx-auto">
 				<section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-primary">
 					<div className="container px-4 md:px-6 relative">
 						<div className="flex flex-col gap-6 items-center">
 							{/* <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]"> */}
-							<div className="flex flex-col justify-center text-start md:text-center space-y-4">
+							<div className="flex flex-col justify-center text-start md:text-center space-y-4 md:space-y-10">
 								<div className="space-y-2">
 									<h1 className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none text-discord-blue">
 										Reconnect . . . Differently.
@@ -100,7 +100,7 @@ const Home = () => {
 										like the platform you know and love
 									</p>
 								</div>
-								<div className="flex flex-row items-center gap-2 ">
+								<div className="flex flex-row items-center gap-2 md:justify-center">
 									{/* <div className="flex flex-col justify-center items-center gap-2 min-[400px]:flex-row "> */}
 									<Button className="bg-discord-blue text-white rounded-[8px] hover:bg-gray-100">
 										<Link to={"signup"}>Get Started</Link>
@@ -254,8 +254,8 @@ const Home = () => {
 								<AccordionContent>
 									Yes, Rediscord will be free to use for basic
 									features. I wanna also have a premium tier thing
-									going with additional features for power users.
-									Coming Soon!
+									going just for gags, with additional features for
+									power users. Coming Soon!
 								</AccordionContent>
 							</AccordionItem>
 							<AccordionItem value="item-2">
