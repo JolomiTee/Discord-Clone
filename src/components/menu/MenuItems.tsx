@@ -49,14 +49,14 @@ export function MenuItems() {
 				<DropdownMenuContent className="w-56 bg-onyx text-sidebar-primary-foreground rounded-[15px] border-none shadow-lg">
 					<DropdownMenuLabel>Menu</DropdownMenuLabel>
 					<DropdownMenuSeparator />
-					<DropdownMenuItem>
+					{/* <DropdownMenuItem>
 						<IconButtons src="threads" alt="Threads" sizes="size-7" />
 						Threads
 					</DropdownMenuItem>
 					<DropdownMenuItem>
 						<IconButtons src="pin" alt="Pinned" sizes="size-7" />
 						Pin
-					</DropdownMenuItem>
+					</DropdownMenuItem> */}
 					<DropdownMenuItem onSelect={() => handleOpenDialog("search")}>
 						<IconButtons src="search" alt="Search" sizes="size-5" />
 						Search
@@ -71,7 +71,7 @@ export function MenuItems() {
 						/>
 						Notifications
 					</DropdownMenuItem>
-					<DropdownMenuGroup>
+					{/* <DropdownMenuGroup>
 						<DropdownMenuItem>
 							<IconButtons src="call" alt="Call" sizes="size-7" />
 							Voice Call
@@ -84,7 +84,7 @@ export function MenuItems() {
 							/>
 							Video Call
 						</DropdownMenuItem>
-					</DropdownMenuGroup>
+					</DropdownMenuGroup> */}
 					<DropdownMenuGroup>
 						<DropdownMenuItem
 							onClick={() => {
