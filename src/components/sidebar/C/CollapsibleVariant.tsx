@@ -25,7 +25,7 @@ const CollapsibleVariant = () => {
 				<SidebarGroup className="p-0">
 					<SidebarMenu className="gap-0">
 						{isMobile ? (
-							<MobileSearchModal />
+							<MobileSearchModal type="sidebar" />
 						) : (
 							<SidebarNavLink to="#" icon="search" label="Search" />
 						)}

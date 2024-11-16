@@ -72,7 +72,10 @@ const HMenu = () => {
 							src="search"
 							alt="Search"
 							sizes="size-5"
-							action={openSearchBar}
+							action={() => {
+								openSearchBar();
+								console.log("hello");
+							}}
 						/>
 						<IconButtons
 							src="members"
@@ -104,7 +107,15 @@ const HMenu = () => {
 							sizes="size-7"
 						/>
 						<IconButtons src="pin" alt="Pinned" sizes="size-7" />
-						<IconButtons src="search" alt="Search" sizes="size-5" />
+						<IconButtons
+							src="search"
+							alt="Search"
+							sizes="size-5"
+							action={() => {
+								openSearchBar();
+								console.log("hello");
+							}}
+						/>
 					</>
 				)}
 				<IconButtons
