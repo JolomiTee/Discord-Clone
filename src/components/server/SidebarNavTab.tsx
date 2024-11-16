@@ -86,11 +86,13 @@ export default function SidebarNavLink({
 				}}
 			/>
 
-			<NavLink to={to} onClick={handleClick}>
-				<SidebarMenuButton
-					tooltip={label}
-					className="w-full gap-3  text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden p-0 group-data-[collapsible=icon]:ps-0 ps-[7px] md:ps-[12px]"
-				>
+			<SidebarMenuButton
+				isActive={selected_tab === label.toLocaleLowerCase()}
+				asChild
+				tooltip={label}
+				className="w-full gap-3  text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden p-0 group-data-[collapsible=icon]:ps-0 ps-[7px] md:ps-[12px]"
+			>
+				<NavLink to={to} onClick={handleClick}>
 					<Avatar className="size-[45px] flex justify-center items-center">
 						<AvatarImage
 							src={`/icons/${icon}.svg`}
@@ -99,8 +101,8 @@ export default function SidebarNavLink({
 						/>
 					</Avatar>
 					<span className="text-[15px]">{label}</span>
-				</SidebarMenuButton>
-			</NavLink>
+				</NavLink>
+			</SidebarMenuButton>
 		</SidebarMenuItem>
 	);
 }

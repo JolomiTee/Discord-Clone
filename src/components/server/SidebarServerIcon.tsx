@@ -71,11 +71,13 @@ const SidebarServerIcon = ({
 				}}
 			/>
 
-			<Link to={`@server/${String(i)}`} onClick={handleClick}>
-				<SidebarMenuButton
-					tooltip={title}
-					className="gap-3 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden p-0 group-data-[collapsible=icon]:ps-0 ps-2 md:ps-3"
-				>
+			<SidebarMenuButton
+				asChild
+				isActive={selectedServer === i}
+				tooltip={title}
+				className="gap-3 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden p-0 group-data-[collapsible=icon]:ps-0 ps-2 md:ps-3"
+			>
+				<Link to={`@server/${String(i)}`} onClick={handleClick}>
 					<Avatar
 						className={`size-[45px] group-data-[collapsible=icon]:md:size-[50px] ${
 							selectedServer === i
@@ -97,8 +99,8 @@ const SidebarServerIcon = ({
 					<span className="text-[15px]">
 						{title} referendum no inumine patri
 					</span>
-				</SidebarMenuButton>
-			</Link>
+				</Link>
+			</SidebarMenuButton>
 		</SidebarMenuItem>
 	);
 };
