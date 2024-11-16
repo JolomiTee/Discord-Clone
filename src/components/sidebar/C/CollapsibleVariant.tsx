@@ -12,7 +12,7 @@ import { serverList } from "@/data";
 import ProfileHolder from "../../server/ProfileHolder";
 import SidebarNavLink from "../../server/SidebarNavTab";
 import SidebarServerIcon from "../../server/SidebarServerIcon";
-import MobileSearchModal from "@/components/search/MobileSearchModal";
+import MobileSearchModal from "@/components/mobile_v_comps/MobileSearchModal";
 
 const CollapsibleVariant = () => {
 	const { isMobile } = useSidebar();

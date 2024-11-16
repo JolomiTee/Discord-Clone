@@ -15,7 +15,7 @@ import { useEffect } from "react";
 import IconButtons from "../../common/IconButtons";
 import DMCard from "./DMCard";
 import FriendCard from "./FriendCard";
-import MobileSearchModal from "@/components/search/MobileSearchModal";
+import MobileSearchModal from "@/components/mobile_v_comps/MobileSearchModal";
 const MessagesDisplayVariant = () => {
 	const openSearchBar = useOpenSearchBar();
 	const l_sidebar_state = useSidebarStateStore(
