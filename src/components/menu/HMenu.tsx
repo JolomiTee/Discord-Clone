@@ -61,18 +61,21 @@ const HMenu = () => {
 			<div className="items-center gap-3 hidden lg:flex w-full justify-end">
 				{location.pathname.includes("@channel") ? (
 					<>
-						<IconButtons
+						{/* <IconButtons
 							src="disable_notification"
 							alt="Notification"
 							sizes="size-7"
 						/>
 						<IconButtons src="threads" alt="Threads" sizes="size-7" />
-						<IconButtons src="pin" alt="Pinned" sizes="size-7" />
+						<IconButtons src="pin" alt="Pinned" sizes="size-7" /> */}
 						<IconButtons
 							src="search"
 							alt="Search"
 							sizes="size-5"
-							action={openSearchBar}
+							action={() => {
+								openSearchBar();
+								console.log("hello");
+							}}
 						/>
 						<IconButtons
 							src="members"
@@ -92,7 +95,7 @@ const HMenu = () => {
 					</>
 				) : (
 					<>
-						<IconButtons src="call" alt="Call" sizes="size-7" />
+						{/* <IconButtons src="call" alt="Call" sizes="size-7" />
 						<IconButtons
 							src="video_call"
 							alt="Video Call"
@@ -103,8 +106,16 @@ const HMenu = () => {
 							alt="Notification"
 							sizes="size-7"
 						/>
-						<IconButtons src="pin" alt="Pinned" sizes="size-7" />
-						<IconButtons src="search" alt="Search" sizes="size-5" />
+						<IconButtons src="pin" alt="Pinned" sizes="size-7" /> */}
+						<IconButtons
+							src="search"
+							alt="Search"
+							sizes="size-5"
+							action={() => {
+								openSearchBar();
+								console.log("hello");
+							}}
+						/>
 					</>
 				)}
 				<IconButtons

@@ -10,9 +10,9 @@ import {
 } from "@/components/ui/sidebar";
 import { serverList } from "@/data";
 import ProfileHolder from "../../server/ProfileHolder";
-import SidebarNavLink from "../../server/SidebarNavTab";
-import SidebarServerIcon from "../../server/SidebarServerIcon";
-import MobileSearchModal from "@/components/search/MobileSearchModal";
+import SidebarNavLink from "../../common/sidebar_buttons/SidebarNavTab";
+import SidebarServerIcon from "../../common/sidebar_buttons/SidebarServerIcon";
+import MobileSearchModal from "@/components/mobile_v_comps/MobileSearchModal";
 
 const CollapsibleVariant = () => {
 	const { isMobile } = useSidebar();
@@ -21,18 +21,18 @@ const CollapsibleVariant = () => {
 			collapsible={!isMobile ? "icon" : "none"}
 			className={`bg-transparent border-none ${isMobile ? "w-[60px]" : ""}`}
 		>
-			<SidebarHeader className="bg-onyx p-0 pt-1 md:pt-1">
+			<SidebarHeader className="bg-onyx p-0 pt-1">
 				<SidebarGroup className="p-0">
 					<SidebarMenu className="gap-0">
 						{isMobile ? (
-							<MobileSearchModal />
+							<MobileSearchModal type="sidebar" />
 						) : (
 							<SidebarNavLink to="#" icon="search" label="Search" />
 						)}
 
 						<SidebarNavLink to="@me" icon="messages" label="Messages" />
 
-						<Separator className="lg:group-data-[collapsible=icon]:w-[70%] group-data-[collapsible=icon]:mx-auto rounded-full bg-charcoal h-1 md:w-[52px] my-2 md:ms-3" />
+						<Separator className="lg:group-data-[collapsible=icon]:w-[80%] group-data-[collapsible=icon]:mx-auto rounded-full bg-charcoal h-1 md:w-[45px] my-2 md:ms-3" />
 
 						<SidebarNavLink to="servers" icon="servers" label="Servers" />
 					</SidebarMenu>

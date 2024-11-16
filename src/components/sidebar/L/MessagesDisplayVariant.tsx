@@ -13,8 +13,9 @@ import { useSidebarStateStore } from "@/hooks/base-context";
 import { useOpenSearchBar } from "@/hooks/use-open-sidebar";
 import { useEffect } from "react";
 import IconButtons from "../../common/IconButtons";
-import DMCard from "./DMCard";
-import FriendCard from "./FriendCard";
+import DMCard from "../../common/sidebar_buttons/DMCard";
+import FriendCard from "../../common/sidebar_buttons/FriendCard";
+import MobileSearchModal from "@/components/mobile_v_comps/MobileSearchModal";
 const MessagesDisplayVariant = () => {
 	const openSearchBar = useOpenSearchBar();
 	const l_sidebar_state = useSidebarStateStore(
@@ -73,14 +74,17 @@ const MessagesDisplayVariant = () => {
 								</Select>
 
 								<div className="flex gap-2 items-center ">
-									<IconButtons
-										src="search"
-										alt="Search"
-										sizes="size-[18px]"
-										buttonStyles="rounded-full size-[35px] p-0 bg-[#FFFFFF08] border border-solid border-[#FFFFFF0F]"
-										action={openSearchBar}
-									/>
-
+									{!isMobile ? (
+										<IconButtons
+											src="search"
+											alt="Search"
+											sizes="size-[18px]"
+											buttonStyles="rounded-full size-[35px] p-0 bg-[#FFFFFF08] border border-solid border-[#FFFFFF0F]"
+											action={openSearchBar}
+										/>
+									) : (
+										<MobileSearchModal type="l_sidebar_search" />
+									)}
 									<IconButtons
 										src="plus"
 										alt="Add"
@@ -93,7 +97,7 @@ const MessagesDisplayVariant = () => {
 
 						<TabsContent
 							value="messages"
-							className="text-[#FFFFFF99] pt-[120px] pb-[50px] px-3"
+							className="text-[#FFFFFF99] pt-[120px] pb-[50px]"
 						>
 							<div className=" grid overflow-y-auto max-h-full scrollbar-hidden">
 								{messageList.map((message, i) => {
@@ -103,7 +107,6 @@ const MessagesDisplayVariant = () => {
 										online,
 										hasMessage,
 										messageCount,
-										pinned,
 									} = message;
 									return (
 										<DMCard
@@ -114,7 +117,6 @@ const MessagesDisplayVariant = () => {
 											online={online}
 											hasMessage={hasMessage}
 											messageCount={messageCount}
-											pinned={pinned}
 										/>
 									);
 								})}

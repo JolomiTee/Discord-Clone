@@ -5,7 +5,13 @@ import {
 	AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
-import { MessageSquare, MoreHorizontal, Users, Video } from "lucide-react";
+import {
+	MessageSquare,
+	MoreHorizontal,
+	Rocket,
+	Users,
+	Video,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
@@ -78,22 +84,24 @@ const Home = () => {
 				)}
 			</header>
 
-			<main className="flex-1 z-10">
+			<main className="flex-1 z-10 mx-auto">
 				<section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-primary">
 					<div className="container px-4 md:px-6 relative">
-						<div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
-							<div className="flex flex-col justify-center space-y-4">
+						<div className="flex flex-col gap-6 items-center">
+							{/* <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]"> */}
+							<div className="flex flex-col justify-center text-start md:text-center space-y-4 md:space-y-10">
 								<div className="space-y-2">
-									<h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none text-discord-blue">
-										Welcome to Rediscord
+									<h1 className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none text-discord-blue">
+										Reconnect . . . Differently.
 									</h1>
 									<p className="max-w-[600px] md:text-xl ">
 										Connect, chat, and collaborate with your
 										community. Rediscord brings people together, just
-										like the platform you know and love.
+										like the platform you know and love
 									</p>
 								</div>
-								<div className="flex flex-col gap-2 min-[400px]:flex-row">
+								<div className="flex flex-row items-center gap-2 md:justify-center">
+									{/* <div className="flex flex-col justify-center items-center gap-2 min-[400px]:flex-row "> */}
 									<Button className="bg-discord-blue text-white rounded-[8px] hover:bg-gray-100">
 										<Link to={"signup"}>Get Started</Link>
 									</Button>
@@ -121,9 +129,17 @@ const Home = () => {
 					className="w-full py-12 md:py-24 lg:py-32 bg-white"
 				>
 					<div className="container px-4 md:px-6">
-						<h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12 ">
-							Features
-						</h2>
+						<div className="flex flex-col gap-6 mx-auto text-center mb-12 max-w-[600px]">
+							<h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+								Features
+							</h2>
+							<p>
+								Rediscord wants to bring so many features to life, but
+								we are going one at a time. Here are some of the cool
+								features that would be making it to{" "}
+								<b> Production Soon</b> <Rocket className="inline" />{" "}
+							</p>
+						</div>
 						<div className="grid gap-6 lg:grid-cols-3 lg:gap-12">
 							<div className="flex flex-col items-center space-y-4 text-center">
 								<Users className="h-12 w-12 text-fuchsia-600" />
@@ -224,7 +240,7 @@ const Home = () => {
 				<section id="faq" className="w-full py-12 md:py-24 lg:py-32">
 					<div className="container px-4 md:px-6">
 						<h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">
-							Frequently Asked Questions
+							Questions? Why Not?
 						</h2>
 						<Accordion
 							type="single"
@@ -236,9 +252,10 @@ const Home = () => {
 									Is Rediscord free to use?
 								</AccordionTrigger>
 								<AccordionContent>
-									Yes, Rediscord is free to use for basic features. We
-									also offer a premium tier with additional features
-									for power users.
+									Yes, Rediscord will be free to use for basic
+									features. I wanna also have a premium tier thing
+									going just for gags, with additional features for
+									power users. Coming Soon!
 								</AccordionContent>
 							</AccordionItem>
 							<AccordionItem value="item-2">
@@ -246,9 +263,10 @@ const Home = () => {
 									How secure is Rediscord?
 								</AccordionTrigger>
 								<AccordionContent>
-									We take security seriously. Rediscord uses end-to-end
-									encryption for all messages and calls, ensuring your
-									conversations remain private.
+									I take security seriously. Rediscord will be using
+									end-to-end encryption for all messages and calls,
+									ensuring your conversations remain private... Easier
+									said than done!
 								</AccordionContent>
 							</AccordionItem>
 							<AccordionItem value="item-3">
@@ -256,8 +274,8 @@ const Home = () => {
 									Can I use Rediscord on mobile devices?
 								</AccordionTrigger>
 								<AccordionContent>
-									Rediscord is available on iOS and Android devices, as
-									well as on desktop platforms.
+									Rediscord is currently a web-only application, but
+									will make it to PWA status soon with all its features
 								</AccordionContent>
 							</AccordionItem>
 							<AccordionItem value="item-4">
@@ -265,9 +283,9 @@ const Home = () => {
 									How many people can join a server?
 								</AccordionTrigger>
 								<AccordionContent>
-									Our servers can accommodate up to 100,000 members,
-									making Rediscord suitable for communities of all
-									sizes.
+									Rediscord database can accommodate up to 100,000
+									members, making Rediscord 'almost' suitable for
+									communities of all sizes. I'd ask Mongo later though.
 								</AccordionContent>
 							</AccordionItem>
 						</Accordion>

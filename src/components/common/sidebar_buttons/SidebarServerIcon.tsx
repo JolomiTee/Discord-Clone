@@ -59,11 +59,11 @@ const SidebarServerIcon = ({
 			className="group/item group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center "
 		>
 			<div
-				className={`absolute top-1/2 -translate-y-1/2 -left-[1px] w-1.5 md:w-2 rounded-full transition-all duration-100 ${
+				className={`absolute top-1/2 -translate-y-1/2 -left-0.5 w-1.5 md:w-2 rounded-full transition-all duration-100 ${
 					selectedServer === i
 						? "h-10 bg-discord-blue"
 						: hasNotification
-						? "h-2 bg-white dark:bg-white group-hover/item:h-5 group-hover/item:bg-white"
+						? "h-2 bg-white group-hover/item:h-5 group-hover/item:bg-white"
 						: "group-hover/item:h-5 group-hover/item:bg-white"
 				}`}
 				style={{
@@ -71,13 +71,15 @@ const SidebarServerIcon = ({
 				}}
 			/>
 
-			<Link to={`@server/${String(i)}`} onClick={handleClick}>
-				<SidebarMenuButton
-					tooltip={title}
-					className="gap-3 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden p-0 ps-2 md:ps-3"
-				>
+			<SidebarMenuButton
+				asChild
+				isActive={selectedServer === i}
+				tooltip={title}
+				className="gap-3 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden p-0 group-data-[collapsible=icon]:ps-0 ps-2 md:ps-3"
+			>
+				<Link to={`@server/${String(i)}`} onClick={handleClick}>
 					<Avatar
-						className={`size-[45px] md:size-[50px] ${
+						className={`size-[45px] group-data-[collapsible=icon]:md:size-[50px] ${
 							selectedServer === i
 								? "rounded-[12px]"
 								: "group-hover/item:rounded-[12px]"
@@ -94,9 +96,11 @@ const SidebarServerIcon = ({
 							<img src="/icons/discord.svg" className="size-[30px] " />
 						</AvatarFallback>
 					</Avatar>
-					<span>{title}</span>
-				</SidebarMenuButton>
-			</Link>
+					<span className="text-[15px]">
+						{title} referendum no inumine patri
+					</span>
+				</Link>
+			</SidebarMenuButton>
 		</SidebarMenuItem>
 	);
 };
