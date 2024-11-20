@@ -59,14 +59,22 @@ const Servers = () => {
 					value="myservers"
 					className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-10 p-3 mb-10"
 				>
-					{discordServers.map((servers, i) => {
-						const { name, online, members, lastSeen, server_img } =
-							servers;
+					{discordServers.map((servers) => {
+						const {
+							id,
+							slug,
+							name,
+							online,
+							members,
+							lastSeen,
+							server_img,
+						} = servers;
 
 						return (
 							<ServerCard
-								key={i}
-								serverId={i}
+								slug={slug}
+								key={id}
+								serverId={id}
 								name={name}
 								online={online}
 								members={members}

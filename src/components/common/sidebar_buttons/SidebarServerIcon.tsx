@@ -12,14 +12,14 @@ import { Link } from "react-router-dom";
 
 interface props {
 	slug: string;
-	title: string;
+	name: string;
 	serverIcon: string;
 	hasNotification: boolean;
 	serverId: number;
 }
 const SidebarServerIcon = ({
 	slug,
-	title,
+	name,
 	serverIcon,
 	hasNotification,
 	serverId,
@@ -73,7 +73,7 @@ const SidebarServerIcon = ({
 			<SidebarMenuButton
 				asChild
 				isActive={selectedServer === serverId}
-				tooltip={title}
+				tooltip={name}
 				className="gap-3 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden p-0 group-data-[collapsible=icon]:ps-0 px-3 md:ps-3 data-[active=true]:text-white data-[active=true]:font-bold"
 			>
 				<Link to={`@server/${String(serverId)}`} onClick={handleClick}>
@@ -84,7 +84,7 @@ const SidebarServerIcon = ({
 								: "group-hover/item:rounded-[12px]"
 						}`}
 					>
-						<AvatarImage src={serverIcon} />
+						<AvatarImage src={serverIcon} alt={slug} />
 						<AvatarFallback
 							className={
 								selectedServer === serverId
@@ -92,11 +92,15 @@ const SidebarServerIcon = ({
 									: "bg-graphite group-hover/item:rounded-[12px]"
 							}
 						>
-							<img src="/icons/discord.svg" className="size-[30px] " />
+							<img
+								src="/icons/discord.svg"
+								className="size-[30px]"
+								alt={slug}
+							/>
 						</AvatarFallback>
 					</Avatar>
 					<span className="text-[15px]">
-						{title} referendum no inumine patri
+						{name} referendum no inumine patri
 					</span>
 				</Link>
 			</SidebarMenuButton>

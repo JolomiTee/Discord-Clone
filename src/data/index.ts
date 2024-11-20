@@ -1,39 +1,81 @@
 export const serverList = [
+  {
+    name: "Midjourney",
+    online: 175432,
+    members: 1843921,
+    lastSeen: "7:15 am, August 14, 2023",
+    link: "https://discord.com/invite/midjourney",
+    muted: false,
+    server_img: "/servers/midjourney.png",
+    slug: "midjourney",
+    id: 1001
+  },
+  {
+    name: "HELLDIVERS II",
+    online: 145678,
+    members: 1543920,
+    lastSeen: "9:42 pm, June 28, 2024",
+    link: "https://discord.com/invite/helldivers2",
+    muted: false,
+    server_img: "/servers/helldivers.png",
+    slug: "helldivers-ii",
+    id: 1002
+  },
+  {
+    name: "Minecraft",
+    online: 193476,
+    members: 1987654,
+    lastSeen: "2:37 am, December 5, 2022",
+    link: "https://discord.com/invite/minecraft",
+    muted: false,
+    server_img: "/servers/minecraft.png",
+    slug: "minecraft",
+    id: 1003
+  },
+	  {
+    name: "One Piece",
+    online: 154321,
+    members: 1750293,
+    lastSeen: "1:30 pm, July 10, 2024",
+    link: "https://discord.com/invite/onepiece",
+    muted: false,
+    server_img: "/servers/onepiece.png",
+    slug: "one-piece",
+    id: 1009
+  },
+  {
+    name: "BeluGANG",
+    online: 110872,
+    members: 1384957,
+    lastSeen: "10:41 am, September 19, 2023",
+    link: "https://discord.com/invite/belugang",
+    muted: false,
+    server_img: "/servers/belugang.png",
+    slug: "belugang",
+    id: 1010
+  },
+  {
+    name: "LinusTechTips",
+    online: 182745,
+    members: 1934872,
+    lastSeen: "11:59 pm, May 24, 2023",
+    link: "https://discord.com/invite/linustech",
+    muted: false,
+    server_img: "/servers/linustechtips.png",
+    slug: "linustechtips",
+    id: 1013
+  },
 	{
-		title: "MidJourney",
-		serverIcon: "/servers/midjourney.png",
-		hasNotification: true,
-		slug: "midjourney",
-		id: 1001
-	},
-	{
-		title: "Roblox",
-		serverIcon: "/servers/roblox.png",
-		hasNotification: false,
-		slug: "roblox",
-		id: 1002
-	},
-	{
-		title: "One Piece",
-		serverIcon: "/servers/onepiece.png",
-		hasNotification: true,
-		slug: "one-piece",
-		id: 1003
-	},
-	{
-		title: "LinusTechTips",
-		serverIcon: "/servers/linustechtips.png",
-		hasNotification: false,
-		slug: "linustechtips",
-		id: 1004
-	},
-	{
-		title: "Apex Legends",
-		serverIcon: "/servers/apex legends.png",
-		hasNotification: false,
-		slug: "apex-legends",
-		id: 1005
-	}
+    name: "Apex Legends",
+    online: 158902,
+    members: 1904872,
+    lastSeen: "9:11 am, October 17, 2024",
+    link: "https://discord.com/invite/apexlegends",
+    muted: false,
+    server_img: "/servers/apexlegends.png",
+    slug: "apex-legends",
+    id: 1017
+  },
 ];
 
 
@@ -399,7 +441,9 @@ export const discordServers = [
     lastSeen: "7:15 am, August 14, 2023",
     link: "https://discord.com/invite/midjourney",
     muted: false,
-    server_img: "/servers/midjourney.png"
+    server_img: "/servers/midjourney.png",
+    slug: "midjourney",
+    id: 1001
   },
   {
     name: "HELLDIVERS II",
@@ -408,7 +452,9 @@ export const discordServers = [
     lastSeen: "9:42 pm, June 28, 2024",
     link: "https://discord.com/invite/helldivers2",
     muted: false,
-    server_img: "/servers/helldivers.png"
+    server_img: "/servers/helldivers.png",
+    slug: "helldivers-ii",
+    id: 1002
   },
   {
     name: "Minecraft",
@@ -417,7 +463,9 @@ export const discordServers = [
     lastSeen: "2:37 am, December 5, 2022",
     link: "https://discord.com/invite/minecraft",
     muted: false,
-    server_img: "/servers/minecraft.png"
+    server_img: "/servers/minecraft.png",
+    slug: "minecraft",
+    id: 1003
   },
   {
     name: "Fortnite",
@@ -426,7 +474,9 @@ export const discordServers = [
     lastSeen: "11:13 pm, February 20, 2023",
     link: "https://discord.com/invite/fortnite",
     muted: false,
-    server_img: "/servers/fortnite.png"
+    server_img: "/servers/fortnite.png",
+    slug: "fortnite",
+    id: 1004
   },
   {
     name: "Roblox",
@@ -435,7 +485,9 @@ export const discordServers = [
     lastSeen: "4:23 pm, October 3, 2024",
     link: "https://discord.com/invite/roblox",
     muted: false,
-    server_img: "/servers/roblox.png"
+    server_img: "/servers/roblox.png",
+    slug: "roblox",
+    id: 1005
   },
   {
     name: "Terraria",
@@ -444,7 +496,9 @@ export const discordServers = [
     lastSeen: "8:09 am, May 15, 2022",
     link: "https://discord.com/invite/terraria",
     muted: false,
-    server_img: "/servers/terraria.png"
+    server_img: "/servers/terraria.png",
+    slug: "terraria",
+    id: 1006
   },
   {
     name: "Linkin Park",
@@ -453,7 +507,9 @@ export const discordServers = [
     lastSeen: "6:45 pm, January 18, 2024",
     link: "https://discord.com/invite/linkinpark",
     muted: false,
-    server_img: "/servers/linkinpark.png"
+    server_img: "/servers/linkinpark.png",
+    slug: "linkin-park",
+    id: 1007
   },
   {
     name: "Memeology",
@@ -462,7 +518,9 @@ export const discordServers = [
     lastSeen: "3:16 am, April 7, 2023",
     link: "https://discord.com/invite/memeology",
     muted: false,
-    server_img: "/servers/memeology.png"
+    server_img: "/servers/memeology.png",
+    slug: "memeology",
+    id: 1008
   },
   {
     name: "One Piece",
@@ -471,7 +529,9 @@ export const discordServers = [
     lastSeen: "1:30 pm, July 10, 2024",
     link: "https://discord.com/invite/onepiece",
     muted: false,
-    server_img: "/servers/onepiece.png"
+    server_img: "/servers/onepiece.png",
+    slug: "one-piece",
+    id: 1009
   },
   {
     name: "BeluGANG",
@@ -480,7 +540,9 @@ export const discordServers = [
     lastSeen: "10:41 am, September 19, 2023",
     link: "https://discord.com/invite/belugang",
     muted: false,
-    server_img: "/servers/belugang.png"
+    server_img: "/servers/belugang.png",
+    slug: "belugang",
+    id: 1010
   },
   {
     name: "Jojo’s Bizarre Adventure",
@@ -489,7 +551,9 @@ export const discordServers = [
     lastSeen: "5:18 pm, November 30, 2022",
     link: "https://discord.com/invite/jojosbizarreadventure",
     muted: false,
-    server_img: "/servers/jojo.png"
+    server_img: "/servers/jojo.png",
+    slug: "jojos-bizarre-adventure",
+    id: 1011
   },
   {
     name: "OperaGX",
@@ -498,7 +562,9 @@ export const discordServers = [
     lastSeen: "9:25 am, March 2, 2024",
     link: "https://discord.com/invite/operagx",
     muted: false,
-    server_img: "/servers/operagx.png"
+    server_img: "/servers/operagx.png",
+    slug: "operagx",
+    id: 1012
   },
   {
     name: "LinusTechTips",
@@ -507,7 +573,9 @@ export const discordServers = [
     lastSeen: "11:59 pm, May 24, 2023",
     link: "https://discord.com/invite/linustech",
     muted: false,
-    server_img: "/servers/linustechtips.png"
+    server_img: "/servers/linustechtips.png",
+    slug: "linustechtips",
+    id: 1013
   },
   {
     name: "PCMasterRace",
@@ -516,7 +584,9 @@ export const discordServers = [
     lastSeen: "6:03 pm, December 12, 2023",
     link: "https://discord.com/invite/pcmasterrace",
     muted: false,
-    server_img: "/servers/pcmasterrace.png"
+    server_img: "/servers/pcmasterrace.png",
+    slug: "pcmasterrace",
+    id: 1014
   },
   {
     name: "RAZER",
@@ -525,7 +595,9 @@ export const discordServers = [
     lastSeen: "7:33 am, July 22, 2024",
     link: "https://discord.com/invite/razer",
     muted: false,
-    server_img: "/servers/razer.png"
+    server_img: "/servers/razer.png",
+    slug: "razer",
+    id: 1015
   },
   {
     name: "DESTINY 2",
@@ -534,7 +606,9 @@ export const discordServers = [
     lastSeen: "8:26 pm, September 1, 2022",
     link: "https://discord.com/invite/destiny2",
     muted: false,
-    server_img: "/servers/destiny.png"
+    server_img: "/servers/destiny.png",
+    slug: "destiny-2",
+    id: 1016
   },
   {
     name: "Apex Legends",
@@ -543,7 +617,9 @@ export const discordServers = [
     lastSeen: "9:11 am, October 17, 2024",
     link: "https://discord.com/invite/apexlegends",
     muted: false,
-    server_img: "/servers/apexlegends.png"
+    server_img: "/servers/apexlegends.png",
+    slug: "apex-legends",
+    id: 1017
   },
   {
     name: "VALORANT",
@@ -552,7 +628,9 @@ export const discordServers = [
     lastSeen: "10:22 pm, January 9, 2023",
     link: "https://discord.com/invite/valorant",
     muted: false,
-    server_img: "/servers/valorant.png"
+    server_img: "/servers/valorant.png",
+    slug: "valorant",
+    id: 1018
   },
   {
     name: "Lofi Girl",
@@ -561,7 +639,9 @@ export const discordServers = [
     lastSeen: "4:18 am, August 23, 2024",
     link: "https://discord.com/invite/lofigirl",
     muted: false,
-    server_img: "/servers/lofigirl.png"
+    server_img: "/servers/lofigirl.png",
+    slug: "lofi-girl",
+    id: 1019
   },
   {
     name: "Rythm",
@@ -570,7 +650,9 @@ export const discordServers = [
     lastSeen: "12:01 pm, November 14, 2022",
     link: "https://discord.com/invite/rythm",
     muted: false,
-    server_img: "/servers/rythm.png"
+    server_img: "/servers/rythm.png",
+    slug: "rythm",
+    id: 1020
   }
 ];
 

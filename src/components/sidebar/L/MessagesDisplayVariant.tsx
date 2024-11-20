@@ -16,6 +16,7 @@ import IconButtons from "../../common/IconButtons";
 import DMCard from "../../common/sidebar_buttons/DMCard";
 import FriendCard from "../../common/sidebar_buttons/FriendCard";
 import MobileSearchModal from "@/components/mobile_v_comps/MobileSearchModal";
+import { title } from "process";
 const MessagesDisplayVariant = () => {
 	const openSearchBar = useOpenSearchBar();
 	const l_sidebar_state = useSidebarStateStore(
@@ -34,8 +35,22 @@ const MessagesDisplayVariant = () => {
 		if (isMobile) {
 			setLSidebarState(false);
 		}
-
 	}, [l_sidebar_state, open]);
+
+	const messagesFilter = [
+		{
+			title: "Oldest",
+			label: "oldest",
+		},
+		{
+			title: "Read",
+			label: "label",
+		},
+		{
+			title: "Unread",
+			label: "unread",
+		},
+	];
 
 	return (
 		<Sidebar className=" border-none">
@@ -49,7 +64,7 @@ const MessagesDisplayVariant = () => {
 							<TabsList className="w-full h-[50px] justify-center px-2 gap-4">
 								<TabsTrigger
 									value="messages"
-									className="px-5 py-1.5 w-1/2"
+									className="px-5 py-2 w-1/2"
 								>
 									Messages
 								</TabsTrigger>
@@ -65,10 +80,15 @@ const MessagesDisplayVariant = () => {
 									<SelectTrigger className="h-[35px] rounded-full bg-[#FFFFFF08] border border-solid border-[#FFFFFF0F] text-[#FFFFFF99] flex-row-reverse justify-end font-semibold">
 										<SelectValue placeholder="Newest" />
 									</SelectTrigger>
-									<SelectContent>
-										<SelectItem value="oldest">Oldest</SelectItem>
-										<SelectItem value="read">Read</SelectItem>
-										<SelectItem value="unread">Unread</SelectItem>
+									<SelectContent className="bg-onyx border border-solid border-[#FFFFFF0F] text-[#FFFFFF] rounded-[10px]">
+										{messagesFilter.map((filters) => (
+											<SelectItem
+												className="rounded-[8px]"
+												value={filters.label}
+											>
+												{filters.title}
+											</SelectItem>
+										))}
 									</SelectContent>
 								</Select>
 

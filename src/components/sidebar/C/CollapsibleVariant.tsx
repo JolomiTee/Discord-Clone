@@ -43,15 +43,20 @@ const CollapsibleVariant = () => {
 				<SidebarGroup className="p-0">
 					<SidebarMenu className="gap-y-3">
 						{serverList.map((item) => {
-							const { id, slug, title, serverIcon, hasNotification } =
-								item;
+							const {
+								id,
+								slug,
+								name,
+								server_img: serverIcon,
+								muted,
+							} = item;
 							return (
 								<SidebarServerIcon
 									key={id}
 									slug={slug}
-									title={title}
+									name={name}
 									serverIcon={serverIcon}
-									hasNotification={hasNotification}
+									hasNotification={muted}
 									serverId={id}
 								/>
 							);
@@ -62,6 +67,8 @@ const CollapsibleVariant = () => {
 
 			<SidebarFooter className="bg-onyx p-0 pb-5">
 				<SidebarMenu>
+					<Separator className="lg:group-data-[collapsible=icon]:w-[80%] group-data-[collapsible=icon]:mx-auto rounded-full bg-charcoal h-1 md:w-[45px] mt-2 md:ms-3" />
+
 					<SidebarNavLink to="inbox" icon="inbox" label="Inbox" />
 
 					<ProfileHolder />

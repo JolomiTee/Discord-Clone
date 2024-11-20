@@ -7,6 +7,7 @@ import { formatNumber } from "@/lib/utils";
 import { Link } from "react-router-dom";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 interface DiscordServerProps {
+	slug: string;
 	name: string;
 	serverId: number;
 	online: number;
@@ -18,6 +19,7 @@ interface DiscordServerProps {
 }
 const ServerCard = ({
 	name,
+	slug,
 	serverId,
 	online,
 	members,
@@ -44,12 +46,14 @@ const ServerCard = ({
 				<Avatar className="rounded-[8px] size-12">
 					<AvatarImage
 						src={server_img}
+						alt={slug}
 						className="mx-auto my-auto object-cover"
 					/>
 					<AvatarFallback className="bg-discord-blue rounded-[8px]">
 						<img
 							src="/icons/discord.svg"
 							className="w-[35px] h-[35px] mx-auto my-auto"
+							alt={slug}
 						/>
 					</AvatarFallback>
 				</Avatar>
