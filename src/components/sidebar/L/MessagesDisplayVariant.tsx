@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
+import MobileSearchModal from "@/components/mobile_v_comps/MobileSearchModal";
 import { Sidebar, SidebarContent, useSidebar } from "@/components/ui/sidebar";
 import { messageList } from "@/data";
 import { useSidebarStateStore } from "@/hooks/base-context";
@@ -15,8 +16,6 @@ import { useEffect } from "react";
 import IconButtons from "../../common/IconButtons";
 import DMCard from "../../common/sidebar_buttons/DMCard";
 import FriendCard from "../../common/sidebar_buttons/FriendCard";
-import MobileSearchModal from "@/components/mobile_v_comps/MobileSearchModal";
-import { title } from "process";
 const MessagesDisplayVariant = () => {
 	const openSearchBar = useOpenSearchBar();
 	const l_sidebar_state = useSidebarStateStore(
