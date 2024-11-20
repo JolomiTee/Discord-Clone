@@ -12,10 +12,10 @@ import { MoreHorizontal } from "lucide-react";
 
 import { useSidebarStateStore } from "@/hooks/base-context";
 import React from "react";
-import MobileNotificationModal from "../mobile_v_comps/MobileNotificationModal";
-import MobileSearchModal from "../mobile_v_comps/MobileSearchModal";
+import MobileNotificationModal from "./MobileNotificationModal";
+import MobileSearchModal from "./MobileSearchModal";
 
-export function MenuItems() {
+export function MobileMenuItems() {
 	const r_sidebar_state = useSidebarStateStore(
 		(state) => state.r_sidebar_state
 	);

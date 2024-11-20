@@ -1,3 +1,4 @@
+import ChannelsButton from "@/components/common/sidebar_buttons/ChannelsButton";
 import {
 	Accordion,
 	AccordionContent,
@@ -24,7 +25,7 @@ import {
 	Pin,
 } from "lucide-react";
 import { useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import IconButtons from "../../common/IconButtons";
 import { AspectRatio } from "../../ui/aspect-ratio";
 import { Separator } from "../../ui/separator";
@@ -142,22 +143,15 @@ const ServerDisplayVariant = () => {
 									</AccordionTrigger>
 									<AccordionContent className="px-3 flex flex-col gap-3">
 										{textChannels.map((channel, i) => {
+											const { name, type } = channel;
 											return (
-												<Link
+												<ChannelsButton
 													key={i}
-													to={`@server/${String(
-														serverId
-													)}/@channel/${String(i)}`}
-													className="flex justify-start items-center gap-2"
-												>
-													<img
-														src={`/icons/${channel.type}.svg`}
-														alt={channel.name}
-														width={26}
-														height={26}
-													/>
-													{channel.name}
-												</Link>
+													serverId={serverId}
+													channelId={i}
+													name={name}
+													type={type}
+												/>
 											);
 										})}
 									</AccordionContent>
@@ -171,22 +165,15 @@ const ServerDisplayVariant = () => {
 									</AccordionTrigger>
 									<AccordionContent className="px-3 flex flex-col gap-3">
 										{voiceChannels.map((channel, i) => {
+											const { name, type } = channel;
 											return (
-												<Link
+												<ChannelsButton
 													key={i}
-													to={`@server/${String(
-														serverId
-													)}/@channel/${String(i)}`}
-													className="flex justify-start items-center gap-2"
-												>
-													<img
-														src={`/icons/${channel.type}.svg`}
-														alt={channel.name}
-														width={26}
-														height={26}
-													/>
-													{channel.name}
-												</Link>
+													serverId={serverId}
+													channelId={i}
+													name={name}
+													type={type}
+												/>
 											);
 										})}
 									</AccordionContent>

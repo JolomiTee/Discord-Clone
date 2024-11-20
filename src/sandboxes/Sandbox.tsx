@@ -12,7 +12,7 @@ import {
 
 import { Command } from "lucide-react";
 import { Separator } from "../components/ui/separator";
-import { MenuItems } from "../components/menu/MenuItems";
+import { MenuItems } from "../components/mobile_v_comps/MobileMenuItems";
 import { Button } from "@/components/ui/button";
 import { useSandStateStore } from "./sandstate";
 import { useEffect } from "react";
