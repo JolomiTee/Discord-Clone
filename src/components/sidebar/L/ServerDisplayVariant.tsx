@@ -142,14 +142,15 @@ const ServerDisplayVariant = () => {
 										TEXT CHANNELS
 									</AccordionTrigger>
 									<AccordionContent className="px-3 flex flex-col gap-3">
-										{textChannels.map((channel, i) => {
-											const { name, type } = channel;
+										{textChannels.map((channel) => {
+											const { id, name, type, slug } = channel;
 											return (
 												<ChannelsButton
-													key={i}
+													key={id}
 													serverId={serverId}
-													channelId={i}
+													channelId={id}
 													name={name}
+													slug={slug}
 													type={type}
 												/>
 											);
@@ -164,14 +165,15 @@ const ServerDisplayVariant = () => {
 										VOICE CHANNELS
 									</AccordionTrigger>
 									<AccordionContent className="px-3 flex flex-col gap-3">
-										{voiceChannels.map((channel, i) => {
-											const { name, type } = channel;
+										{voiceChannels.map((channel) => {
+											const { id, name, type, slug } = channel;
 											return (
 												<ChannelsButton
-													key={i}
+													key={id}
 													serverId={serverId}
-													channelId={i}
+													channelId={id}
 													name={name}
+													slug={slug}
 													type={type}
 												/>
 											);

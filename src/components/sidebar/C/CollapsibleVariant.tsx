@@ -42,15 +42,17 @@ const CollapsibleVariant = () => {
 			<SidebarContent className="bg-onyx scrollbar-hidden group-data-[collapsible=icon]:overflow-scroll pt-2">
 				<SidebarGroup className="p-0">
 					<SidebarMenu className="gap-y-3">
-						{serverList.map((item, i) => {
-							const { title, serverIcon, hasNotification } = item;
+						{serverList.map((item) => {
+							const { id, slug, title, serverIcon, hasNotification } =
+								item;
 							return (
 								<SidebarServerIcon
-									key={i}
+									key={id}
+									slug={slug}
 									title={title}
 									serverIcon={serverIcon}
 									hasNotification={hasNotification}
-									i={i}
+									serverId={id}
 								/>
 							);
 						})}

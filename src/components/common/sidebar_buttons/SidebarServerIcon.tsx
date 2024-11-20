@@ -11,16 +11,18 @@ import {
 import { Link } from "react-router-dom";
 
 interface props {
+	slug: string;
 	title: string;
 	serverIcon: string;
 	hasNotification: boolean;
-	i: number;
+	serverId: number;
 }
 const SidebarServerIcon = ({
+	slug,
 	title,
 	serverIcon,
 	hasNotification,
-	i,
+	serverId,
 }: props) => {
 	const selectedServer = useCollapsibleSidebarStore(
 		(state) => state.selectedServer
@@ -50,17 +52,14 @@ const SidebarServerIcon = ({
 		}
 
 		toggle_selected_tab(null);
-		toggle_selected_server(i);
+		toggle_selected_server(serverId);
 		switchLeftSidebarContext("server");
 	};
 	return (
-		<SidebarMenuItem
-			key={title}
-			className="group/item group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center"
-		>
+		<SidebarMenuItem className="group/item group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center">
 			<div
 				className={`absolute top-1/2 -translate-y-1/2 -left-0.5 w-1.5 md:w-2 rounded-full transition-all duration-100 ${
-					selectedServer === i
+					selectedServer === serverId
 						? "h-10 bg-discord-blue"
 						: hasNotification
 						? "h-2 bg-white group-hover/item:h-5 group-hover/item:bg-white"
@@ -73,14 +72,14 @@ const SidebarServerIcon = ({
 
 			<SidebarMenuButton
 				asChild
-				isActive={selectedServer === i}
+				isActive={selectedServer === serverId}
 				tooltip={title}
 				className="gap-3 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden p-0 group-data-[collapsible=icon]:ps-0 px-3 md:ps-3 data-[active=true]:text-white data-[active=true]:font-bold"
 			>
-				<Link to={`@server/${String(i)}`} onClick={handleClick}>
+				<Link to={`@server/${String(serverId)}`} onClick={handleClick}>
 					<Avatar
 						className={`size-[45px] group-data-[collapsible=icon]:md:size-[50px] ${
-							selectedServer === i
+							selectedServer === serverId
 								? "rounded-[12px]"
 								: "group-hover/item:rounded-[12px]"
 						}`}
@@ -88,7 +87,7 @@ const SidebarServerIcon = ({
 						<AvatarImage src={serverIcon} />
 						<AvatarFallback
 							className={
-								selectedServer === i
+								selectedServer === serverId
 									? "bg-discord-blue rounded-[15px]"
 									: "bg-graphite group-hover/item:rounded-[12px]"
 							}
