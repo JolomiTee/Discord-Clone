@@ -75,7 +75,7 @@ const SidebarServerIcon = ({
 				asChild
 				isActive={selectedServer === i}
 				tooltip={title}
-				className="gap-3 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden p-0 group-data-[collapsible=icon]:ps-0 ps-2 md:ps-3 data-[active=true]:text-white data-[active=true]:font-bold"
+				className="gap-3 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden p-0 group-data-[collapsible=icon]:ps-0 px-3 md:ps-3 data-[active=true]:text-white data-[active=true]:font-bold"
 			>
 				<Link to={`@server/${String(i)}`} onClick={handleClick}>
 					<Avatar
