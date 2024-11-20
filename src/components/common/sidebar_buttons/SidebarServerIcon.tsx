@@ -99,9 +99,7 @@ const SidebarServerIcon = ({
 							/>
 						</AvatarFallback>
 					</Avatar>
-					<span className="text-[15px]">
-						{name} referendum no inumine patri
-					</span>
+					<span className="text-[15px]">{name}</span>
 				</Link>
 			</SidebarMenuButton>
 		</SidebarMenuItem>

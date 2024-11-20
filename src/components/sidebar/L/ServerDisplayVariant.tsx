@@ -1,10 +1,5 @@
-import ChannelsButton from "@/components/common/sidebar_buttons/ChannelsButton";
-import {
-	Accordion,
-	AccordionContent,
-	AccordionItem,
-	AccordionTrigger,
-} from "@/components/ui/accordion";
+import ChannelList from "@/components/common/sidebar_buttons/ChannelsButton";
+import { Accordion } from "@/components/ui/accordion";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -160,37 +155,3 @@ const ServerDisplayVariant = () => {
 };
 
 export default ServerDisplayVariant;
-
-interface Props {
-	value: string;
-	section: string;
-	serverId: string | undefined;
-	channel: {
-		id: number;
-		slug: string;
-		name: string;
-		type: string;
-	}[];
-}
-const ChannelList = ({ value, section, channel, serverId }: Props) => {
-	return (
-		<AccordionItem value={value} className="border-none">
-			<AccordionTrigger className="pt-0">{section}</AccordionTrigger>
-			<AccordionContent className="px-3 flex flex-col gap-3">
-				{channel.map((channels) => {
-					const { id, name, type, slug } = channels;
-					return (
-						<ChannelsButton
-							key={id}
-							serverId={serverId}
-							channelId={id}
-							name={name}
-							slug={slug}
-							type={type}
-						/>
-					);
-				})}
-			</AccordionContent>
-		</AccordionItem>
-	);
-};
