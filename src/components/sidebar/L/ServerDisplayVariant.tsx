@@ -49,7 +49,6 @@ const ServerDisplayVariant = () => {
 			setLSidebarState(false);
 		}
 
-		console.log("after:", l_sidebar_state, `\n \n \n`);
 	}, [l_sidebar_state, open]);
 
 	return (

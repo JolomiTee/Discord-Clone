@@ -33,7 +33,6 @@ const RSidebarContexts = () => {
 			setRSidebarState(false);
 		}
 
-		console.log("after:", r_sidebar_state, "\n \n \n");
 	}, [r_sidebar_state, open]);
 	return (
 		<Sidebar side="right" className="border-none">
