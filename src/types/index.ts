@@ -1,4 +1,4 @@
-// Common properties
+// *============================= COMMON PROPERTIES ============================//
 interface BaseNotification {
 	id: string;
 	title: string
@@ -18,4 +18,42 @@ export interface MessageNotification extends BaseNotification {
   type: 'dm' | 'channel_message';
   serverId?: string; // id of the server that will be fetched
   channelId?: string; // Channel or DM ID
+}
+
+
+// *============================= HOOKS ============================//
+
+export interface AppPersistableStates {
+	l_sidebar_display_context: string | null;
+
+	selectedTab: string | null;
+	selectedServer: number | null;
+
+	switchLeftSidebarContext: (newAppState: string | null) => void;
+
+	toggle_selected_tab: (newAppState: string | null) => void;
+	toggle_selected_server: (newAppState: number | null) => void;
+}
+export interface AppSidebarStateProps {
+	c_sidebar_state: boolean;
+	l_sidebar_state: boolean;
+	r_sidebar_state: boolean;
+
+	toggle_l_sidebar: () => void;
+	toggle_r_sidebar: () => void;
+	toggle_c_sidebar: () => void;
+
+	setLSidebarState: (newAppState: boolean) => void;
+	setRSidebarState: (newAppState: boolean) => void;
+}
+
+export interface CollapsibleSidebarState {
+	collapsible_sidebar_display_context: string;
+
+	switchCollapsibleSidebarContext: (newAppState: string) => void;
+}
+
+export interface AppNotificationStateProps {
+	selectedTab: string;
+	toggle_selected_tab: (newAppState: string) => void;
 }
