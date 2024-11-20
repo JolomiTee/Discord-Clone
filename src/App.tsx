@@ -27,16 +27,21 @@ function App() {
 
 					<Route path="@me">
 						<Route index element={<Wumpus />} />
-						<Route path="dm/:id" element={<MessagesLayout />} />
+						<Route path="dm/:dmId" element={<MessagesLayout />} />
 					</Route>
 
-					<Route path="@server/:id">
-						<Route index element={<Wumpus />} />
-						<Route path="@channel/:id" element={<ChannelsLayout />} />
+					<Route path="@server">
+						<Route index element={<Servers />} />
+
+						<Route path=":serverId">
+							<Route index element={<Wumpus />} />
+							<Route path="@channel">
+								<Route path=":channelId" element={<ChannelsLayout />} />
+							</Route>
+						</Route>
 					</Route>
 				</Route>
 
-				<Route path="servers" element={<Servers />} />
 				<Route path="inbox" element={<Inbox />} />
 				<Route path="help" element={<Help />} />
 				<Route path="profile/:id" element={<Profile />} />

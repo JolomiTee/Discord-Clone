@@ -34,7 +34,7 @@ const CollapsibleVariant = () => {
 
 						<Separator className="lg:group-data-[collapsible=icon]:w-[80%] group-data-[collapsible=icon]:mx-auto rounded-full bg-charcoal h-1 md:w-[45px] my-2 md:ms-3" />
 
-						<SidebarNavLink to="servers" icon="servers" label="Servers" />
+						<SidebarNavLink to="@server" icon="servers" label="Servers" />
 					</SidebarMenu>
 				</SidebarGroup>
 			</SidebarHeader>
@@ -42,15 +42,22 @@ const CollapsibleVariant = () => {
 			<SidebarContent className="bg-onyx scrollbar-hidden group-data-[collapsible=icon]:overflow-scroll pt-2">
 				<SidebarGroup className="p-0">
 					<SidebarMenu className="gap-y-3">
-						{serverList.map((item, i) => {
-							const { title, serverIcon, hasNotification } = item;
+						{serverList.map((item) => {
+							const {
+								id,
+								slug,
+								name,
+								server_img: serverIcon,
+								muted,
+							} = item;
 							return (
 								<SidebarServerIcon
-									key={i}
-									title={title}
+									key={id}
+									slug={slug}
+									name={name}
 									serverIcon={serverIcon}
-									hasNotification={hasNotification}
-									i={i}
+									hasNotification={muted}
+									serverId={id}
 								/>
 							);
 						})}
@@ -60,6 +67,8 @@ const CollapsibleVariant = () => {
 
 			<SidebarFooter className="bg-onyx p-0 pb-5">
 				<SidebarMenu>
+					<Separator className="lg:group-data-[collapsible=icon]:w-[80%] group-data-[collapsible=icon]:mx-auto rounded-full bg-charcoal h-1 md:w-[45px] mt-2 md:ms-3" />
+
 					<SidebarNavLink to="inbox" icon="inbox" label="Inbox" />
 
 					<ProfileHolder />

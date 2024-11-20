@@ -77,16 +77,18 @@ const SearchVariant = () => {
 					</SidebarGroupLabel>
 					<SidebarMenu className="gap-3 px-0  text-white">
 						<SidebarServerIcon
-							title="Planters of Grass"
+							slug="planters-of-grass"
+							name="Planters of Grass"
 							serverIcon="/servers/midjourney.png"
 							hasNotification={true}
-							i={1}
+							serverId={1}
 						/>
 						<SidebarServerIcon
-							title="Harvesters of Grass"
+							slug="harvesters-of-grass"
+							name="Harvesters of Grass"
 							serverIcon="/servers/apex-legends.png"
 							hasNotification={true}
-							i={2}
+							serverId={2}
 						/>
 					</SidebarMenu>
 				</SidebarGroup>

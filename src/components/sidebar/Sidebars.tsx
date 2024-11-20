@@ -14,7 +14,7 @@ export const LSidebar = () => {
 	return (
 		<SidebarProvider
 			name="left-sidebar"
-			className="text-[#B5BFE7] overflow-hidden max-h-dvh max-w-fit"
+			className="text-[#B5BFE7] max-h-dvh max-w-fit"
 		>
 			{l_sidebar_display_context === "server" ? (
 				<ServerDisplayVariant />

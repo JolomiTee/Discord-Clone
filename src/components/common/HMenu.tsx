@@ -1,8 +1,8 @@
 import { useSidebarStateStore } from "@/hooks/base-context";
-import IconButtons from "../common/IconButtons";
+import IconButtons from "./IconButtons";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { useLocation } from "react-router-dom";
-import { MenuItems } from "@/components/menu/MenuItems";
+import { MobileMenuItems } from "@/components/mobile_v_comps/MobileMenuItems";
 import { useOpenSearchBar } from "@/hooks/use-open-sidebar";
 
 const HMenu = () => {
@@ -134,7 +134,7 @@ const HMenu = () => {
 				/>
 			</div>
 			<div className="lg:hidden flex items-center">
-				<MenuItems />
+				<MobileMenuItems />
 			</div>
 		</header>
 	);
