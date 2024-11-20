@@ -66,7 +66,7 @@ const Servers = () => {
 						return (
 							<ServerCard
 								key={i}
-								id={i}
+								serverId={i}
 								name={name}
 								online={online}
 								members={members}

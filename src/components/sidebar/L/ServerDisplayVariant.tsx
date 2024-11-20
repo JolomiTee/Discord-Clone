@@ -30,7 +30,7 @@ import { AspectRatio } from "../../ui/aspect-ratio";
 import { Separator } from "../../ui/separator";
 
 const ServerDisplayVariant = () => {
-	const { id } = useParams();
+	const { serverId } = useParams();
 	const openSearchBar = useOpenSearchBar();
 	const l_sidebar_state = useSidebarStateStore(
 		(state) => state.l_sidebar_state
@@ -48,7 +48,6 @@ const ServerDisplayVariant = () => {
 		if (isMobile) {
 			setLSidebarState(false);
 		}
-
 	}, [l_sidebar_state, open]);
 
 	return (
@@ -147,7 +146,7 @@ const ServerDisplayVariant = () => {
 												<Link
 													key={i}
 													to={`@server/${String(
-														id
+														serverId
 													)}/@channel/${String(i)}`}
 													className="flex justify-start items-center gap-2"
 												>
@@ -176,7 +175,7 @@ const ServerDisplayVariant = () => {
 												<Link
 													key={i}
 													to={`@server/${String(
-														id
+														serverId
 													)}/@channel/${String(i)}`}
 													className="flex justify-start items-center gap-2"
 												>
