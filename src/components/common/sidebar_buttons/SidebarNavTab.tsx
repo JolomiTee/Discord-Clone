@@ -90,7 +90,7 @@ export default function SidebarNavLink({
 				isActive={selected_tab === label.toLocaleLowerCase()}
 				asChild
 				tooltip={label}
-				className="w-full gap-3  text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden p-0 group-data-[collapsible=icon]:ps-0 ps-[7px] md:ps-[12px]"
+				className="w-full gap-3  text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden p-0 group-data-[collapsible=icon]:ps-0 ps-[7px] md:ps-[12px] data-[active=true]:text-white data-[active=true]:font-bold"
 			>
 				<NavLink to={to} onClick={handleClick}>
 					<Avatar className="size-[45px] flex justify-center items-center">

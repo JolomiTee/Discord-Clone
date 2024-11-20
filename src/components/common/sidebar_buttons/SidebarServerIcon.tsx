@@ -56,7 +56,7 @@ const SidebarServerIcon = ({
 	return (
 		<SidebarMenuItem
 			key={title}
-			className="group/item group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center "
+			className="group/item group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center"
 		>
 			<div
 				className={`absolute top-1/2 -translate-y-1/2 -left-0.5 w-1.5 md:w-2 rounded-full transition-all duration-100 ${
@@ -75,7 +75,7 @@ const SidebarServerIcon = ({
 				asChild
 				isActive={selectedServer === i}
 				tooltip={title}
-				className="gap-3 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden p-0 group-data-[collapsible=icon]:ps-0 ps-2 md:ps-3"
+				className="gap-3 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden p-0 group-data-[collapsible=icon]:ps-0 ps-2 md:ps-3 data-[active=true]:text-white data-[active=true]:font-bold"
 			>
 				<Link to={`@server/${String(i)}`} onClick={handleClick}>
 					<Avatar
