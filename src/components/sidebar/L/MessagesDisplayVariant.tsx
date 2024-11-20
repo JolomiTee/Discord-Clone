@@ -148,7 +148,7 @@ const MessagesDisplayVariant = () => {
 							className="px-3 text-[#FFFFFF99]  pt-[120px] pb-[50px]"
 						>
 							<div className=" grid overflow-y-auto max-h-full scrollbar-hidden">
-								{messageList.map((message, i) => {
+								{messageList.map((message) => {
 									const {
 										profileImg,
 										user,

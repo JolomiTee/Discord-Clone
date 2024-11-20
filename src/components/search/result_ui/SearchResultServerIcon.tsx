@@ -4,14 +4,14 @@ import { AvatarImage } from "@radix-ui/react-avatar";
 import { Link } from "react-router-dom";
 
 interface props {
-	title: string;
+	name: string;
 	serverIcon: string;
 	hasNotification: boolean;
 	i: number;
 }
 
 const SearchResultServerIcon = ({
-	title,
+	name,
 	i,
 	hasNotification,
 	serverIcon,
@@ -23,7 +23,7 @@ const SearchResultServerIcon = ({
 		<Link
 			to={`/@server/${String(i)}`}
 			//   onClick={handleClick}
-			title={title}
+			title={name}
 			className="group/item group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center relative"
 		>
 			<div
@@ -58,7 +58,7 @@ const SearchResultServerIcon = ({
 						<img src="/icons/discord.svg" className="size-[30px] " />
 					</AvatarFallback>
 				</Avatar>
-				<span>{title}</span>
+				<span>{name}</span>
 			</div>
 		</Link>
 	);
