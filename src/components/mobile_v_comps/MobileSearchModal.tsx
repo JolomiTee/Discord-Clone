@@ -21,6 +21,7 @@ import { Avatar, AvatarImage } from "../ui/avatar";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { SidebarMenuButton, SidebarMenuItem } from "../ui/sidebar";
+import usePersistAppState from "@/hooks/use-persist-app-state";
 
 interface Props {
 	type: string;
@@ -29,9 +30,7 @@ interface Props {
 }
 
 const MobileSearchModal = ({ type, open, onOpenChange }: Props) => {
-	const selected_tab = useCollapsibleSidebarStore(
-		(state) => state.selectedTab
-	);
+	const selected_tab = usePersistAppState((state) => state.selectedTab);
 	return (
 		<Dialog open={open} onOpenChange={onOpenChange}>
 			{!open && (

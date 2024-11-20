@@ -1,8 +1,8 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import AppLayout from "./layouts/AppLayout";
-import ChannelsLayout from "./layouts/Channels";
+import ChannelsLayout from "./layouts/chat_layouts/Channels";
 import Main from "./layouts/Layout";
-import MessagesLayout from "./layouts/Messages";
+import MessagesLayout from "./layouts/chat_layouts/Messages";
 import Wumpus from "./layouts/Wumpus";
 import Help from "./pages/Help";
 import Inbox from "./pages/Inbox";

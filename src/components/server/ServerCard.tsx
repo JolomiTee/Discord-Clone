@@ -6,6 +6,7 @@ import {
 import { formatNumber } from "@/lib/utils";
 import { Link } from "react-router-dom";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import usePersistAppState from "@/hooks/use-persist-app-state";
 interface DiscordServerProps {
 	slug: string;
 	name: string;
@@ -26,13 +27,13 @@ const ServerCard = ({
 	lastSeen,
 	server_img,
 }: DiscordServerProps) => {
-	const toggle_selected_server = useCollapsibleSidebarStore(
+	const toggle_selected_server = usePersistAppState(
 		(state) => state.toggle_selected_server
 	);
-	const toggle_selected_tab = useCollapsibleSidebarStore(
+	const toggle_selected_tab = usePersistAppState(
 		(state) => state.toggle_selected_tab
 	);
-	const switchLeftSidebarContext = useSidebarStateStore(
+	const switchLeftSidebarContext = usePersistAppState(
 		(state) => state.switchLeftSidebarContext
 	);
 	const onclick = () => {

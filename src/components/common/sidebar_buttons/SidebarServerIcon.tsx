@@ -8,6 +8,7 @@ import {
 	useCollapsibleSidebarStore,
 	useSidebarStateStore,
 } from "@/hooks/base-context";
+import usePersistAppState from "@/hooks/use-persist-app-state";
 import { Link } from "react-router-dom";
 
 interface props {
@@ -24,16 +25,14 @@ const SidebarServerIcon = ({
 	hasNotification,
 	serverId,
 }: props) => {
-	const selectedServer = useCollapsibleSidebarStore(
-		(state) => state.selectedServer
-	);
-	const toggle_selected_server = useCollapsibleSidebarStore(
+	const selectedServer = usePersistAppState((state) => state.selectedServer);
+	const toggle_selected_server = usePersistAppState(
 		(state) => state.toggle_selected_server
 	);
-	const toggle_selected_tab = useCollapsibleSidebarStore(
+	const toggle_selected_tab = usePersistAppState(
 		(state) => state.toggle_selected_tab
 	);
-	const switchLeftSidebarContext = useSidebarStateStore(
+	const switchLeftSidebarContext = usePersistAppState(
 		(state) => state.switchLeftSidebarContext
 	);
 	const toggle_l_sidebar = useSidebarStateStore(

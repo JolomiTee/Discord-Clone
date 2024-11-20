@@ -16,6 +16,8 @@ import { useEffect } from "react";
 import IconButtons from "../../common/IconButtons";
 import DMCard from "../../common/sidebar_buttons/DMCard";
 import FriendCard from "../../common/sidebar_buttons/FriendCard";
+
+
 const MessagesDisplayVariant = () => {
 	const openSearchBar = useOpenSearchBar();
 	const l_sidebar_state = useSidebarStateStore(
