@@ -6,7 +6,8 @@ import { SidebarMenuButton } from "@/components/ui/sidebar";
 interface props {
 	profileImg: string;
 	user: string;
-	id: number;
+	dmId: number;
+	slug: string;
 	online: boolean;
 	hasMessage: boolean;
 	messageCount?: number;
@@ -14,8 +15,9 @@ interface props {
 }
 const DMCard = ({
 	profileImg,
-	id,
+	dmId,
 	user,
+	slug,
 	online,
 	hasMessage,
 	action,
@@ -24,11 +26,11 @@ const DMCard = ({
 	return (
 		<SidebarMenuButton
 			className="p-0 ms-1 ps-2 data-[active=true]:rounded-s-full data-[active=true]:text-white data-[active=true]:bg-charcoal transition-all duration-500"
-			isActive={location.pathname.includes(String(id))}
+			isActive={location.pathname.includes(String(dmId))}
 			asChild
 		>
 			<Link
-				to={`@me/dm/${String(id)}`}
+				to={`@me/dm/${String(dmId)}`}
 				className="flex items-center justify-start h-[55px] gap-3 bg-transparent shadow-none"
 				onClick={action}
 			>
@@ -36,6 +38,7 @@ const DMCard = ({
 					<Avatar className="flex items-center justify-center">
 						<AvatarImage
 							src={profileImg}
+							alt={slug}
 							className="size-[40px]  rounded-full"
 						/>
 						<AvatarFallback
@@ -44,6 +47,7 @@ const DMCard = ({
 						>
 							<img
 								src="/icons/discord.svg"
+								alt={slug}
 								className="size-[35px] rounded-full"
 							/>
 						</AvatarFallback>

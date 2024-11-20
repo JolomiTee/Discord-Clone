@@ -99,18 +99,21 @@ const MessagesDisplayVariant = () => {
 							className="text-[#FFFFFF99] pt-[120px] pb-[50px]"
 						>
 							<div className=" grid overflow-y-auto max-h-full scrollbar-hidden">
-								{messageList.map((message, i) => {
+								{messageList.map((message) => {
 									const {
 										profileImg,
 										user,
 										online,
 										hasMessage,
 										messageCount,
+										id,
+										slug,
 									} = message;
 									return (
 										<DMCard
-											key={i}
-											id={i}
+											key={id}
+											dmId={id}
+											slug={slug}
 											user={user}
 											profileImg={profileImg}
 											online={online}
@@ -133,12 +136,15 @@ const MessagesDisplayVariant = () => {
 										online,
 										hasMessage,
 										messageCount,
+										id,
+										slug,
 										pinned,
 									} = message;
 									return (
 										<FriendCard
-											key={i}
-											id={i}
+											key={id}
+											slug={slug}
+											dmId={id}
 											user={user}
 											profileImg={profileImg}
 											online={online}

@@ -14,25 +14,27 @@ import { SidebarMenuButton } from "@/components/ui/sidebar";
 interface props {
 	profileImg: string;
 	user: string;
-	id: number;
+	dmId: number;
 	online: boolean;
 	hasMessage: boolean;
 	messageCount?: number;
 	pinned: boolean;
+	slug: string;
 	action?: () => void;
 }
 const FriendCard = ({
 	profileImg,
-	id,
+	dmId,
 	user,
 	online,
 	hasMessage,
 	action,
+	slug,
 }: props) => {
 	return (
 		<SidebarMenuButton className="p-0 ms-0 text-white " asChild>
 			<Link
-				to={`@me/dm/${String(id)}`}
+				to={`@me/dm/${String(dmId)}`}
 				className="flex items-center justify-start h-[55px] gap-3 bg-transparent shadow-none"
 				onClick={action}
 			>
@@ -40,6 +42,7 @@ const FriendCard = ({
 					<Avatar className="flex items-center justify-center">
 						<AvatarImage
 							src={profileImg}
+							alt={slug}
 							className="size-[40px]  rounded-full"
 						/>
 						<AvatarFallback
@@ -48,6 +51,7 @@ const FriendCard = ({
 						>
 							<img
 								src="/icons/discord.svg"
+								alt={slug}
 								className="size-[35px] rounded-full"
 							/>
 						</AvatarFallback>

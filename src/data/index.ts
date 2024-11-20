@@ -2,42 +2,104 @@ export const serverList = [
 	{
 		title: "MidJourney",
 		serverIcon: "/servers/midjourney.png",
-		hasNotification: true
+		hasNotification: true,
+		slug: "midjourney",
+		id: 1001
 	},
 	{
 		title: "Roblox",
 		serverIcon: "/servers/roblox.png",
-		hasNotification: false
-
+		hasNotification: false,
+		slug: "roblox",
+		id: 1002
 	},
 	{
 		title: "One Piece",
 		serverIcon: "/servers/onepiece.png",
-		hasNotification: true
-
+		hasNotification: true,
+		slug: "one-piece",
+		id: 1003
 	},
 	{
 		title: "LinusTechTips",
 		serverIcon: "/servers/linustechtips.png",
-		hasNotification: false
-
+		hasNotification: false,
+		slug: "linustechtips",
+		id: 1004
 	},
 	{
 		title: "Apex Legends",
 		serverIcon: "/servers/apex legends.png",
-		hasNotification: false
-
-	},
+		hasNotification: false,
+		slug: "apex-legends",
+		id: 1005
+	}
 ];
 
+
 export const messageList = [
-	{profileImg: "/ghost.png", user: "Ghost", online: true, hasMessage: true, messageCount: 2, pinned: true},
-	{ profileImg: "/beluga.png", user: "Beluga", online: true, hasMessage: true, messageCount: 2, pinned: false},
-	{profileImg: "/silly.png", user: "Joloo", online: true, hasMessage: true, messageCount: 5, pinned: false },
-	{profileImg: "/juxtopposed.png", user: "Juxtopposed", online: true, hasMessage: false, messageCount: 0, pinned: false},
-	{profileImg: "/jojo.png", user: "Jojo", online: false, hasMessage: false, messageCount: 0, pinned: false},
-	{profileImg: "/shepard.png", user: "Shepard", online: true, hasMessage: true, messageCount: 5, pinned: false},
-]
+	{
+		profileImg: "/ghost.png",
+		user: "Ghost",
+		online: true,
+		hasMessage: true,
+		messageCount: 2,
+		pinned: true,
+		slug: "ghost",
+		id: 1001
+	},
+	{
+		profileImg: "/beluga.png",
+		user: "Beluga",
+		online: true,
+		hasMessage: true,
+		messageCount: 2,
+		pinned: false,
+		slug: "beluga",
+		id: 1002
+	},
+	{
+		profileImg: "/silly.png",
+		user: "Joloo",
+		online: true,
+		hasMessage: true,
+		messageCount: 5,
+		pinned: false,
+		slug: "joloo",
+		id: 1003
+	},
+	{
+		profileImg: "/juxtopposed.png",
+		user: "Juxtopposed",
+		online: true,
+		hasMessage: false,
+		messageCount: 0,
+		pinned: false,
+		slug: "juxtopposed",
+		id: 1004
+	},
+	{
+		profileImg: "/jojo.png",
+		user: "Jojo",
+		online: false,
+		hasMessage: false,
+		messageCount: 0,
+		pinned: false,
+		slug: "jojo",
+		id: 1005
+	},
+	{
+		profileImg: "/shepard.png",
+		user: "Shepard",
+		online: true,
+		hasMessage: true,
+		messageCount: 5,
+		pinned: false,
+		slug: "shepard",
+		id: 1006
+	}
+];
+
 
 export const chatConversation = [
   {
@@ -176,56 +238,68 @@ export const textChannels = [
 	{
 		type: "text_channel",
 		name: "general-text",
-		link: "#"
+		slug: "general-text",
+		id: 1234, // Replace with your random number logic
 	},
 	{
 		type: "text_channel",
 		name: "grass update",
-		link: "#"
+		slug: "grass-update",
+		id: 5678,
 	},
 	{
 		type: "text_channel",
 		name: "grass discussions",
-		link: "#"
+		slug: "grass-discussions",
+		id: 9101,
 	},
 	{
 		type: "text_channel",
 		name: "grass pictures",
-		link: "#"
+		slug: "grass-pictures",
+		id: 1121,
 	},
 	{
 		type: "text_channel",
 		name: "grass faq",
-		link: "#"
+		slug: "grass-faq",
+		id: 3141,
 	},
 	{
 		type: "forum",
 		name: "forum",
-		link: "#"
+		slug: "forum",
+		id: 5161,
 	}
-]
+];
+
 export const voiceChannels = [
 	{
 		type: "voice_channel",
 		name: "just chilling",
-		link: "#"
+		slug: "just-chilling",
+		id: 1718,
 	},
 	{
 		type: "voice_channel",
 		name: "grass-only",
-		link: "#"
+		slug: "grass-only",
+		id: 1920,
 	},
 	{
 		type: "voice_channel",
 		name: "grass talk",
-		link: "#"
+		slug: "grass-talk",
+		id: 2122,
 	},
 	{
 		type: "stage",
 		name: "relaxing music stage",
-		link: "#"
+		slug: "relaxing-music-stage",
+		id: 2324,
 	}
-]
+];
+
 
 export const membersList = [
 	{
