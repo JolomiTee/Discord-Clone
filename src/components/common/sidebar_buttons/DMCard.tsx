@@ -23,7 +23,7 @@ const DMCard = ({
 	const location = useLocation();
 	return (
 		<SidebarMenuButton
-			className="p-0 ms-3 ps-3 data-[active=true]:rounded-s-full data-[active=true]:text-white data-[active=true]:bg-charcoal transition-all duration-500"
+			className="p-0 ms-1 ps-2 data-[active=true]:rounded-s-full data-[active=true]:text-white data-[active=true]:bg-charcoal transition-all duration-500"
 			isActive={location.pathname.includes(String(id))}
 			asChild
 		>
