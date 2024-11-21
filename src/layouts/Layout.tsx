@@ -16,7 +16,7 @@ const Main = () => {
 					<HMenu dmId={dmId} />
 				)}
 
-				<div className="flex overflow-hidden bg-charcoal">
+				<div className="flex h-full overflow-hidden bg-charcoal">
 					<Outlet />
 				</div>
 			</SidebarInset>

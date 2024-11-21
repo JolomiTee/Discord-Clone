@@ -38,6 +38,25 @@ export interface Friends {
 	id: number;
 }
 
+export interface Conversation {
+	conversationId: string;
+	participants: number[];
+	lastMessage: {
+		userId: number;
+		time: string;
+		message: string;
+	}[];
+	unreadMessageCount: number;
+	pinned: boolean;
+	isFriend: boolean;
+	messages: {
+		messageId: string;
+		senderId: number;
+		time: string;
+		message: string;
+	}[];
+}
+
 // *============================= HOOKS ============================//
 
 export interface AppPersistableStates {

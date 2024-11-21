@@ -88,17 +88,7 @@ export const messageList = [
 		messageCount: 2,
 		pinned: true,
 		slug: "ghost",
-		id: 1001
-	},
-	{
-		profileImg: "/beluga.png",
-		user: "Beluga",
-		online: true,
-		hasMessage: true,
-		messageCount: 2,
-		pinned: false,
-		slug: "beluga",
-		id: 1002
+		id: 1001,
 	},
 	{
 		profileImg: "/silly.png",
@@ -108,7 +98,7 @@ export const messageList = [
 		messageCount: 5,
 		pinned: false,
 		slug: "joloo",
-		id: 1003
+		id: 1002,
 	},
 	{
 		profileImg: "/juxtopposed.png",
@@ -118,7 +108,7 @@ export const messageList = [
 		messageCount: 0,
 		pinned: false,
 		slug: "juxtopposed",
-		id: 1004
+		id: 1003,
 	},
 	{
 		profileImg: "/jojo.png",
@@ -128,7 +118,7 @@ export const messageList = [
 		messageCount: 0,
 		pinned: false,
 		slug: "jojo",
-		id: 1005
+		id: 1004,
 	},
 	{
 		profileImg: "/shepard.png",
@@ -138,8 +128,8 @@ export const messageList = [
 		messageCount: 5,
 		pinned: false,
 		slug: "shepard",
-		id: 1006
-	}
+		id: 1005,
+	},
 ];
 
 

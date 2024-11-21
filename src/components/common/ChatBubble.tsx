@@ -1,18 +1,20 @@
 import { getRandomColor } from "@/lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { Friends } from "@/types";
 interface props {
-	profileImg: string;
-	user: string;
+	senderId: number;
+	friend: Friends | undefined;
+	messageId: string;
 	time: string;
 	message: string;
 }
 
-const ChatBubble = ({ user, time, message, profileImg }: props) => {
+const ChatBubble = ({ time, message, friend, senderId }: props) => {
 	return (
 		<div className="flex items-start justify-start gap-2 md:gap-3 bg-transparent shadow-none">
 			<Avatar className="flex items-center justify-center size-[35px] md:size-[40px]">
 				<AvatarImage
-					src={profileImg}
+					src={senderId === 1000 ? "" : friend?.profileImg}
 					className="size-[40px] lg:size-[50px] rounded-full"
 				/>
 				<AvatarFallback
@@ -28,7 +30,7 @@ const ChatBubble = ({ user, time, message, profileImg }: props) => {
 			<div>
 				<div className="flex items-baseline gap-4">
 					<span className="font-bold text-[#FFFFFFE5] text-[13px] md:text-[14px]">
-						{user}
+						{senderId === 1000 ? "GrassMaster333" : friend?.user}
 					</span>
 					<span className="font-bold text-[#FFFFFF80] text-[11px] md:text-xs">
 						{time}
