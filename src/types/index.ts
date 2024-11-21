@@ -38,8 +38,8 @@ export interface AppSidebarStateProps {
 	c_sidebar_state: boolean;
 	l_sidebar_state: boolean;
 	r_sidebar_state: boolean;
+	r_sidebar_display_context: string | null,
 
-		r_sidebar_display_context: string | null,
 
 	toggle_l_sidebar: () => void;
 	toggle_r_sidebar: () => void;
@@ -48,6 +48,7 @@ export interface AppSidebarStateProps {
 	setLSidebarState: (newAppState: boolean) => void;
 	setRSidebarState: (newAppState: boolean) => void;
 	switchRightSidebarContext: (newAppState: string) => void;
+
 }
 
 export interface CollapsibleSidebarState {
