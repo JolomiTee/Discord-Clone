@@ -8,7 +8,7 @@ import {
 	SidebarMenu,
 	useSidebar,
 } from "@/components/ui/sidebar";
-import { serverList } from "@/data";
+import { serverList } from "@/data/servers";
 import ProfileHolder from "../../server/ProfileHolder";
 import SidebarNavLink from "../../common/sidebar_buttons/SidebarNavTab";
 import SidebarServerIcon from "../../common/sidebar_buttons/SidebarServerIcon";

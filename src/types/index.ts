@@ -20,7 +20,7 @@ export interface ForYouNotification extends BaseNotification {
 	actionUrl?: string; // For redirect links
 }
 
-// Mentions and unread messages
+// *============================= DMS, SERVERS AND CHANNELS ============================//
 export interface MessageNotification extends BaseNotification {
 	type: "dm" | "channel_message";
 	serverId?: string; // id of the server that will be fetched
@@ -38,24 +38,52 @@ export interface Friends {
 	id: number;
 }
 
+interface LastMessage {
+	userId: number;
+	time: string;
+	message: string;
+}
+[];
+
+interface Messages {
+	messageId: string;
+	senderId: number;
+	time: string;
+	message: string;
+}
+[];
 export interface Conversation {
 	conversationId: string;
 	participants: number[];
-	lastMessage: {
-		userId: number;
-		time: string;
-		message: string;
-	}[];
+	lastMessage: LastMessage;
 	unreadMessageCount: number;
 	pinned: boolean;
 	isFriend: boolean;
-	messages: {
-		messageId: string;
-		senderId: number;
-		time: string;
-		message: string;
-	}[];
+	messages: Messages;
 }
+
+export interface Channels {
+	type: string;
+	name: string;
+	slug: string;
+	id: number;
+}
+export interface Servers {
+	id: number;
+	slug: string;
+	name: string;
+	server_img: string;
+	online: number;
+	members: number;
+	lastSeen: string;
+	link: string;
+	muted: boolean;
+	channels: {
+		textChannels: Channels[];
+		voiceChannels: Channels[];
+	};
+}
+[];
 
 // *============================= HOOKS ============================//
 

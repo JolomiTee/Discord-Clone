@@ -4,7 +4,7 @@ import {
 	DialogHeader,
 	DialogTrigger,
 } from "@/components/ui/dialog";
-import { serverList, voiceChannels } from "@/data";
+import { voiceChannels } from "@/data";
 import usePersistAppState from "@/hooks/use-persist-app-state";
 import { ChevronDown, Filter, Search } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -21,6 +21,7 @@ import { Avatar, AvatarImage } from "../ui/avatar";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { SidebarMenuButton, SidebarMenuItem } from "../ui/sidebar";
+import { serverList } from "@/data/servers";
 
 interface Props {
 	type: string;
