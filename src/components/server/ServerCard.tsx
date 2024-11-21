@@ -1,12 +1,8 @@
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
-import {
-	useCollapsibleSidebarStore,
-	useSidebarStateStore,
-} from "@/hooks/base-context";
+import usePersistAppState from "@/hooks/use-persist-app-state";
 import { formatNumber } from "@/lib/utils";
 import { Link } from "react-router-dom";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import usePersistAppState from "@/hooks/use-persist-app-state";
 interface DiscordServerProps {
 	slug: string;
 	name: string;

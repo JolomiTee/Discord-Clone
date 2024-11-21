@@ -4,10 +4,7 @@ import {
 	SidebarMenuItem,
 	useSidebar,
 } from "@/components/ui/sidebar";
-import {
-	useCollapsibleSidebarStore,
-	useSidebarStateStore,
-} from "@/hooks/base-context";
+import { useSidebarStateStore } from "@/hooks/base-context";
 import usePersistAppState from "@/hooks/use-persist-app-state";
 import { Link } from "react-router-dom";
 

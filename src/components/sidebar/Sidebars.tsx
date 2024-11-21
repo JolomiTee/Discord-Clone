@@ -1,12 +1,10 @@
-import { useSidebarStateStore } from "@/hooks/base-context";
-
 import MessagesDisplayVariant from "./L/MessagesDisplayVariant";
 import ServerDisplayVariant from "./L/ServerDisplayVariant";
 
 import { SidebarProvider } from "@/components/ui/sidebar";
-import RSidebarContexts from "./R/RSidebarContexts";
-import { useParams } from "react-router-dom";
 import usePersistAppState from "@/hooks/use-persist-app-state";
+import { useParams } from "react-router-dom";
+import RSidebarContexts from "./R/RSidebarContexts";
 
 export const LSidebar = () => {
 	const l_sidebar_display_context = usePersistAppState(
@@ -42,4 +40,3 @@ export const RSidebar = () => {
 		</SidebarProvider>
 	);
 };
-

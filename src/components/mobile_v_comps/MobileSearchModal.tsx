@@ -5,7 +5,7 @@ import {
 	DialogTrigger,
 } from "@/components/ui/dialog";
 import { serverList, voiceChannels } from "@/data";
-import { useCollapsibleSidebarStore } from "@/hooks/base-context";
+import usePersistAppState from "@/hooks/use-persist-app-state";
 import { ChevronDown, Filter, Search } from "lucide-react";
 import { Link } from "react-router-dom";
 import ChatBubble from "../common/ChatBubble";
@@ -21,7 +21,6 @@ import { Avatar, AvatarImage } from "../ui/avatar";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { SidebarMenuButton, SidebarMenuItem } from "../ui/sidebar";
-import usePersistAppState from "@/hooks/use-persist-app-state";
 
 interface Props {
 	type: string;

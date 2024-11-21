@@ -57,12 +57,18 @@ export function MobileMenuItems() {
 						<IconButtons src="pin" alt="Pinned" sizes="size-7" />
 						Pin
 					</DropdownMenuItem> */}
-					<DropdownMenuItem onSelect={() => handleOpenDialog("search")}>
+					<DropdownMenuItem
+						onSelect={() => {
+							handleOpenDialog("search");
+						}}
+					>
 						<IconButtons src="search" alt="Search" sizes="size-5" />
 						Search
 					</DropdownMenuItem>
 					<DropdownMenuItem
-						onSelect={() => handleOpenDialog("notifications")}
+						onSelect={() => {
+							handleOpenDialog("notifications");
+						}}
 					>
 						<IconButtons
 							src="disable_notification"

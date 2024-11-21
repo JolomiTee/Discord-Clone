@@ -9,6 +9,7 @@ export const useSidebarStateStore = create<AppSidebarStateProps>()((set) => ({
 	c_sidebar_state: false,
 	l_sidebar_state: true,
 	r_sidebar_state: false,
+	r_sidebar_display_context: null,
 
 	toggle_c_sidebar: () =>
 		set((state) => ({
@@ -30,6 +31,11 @@ export const useSidebarStateStore = create<AppSidebarStateProps>()((set) => ({
 	setRSidebarState: (newAppState) =>
 		set(() => ({
 			r_sidebar_state: newAppState,
+		})),
+
+	switchRightSidebarContext: (newAppState) =>
+		set(() => ({
+			r_sidebar_display_context: newAppState,
 		})),
 }));
 

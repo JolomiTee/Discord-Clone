@@ -1,5 +1,5 @@
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { useCollapsibleSidebarStore } from "@/hooks/base-context";
+import usePersistAppState from "@/hooks/use-persist-app-state";
 import { AvatarImage } from "@radix-ui/react-avatar";
 import { Link } from "react-router-dom";
 
@@ -16,9 +16,7 @@ const SearchResultServerIcon = ({
 	hasNotification,
 	serverIcon,
 }: props) => {
-	const selectedServer = useCollapsibleSidebarStore(
-		(state) => state.selectedServer
-	);
+	const selectedServer = usePersistAppState((state) => state.selectedServer);
 	return (
 		<Link
 			to={`/@server/${String(i)}`}
