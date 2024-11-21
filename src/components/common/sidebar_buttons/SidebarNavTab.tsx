@@ -8,6 +8,7 @@ import {
 	useCollapsibleSidebarStore,
 	useSidebarStateStore,
 } from "@/hooks/base-context";
+import usePersistAppState from "@/hooks/use-persist-app-state";
 import { NavLink } from "react-router-dom";
 
 interface SidebarNavLinkProps {
@@ -21,19 +22,17 @@ export default function SidebarNavLink({
 	icon,
 	label,
 }: SidebarNavLinkProps) {
-	const selected_tab = useCollapsibleSidebarStore(
-		(state) => state.selectedTab
-	);
-	const toggle_selected_tab = useCollapsibleSidebarStore(
+	const selected_tab = usePersistAppState((state) => state.selectedTab);
+	const toggle_selected_tab = usePersistAppState(
 		(state) => state.toggle_selected_tab
 	);
-	const toggle_selected_server = useCollapsibleSidebarStore(
+	const toggle_selected_server = usePersistAppState(
 		(state) => state.toggle_selected_server
 	);
 	const c_sidebar_state = useSidebarStateStore(
 		(state) => state.c_sidebar_state
 	);
-	const switchLeftSidebarContext = useSidebarStateStore(
+	const switchLeftSidebarContext = usePersistAppState(
 		(state) => state.switchLeftSidebarContext
 	);
 	const toggle_c_sidebar = useSidebarStateStore(

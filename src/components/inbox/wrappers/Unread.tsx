@@ -8,7 +8,6 @@ const Unread = () => {
 			<div className="w-full flex flex-col gap-5 overflow-y-auto scrollbar-hidden md:pr-3 pb-10">
 				{unreads.length !== 0 ? (
 					unreads.map((notif, i) => {
-						const {} = notif;
 						return <AlertUnread key={i} notification={notif} />;
 					})
 				) : (

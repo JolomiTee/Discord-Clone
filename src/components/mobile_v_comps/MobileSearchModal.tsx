@@ -5,7 +5,7 @@ import {
 	DialogTrigger,
 } from "@/components/ui/dialog";
 import { serverList, voiceChannels } from "@/data";
-import { useCollapsibleSidebarStore } from "@/hooks/base-context";
+import usePersistAppState from "@/hooks/use-persist-app-state";
 import { ChevronDown, Filter, Search } from "lucide-react";
 import { Link } from "react-router-dom";
 import ChatBubble from "../common/ChatBubble";
@@ -29,9 +29,7 @@ interface Props {
 }
 
 const MobileSearchModal = ({ type, open, onOpenChange }: Props) => {
-	const selected_tab = useCollapsibleSidebarStore(
-		(state) => state.selectedTab
-	);
+	const selected_tab = usePersistAppState((state) => state.selectedTab);
 	return (
 		<Dialog open={open} onOpenChange={onOpenChange}>
 			{!open && (

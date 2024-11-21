@@ -26,13 +26,15 @@ import {
 	Pin,
 } from "lucide-react";
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
 import IconButtons from "../../common/IconButtons";
 import { AspectRatio } from "../../ui/aspect-ratio";
 import { Separator } from "../../ui/separator";
 
-const ServerDisplayVariant = () => {
-	const { serverId } = useParams();
+const ServerDisplayVariant = ({
+	serverId,
+}: {
+	serverId: string | undefined;
+}) => {
 	const openSearchBar = useOpenSearchBar();
 	const l_sidebar_state = useSidebarStateStore(
 		(state) => state.l_sidebar_state

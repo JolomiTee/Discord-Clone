@@ -16,10 +16,11 @@ import ServerSearch from "../../search/ServerSearch";
 import SidebarServerIcon from "../../common/sidebar_buttons/SidebarServerIcon";
 import { Button } from "../../ui/button";
 import { Input } from "../../ui/input";
+import usePersistAppState from "@/hooks/use-persist-app-state";
 
 const SearchVariant = () => {
-	const selectedTab = useCollapsibleSidebarStore((state) => state.selectedTab);
-	const toggle_selected_tab = useCollapsibleSidebarStore(
+	const selectedTab = usePersistAppState((state) => state.selectedTab);
+	const toggle_selected_tab = usePersistAppState(
 		(state) => state.toggle_selected_tab
 	);
 	const toggle_c_sidebar = useSidebarStateStore(

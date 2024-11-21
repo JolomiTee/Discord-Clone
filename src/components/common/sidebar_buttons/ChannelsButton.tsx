@@ -63,7 +63,7 @@ const ChannelsButton = ({
 }: ChannelsButtonProps) => {
 	return (
 		<SidebarMenuButton
-			id={`${slug}-${channelId}`}
+			id={`${slug}-${String(channelId)}`}
 			className="data-[active=true]:text-white data-[active=true]:font-bold data-[active=true]:bg-charcoal rounded-[15px] transition-all duration-500 p-0"
 			isActive={location.pathname.includes(String(channelId))}
 			asChild
