@@ -46,7 +46,11 @@ const ChatBubble = ({
 			{/* Message Content */}
 			<div>
 				{/* Name and Time */}
-				<div className="flex items-baseline gap-4">
+				<div
+					className={`flex items-baseline gap-4 ${
+						isUserMessage ? "justify-end" : "justify-start"
+					}`}
+				>
 					<span className="font-bold text-[#FFFFFFE5] text-[13px] md:text-[14px]">
 						{isUserMessage ? user.username : friend?.user}
 					</span>
