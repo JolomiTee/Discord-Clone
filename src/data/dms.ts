@@ -9,7 +9,7 @@ export const friends: Friends[] = [
 		messageCount: 2,
 		pinned: true,
 		slug: "ghost",
-		id: 1001,
+		id: "1001",
 	},
 	{
 		profileImg: "/silly.png",
@@ -19,7 +19,7 @@ export const friends: Friends[] = [
 		messageCount: 5,
 		pinned: false,
 		slug: "joloo",
-		id: 1002,
+		id: "1002",
 	},
 	{
 		profileImg: "/juxtopposed.png",
@@ -29,7 +29,7 @@ export const friends: Friends[] = [
 		messageCount: 0,
 		pinned: false,
 		slug: "juxtopposed",
-		id: 1003,
+		id: "1003",
 	},
 	{
 		profileImg: "/jojo.png",
@@ -39,7 +39,7 @@ export const friends: Friends[] = [
 		messageCount: 0,
 		pinned: false,
 		slug: "jojo",
-		id: 1004,
+		id: "1004",
 	},
 	{
 		profileImg: "/shepard.png",
@@ -49,7 +49,7 @@ export const friends: Friends[] = [
 		messageCount: 5,
 		pinned: false,
 		slug: "shepard",
-		id: 1005,
+		id: "1005",
 	},
 ];
 
@@ -75,80 +75,80 @@ export const conversations: Conversation[] = [
 		messages: [
 			{
 				messageId: "msg-1", // Unique message ID
-				senderId: 1000, // User ID of the sender
+				senderId: "1000", // User ID of the sender
 				time: "15:34",
 				message: "Shepard, we've secured the intel. Moving to extraction.",
 			},
 			{
 				messageId: "msg-2",
-				senderId: 1001,
+				senderId: "1001",
 				time: "15:35",
 				message:
 					"Roger that, Ghost. Head to the extraction point. We’re on our way.",
 			},
 			{
 				messageId: "msg-3",
-				senderId: 1000,
+				senderId: "1000",
 				time: "15:36",
 				message: "Copy that. See you soon.",
 			},
 			{
 				messageId: "msg-4",
-				senderId: 1001,
+				senderId: "1001",
 				time: "15:37",
 				message: "You did good, Ghost. Real good.",
 			},
 			{
 				messageId: "msg-5",
-				senderId: 1000,
+				senderId: "1000",
 				time: "15:38",
 				message: "Thanks, General. We couldn't have done it without you.",
 			},
 			{
 				messageId: "msg-6",
-				senderId: 1001,
+				senderId: "1001",
 				time: "15:39",
 				message: "But there’s one last thing you need to do for me.",
 			},
 			{
 				messageId: "msg-7",
-				senderId: 1000,
+				senderId: "1000",
 				time: "15:39",
 				message: "What's that?",
 			},
 			{
 				messageId: "msg-8",
-				senderId: 1001,
+				senderId: "1001",
 				time: "15:40",
 				message: "Sorry, Ghost... but this is the end of the line for you.",
 			},
 			{
 				messageId: "msg-9",
-				senderId: 1000,
+				senderId: "1000",
 				time: "15:41",
 				message: "Shepard, what are you doing?!",
 			},
 			{
 				messageId: "msg-10",
-				senderId: 1001,
+				senderId: "1001",
 				time: "15:42",
 				message: "It’s nothing personal. This is bigger than you or me.",
 			},
 			{
 				messageId: "msg-11",
-				senderId: 1000,
+				senderId: "1000",
 				time: "15:43",
 				message: "You son of a—",
 			},
 			{
 				messageId: "msg-12",
-				senderId: 1001,
+				senderId: "1001",
 				time: "15:44",
 				message: "*Gunshots*",
 			},
 			{
 				messageId: "msg-13",
-				senderId: 1000,
+				senderId: "1000",
 				time: "15:45",
 				message: "*Falls to the ground*",
 			},
@@ -170,13 +170,13 @@ export const conversations: Conversation[] = [
 		messages: [
 			{
 				messageId: "msg-1",
-				senderId: 1000,
+				senderId: "1000",
 				time: "13:45",
 				message: "Hey Joloo, how’s everything going?",
 			},
 			{
 				messageId: "msg-2",
-				senderId: 1002,
+				senderId: "1002",
 				time: "14:00",
 				message: "Did you check out the new update?",
 			},
@@ -198,19 +198,19 @@ export const conversations: Conversation[] = [
 		messages: [
 			{
 				messageId: "msg-1",
-				senderId: 1003,
+				senderId: "1003",
 				time: "12:00",
 				message: "Can you review the document I sent over?",
 			},
 			{
 				messageId: "msg-2",
-				senderId: 1000,
+				senderId: "1000",
 				time: "12:15",
 				message: "Sure, I’ll take a look now.",
 			},
 			{
 				messageId: "msg-3",
-				senderId: 1003,
+				senderId: "1003",
 				time: "12:30",
 				message: "Don't forget the meeting at 3 PM.",
 			},
@@ -232,19 +232,19 @@ export const conversations: Conversation[] = [
 		messages: [
 			{
 				messageId: "msg-1",
-				senderId: 1004,
+				senderId: "1004",
 				time: "15:45",
 				message: "Hey Jojo, what’s up?",
 			},
 			{
 				messageId: "msg-2",
-				senderId: 1000,
+				senderId: "1000",
 				time: "16:00",
 				message: "Not much, just wrapping up some work.",
 			},
 			{
 				messageId: "msg-3",
-				senderId: 1004,
+				senderId: "1004",
 				time: "16:20",
 				message: "Catch you later!",
 			},
@@ -266,20 +266,20 @@ export const conversations: Conversation[] = [
 		messages: [
 			{
 				messageId: "msg-1",
-				senderId: 1005,
+				senderId: "1005",
 				time: "16:50",
 				message:
 					"Shepard, are you available for a quick call?Shepard, are you available for a quick call?Shepard, are you available for a quick call?Shepard, are you available for a quick call?Shepard, are you available for a quick call?Shepard, are you available for a quick call?Shepard, are you available for a quick call?Shepard, are you available for a quick call?Shepard, are you available for a quick call?Shepard, are you available for a quick call?",
 			},
 			{
 				messageId: "msg-2",
-				senderId: 1000,
+				senderId: "1000",
 				time: "17:00",
 				message: "Sure, what’s up?",
 			},
 			{
 				messageId: "msg-3",
-				senderId: 1005,
+				senderId: "1005",
 				time: "17:10",
 				message: "We need to discuss the next mission soon.",
 			},

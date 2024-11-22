@@ -35,7 +35,7 @@ export interface Friends {
 	messageCount: number;
 	pinned: boolean;
 	slug: string;
-	id: number;
+	id: string;
 }
 
 interface LastMessage {
@@ -44,7 +44,7 @@ interface LastMessage {
 	message: string;
 }
 
-interface Messages {
+export interface Messages {
 	messageId: string;
 	senderId: string;
 	time: string;
@@ -68,13 +68,15 @@ export interface Channels {
 }
 
 export interface textChannelConversations {
+	user: string;
+	profileImg: string;
 	messageId: string;
 	time: string;
 	message: string;
 	senderId: string;
 }
 export interface Servers {
-	id: number;
+	id: string;
 	slug: string;
 	name: string;
 	server_img: string;
