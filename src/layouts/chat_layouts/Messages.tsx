@@ -6,44 +6,71 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { conversations, friends } from "@/data/dms";
 import { Conversation, Friends } from "@/types";
+import HMenu from "@/components/common/HMenu";
 
 const MessagesLayout = () => {
-	const [chatConversations, setChatConversations] = useState<Conversation>();
-	const [friendInfo, setFriendInfo] = useState<Friends>();
+	// Logged-in user details
+	const user = {
+		userId: "1000",
+		username: "GrassMaster333",
+		userProfileImage: "",
+	};
+
+	const [chatConversations, setChatConversations] =
+		useState<Conversation | null>(null);
+	const [friendInfo, setFriendInfo] = useState<Friends | null>(null);
+
+	// Retrieve the DM ID from the route parameters
 	const { dmId } = useParams();
 
 	useEffect(() => {
+		// Find the conversation matching the user and DM
 		const chats = conversations.find(
-			(convo) => convo.conversationId === `convo-${1000}-${dmId}`
+			(convo) => convo.conversationId === `convo-${user.userId}-${dmId}`
 		);
-		const friend = friends.find((friend) => friend.id === Number(dmId));
-		setChatConversations(chats);
-		setFriendInfo(friend);
-	}, [dmId, conversations, friendInfo]);
+
+		// Find the friend information based on dmId
+		const friend = friends.find((friend) => friend.id === dmId);
+
+		setChatConversations(chats || null);
+		setFriendInfo(friend || null);
+	}, [dmId]);
 
 	return (
 		<MainContainer>
 			<>
-				<div className="h-full flex flex-col gap-[30px] relative overflow-auto scrollbar-hidden pb-5 ">
+				{/* Display friend info at the top */}
+				<HMenu
+					name={friendInfo?.user}
+					profile_image={friendInfo?.profileImg}
+				/>
+
+				{/* Messages */}
+				<div className="h-full flex flex-col gap-[30px] relative overflow-auto scrollbar-hidden pb-5 p-3 md:p-4 lg:p-5">
+					{/* Example badge */}
 					<Badge className="mx-auto bg-charcoal rounded-[8px] px-3 py-2 sticky top-0 z-10 text-[11px] md:text-xs">
 						September 26, 2024
 					</Badge>
 
+					{/* Render Chat Bubbles */}
 					{chatConversations?.messages.map((msg) => {
-						const { messageId, time, message, senderId } = msg;
+						const { messageId, senderId, time, message } = msg;
 
 						return (
 							<ChatBubble
 								key={messageId}
-								friend={friendInfo}
 								messageId={messageId}
 								senderId={senderId}
 								time={time}
 								message={message}
+								friend={friendInfo} // Pass friend data
+								user={user} // Pass logged-in user data
 							/>
 						);
 					})}
 				</div>
+
+				{/* Input field for new messages */}
 				<Keyboard />
 			</>
 		</MainContainer>

@@ -1,41 +1,61 @@
 import { getRandomColor } from "@/lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Friends } from "@/types";
-interface props {
-	senderId: number;
-	friend: Friends | undefined;
+interface ChatBubbleProps {
 	messageId: string;
 	time: string;
 	message: string;
+	senderId: string;
+	friend: Friends | null; // Information about the friend
+	user: { userId: string; username: string; userProfileImage: string }; // Logged-in user info
 }
 
-const ChatBubble = ({ time, message, friend, senderId }: props) => {
+const ChatBubble = ({
+	time,
+	message,
+	friend,
+	senderId,
+	user,
+}: ChatBubbleProps) => {
+	const isUserMessage = senderId === user.userId; // Check if the sender is the user
+
 	return (
-		<div className="flex items-start justify-start gap-2 md:gap-3 bg-transparent shadow-none">
+		<div
+			className={`flex items-start ${
+				isUserMessage ? "flex-row-reverse" : "justify-start"
+			} gap-2 md:gap-3`}
+		>
+			{/* Avatar */}
 			<Avatar className="flex items-center justify-center size-[35px] md:size-[40px]">
 				<AvatarImage
-					src={senderId === 1000 ? "" : friend?.profileImg}
+					src={isUserMessage ? user.userProfileImage : friend?.profileImg}
 					className="size-[40px] lg:size-[50px] rounded-full"
 				/>
 				<AvatarFallback
 					style={{ backgroundColor: getRandomColor() }}
 					className="flex items-center justify-center size-[40px] lg:size-[50px]"
 				>
+					{/* Fallback */}
 					<img
 						src="/icons/discord.svg"
 						className="size-[30px] rounded-full m-auto"
 					/>
 				</AvatarFallback>
 			</Avatar>
+
+			{/* Message Content */}
 			<div>
+				{/* Name and Time */}
 				<div className="flex items-baseline gap-4">
 					<span className="font-bold text-[#FFFFFFE5] text-[13px] md:text-[14px]">
-						{senderId === 1000 ? "GrassMaster333" : friend?.user}
+						{isUserMessage ? user.username : friend?.user}
 					</span>
 					<span className="font-bold text-[#FFFFFF80] text-[11px] md:text-xs">
 						{time}
 					</span>
 				</div>
+
+				{/* Message Text */}
 				<p className="text-[13px] md:text-[14px] text-[#FFFFFFCC]">
 					{message}
 				</p>
