@@ -67,13 +67,22 @@ export interface Channels {
 	id: string;
 }
 
+export interface CurrentChannels {
+	name: string | undefined;
+	channelType?: string | undefined;
+	profile_image?: string | undefined;
+}
+
 export interface textChannelConversations {
-	user: string;
-	profileImg: string;
-	messageId: string;
-	time: string;
-	message: string;
-	senderId: string;
+	channelId: string;
+	messages: {
+		user: string;
+		profileImg: string;
+		messageId: string;
+		time: string;
+		message: string;
+		senderId: string;
+	}[];
 }
 export interface Servers {
 	id: string;

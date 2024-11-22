@@ -60,9 +60,7 @@ const ServerDisplayVariant = ({
 	const [serverInfo, setserverInfo] = useState<Servers>();
 
 	useEffect(() => {
-		const _server = serverList.find(
-			(server) => server.id === Number(serverId)
-		);
+		const _server = serverList.find((server) => server.id === serverId);
 		setserverInfo(_server);
 		setTextChannels(_server?.channels.textChannels);
 		setVoiceChannels(_server?.channels.voiceChannels);

@@ -32,6 +32,8 @@ const HMenu = ({ name, channelType, profile_image }: Props) => {
 	);
 	const openSearchBar = useOpenSearchBar();
 
+	console.log(channelType);
+
 	return (
 		<header className="flex justify-between items-center gap-3 h-full max-h-[50px] px-2 md:px-3 lg:px-4 bg-onyx w-full sticky top-0 shrink-0 bg-background py-2">
 			<div className="flex items-center gap-2">
@@ -43,21 +45,28 @@ const HMenu = ({ name, channelType, profile_image }: Props) => {
 
 				<div className="flex items-center justify-start gap-2 md:gap-3 bg-transparent shadow-none w-fit">
 					<Avatar className="flex items-center justify-center">
-						<AvatarImage
-							src={
-								channelType ? `/icon/${channelType}.svg` : profile_image
-							}
-							className="size-7  rounded-full"
-						/>
-						<AvatarFallback className="flex items-center justify-center">
-							<img
-								src="/icons/discord.svg"
-								className="size-[35px]  rounded-full"
+						{channelType ? (
+							<AvatarImage
+								src={`/icons/${channelType}.svg`}
+								className="size-7  rounded-full"
 							/>
-						</AvatarFallback>
-						<div
-							className={`absolute right-1 bottom-0.5 bg-emerald rounded-full size-2 lg:size-3 border-[2px] border-solid border-onyx`}
-						></div>
+						) : (
+							<>
+								<AvatarImage
+									src={profile_image}
+									className="size-7  rounded-full"
+								/>
+								<AvatarFallback className="flex items-center justify-center">
+									<img
+										src="/icons/discord.svg"
+										className="size-[35px]  rounded-full"
+									/>
+								</AvatarFallback>
+								<div
+									className={`absolute right-1 bottom-0.5 bg-emerald rounded-full size-2 lg:size-3 border-[2px] border-solid border-onyx`}
+								></div>
+							</>
+						)}
 					</Avatar>
 					{/* Acceptable name or nickname should be less than 30 characters */}
 					<p className="font-bold text-[#FFFFFF99] text-[14px] max-w-[100px] sm:max-w-[200px] lg:max-w-[300px] truncate">
