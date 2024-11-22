@@ -4,7 +4,6 @@ import {
 	DialogHeader,
 	DialogTrigger,
 } from "@/components/ui/dialog";
-import { voiceChannels } from "@/data";
 import usePersistAppState from "@/hooks/use-persist-app-state";
 import { ChevronDown, Filter, Search } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -22,6 +21,7 @@ import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { SidebarMenuButton, SidebarMenuItem } from "../ui/sidebar";
 import { serverList } from "@/data/servers";
+import { voiceChannels } from "@/data";
 
 interface Props {
 	type: string;
@@ -176,10 +176,8 @@ const MobileSearchModal = ({ type, open, onOpenChange }: Props) => {
 									return (
 										<ChatBubble
 											key={i}
-											profileImg="/touchgrasshq.png"
 											time="10:33am"
 											message="no??? to go out and enjoy the sun and touch grass"
-											user="grass enjoyer"
 										/>
 									);
 								})}

@@ -1,18 +1,17 @@
-import { useSidebarStateStore } from "@/hooks/base-context";
-import IconButtons from "./IconButtons";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import { useLocation } from "react-router-dom";
 import { MobileMenuItems } from "@/components/mobile_v_comps/MobileMenuItems";
+import { useSidebarStateStore } from "@/hooks/base-context";
 import { useOpenSearchBar } from "@/hooks/use-open-sidebar";
-import { useEffect, useState } from "react";
-import { friends } from "@/data/dms";
-import { Friends } from "@/types";
+import { useLocation } from "react-router-dom";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import IconButtons from "./IconButtons";
 
 interface Props {
-	dmId: string | undefined;
+	name: string | undefined;
+	channelType?: string | undefined;
+	profile_image?: string | undefined;
 }
 
-const HMenu = ({ dmId }: Props) => {
+const HMenu = ({ name, channelType, profile_image }: Props) => {
 	const location = useLocation();
 	const r_sidebar_state = useSidebarStateStore(
 		(state) => state.r_sidebar_state
@@ -33,13 +32,6 @@ const HMenu = ({ dmId }: Props) => {
 	);
 	const openSearchBar = useOpenSearchBar();
 
-	const [friendInfo, setFriendInfo] = useState<Friends>();
-
-	useEffect(() => {
-		const friend = friends.find((friend) => friend.id === Number(dmId));
-		setFriendInfo(friend);
-	}, [dmId, friendInfo]);
-
 	return (
 		<header className="flex justify-between items-center gap-3 h-full max-h-[50px] px-2 md:px-3 lg:px-4 bg-onyx w-full sticky top-0 shrink-0 bg-background py-2">
 			<div className="flex items-center gap-2">
@@ -52,7 +44,9 @@ const HMenu = ({ dmId }: Props) => {
 				<div className="flex items-center justify-start gap-2 md:gap-3 bg-transparent shadow-none w-fit">
 					<Avatar className="flex items-center justify-center">
 						<AvatarImage
-							src={friendInfo?.profileImg}
+							src={
+								channelType ? `/icon/${channelType}.svg` : profile_image
+							}
 							className="size-7  rounded-full"
 						/>
 						<AvatarFallback className="flex items-center justify-center">
@@ -68,7 +62,7 @@ const HMenu = ({ dmId }: Props) => {
 					{/* Acceptable name or nickname should be less than 30 characters */}
 					<p className="font-bold text-[#FFFFFF99] text-[14px] max-w-[100px] sm:max-w-[200px] lg:max-w-[300px] truncate">
 						{/* Big time forward ever backward never */}
-						{friendInfo?.user}
+						{name}
 					</p>
 				</div>
 			</div>

@@ -43,30 +43,35 @@ interface LastMessage {
 	time: string;
 	message: string;
 }
-[];
 
 interface Messages {
 	messageId: string;
-	senderId: number;
+	senderId: string;
 	time: string;
 	message: string;
 }
-[];
 export interface Conversation {
 	conversationId: string;
 	participants: number[];
-	lastMessage: LastMessage;
+	lastMessage: LastMessage[];
 	unreadMessageCount: number;
 	pinned: boolean;
 	isFriend: boolean;
-	messages: Messages;
+	messages: Messages[];
 }
 
 export interface Channels {
 	type: string;
 	name: string;
 	slug: string;
-	id: number;
+	id: string;
+}
+
+export interface textChannelConversations {
+	messageId: string;
+	time: string;
+	message: string;
+	senderId: string;
 }
 export interface Servers {
 	id: number;
