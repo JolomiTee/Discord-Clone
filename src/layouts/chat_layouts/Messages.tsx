@@ -7,13 +7,14 @@ import { useEffect, useState } from "react";
 import { conversations, friends } from "@/data/dms";
 import { Conversation, Friends } from "@/types";
 import HMenu from "@/components/common/HMenu";
+import Wumpus from "../Wumpus";
 
 const MessagesLayout = () => {
 	// Logged-in user details
 	const user = {
 		userId: "1000",
 		username: "GrassMaster333",
-		userProfileImage: "",
+		userProfileImage: "/beluga.png",
 	};
 
 	const [chatConversations, setChatConversations] =
@@ -53,21 +54,25 @@ const MessagesLayout = () => {
 					</Badge>
 
 					{/* Render Chat Bubbles */}
-					{chatConversations?.messages.map((msg) => {
-						const { messageId, senderId, time, message } = msg;
+					{chatConversations && chatConversations?.messages.length > 0 ? (
+						chatConversations?.messages.map((msg) => {
+							const { messageId, senderId, time, message } = msg;
 
-						return (
-							<ChatBubble
-								key={messageId}
-								messageId={messageId}
-								senderId={senderId}
-								time={time}
-								message={message}
-								friend={friendInfo} // Pass friend data
-								user={user} // Pass logged-in user data
-							/>
-						);
-					})}
+							return (
+								<ChatBubble
+									key={messageId}
+									messageId={messageId}
+									senderId={senderId}
+									time={time}
+									message={message}
+									friend={friendInfo} // Pass friend data
+									user={user} // Pass logged-in user data
+								/>
+							);
+						})
+					) : (
+						<Wumpus />
+					)}
 				</div>
 
 				{/* Input field for new messages */}

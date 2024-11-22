@@ -15,8 +15,10 @@ import {
 	SidebarHeader,
 	useSidebar,
 } from "@/components/ui/sidebar";
+import { serverList } from "@/data/servers";
 import { useSidebarStateStore } from "@/hooks/base-context";
 import { useOpenSearchBar } from "@/hooks/use-open-sidebar";
+import { Channels, Servers } from "@/types";
 import {
 	Archive,
 	Ellipsis,
@@ -28,8 +30,6 @@ import { useEffect, useState } from "react";
 import IconButtons from "../../common/IconButtons";
 import { AspectRatio } from "../../ui/aspect-ratio";
 import { Separator } from "../../ui/separator";
-import { Channels, Servers } from "@/types";
-import { serverList } from "@/data/servers";
 
 const ServerDisplayVariant = ({
 	serverId,
