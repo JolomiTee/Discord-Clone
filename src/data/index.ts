@@ -7,7 +7,7 @@ export const messageList = [
 		messageCount: 2,
 		pinned: true,
 		slug: "ghost",
-		id: 1001,
+		id: "1001",
 	},
 	{
 		profileImg: "/silly.png",
@@ -17,7 +17,7 @@ export const messageList = [
 		messageCount: 5,
 		pinned: false,
 		slug: "joloo",
-		id: 1002,
+		id: "1002",
 	},
 	{
 		profileImg: "/juxtopposed.png",
@@ -27,7 +27,7 @@ export const messageList = [
 		messageCount: 0,
 		pinned: false,
 		slug: "juxtopposed",
-		id: 1003,
+		id: "1003",
 	},
 	{
 		profileImg: "/jojo.png",
@@ -37,7 +37,7 @@ export const messageList = [
 		messageCount: 0,
 		pinned: false,
 		slug: "jojo",
-		id: 1004,
+		id: "1004",
 	},
 	{
 		profileImg: "/shepard.png",
@@ -47,7 +47,7 @@ export const messageList = [
 		messageCount: 5,
 		pinned: false,
 		slug: "shepard",
-		id: 1005,
+		id: "1005",
 	},
 ];
 
@@ -191,37 +191,37 @@ export const textChannels = [
 		type: "text_channel",
 		name: "general-text",
 		slug: "general-text",
-		id: 1234, // Replace with your random number logic
+		id: "1234", // Replace with your random number logic
 	},
 	{
 		type: "text_channel",
 		name: "grass update",
 		slug: "grass-update",
-		id: 5678,
+		id: "5678",
 	},
 	{
 		type: "text_channel",
 		name: "grass discussions",
 		slug: "grass-discussions",
-		id: 9101,
+		id: "9101",
 	},
 	{
 		type: "text_channel",
 		name: "grass pictures",
 		slug: "grass-pictures",
-		id: 1121,
+		id: "1121",
 	},
 	{
 		type: "text_channel",
 		name: "grass faq",
 		slug: "grass-faq",
-		id: 3141,
+		id: "3141",
 	},
 	{
 		type: "forum",
 		name: "forum",
 		slug: "forum",
-		id: 5161,
+		id: "5161",
 	},
 ];
 
@@ -230,25 +230,25 @@ export const voiceChannels = [
 		type: "voice_channel",
 		name: "just chilling",
 		slug: "just-chilling",
-		id: 1718,
+		id: "1718",
 	},
 	{
 		type: "voice_channel",
 		name: "grass-only",
 		slug: "grass-only",
-		id: 1920,
+		id: "1920",
 	},
 	{
 		type: "voice_channel",
 		name: "grass talk",
 		slug: "grass-talk",
-		id: 2122,
+		id: "2122",
 	},
 	{
 		type: "stage",
 		name: "relaxing music stage",
 		slug: "relaxing-music-stage",
-		id: 2324,
+		id: "2324",
 	},
 ];
 
@@ -258,12 +258,12 @@ export const membersList = [
 		count: 2,
 		members: [
 			{
-				id: 1,
+				id: "1",
 				profile: "",
 				name: "grass master 1",
 			},
 			{
-				id: 2,
+				id: "2",
 				profile: "",
 				name: "grass master 2",
 			},
@@ -274,17 +274,17 @@ export const membersList = [
 		count: 3,
 		members: [
 			{
-				id: 1,
+				id: "1",
 				profile: "",
 				name: "grass mod 1",
 			},
 			{
-				id: 2,
+				id: "2",
 				profile: "",
 				name: "grass mod 2",
 			},
 			{
-				id: 3,
+				id: "3",
 				profile: "",
 				name: "grass mod 3",
 			},
@@ -295,22 +295,22 @@ export const membersList = [
 		count: 4,
 		members: [
 			{
-				id: 1,
+				id: "1",
 				profile: "",
 				name: "grass guide 1",
 			},
 			{
-				id: 2,
+				id: "2",
 				profile: "",
 				name: "grass guide 2",
 			},
 			{
-				id: 3,
+				id: "3",
 				profile: "",
 				name: "grass guide 3",
 			},
 			{
-				id: 4,
+				id: "4",
 				profile: "",
 				name: "grass guide 4",
 			},
@@ -320,22 +320,22 @@ export const membersList = [
 
 export const membersList2 = [
 	{
-		id: 1,
+		id: "1",
 		profile: "",
 		name: "grass man 1",
 	},
 	{
-		id: 2,
+		id: "2",
 		profile: "",
 		name: "grass man 2",
 	},
 	{
-		id: 3,
+		id: "3",
 		profile: "",
 		name: "grass man 3",
 	},
 	{
-		id: 4,
+		id: "4",
 		profile: "",
 		name: "grass man 4",
 	},
@@ -351,7 +351,7 @@ export const discordServers = [
 		muted: false,
 		server_img: "/servers/midjourney.png",
 		slug: "midjourney",
-		id: 1001,
+		id: "1001",
 	},
 	{
 		name: "HELLDIVERS II",
@@ -362,7 +362,7 @@ export const discordServers = [
 		muted: false,
 		server_img: "/servers/helldivers.png",
 		slug: "helldivers-ii",
-		id: 1002,
+		id: "1002",
 	},
 	{
 		name: "Minecraft",
@@ -373,7 +373,7 @@ export const discordServers = [
 		muted: false,
 		server_img: "/servers/minecraft.png",
 		slug: "minecraft",
-		id: 1003,
+		id: "1003",
 	},
 	{
 		name: "Fortnite",
@@ -384,7 +384,7 @@ export const discordServers = [
 		muted: false,
 		server_img: "/servers/fortnite.png",
 		slug: "fortnite",
-		id: 1004,
+		id: "1004",
 	},
 	{
 		name: "Roblox",
@@ -395,7 +395,7 @@ export const discordServers = [
 		muted: false,
 		server_img: "/servers/roblox.png",
 		slug: "roblox",
-		id: 1005,
+		id: "1005",
 	},
 	{
 		name: "Terraria",
@@ -406,7 +406,7 @@ export const discordServers = [
 		muted: false,
 		server_img: "/servers/terraria.png",
 		slug: "terraria",
-		id: 1006,
+		id: "1006",
 	},
 	{
 		name: "Linkin Park",
@@ -417,7 +417,7 @@ export const discordServers = [
 		muted: false,
 		server_img: "/servers/linkinpark.png",
 		slug: "linkin-park",
-		id: 1007,
+		id: "1007",
 	},
 	{
 		name: "Memeology",
@@ -428,7 +428,7 @@ export const discordServers = [
 		muted: false,
 		server_img: "/servers/memeology.png",
 		slug: "memeology",
-		id: 1008,
+		id: "1008",
 	},
 	{
 		name: "One Piece",
@@ -439,7 +439,7 @@ export const discordServers = [
 		muted: false,
 		server_img: "/servers/onepiece.png",
 		slug: "one-piece",
-		id: 1009,
+		id: "1009",
 	},
 	{
 		name: "BeluGANG",
@@ -450,7 +450,7 @@ export const discordServers = [
 		muted: false,
 		server_img: "/servers/belugang.png",
 		slug: "belugang",
-		id: 1010,
+		id: "1010",
 	},
 	{
 		name: "Jojo’s Bizarre Adventure",
@@ -461,7 +461,7 @@ export const discordServers = [
 		muted: false,
 		server_img: "/servers/jojo.png",
 		slug: "jojos-bizarre-adventure",
-		id: 1011,
+		id: "1011",
 	},
 	{
 		name: "OperaGX",
@@ -472,7 +472,7 @@ export const discordServers = [
 		muted: false,
 		server_img: "/servers/operagx.png",
 		slug: "operagx",
-		id: 1012,
+		id: "1012",
 	},
 	{
 		name: "LinusTechTips",
@@ -483,7 +483,7 @@ export const discordServers = [
 		muted: false,
 		server_img: "/servers/linustechtips.png",
 		slug: "linustechtips",
-		id: 1013,
+		id: "1013",
 	},
 	{
 		name: "PCMasterRace",
@@ -494,7 +494,7 @@ export const discordServers = [
 		muted: false,
 		server_img: "/servers/pcmasterrace.png",
 		slug: "pcmasterrace",
-		id: 1014,
+		id: "1014",
 	},
 	{
 		name: "RAZER",
@@ -505,7 +505,7 @@ export const discordServers = [
 		muted: false,
 		server_img: "/servers/razer.png",
 		slug: "razer",
-		id: 1015,
+		id: "1015",
 	},
 	{
 		name: "DESTINY 2",
@@ -516,7 +516,7 @@ export const discordServers = [
 		muted: false,
 		server_img: "/servers/destiny.png",
 		slug: "destiny-2",
-		id: 1016,
+		id: "1016",
 	},
 	{
 		name: "Apex Legends",
@@ -527,7 +527,7 @@ export const discordServers = [
 		muted: false,
 		server_img: "/servers/apexlegends.png",
 		slug: "apex-legends",
-		id: 1017,
+		id: "1017",
 	},
 	{
 		name: "VALORANT",
@@ -538,7 +538,7 @@ export const discordServers = [
 		muted: false,
 		server_img: "/servers/valorant.png",
 		slug: "valorant",
-		id: 1018,
+		id: "1018",
 	},
 	{
 		name: "Lofi Girl",
@@ -549,7 +549,7 @@ export const discordServers = [
 		muted: false,
 		server_img: "/servers/lofigirl.png",
 		slug: "lofi-girl",
-		id: 1019,
+		id: "1019",
 	},
 	{
 		name: "Rythm",
@@ -560,7 +560,7 @@ export const discordServers = [
 		muted: false,
 		server_img: "/servers/rythm.png",
 		slug: "rythm",
-		id: 1020,
+		id: "1020",
 	},
 ];
 

@@ -136,14 +136,19 @@ const MobileSearchModal = ({ type, open, onOpenChange }: Props) => {
 							</AccordionTrigger>
 							<AccordionContent className="pe-3 flex flex-col gap-3">
 								{serverList.map((item, i) => {
-									const { name, server_img: serverIcon, muted } = item;
+									const {
+										name,
+										server_img: serverIcon,
+										muted,
+										id,
+									} = item;
 									return (
 										<SearchResultServerIcon
 											key={i}
 											name={name}
 											serverIcon={serverIcon}
 											hasNotification={muted}
-											i={i}
+											i={id}
 										/>
 									);
 								})}
