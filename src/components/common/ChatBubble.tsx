@@ -43,9 +43,7 @@ const ChatBubble = ({
 				</AvatarFallback>
 			</Avatar>
 
-			{/* Message Content */}
-			<div>
-				{/* Name and Time */}
+			<div className="max-w-[60%]">
 				<div
 					className={`flex items-baseline gap-4 ${
 						isUserMessage ? "justify-end" : "justify-start"
@@ -59,7 +57,6 @@ const ChatBubble = ({
 					</span>
 				</div>
 
-				{/* Message Text */}
 				<p className="text-[13px] md:text-[14px] text-[#FFFFFFCC]">
 					{message}
 				</p>

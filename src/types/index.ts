@@ -98,8 +98,7 @@ export interface Servers {
 		textChannels: Channels[];
 		voiceChannels: Channels[];
 	};
-}
-[];
+};
 
 // *============================= HOOKS ============================//
 

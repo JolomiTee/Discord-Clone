@@ -38,7 +38,7 @@ const ServerCard = ({
 		switchLeftSidebarContext("server");
 	};
 	return (
-		<Link to={`${String(serverId)}`} onClick={onclick}>
+		<Link to={String(serverId)} onClick={onclick}>
 			<Card className="flex items-start gap-2 bg-transparent border-0 shadow-none">
 				<Avatar className="rounded-[8px] size-12">
 					<AvatarImage
