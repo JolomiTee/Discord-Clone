@@ -54,7 +54,7 @@ const MessagesDisplayVariant = () => {
 	];
 
 	return (
-		<Sidebar className=" border-none">
+		<Sidebar className="border-none">
 			<SidebarContent>
 				<section className="bg-carbon relative text-[#FFFFFF99] h-full">
 					<Tabs
@@ -84,6 +84,7 @@ const MessagesDisplayVariant = () => {
 									<SelectContent className="bg-onyx border border-solid border-[#FFFFFF0F] text-[#FFFFFF] rounded-[10px]">
 										{messagesFilter.map((filters) => (
 											<SelectItem
+												key={filters.label}
 												className="rounded-[8px]"
 												value={filters.label}
 											>

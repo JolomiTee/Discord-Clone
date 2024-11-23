@@ -13,7 +13,7 @@ interface props {
 	name: string;
 	serverIcon: string;
 	hasNotification: boolean;
-	serverId: number;
+	serverId: string;
 }
 const SidebarServerIcon = ({
 	slug,

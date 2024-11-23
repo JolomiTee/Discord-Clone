@@ -1,84 +1,3 @@
-export const serverList = [
-  {
-    name: "Midjourney",
-    online: 175432,
-    members: 1843921,
-    lastSeen: "7:15 am, August 14, 2023",
-    link: "https://discord.com/invite/midjourney",
-    muted: false,
-    server_img: "/servers/midjourney.png",
-    slug: "midjourney",
-    id: 1001
-  },
-  {
-    name: "HELLDIVERS II",
-    online: 145678,
-    members: 1543920,
-    lastSeen: "9:42 pm, June 28, 2024",
-    link: "https://discord.com/invite/helldivers2",
-    muted: false,
-    server_img: "/servers/helldivers.png",
-    slug: "helldivers-ii",
-    id: 1002
-  },
-  {
-    name: "Minecraft",
-    online: 193476,
-    members: 1987654,
-    lastSeen: "2:37 am, December 5, 2022",
-    link: "https://discord.com/invite/minecraft",
-    muted: false,
-    server_img: "/servers/minecraft.png",
-    slug: "minecraft",
-    id: 1003
-  },
-	  {
-    name: "One Piece",
-    online: 154321,
-    members: 1750293,
-    lastSeen: "1:30 pm, July 10, 2024",
-    link: "https://discord.com/invite/onepiece",
-    muted: false,
-    server_img: "/servers/onepiece.png",
-    slug: "one-piece",
-    id: 1009
-  },
-  {
-    name: "BeluGANG",
-    online: 110872,
-    members: 1384957,
-    lastSeen: "10:41 am, September 19, 2023",
-    link: "https://discord.com/invite/belugang",
-    muted: false,
-    server_img: "/servers/belugang.png",
-    slug: "belugang",
-    id: 1010
-  },
-  {
-    name: "LinusTechTips",
-    online: 182745,
-    members: 1934872,
-    lastSeen: "11:59 pm, May 24, 2023",
-    link: "https://discord.com/invite/linustech",
-    muted: false,
-    server_img: "/servers/linustechtips.png",
-    slug: "linustechtips",
-    id: 1013
-  },
-	{
-    name: "Apex Legends",
-    online: 158902,
-    members: 1904872,
-    lastSeen: "9:11 am, October 17, 2024",
-    link: "https://discord.com/invite/apexlegends",
-    muted: false,
-    server_img: "/servers/apexlegends.png",
-    slug: "apex-legends",
-    id: 1017
-  },
-];
-
-
 export const messageList = [
 	{
 		profileImg: "/ghost.png",
@@ -88,17 +7,7 @@ export const messageList = [
 		messageCount: 2,
 		pinned: true,
 		slug: "ghost",
-		id: 1001
-	},
-	{
-		profileImg: "/beluga.png",
-		user: "Beluga",
-		online: true,
-		hasMessage: true,
-		messageCount: 2,
-		pinned: false,
-		slug: "beluga",
-		id: 1002
+		id: "1001",
 	},
 	{
 		profileImg: "/silly.png",
@@ -108,7 +17,7 @@ export const messageList = [
 		messageCount: 5,
 		pinned: false,
 		slug: "joloo",
-		id: 1003
+		id: "1002",
 	},
 	{
 		profileImg: "/juxtopposed.png",
@@ -118,7 +27,7 @@ export const messageList = [
 		messageCount: 0,
 		pinned: false,
 		slug: "juxtopposed",
-		id: 1004
+		id: "1003",
 	},
 	{
 		profileImg: "/jojo.png",
@@ -128,7 +37,7 @@ export const messageList = [
 		messageCount: 0,
 		pinned: false,
 		slug: "jojo",
-		id: 1005
+		id: "1004",
 	},
 	{
 		profileImg: "/shepard.png",
@@ -138,181 +47,182 @@ export const messageList = [
 		messageCount: 5,
 		pinned: false,
 		slug: "shepard",
-		id: 1006
-	}
+		id: "1005",
+	},
 ];
 
-
 export const chatConversation = [
-  {
-    user: "Ghost",
-    time: "15:34",
-    message: "Shepard, we've secured the intel. Moving to extraction.",
-    profileImg: "/ghost.png"
-  },
-  {
-    user: "Shepard",
-    time: "15:35",
-    message: "Roger that, Ghost. Head to the extraction point. We’re on our way.",
-    profileImg: "/shepard.png"
-  },
-  {
-    user: "Ghost",
-    time: "15:36",
-    message: "Copy that. See you soon.",
-    profileImg: "/ghost.png"
-  },
-  {
-    user: "Shepard",
-    time: "15:37",
-    message: "You did good, Ghost. Real good.",
-    profileImg: "/shepard.png"
-  },
-  {
-    user: "Ghost",
-    time: "15:38",
-    message: "Thanks, General. We couldn't have done it without you.",
-    profileImg: "/ghost.png"
-  },
-  {
-    user: "Shepard",
-    time: "15:39",
-    message: "But there’s one last thing you need to do for me.",
-    profileImg: "/shepard.png"
-  },
-  {
-    user: "Ghost",
-    time: "15:39",
-    message: "What's that?",
-    profileImg: "/ghost.png"
-  },
-  {
-    user: "Shepard",
-    time: "15:40",
-    message: "Sorry, Ghost... but this is the end of the line for you.",
-    profileImg: "/shepard.png"
-  },
-  {
-    user: "Ghost",
-    time: "15:41",
-    message: "Shepard, what are you doing?!",
-    profileImg: "/ghost.png"
-  },
-  {
-    user: "Shepard",
-    time: "15:42",
-    message: "It’s nothing personal. This is bigger than you or me.",
-    profileImg: "/shepard.png"
-  },
-  {
-    user: "Ghost",
-    time: "15:43",
-    message: "You son of a—",
-    profileImg: "/ghost.png"
-  },
-  {
-    user: "Shepard",
-    time: "15:44",
-    message: "*Gunshots*",
-    profileImg: "/shepard.png"
-  },
-  {
-    user: "Ghost",
-    time: "15:45",
-    message: "*Falls to the ground*",
-    profileImg: "/ghost.png"
-  }
+	{
+		user: "Ghost",
+		time: "15:34",
+		message: "Shepard, we've secured the intel. Moving to extraction.",
+		profileImg: "/ghost.png",
+	},
+	{
+		user: "Shepard",
+		time: "15:35",
+		message:
+			"Roger that, Ghost. Head to the extraction point. We’re on our way.",
+		profileImg: "/shepard.png",
+	},
+	{
+		user: "Ghost",
+		time: "15:36",
+		message: "Copy that. See you soon.",
+		profileImg: "/ghost.png",
+	},
+	{
+		user: "Shepard",
+		time: "15:37",
+		message: "You did good, Ghost. Real good.",
+		profileImg: "/shepard.png",
+	},
+	{
+		user: "Ghost",
+		time: "15:38",
+		message: "Thanks, General. We couldn't have done it without you.",
+		profileImg: "/ghost.png",
+	},
+	{
+		user: "Shepard",
+		time: "15:39",
+		message: "But there’s one last thing you need to do for me.",
+		profileImg: "/shepard.png",
+	},
+	{
+		user: "Ghost",
+		time: "15:39",
+		message: "What's that?",
+		profileImg: "/ghost.png",
+	},
+	{
+		user: "Shepard",
+		time: "15:40",
+		message: "Sorry, Ghost... but this is the end of the line for you.",
+		profileImg: "/shepard.png",
+	},
+	{
+		user: "Ghost",
+		time: "15:41",
+		message: "Shepard, what are you doing?!",
+		profileImg: "/ghost.png",
+	},
+	{
+		user: "Shepard",
+		time: "15:42",
+		message: "It’s nothing personal. This is bigger than you or me.",
+		profileImg: "/shepard.png",
+	},
+	{
+		user: "Ghost",
+		time: "15:43",
+		message: "You son of a—",
+		profileImg: "/ghost.png",
+	},
+	{
+		user: "Shepard",
+		time: "15:44",
+		message: "*Gunshots*",
+		profileImg: "/shepard.png",
+	},
+	{
+		user: "Ghost",
+		time: "15:45",
+		message: "*Falls to the ground*",
+		profileImg: "/ghost.png",
+	},
 ];
 
 export const textChannelConversation = [
-  {
-    user: "grass enjoyer",
-    time: "10:30 am",
+	{
+		user: "grass enjoyer",
+		time: "10:30 am",
 		message: "what an amazing day!",
-	 profileImg: ""
-  },
-  {
-    user: "NOT a grass enjoyer",
-    time: "10:32 am",
-    message: "TO SIT HOME AND PLAY GAMES I KNOW RIGHT",
-	 profileImg: ""
-  },
-  {
-    user: "grass enjoyer",
-    time: "10:33 am",
-    message: "no??? to go out and enjoy the sun and touch grass",
-	 profileImg: ""
-  },
-  {
-    user: "NOT a grass enjoyer",
-    time: "10:32 am",
-    message: "hell no",
-	 profileImg: ""
-  },
-  {
-    user: "sun enthusiast",
-    time: "10:32 am",
-    message: "hey @NOT a grass enjoyer you should actually try that dude. you've been online for a long time now.",
-	 profileImg: ""
-  },
-  {
-    user: "NOT a grass enjoyer",
-    time: "10:32 am",
-    message: "nuh uh grass is for losers you can't trick me",
-	 profileImg: ""
-  },
-  {
-    user: "grass enjoyer",
-    time: "10:33 am",
-    message: "well, i'll be on my way then. will update you guys with some pictures later :)",
-	 profileImg: ""
-  },
-  {
-    user: "sun enthusiast",
-    time: "10:32 am",
-    message: "have fun!",
-	 profileImg: ""
-  }
+		profileImg: "",
+	},
+	{
+		user: "NOT a grass enjoyer",
+		time: "10:32 am",
+		message: "TO SIT HOME AND PLAY GAMES I KNOW RIGHT",
+		profileImg: "",
+	},
+	{
+		user: "grass enjoyer",
+		time: "10:33 am",
+		message: "no??? to go out and enjoy the sun and touch grass",
+		profileImg: "",
+	},
+	{
+		user: "NOT a grass enjoyer",
+		time: "10:32 am",
+		message: "hell no",
+		profileImg: "",
+	},
+	{
+		user: "sun enthusiast",
+		time: "10:32 am",
+		message:
+			"hey @NOT a grass enjoyer you should actually try that dude. you've been online for a long time now.",
+		profileImg: "",
+	},
+	{
+		user: "NOT a grass enjoyer",
+		time: "10:32 am",
+		message: "nuh uh grass is for losers you can't trick me",
+		profileImg: "",
+	},
+	{
+		user: "grass enjoyer",
+		time: "10:33 am",
+		message:
+			"well, i'll be on my way then. will update you guys with some pictures later :)",
+		profileImg: "",
+	},
+	{
+		user: "sun enthusiast",
+		time: "10:32 am",
+		message: "have fun!",
+		profileImg: "",
+	},
 ];
-
 
 export const textChannels = [
 	{
 		type: "text_channel",
 		name: "general-text",
 		slug: "general-text",
-		id: 1234, // Replace with your random number logic
+		id: "1234", // Replace with your random number logic
 	},
 	{
 		type: "text_channel",
 		name: "grass update",
 		slug: "grass-update",
-		id: 5678,
+		id: "5678",
 	},
 	{
 		type: "text_channel",
 		name: "grass discussions",
 		slug: "grass-discussions",
-		id: 9101,
+		id: "9101",
 	},
 	{
 		type: "text_channel",
 		name: "grass pictures",
 		slug: "grass-pictures",
-		id: 1121,
+		id: "1121",
 	},
 	{
 		type: "text_channel",
 		name: "grass faq",
 		slug: "grass-faq",
-		id: 3141,
+		id: "3141",
 	},
 	{
 		type: "forum",
 		name: "forum",
 		slug: "forum",
-		id: 5161,
-	}
+		id: "5161",
+	},
 ];
 
 export const voiceChannels = [
@@ -320,28 +230,27 @@ export const voiceChannels = [
 		type: "voice_channel",
 		name: "just chilling",
 		slug: "just-chilling",
-		id: 1718,
+		id: "1718",
 	},
 	{
 		type: "voice_channel",
 		name: "grass-only",
 		slug: "grass-only",
-		id: 1920,
+		id: "1920",
 	},
 	{
 		type: "voice_channel",
 		name: "grass talk",
 		slug: "grass-talk",
-		id: 2122,
+		id: "2122",
 	},
 	{
 		type: "stage",
 		name: "relaxing music stage",
 		slug: "relaxing-music-stage",
-		id: 2324,
-	}
+		id: "2324",
+	},
 ];
-
 
 export const membersList = [
 	{
@@ -349,333 +258,331 @@ export const membersList = [
 		count: 2,
 		members: [
 			{
-				id: 1,
+				id: "1",
 				profile: "",
-				name: "grass master 1"
+				name: "grass master 1",
 			},
 			{
-				id: 2,
+				id: "2",
 				profile: "",
-				name: "grass master 2"
-			}
-		]
+				name: "grass master 2",
+			},
+		],
 	},
 	{
 		group: "mods",
 		count: 3,
 		members: [
 			{
-				id: 1,
+				id: "1",
 				profile: "",
-				name: "grass mod 1"
+				name: "grass mod 1",
 			},
 			{
-				id: 2,
+				id: "2",
 				profile: "",
-				name: "grass mod 2"
+				name: "grass mod 2",
 			},
 			{
-				id: 3,
+				id: "3",
 				profile: "",
-				name: "grass mod 3"
-			}
-		]
+				name: "grass mod 3",
+			},
+		],
 	},
 	{
 		group: "guides",
 		count: 4,
 		members: [
 			{
-				id: 1,
+				id: "1",
 				profile: "",
-				name: "grass guide 1"
+				name: "grass guide 1",
 			},
 			{
-				id: 2,
+				id: "2",
 				profile: "",
-				name: "grass guide 2"
+				name: "grass guide 2",
 			},
 			{
-				id: 3,
+				id: "3",
 				profile: "",
-				name: "grass guide 3"
+				name: "grass guide 3",
 			},
 			{
-				id: 4,
+				id: "4",
 				profile: "",
-				name: "grass guide 4"
-			}
-		]
+				name: "grass guide 4",
+			},
+		],
 	},
-]
-
-export const membersList2 = [
-			{
-				id: 1,
-				profile: "",
-				name: "grass man 1"
-			},
-			{
-				id: 2,
-				profile: "",
-				name: "grass man 2"
-			},
-			{
-				id: 3,
-				profile: "",
-				name: "grass man 3"
-			},
-			{
-				id: 4,
-				profile: "",
-				name: "grass man 4"
-			}
-]
-
-
-export const discordServers = [
-  {
-    name: "Midjourney",
-    online: 175432,
-    members: 1843921,
-    lastSeen: "7:15 am, August 14, 2023",
-    link: "https://discord.com/invite/midjourney",
-    muted: false,
-    server_img: "/servers/midjourney.png",
-    slug: "midjourney",
-    id: 1001
-  },
-  {
-    name: "HELLDIVERS II",
-    online: 145678,
-    members: 1543920,
-    lastSeen: "9:42 pm, June 28, 2024",
-    link: "https://discord.com/invite/helldivers2",
-    muted: false,
-    server_img: "/servers/helldivers.png",
-    slug: "helldivers-ii",
-    id: 1002
-  },
-  {
-    name: "Minecraft",
-    online: 193476,
-    members: 1987654,
-    lastSeen: "2:37 am, December 5, 2022",
-    link: "https://discord.com/invite/minecraft",
-    muted: false,
-    server_img: "/servers/minecraft.png",
-    slug: "minecraft",
-    id: 1003
-  },
-  {
-    name: "Fortnite",
-    online: 189204,
-    members: 1754321,
-    lastSeen: "11:13 pm, February 20, 2023",
-    link: "https://discord.com/invite/fortnite",
-    muted: false,
-    server_img: "/servers/fortnite.png",
-    slug: "fortnite",
-    id: 1004
-  },
-  {
-    name: "Roblox",
-    online: 168943,
-    members: 1520831,
-    lastSeen: "4:23 pm, October 3, 2024",
-    link: "https://discord.com/invite/roblox",
-    muted: false,
-    server_img: "/servers/roblox.png",
-    slug: "roblox",
-    id: 1005
-  },
-  {
-    name: "Terraria",
-    online: 149876,
-    members: 1402834,
-    lastSeen: "8:09 am, May 15, 2022",
-    link: "https://discord.com/invite/terraria",
-    muted: false,
-    server_img: "/servers/terraria.png",
-    slug: "terraria",
-    id: 1006
-  },
-  {
-    name: "Linkin Park",
-    online: 132867,
-    members: 1674029,
-    lastSeen: "6:45 pm, January 18, 2024",
-    link: "https://discord.com/invite/linkinpark",
-    muted: false,
-    server_img: "/servers/linkinpark.png",
-    slug: "linkin-park",
-    id: 1007
-  },
-  {
-    name: "Memeology",
-    online: 147892,
-    members: 1934827,
-    lastSeen: "3:16 am, April 7, 2023",
-    link: "https://discord.com/invite/memeology",
-    muted: false,
-    server_img: "/servers/memeology.png",
-    slug: "memeology",
-    id: 1008
-  },
-  {
-    name: "One Piece",
-    online: 154321,
-    members: 1750293,
-    lastSeen: "1:30 pm, July 10, 2024",
-    link: "https://discord.com/invite/onepiece",
-    muted: false,
-    server_img: "/servers/onepiece.png",
-    slug: "one-piece",
-    id: 1009
-  },
-  {
-    name: "BeluGANG",
-    online: 110872,
-    members: 1384957,
-    lastSeen: "10:41 am, September 19, 2023",
-    link: "https://discord.com/invite/belugang",
-    muted: false,
-    server_img: "/servers/belugang.png",
-    slug: "belugang",
-    id: 1010
-  },
-  {
-    name: "Jojo’s Bizarre Adventure",
-    online: 178923,
-    members: 1984301,
-    lastSeen: "5:18 pm, November 30, 2022",
-    link: "https://discord.com/invite/jojosbizarreadventure",
-    muted: false,
-    server_img: "/servers/jojo.png",
-    slug: "jojos-bizarre-adventure",
-    id: 1011
-  },
-  {
-    name: "OperaGX",
-    online: 134591,
-    members: 1739201,
-    lastSeen: "9:25 am, March 2, 2024",
-    link: "https://discord.com/invite/operagx",
-    muted: false,
-    server_img: "/servers/operagx.png",
-    slug: "operagx",
-    id: 1012
-  },
-  {
-    name: "LinusTechTips",
-    online: 182745,
-    members: 1934872,
-    lastSeen: "11:59 pm, May 24, 2023",
-    link: "https://discord.com/invite/linustech",
-    muted: false,
-    server_img: "/servers/linustechtips.png",
-    slug: "linustechtips",
-    id: 1013
-  },
-  {
-    name: "PCMasterRace",
-    online: 141234,
-    members: 1429387,
-    lastSeen: "6:03 pm, December 12, 2023",
-    link: "https://discord.com/invite/pcmasterrace",
-    muted: false,
-    server_img: "/servers/pcmasterrace.png",
-    slug: "pcmasterrace",
-    id: 1014
-  },
-  {
-    name: "RAZER",
-    online: 136578,
-    members: 1764382,
-    lastSeen: "7:33 am, July 22, 2024",
-    link: "https://discord.com/invite/razer",
-    muted: false,
-    server_img: "/servers/razer.png",
-    slug: "razer",
-    id: 1015
-  },
-  {
-    name: "DESTINY 2",
-    online: 120984,
-    members: 1647389,
-    lastSeen: "8:26 pm, September 1, 2022",
-    link: "https://discord.com/invite/destiny2",
-    muted: false,
-    server_img: "/servers/destiny.png",
-    slug: "destiny-2",
-    id: 1016
-  },
-  {
-    name: "Apex Legends",
-    online: 158902,
-    members: 1904872,
-    lastSeen: "9:11 am, October 17, 2024",
-    link: "https://discord.com/invite/apexlegends",
-    muted: false,
-    server_img: "/servers/apexlegends.png",
-    slug: "apex-legends",
-    id: 1017
-  },
-  {
-    name: "VALORANT",
-    online: 165493,
-    members: 1728934,
-    lastSeen: "10:22 pm, January 9, 2023",
-    link: "https://discord.com/invite/valorant",
-    muted: false,
-    server_img: "/servers/valorant.png",
-    slug: "valorant",
-    id: 1018
-  },
-  {
-    name: "Lofi Girl",
-    online: 143682,
-    members: 1624831,
-    lastSeen: "4:18 am, August 23, 2024",
-    link: "https://discord.com/invite/lofigirl",
-    muted: false,
-    server_img: "/servers/lofigirl.png",
-    slug: "lofi-girl",
-    id: 1019
-  },
-  {
-    name: "Rythm",
-    online: 191237,
-    members: 1847239,
-    lastSeen: "12:01 pm, November 14, 2022",
-    link: "https://discord.com/invite/rythm",
-    muted: false,
-    server_img: "/servers/rythm.png",
-    slug: "rythm",
-    id: 1020
-  }
 ];
 
+export const membersList2 = [
+	{
+		id: "1",
+		profile: "",
+		name: "grass man 1",
+	},
+	{
+		id: "2",
+		profile: "",
+		name: "grass man 2",
+	},
+	{
+		id: "3",
+		profile: "",
+		name: "grass man 3",
+	},
+	{
+		id: "4",
+		profile: "",
+		name: "grass man 4",
+	},
+];
+
+export const discordServers = [
+	{
+		name: "Midjourney",
+		online: 175432,
+		members: 1843921,
+		lastSeen: "7:15 am, August 14, 2023",
+		link: "https://discord.com/invite/midjourney",
+		muted: false,
+		server_img: "/servers/midjourney.png",
+		slug: "midjourney",
+		id: "1001",
+	},
+	{
+		name: "HELLDIVERS II",
+		online: 145678,
+		members: 1543920,
+		lastSeen: "9:42 pm, June 28, 2024",
+		link: "https://discord.com/invite/helldivers2",
+		muted: false,
+		server_img: "/servers/helldivers.png",
+		slug: "helldivers-ii",
+		id: "1002",
+	},
+	{
+		name: "Minecraft",
+		online: 193476,
+		members: 1987654,
+		lastSeen: "2:37 am, December 5, 2022",
+		link: "https://discord.com/invite/minecraft",
+		muted: false,
+		server_img: "/servers/minecraft.png",
+		slug: "minecraft",
+		id: "1003",
+	},
+	{
+		name: "Fortnite",
+		online: 189204,
+		members: 1754321,
+		lastSeen: "11:13 pm, February 20, 2023",
+		link: "https://discord.com/invite/fortnite",
+		muted: false,
+		server_img: "/servers/fortnite.png",
+		slug: "fortnite",
+		id: "1004",
+	},
+	{
+		name: "Roblox",
+		online: 168943,
+		members: 1520831,
+		lastSeen: "4:23 pm, October 3, 2024",
+		link: "https://discord.com/invite/roblox",
+		muted: false,
+		server_img: "/servers/roblox.png",
+		slug: "roblox",
+		id: "1005",
+	},
+	{
+		name: "Terraria",
+		online: 149876,
+		members: 1402834,
+		lastSeen: "8:09 am, May 15, 2022",
+		link: "https://discord.com/invite/terraria",
+		muted: false,
+		server_img: "/servers/terraria.png",
+		slug: "terraria",
+		id: "1006",
+	},
+	{
+		name: "Linkin Park",
+		online: 132867,
+		members: 1674029,
+		lastSeen: "6:45 pm, January 18, 2024",
+		link: "https://discord.com/invite/linkinpark",
+		muted: false,
+		server_img: "/servers/linkinpark.png",
+		slug: "linkin-park",
+		id: "1007",
+	},
+	{
+		name: "Memeology",
+		online: 147892,
+		members: 1934827,
+		lastSeen: "3:16 am, April 7, 2023",
+		link: "https://discord.com/invite/memeology",
+		muted: false,
+		server_img: "/servers/memeology.png",
+		slug: "memeology",
+		id: "1008",
+	},
+	{
+		name: "One Piece",
+		online: 154321,
+		members: 1750293,
+		lastSeen: "1:30 pm, July 10, 2024",
+		link: "https://discord.com/invite/onepiece",
+		muted: false,
+		server_img: "/servers/onepiece.png",
+		slug: "one-piece",
+		id: "1009",
+	},
+	{
+		name: "BeluGANG",
+		online: 110872,
+		members: 1384957,
+		lastSeen: "10:41 am, September 19, 2023",
+		link: "https://discord.com/invite/belugang",
+		muted: false,
+		server_img: "/servers/belugang.png",
+		slug: "belugang",
+		id: "1010",
+	},
+	{
+		name: "Jojo’s Bizarre Adventure",
+		online: 178923,
+		members: 1984301,
+		lastSeen: "5:18 pm, November 30, 2022",
+		link: "https://discord.com/invite/jojosbizarreadventure",
+		muted: false,
+		server_img: "/servers/jojo.png",
+		slug: "jojos-bizarre-adventure",
+		id: "1011",
+	},
+	{
+		name: "OperaGX",
+		online: 134591,
+		members: 1739201,
+		lastSeen: "9:25 am, March 2, 2024",
+		link: "https://discord.com/invite/operagx",
+		muted: false,
+		server_img: "/servers/operagx.png",
+		slug: "operagx",
+		id: "1012",
+	},
+	{
+		name: "LinusTechTips",
+		online: 182745,
+		members: 1934872,
+		lastSeen: "11:59 pm, May 24, 2023",
+		link: "https://discord.com/invite/linustech",
+		muted: false,
+		server_img: "/servers/linustechtips.png",
+		slug: "linustechtips",
+		id: "1013",
+	},
+	{
+		name: "PCMasterRace",
+		online: 141234,
+		members: 1429387,
+		lastSeen: "6:03 pm, December 12, 2023",
+		link: "https://discord.com/invite/pcmasterrace",
+		muted: false,
+		server_img: "/servers/pcmasterrace.png",
+		slug: "pcmasterrace",
+		id: "1014",
+	},
+	{
+		name: "RAZER",
+		online: 136578,
+		members: 1764382,
+		lastSeen: "7:33 am, July 22, 2024",
+		link: "https://discord.com/invite/razer",
+		muted: false,
+		server_img: "/servers/razer.png",
+		slug: "razer",
+		id: "1015",
+	},
+	{
+		name: "DESTINY 2",
+		online: 120984,
+		members: 1647389,
+		lastSeen: "8:26 pm, September 1, 2022",
+		link: "https://discord.com/invite/destiny2",
+		muted: false,
+		server_img: "/servers/destiny.png",
+		slug: "destiny-2",
+		id: "1016",
+	},
+	{
+		name: "Apex Legends",
+		online: 158902,
+		members: 1904872,
+		lastSeen: "9:11 am, October 17, 2024",
+		link: "https://discord.com/invite/apexlegends",
+		muted: false,
+		server_img: "/servers/apexlegends.png",
+		slug: "apex-legends",
+		id: "1017",
+	},
+	{
+		name: "VALORANT",
+		online: 165493,
+		members: 1728934,
+		lastSeen: "10:22 pm, January 9, 2023",
+		link: "https://discord.com/invite/valorant",
+		muted: false,
+		server_img: "/servers/valorant.png",
+		slug: "valorant",
+		id: "1018",
+	},
+	{
+		name: "Lofi Girl",
+		online: 143682,
+		members: 1624831,
+		lastSeen: "4:18 am, August 23, 2024",
+		link: "https://discord.com/invite/lofigirl",
+		muted: false,
+		server_img: "/servers/lofigirl.png",
+		slug: "lofi-girl",
+		id: "1019",
+	},
+	{
+		name: "Rythm",
+		online: 191237,
+		members: 1847239,
+		lastSeen: "12:01 pm, November 14, 2022",
+		link: "https://discord.com/invite/rythm",
+		muted: false,
+		server_img: "/servers/rythm.png",
+		slug: "rythm",
+		id: "1020",
+	},
+];
 
 export const serverSearchResults = [
 	{
 		type: "text_channel",
 		name: "grass update",
-		link: "#"
+		link: "#",
 	},
 	{
 		type: "text_channel",
 		name: "grass discussions",
-		link: "#"
+		link: "#",
 	},
 	{
 		type: "text_channel",
 		name: "grass pictures",
-		link: "#"
+		link: "#",
 	},
 	{
 		type: "text_channel",
 		name: "grass faq",
-		link: "#"
+		link: "#",
 	},
-]
+];

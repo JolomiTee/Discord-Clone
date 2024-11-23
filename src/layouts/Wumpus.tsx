@@ -7,7 +7,7 @@ const Wumpus = () => {
 				<img src="/wumpus.png" alt="Wumpus" className="mx-auto w-auto" />
 			</div>
 			<p className="text-center text-[16px] text-white font-semibold">
-				Wumpus is waiting for you to pick a chat.
+				Wumpus is waiting for you to start or pick a chat.
 			</p>
 			<p className="md:hidden text-sm text-center text-white">
 				For the best experience, please view on a <br /> Desktop{" "}
