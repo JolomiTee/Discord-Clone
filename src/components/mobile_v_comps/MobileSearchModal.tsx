@@ -22,6 +22,7 @@ import { Input } from "../ui/input";
 import { SidebarMenuButton, SidebarMenuItem } from "../ui/sidebar";
 import { serverList } from "@/data/servers";
 import { voiceChannels } from "@/data";
+import { friends } from "@/data/dms";
 
 interface Props {
 	type: string;
@@ -30,6 +31,12 @@ interface Props {
 }
 
 const MobileSearchModal = ({ type, open, onOpenChange }: Props) => {
+	const user = {
+		userId: "1000",
+		username: "GrassMaster333",
+		userProfileImage: "/beluga.png",
+	};
+
 	const selected_tab = usePersistAppState((state) => state.selectedTab);
 	return (
 		<Dialog open={open} onOpenChange={onOpenChange}>
@@ -176,8 +183,16 @@ const MobileSearchModal = ({ type, open, onOpenChange }: Props) => {
 									return (
 										<ChatBubble
 											key={i}
-											time="10:33am"
-											message="no??? to go out and enjoy the sun and touch grass"
+											messageId={"12345"}
+											senderId={"searchitem123"}
+											time={"10:45"}
+											message={"Looking for some grass?"}
+											friend={
+												friends.find(
+													(friend) => friend.id === "i"
+												) || null
+											}
+											user={user}
 										/>
 									);
 								})}

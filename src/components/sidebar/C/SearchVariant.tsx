@@ -82,14 +82,14 @@ const SearchVariant = () => {
 							name="Planters of Grass"
 							serverIcon="/servers/midjourney.png"
 							hasNotification={true}
-							serverId={1}
+							serverId={"1"}
 						/>
 						<SidebarServerIcon
 							slug="harvesters-of-grass"
 							name="Harvesters of Grass"
 							serverIcon="/servers/apex-legends.png"
 							hasNotification={true}
-							serverId={2}
+							serverId={"2"}
 						/>
 					</SidebarMenu>
 				</SidebarGroup>
