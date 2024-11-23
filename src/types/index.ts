@@ -106,12 +106,12 @@ export interface AppPersistableStates {
 	l_sidebar_display_context: string | null;
 
 	selectedTab: string | null;
-	selectedServer: number | null;
+	selectedServer: string | null;
 
 	switchLeftSidebarContext: (newAppState: string | null) => void;
 
 	toggle_selected_tab: (newAppState: string | null) => void;
-	toggle_selected_server: (newAppState: number | null) => void;
+	toggle_selected_server: (newAppState: string | null) => void;
 }
 export interface AppSidebarStateProps {
 	c_sidebar_state: boolean;
