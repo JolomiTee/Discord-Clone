@@ -7,7 +7,7 @@ interface props {
 	name: string;
 	serverIcon: string;
 	hasNotification: boolean;
-	i: number;
+	i: string;
 }
 
 const SearchResultServerIcon = ({

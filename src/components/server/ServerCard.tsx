@@ -6,7 +6,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 interface DiscordServerProps {
 	slug: string;
 	name: string;
-	serverId: number;
+	serverId: string;
 	online: number;
 	members: number;
 	lastSeen: string;
