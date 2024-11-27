@@ -8,13 +8,16 @@ import { conversations, friends } from "@/data/dms";
 import { Conversation, Friends } from "@/types";
 import HMenu from "@/components/common/HMenu";
 import Wumpus from "../Wumpus";
-
+import { useUser } from "@clerk/clerk-react";
 const MessagesLayout = () => {
 	// Logged-in user details
-	const user = {
-		userId: "1000",
-		username: "GrassMaster333",
-		userProfileImage: "/beluga.png",
+	const { user } = useUser();
+	console.log("userid: ", user?.id);
+
+	const currentUser = {
+		userId: user?.id,
+		username: user?.username,
+		userProfileImage: user?.imageUrl,
 	};
 
 	const [chatConversations, setChatConversations] =
@@ -27,7 +30,8 @@ const MessagesLayout = () => {
 	useEffect(() => {
 		// Find the conversation matching the user and DM
 		const chats = conversations.find(
-			(convo) => convo.conversationId === `convo-${user.userId}-${dmId}`
+			(convo) =>
+				convo.conversationId === `convo-${currentUser.userId}-${dmId}`
 		);
 
 		// Find the friend information based on dmId
@@ -66,7 +70,7 @@ const MessagesLayout = () => {
 									time={time}
 									message={message}
 									friend={friendInfo} // Pass friend data
-									user={user} // Pass logged-in user data
+									user={currentUser} // Pass logged-in user data
 								/>
 							);
 						})

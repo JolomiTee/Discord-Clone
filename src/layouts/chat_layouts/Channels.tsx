@@ -10,14 +10,17 @@ import { CurrentChannels, textChannelConversations } from "@/types";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Wumpus from "../Wumpus";
+import { useUser } from "@clerk/clerk-react";
 
 const ChannelsLayout = () => {
 	const { channelId } = useParams();
+	const { user } = useUser();
+	console.log("userid: ", user?.id);
 
-	const user = {
-		userId: "1000",
-		username: "GrassMaster333",
-		userProfileImage: "/beluga.png",
+	const currentUser = {
+		userId: user?.id,
+		username: user?.username,
+		userProfileImage: user?.imageUrl,
 	};
 
 	const [currentChannelMessages, setCurrentChannelMessages] =
@@ -76,7 +79,7 @@ const ChannelsLayout = () => {
 											(friend) => friend.id === senderId
 										) || null
 									}
-									user={user}
+									user={currentUser}
 								/>
 							);
 						})

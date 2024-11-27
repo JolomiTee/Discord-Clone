@@ -7,7 +7,11 @@ interface ChatBubbleProps {
 	message: string;
 	senderId: string;
 	friend: Friends | null; // Information about the friend
-	user: { userId: string; username: string; userProfileImage: string }; // Logged-in user info
+	user: {
+		userId: string | undefined;
+		username: string | null | undefined;
+		userProfileImage: string | undefined;
+	};
 }
 
 const ChatBubble = ({
@@ -50,7 +54,11 @@ const ChatBubble = ({
 					}`}
 				>
 					<span className="font-bold text-[#FFFFFFE5] text-[13px] md:text-[14px]">
-						{isUserMessage ? user.username : friend?.user}
+						{isUserMessage
+							? user.username
+							: friend?.user
+							? friend?.user
+							: "<No-name-yet>"}
 					</span>
 					<span className="font-bold text-[#FFFFFF80] text-[11px] md:text-xs">
 						{time}
