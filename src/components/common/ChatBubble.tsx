@@ -30,10 +30,10 @@ const ChatBubble = ({
 			} gap-2 md:gap-3`}
 		>
 			{/* Avatar */}
-			<Avatar className="flex items-center justify-center size-[35px] md:size-[40px]">
+			<Avatar className="flex items-center justify-center size-[35px] md:size-[40px] lg:size-[45px]">
 				<AvatarImage
 					src={isUserMessage ? user.userProfileImage : friend?.profileImg}
-					className="size-[40px] lg:size-[50px] rounded-full"
+					className="size-[40px] lg:size-[45px] rounded-full"
 				/>
 				<AvatarFallback
 					style={{ backgroundColor: getRandomColor() }}

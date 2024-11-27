@@ -29,7 +29,7 @@ const ProfileHolder = () => {
 	return (
 		<>
 			{isMobile ? (
-				<ResponsiveProfileButton />
+				<MobileProfileHolder />
 			) : (
 				<SidebarMenuItem className="group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:items-center">
 					<SidebarMenuButton
@@ -117,19 +117,23 @@ const ProfileHolder = () => {
 
 export default ProfileHolder;
 
-const ResponsiveProfileButton = () => {
+const MobileProfileHolder = () => {
 	return (
 		<Popover>
-			<PopoverTrigger asChild>
-				<Avatar className="relative group-data-[collapsible=icon]:rounded-full size-[50px] mx-auto group-data-[collapsible=icon]:size-[55px] flex items-center justify-center bg-charcoal rounded-full p-[5px]  overflow-visible ">
-					{/* <div className="absolute right-0.5 group-data-[collapsible=icon]:-right-1 top-1 bg-crimson rounded-full size-[14px] border-[3px] border-solid border-onyx"></div> */}
-					<div className="absolute right-0.5 group-data-[collapsible=icon]:-right-1 bottom-1 bg-emerald rounded-full size-[14px] border-[3px] border-solid border-onyx"></div>
-					<AvatarImage src="/beluga.png" className="rounded-full" />
-					<AvatarFallback className="bg-discord-blue">
-						<img src="/icons/discord.svg" className="size-[30px] " />
-					</AvatarFallback>
-				</Avatar>
-			</PopoverTrigger>
+			{/* <PopoverTrigger asChild> */}
+			<div className="relative flex justify-center">
+				<div className="absolute right-2 group-data-[collapsible=icon]:-right-0.5 bottom-0.5 bg-emerald rounded-full size-[14px] border-[2px] border-charcoal z-20"></div>
+				<UserButton
+					appearance={{
+						elements: {
+							userButtonAvatarBox:
+								"size-[50px] flex justify-center items-center bg-charcoal",
+							userButtonAvatarImage: "size-[45px] rounded-full",
+						},
+					}}
+				/>
+			</div>
+			{/* </PopoverTrigger> */}
 			<PopoverContent className="w-80 bg-onyx rounded-[15px] text-[#B5BFE7] ">
 				<div className="flex gap-4">
 					<div className="grid flex-1 text-left text-sm leading-tight">
