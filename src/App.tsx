@@ -20,6 +20,7 @@ function App() {
 			<Route path="/" element={<Home />} />
 			<Route path="/sign-in" element={<Login />} />
 			<Route path="/sign-up" element={<Signup />} />
+			<Route path="/sign-up/verify-email-address" element={<Signup />} />
 			<Route path="/tnc" element={<TnC />} />
 
 			<Route path="/user" element={<AppLayout />}>
