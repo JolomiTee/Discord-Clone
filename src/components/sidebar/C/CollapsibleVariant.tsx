@@ -71,9 +71,7 @@ const CollapsibleVariant = () => {
 					<Separator className="lg:group-data-[collapsible=icon]:w-[80%] group-data-[collapsible=icon]:mx-auto rounded-full bg-charcoal h-1 md:w-[45px] mt-2 md:ms-3" />
 
 					<SidebarNavLink to="inbox" icon="inbox" label="Inbox" />
-
-					{/* <ProfileHolder /> */}
-					<UserButton />
+					<ProfileHolder />
 				</SidebarMenu>
 			</SidebarFooter>
 		</Sidebar>

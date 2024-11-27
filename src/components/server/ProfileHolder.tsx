@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/sidebar";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { useSidebarStateStore } from "@/hooks/base-context";
+import { UserButton } from "@clerk/clerk-react";
 import { ExternalLink, MenuIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -34,18 +35,29 @@ const ProfileHolder = () => {
 					<SidebarMenuButton
 						size="lg"
 						className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground h-[60px] group-data-[collapsible=icon]:[&>div:last-child]:hidden group-data-[collapsible=icon]:overflow-visible py-0 px-2 shrink-0 gap-0 group-data-[collapsible=icon]:-ms-1.5"
-						onClick={toggle_c_sidebar}
+						// onClick={toggle_c_sidebar}
 					>
-						<Avatar className="relative group-data-[collapsible=icon]:rounded-full size-[60px] group-data-[collapsible=icon]:size-[55px] flex items-center justify-center bg-charcoal rounded-[15px] p-[10px] group-data-[collapsible=icon]:p-1.5 overflow-visible rounded-r-none">
-							<div className="absolute right-2 group-data-[collapsible=icon]:-right-0 bottom-1.5 bg-emerald rounded-full size-[14px] border-[2px] border-charcoal"></div>
+						{/* <Avatar className="relative group-data-[collapsible=icon]:rounded-full size-[60px] group-data-[collapsible=icon]:size-[55px] flex items-center justify-center bg-charcoal rounded-[15px] p-[10px] group-data-[collapsible=icon]:p-1.5 overflow-visible rounded-r-none">
 							<AvatarImage src="/silly.png" className="rounded-full" />
 							<AvatarFallback className="bg-discord-blue">
-								<img
-									src="/icons/discord.svg"
-									className="size-[30px] "
-								/>
+							<img
+							src="/icons/discord.svg"
+							className="size-[30px] "
+							/>
 							</AvatarFallback>
-						</Avatar>
+							</Avatar> */}
+						<div className="relative ">
+							<div className="absolute right-2 group-data-[collapsible=icon]:-right-0.5 bottom-0.5 bg-emerald rounded-full size-[14px] border-[2px] border-charcoal z-20"></div>
+							<UserButton
+								appearance={{
+									elements: {
+										userButtonAvatarBox:
+											"size-[55px] flex justify-center items-center bg-charcoal",
+										userButtonAvatarImage: "size-[45px] rounded-full",
+									},
+								}}
+							/>
+						</div>
 
 						<div className="flex justify-center items-center bg-charcoal rounded-[15px] rounded-l-none p-2 pe-4 h-full w-full">
 							<div className="grid flex-1 text-left text-sm leading-tight">

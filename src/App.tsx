@@ -1,26 +1,26 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import AppLayout from "./layouts/AppLayout";
 import ChannelsLayout from "./layouts/chat_layouts/Channels";
-import Main from "./layouts/Layout";
 import MessagesLayout from "./layouts/chat_layouts/Messages";
+import Main from "./layouts/Layout";
 import Wumpus from "./layouts/Wumpus";
+import Login from "./pages/auth/Login";
+import Signup from "./pages/auth/Signup";
 import Help from "./pages/Help";
+import Home from "./pages/home/Home";
+import TnC from "./pages/home/TnC";
 import Inbox from "./pages/Inbox";
 import Profile from "./pages/Profile";
 import Servers from "./pages/Servers";
-import Home from "./pages/home/Home";
-import Login from "./pages/home/Login";
-import Signup from "./pages/home/Signup";
-import TnC from "./pages/home/TnC";
-
 
 function App() {
 	return (
 		<Routes>
 			<Route path="/" element={<Home />} />
-			<Route path="/sign-in" element={<Login />} />
-			<Route path="/sign-up" element={<Signup />} />
-			<Route path="/sign-up/verify-email-address" element={<Signup />} />
+
+			<Route path="/sign-in/*" element={<Login />} />
+			<Route path="/sign-up/*" element={<Signup />} />
+
 			<Route path="/tnc" element={<TnC />} />
 
 			<Route path="/user" element={<AppLayout />}>
@@ -49,15 +49,6 @@ function App() {
 				<Route path="profile/:id" element={<Profile />} />
 			</Route>
 		</Routes>
-
-		// <header>
-		// 	<SignedOut>
-		// 		<SignInButton />
-		// 	</SignedOut>
-		// 	<SignedIn>
-		// 		<UserButton />
-		// 	</SignedIn>
-		// </header>
 	);
 }
 

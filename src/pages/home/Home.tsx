@@ -9,8 +9,8 @@ import { Button } from "@/components/ui/button";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { MessageSquare, Rocket, Users, Video } from "lucide-react";
 import { Link } from "react-router-dom";
-import AuthContextButtons from "./components/AuthContextButtons";
-import { SheetMenu } from "./components/MobileSheetMenu";
+import AuthContextButtons from "../components/AuthContextButtons";
+import { SheetMenu } from "../components/MobileSheetMenu";
 
 const Home = () => {
 	const isMobile = useIsMobile();

@@ -1,10 +1,9 @@
 import { SignUp } from "@clerk/clerk-react";
 
 export default function Signup() {
-	const RedirectURL = import.meta.env.BASE_AUTH_REDIRECT_URL;
-
 	return (
-		<SignUp path="/sign-up" fallbackRedirectUrl={RedirectURL} />
+		<SignUp path="/sign-up" />
+
 		// <div className="flex min-h-screen bg-gray-100">
 		// 	<div className="m-auto w-full max-w-md bg-white rounded-xl shadow-md overflow-hidden">
 		// 		<div className="p-6 sm:p-8">

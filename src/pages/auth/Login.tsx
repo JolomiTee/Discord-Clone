@@ -1,8 +1,9 @@
 import { SignIn } from "@clerk/clerk-react";
 
 export default function Login() {
-	const RedirectURL = import.meta.env.BASE_AUTH_REDIRECT_URL;
 	return (
+		<SignIn path="/sign-in" />
+
 		// <div className="flex min-h-screen bg-gray-100">
 		// 	<div className="m-auto w-full max-w-md bg-white rounded-xl shadow-md overflow-hidden">
 		// 		<div className="p-6 sm:p-8">
@@ -97,6 +98,5 @@ export default function Login() {
 		// 		</div>
 		// 	</div>
 		// </div>
-		<SignIn path="/sign-in" fallbackRedirectUrl={RedirectURL} />
 	);
 }
