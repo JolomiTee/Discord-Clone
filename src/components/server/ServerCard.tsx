@@ -1,14 +1,12 @@
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
-import {
-	useCollapsibleSidebarStore,
-	useSidebarStateStore,
-} from "@/hooks/base-context";
+import usePersistAppState from "@/hooks/use-persist-app-state";
 import { formatNumber } from "@/lib/utils";
 import { Link } from "react-router-dom";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 interface DiscordServerProps {
+	slug: string;
 	name: string;
-	id: number;
+	serverId: string;
 	online: number;
 	members: number;
 	lastSeen: string;
@@ -18,38 +16,41 @@ interface DiscordServerProps {
 }
 const ServerCard = ({
 	name,
-	id,
+	slug,
+	serverId,
 	online,
 	members,
 	lastSeen,
 	server_img,
 }: DiscordServerProps) => {
-	const toggle_selected_server = useCollapsibleSidebarStore(
+	const toggle_selected_server = usePersistAppState(
 		(state) => state.toggle_selected_server
 	);
-	const toggle_selected_tab = useCollapsibleSidebarStore(
+	const toggle_selected_tab = usePersistAppState(
 		(state) => state.toggle_selected_tab
 	);
-	const switchLeftSidebarContext = useSidebarStateStore(
+	const switchLeftSidebarContext = usePersistAppState(
 		(state) => state.switchLeftSidebarContext
 	);
 	const onclick = () => {
 		toggle_selected_tab(null);
-		toggle_selected_server(id);
+		toggle_selected_server(serverId);
 		switchLeftSidebarContext("server");
 	};
 	return (
-		<Link to={`/@server/${String(id)}`} onClick={onclick}>
+		<Link to={String(serverId)} onClick={onclick}>
 			<Card className="flex items-start gap-2 bg-transparent border-0 shadow-none">
 				<Avatar className="rounded-[8px] size-12">
 					<AvatarImage
 						src={server_img}
+						alt={slug}
 						className="mx-auto my-auto object-cover"
 					/>
 					<AvatarFallback className="bg-discord-blue rounded-[8px]">
 						<img
 							src="/icons/discord.svg"
 							className="w-[35px] h-[35px] mx-auto my-auto"
+							alt={slug}
 						/>
 					</AvatarFallback>
 				</Avatar>

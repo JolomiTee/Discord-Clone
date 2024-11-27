@@ -12,10 +12,10 @@ import { MoreHorizontal } from "lucide-react";
 
 import { useSidebarStateStore } from "@/hooks/base-context";
 import React from "react";
-import MobileNotificationModal from "../mobile_v_comps/MobileNotificationModal";
-import MobileSearchModal from "../mobile_v_comps/MobileSearchModal";
+import MobileNotificationModal from "./MobileNotificationModal";
+import MobileSearchModal from "./MobileSearchModal";
 
-export function MenuItems() {
+export function MobileMenuItems() {
 	const r_sidebar_state = useSidebarStateStore(
 		(state) => state.r_sidebar_state
 	);
@@ -57,12 +57,18 @@ export function MenuItems() {
 						<IconButtons src="pin" alt="Pinned" sizes="size-7" />
 						Pin
 					</DropdownMenuItem> */}
-					<DropdownMenuItem onSelect={() => handleOpenDialog("search")}>
+					<DropdownMenuItem
+						onSelect={() => {
+							handleOpenDialog("search");
+						}}
+					>
 						<IconButtons src="search" alt="Search" sizes="size-5" />
 						Search
 					</DropdownMenuItem>
 					<DropdownMenuItem
-						onSelect={() => handleOpenDialog("notifications")}
+						onSelect={() => {
+							handleOpenDialog("notifications");
+						}}
 					>
 						<IconButtons
 							src="disable_notification"

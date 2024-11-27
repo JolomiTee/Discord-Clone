@@ -4,8 +4,7 @@ import {
 	DialogHeader,
 	DialogTrigger,
 } from "@/components/ui/dialog";
-import { serverList, voiceChannels } from "@/data";
-import { useCollapsibleSidebarStore } from "@/hooks/base-context";
+import usePersistAppState from "@/hooks/use-persist-app-state";
 import { ChevronDown, Filter, Search } from "lucide-react";
 import { Link } from "react-router-dom";
 import ChatBubble from "../common/ChatBubble";
@@ -21,6 +20,9 @@ import { Avatar, AvatarImage } from "../ui/avatar";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { SidebarMenuButton, SidebarMenuItem } from "../ui/sidebar";
+import { serverList } from "@/data/servers";
+import { voiceChannels } from "@/data";
+import { friends } from "@/data/dms";
 
 interface Props {
 	type: string;
@@ -29,9 +31,13 @@ interface Props {
 }
 
 const MobileSearchModal = ({ type, open, onOpenChange }: Props) => {
-	const selected_tab = useCollapsibleSidebarStore(
-		(state) => state.selectedTab
-	);
+	const user = {
+		userId: "1000",
+		username: "GrassMaster333",
+		userProfileImage: "/beluga.png",
+	};
+
+	const selected_tab = usePersistAppState((state) => state.selectedTab);
 	return (
 		<Dialog open={open} onOpenChange={onOpenChange}>
 			{!open && (
@@ -130,14 +136,19 @@ const MobileSearchModal = ({ type, open, onOpenChange }: Props) => {
 							</AccordionTrigger>
 							<AccordionContent className="pe-3 flex flex-col gap-3">
 								{serverList.map((item, i) => {
-									const { title, serverIcon, hasNotification } = item;
+									const {
+										name,
+										server_img: serverIcon,
+										muted,
+										id,
+									} = item;
 									return (
 										<SearchResultServerIcon
 											key={i}
-											title={title}
+											name={name}
 											serverIcon={serverIcon}
-											hasNotification={hasNotification}
-											i={i}
+											hasNotification={muted}
+											i={id}
 										/>
 									);
 								})}
@@ -177,10 +188,16 @@ const MobileSearchModal = ({ type, open, onOpenChange }: Props) => {
 									return (
 										<ChatBubble
 											key={i}
-											profileImg="/touchgrasshq.png"
-											time="10:33am"
-											message="no??? to go out and enjoy the sun and touch grass"
-											user="grass enjoyer"
+											messageId={"12345"}
+											senderId={"searchitem123"}
+											time={"10:45"}
+											message={"Looking for some grass?"}
+											friend={
+												friends.find(
+													(friend) => friend.id === "i"
+												) || null
+											}
+											user={user}
 										/>
 									);
 								})}

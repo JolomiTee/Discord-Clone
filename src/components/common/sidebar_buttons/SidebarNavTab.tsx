@@ -8,6 +8,7 @@ import {
 	useCollapsibleSidebarStore,
 	useSidebarStateStore,
 } from "@/hooks/base-context";
+import usePersistAppState from "@/hooks/use-persist-app-state";
 import { NavLink } from "react-router-dom";
 
 interface SidebarNavLinkProps {
@@ -21,19 +22,17 @@ export default function SidebarNavLink({
 	icon,
 	label,
 }: SidebarNavLinkProps) {
-	const selected_tab = useCollapsibleSidebarStore(
-		(state) => state.selectedTab
-	);
-	const toggle_selected_tab = useCollapsibleSidebarStore(
+	const selected_tab = usePersistAppState((state) => state.selectedTab);
+	const toggle_selected_tab = usePersistAppState(
 		(state) => state.toggle_selected_tab
 	);
-	const toggle_selected_server = useCollapsibleSidebarStore(
+	const toggle_selected_server = usePersistAppState(
 		(state) => state.toggle_selected_server
 	);
 	const c_sidebar_state = useSidebarStateStore(
 		(state) => state.c_sidebar_state
 	);
-	const switchLeftSidebarContext = useSidebarStateStore(
+	const switchLeftSidebarContext = usePersistAppState(
 		(state) => state.switchLeftSidebarContext
 	);
 	const toggle_c_sidebar = useSidebarStateStore(
@@ -90,7 +89,7 @@ export default function SidebarNavLink({
 				isActive={selected_tab === label.toLocaleLowerCase()}
 				asChild
 				tooltip={label}
-				className="w-full gap-3  text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden p-0 group-data-[collapsible=icon]:ps-0 ps-[7px] md:ps-[12px]"
+				className="w-full gap-3  text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden p-0 group-data-[collapsible=icon]:ps-0 ps-[7px] md:ps-[12px] data-[active=true]:text-white data-[active=true]:font-bold"
 			>
 				<NavLink to={to} onClick={handleClick}>
 					<Avatar className="size-[45px] flex justify-center items-center">

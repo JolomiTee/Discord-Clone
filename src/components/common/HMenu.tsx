@@ -1,11 +1,17 @@
+import { MobileMenuItems } from "@/components/mobile_v_comps/MobileMenuItems";
 import { useSidebarStateStore } from "@/hooks/base-context";
-import IconButtons from "../common/IconButtons";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import { useLocation } from "react-router-dom";
-import { MenuItems } from "@/components/menu/MenuItems";
 import { useOpenSearchBar } from "@/hooks/use-open-sidebar";
+import { useLocation } from "react-router-dom";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import IconButtons from "./IconButtons";
 
-const HMenu = () => {
+interface Props {
+	name: string | undefined;
+	channelType?: string | undefined;
+	profile_image?: string | undefined;
+}
+
+const HMenu = ({ name, channelType, profile_image }: Props) => {
 	const location = useLocation();
 	const r_sidebar_state = useSidebarStateStore(
 		(state) => state.r_sidebar_state
@@ -25,6 +31,9 @@ const HMenu = () => {
 		(state) => state.toggle_r_sidebar
 	);
 	const openSearchBar = useOpenSearchBar();
+
+	console.log(channelType);
+
 	return (
 		<header className="flex justify-between items-center gap-3 h-full max-h-[50px] px-2 md:px-3 lg:px-4 bg-onyx w-full sticky top-0 shrink-0 bg-background py-2">
 			<div className="flex items-center gap-2">
@@ -36,24 +45,33 @@ const HMenu = () => {
 
 				<div className="flex items-center justify-start gap-2 md:gap-3 bg-transparent shadow-none w-fit">
 					<Avatar className="flex items-center justify-center">
-						<AvatarImage
-							src={"/silly.png"}
-							className="size-7  rounded-full"
-						/>
-						<AvatarFallback className="flex items-center justify-center">
-							<img
-								src="/icons/discord.svg"
-								className="size-[35px]  rounded-full"
+						{channelType ? (
+							<AvatarImage
+								src={`/icons/${channelType}.svg`}
+								className="size-7  rounded-full"
 							/>
-						</AvatarFallback>
-						<div
-							className={`absolute right-1 bottom-0.5 bg-emerald rounded-full size-3 lg:size-4 border-[3px] border-solid border-onyx`}
-						></div>
+						) : (
+							<>
+								<AvatarImage
+									src={profile_image}
+									className="size-7  rounded-full"
+								/>
+								<AvatarFallback className="flex items-center justify-center">
+									<img
+										src="/icons/discord.svg"
+										className="size-[35px]  rounded-full"
+									/>
+								</AvatarFallback>
+								<div
+									className={`absolute right-1 bottom-0.5 bg-emerald rounded-full size-2 lg:size-3 border-[2px] border-solid border-onyx`}
+								></div>
+							</>
+						)}
 					</Avatar>
 					{/* Acceptable name or nickname should be less than 30 characters */}
 					<p className="font-bold text-[#FFFFFF99] text-[14px] max-w-[100px] sm:max-w-[200px] lg:max-w-[300px] truncate">
 						{/* Big time forward ever backward never */}
-						Loose Ends - .44 Magnum
+						{name}
 					</p>
 				</div>
 			</div>
@@ -134,7 +152,7 @@ const HMenu = () => {
 				/>
 			</div>
 			<div className="lg:hidden flex items-center">
-				<MenuItems />
+				<MobileMenuItems />
 			</div>
 		</header>
 	);

@@ -1,29 +1,27 @@
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { useCollapsibleSidebarStore } from "@/hooks/base-context";
+import usePersistAppState from "@/hooks/use-persist-app-state";
 import { AvatarImage } from "@radix-ui/react-avatar";
 import { Link } from "react-router-dom";
 
 interface props {
-	title: string;
+	name: string;
 	serverIcon: string;
 	hasNotification: boolean;
-	i: number;
+	i: string;
 }
 
 const SearchResultServerIcon = ({
-	title,
+	name,
 	i,
 	hasNotification,
 	serverIcon,
 }: props) => {
-	const selectedServer = useCollapsibleSidebarStore(
-		(state) => state.selectedServer
-	);
+	const selectedServer = usePersistAppState((state) => state.selectedServer);
 	return (
 		<Link
 			to={`/@server/${String(i)}`}
 			//   onClick={handleClick}
-			title={title}
+			title={name}
 			className="group/item group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center relative"
 		>
 			<div
@@ -58,7 +56,7 @@ const SearchResultServerIcon = ({
 						<img src="/icons/discord.svg" className="size-[30px] " />
 					</AvatarFallback>
 				</Avatar>
-				<span>{title}</span>
+				<span>{name}</span>
 			</div>
 		</Link>
 	);

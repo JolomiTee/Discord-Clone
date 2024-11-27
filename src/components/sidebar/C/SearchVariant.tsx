@@ -16,10 +16,12 @@ import ServerSearch from "../../search/ServerSearch";
 import SidebarServerIcon from "../../common/sidebar_buttons/SidebarServerIcon";
 import { Button } from "../../ui/button";
 import { Input } from "../../ui/input";
+import usePersistAppState from "@/hooks/use-persist-app-state";
+import { friends } from "@/data/dms";
 
 const SearchVariant = () => {
-	const selectedTab = useCollapsibleSidebarStore((state) => state.selectedTab);
-	const toggle_selected_tab = useCollapsibleSidebarStore(
+	const selectedTab = usePersistAppState((state) => state.selectedTab);
+	const toggle_selected_tab = usePersistAppState(
 		(state) => state.toggle_selected_tab
 	);
 	const toggle_c_sidebar = useSidebarStateStore(
@@ -28,6 +30,13 @@ const SearchVariant = () => {
 	const switchCollapsibleSidebarContext = useCollapsibleSidebarStore(
 		(state) => state.switchCollapsibleSidebarContext
 	);
+
+	const user = {
+		userId: "1000",
+		username: "GrassMaster333",
+		userProfileImage: "/beluga.png",
+	};
+
 	return (
 		<Sidebar id="sidebar" collapsible="icon" className="bg-transparent">
 			<SidebarHeader id="sidebar_header" className="bg-onyx p-0 pt-2">
@@ -77,16 +86,18 @@ const SearchVariant = () => {
 					</SidebarGroupLabel>
 					<SidebarMenu className="gap-3 px-0  text-white">
 						<SidebarServerIcon
-							title="Planters of Grass"
+							slug="planters-of-grass"
+							name="Planters of Grass"
 							serverIcon="/servers/midjourney.png"
 							hasNotification={true}
-							i={1}
+							serverId={"1"}
 						/>
 						<SidebarServerIcon
-							title="Harvesters of Grass"
+							slug="harvesters-of-grass"
+							name="Harvesters of Grass"
 							serverIcon="/servers/apex-legends.png"
 							hasNotification={true}
-							i={2}
+							serverId={"2"}
 						/>
 					</SidebarMenu>
 				</SidebarGroup>
@@ -104,16 +115,28 @@ const SearchVariant = () => {
 					</SidebarGroupLabel>
 					<SidebarMenu className="gap-3">
 						<ChatBubble
-							profileImg="/touchgrasshq.png"
-							time="10:33am"
-							message="no??? to go out and enjoy the sun and touch grass"
-							user="grass enjoyer"
+							key="1234"
+							messageId={"12345r"}
+							senderId={"1234rtg"}
+							time={"15:45"}
+							message={"Into the Grasslands"}
+							friend={
+								friends.find((friend) => friend.id === "12774rtg") ||
+								null
+							}
+							user={user}
 						/>
 						<ChatBubble
-							profileImg="/touchgrasshq.png"
-							time="10:33am"
-							message="nuh uh grass is for losers you can't trick me"
-							user="NOT a grass enjoyer"
+							key="1234"
+							messageId={"3467"}
+							senderId={"12774rtg"}
+							time={"19:15"}
+							message={"A land of Grass and Weed"}
+							friend={
+								friends.find((friend) => friend.id === "12774rtg") ||
+								null
+							}
+							user={user}
 						/>
 					</SidebarMenu>
 				</SidebarGroup>

@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
+import MobileSearchModal from "@/components/mobile_v_comps/MobileSearchModal";
 import { Sidebar, SidebarContent, useSidebar } from "@/components/ui/sidebar";
 import { messageList } from "@/data";
 import { useSidebarStateStore } from "@/hooks/base-context";
@@ -15,7 +16,8 @@ import { useEffect } from "react";
 import IconButtons from "../../common/IconButtons";
 import DMCard from "../../common/sidebar_buttons/DMCard";
 import FriendCard from "../../common/sidebar_buttons/FriendCard";
-import MobileSearchModal from "@/components/mobile_v_comps/MobileSearchModal";
+
+
 const MessagesDisplayVariant = () => {
 	const openSearchBar = useOpenSearchBar();
 	const l_sidebar_state = useSidebarStateStore(
@@ -34,12 +36,25 @@ const MessagesDisplayVariant = () => {
 		if (isMobile) {
 			setLSidebarState(false);
 		}
-
-		console.log("after:", l_sidebar_state, "\n \n \n");
 	}, [l_sidebar_state, open]);
 
+	const messagesFilter = [
+		{
+			title: "Oldest",
+			label: "oldest",
+		},
+		{
+			title: "Read",
+			label: "label",
+		},
+		{
+			title: "Unread",
+			label: "unread",
+		},
+	];
+
 	return (
-		<Sidebar className=" border-none">
+		<Sidebar className="border-none">
 			<SidebarContent>
 				<section className="bg-carbon relative text-[#FFFFFF99] h-full">
 					<Tabs
@@ -50,7 +65,7 @@ const MessagesDisplayVariant = () => {
 							<TabsList className="w-full h-[50px] justify-center px-2 gap-4">
 								<TabsTrigger
 									value="messages"
-									className="px-5 py-1.5 w-1/2"
+									className="px-5 py-2 w-1/2"
 								>
 									Messages
 								</TabsTrigger>
@@ -66,10 +81,16 @@ const MessagesDisplayVariant = () => {
 									<SelectTrigger className="h-[35px] rounded-full bg-[#FFFFFF08] border border-solid border-[#FFFFFF0F] text-[#FFFFFF99] flex-row-reverse justify-end font-semibold">
 										<SelectValue placeholder="Newest" />
 									</SelectTrigger>
-									<SelectContent>
-										<SelectItem value="oldest">Oldest</SelectItem>
-										<SelectItem value="read">Read</SelectItem>
-										<SelectItem value="unread">Unread</SelectItem>
+									<SelectContent className="bg-onyx border border-solid border-[#FFFFFF0F] text-[#FFFFFF] rounded-[10px]">
+										{messagesFilter.map((filters) => (
+											<SelectItem
+												key={filters.label}
+												className="rounded-[8px]"
+												value={filters.label}
+											>
+												{filters.title}
+											</SelectItem>
+										))}
 									</SelectContent>
 								</Select>
 
@@ -100,18 +121,21 @@ const MessagesDisplayVariant = () => {
 							className="text-[#FFFFFF99] pt-[120px] pb-[50px]"
 						>
 							<div className=" grid overflow-y-auto max-h-full scrollbar-hidden">
-								{messageList.map((message, i) => {
+								{messageList.map((message) => {
 									const {
 										profileImg,
 										user,
 										online,
 										hasMessage,
 										messageCount,
+										id,
+										slug,
 									} = message;
 									return (
 										<DMCard
-											key={i}
-											id={i}
+											key={id}
+											dmId={id}
+											slug={slug}
 											user={user}
 											profileImg={profileImg}
 											online={online}
@@ -127,19 +151,22 @@ const MessagesDisplayVariant = () => {
 							className="px-3 text-[#FFFFFF99]  pt-[120px] pb-[50px]"
 						>
 							<div className=" grid overflow-y-auto max-h-full scrollbar-hidden">
-								{messageList.map((message, i) => {
+								{messageList.map((message) => {
 									const {
 										profileImg,
 										user,
 										online,
 										hasMessage,
 										messageCount,
+										id,
+										slug,
 										pinned,
 									} = message;
 									return (
 										<FriendCard
-											key={i}
-											id={i}
+											key={id}
+											slug={slug}
+											dmId={id}
 											user={user}
 											profileImg={profileImg}
 											online={online}
