@@ -13,12 +13,13 @@ import Login from "./pages/home/Login";
 import Signup from "./pages/home/Signup";
 import TnC from "./pages/home/TnC";
 
+
 function App() {
 	return (
 		<Routes>
 			<Route path="/" element={<Home />} />
-			<Route path="/login" element={<Login />} />
-			<Route path="/signup" element={<Signup />} />
+			<Route path="/sign-in" element={<Login />} />
+			<Route path="/sign-up" element={<Signup />} />
 			<Route path="/tnc" element={<TnC />} />
 
 			<Route path="/user" element={<AppLayout />}>
@@ -47,6 +48,15 @@ function App() {
 				<Route path="profile/:id" element={<Profile />} />
 			</Route>
 		</Routes>
+
+		// <header>
+		// 	<SignedOut>
+		// 		<SignInButton />
+		// 	</SignedOut>
+		// 	<SignedIn>
+		// 		<UserButton />
+		// 	</SignedIn>
+		// </header>
 	);
 }
 

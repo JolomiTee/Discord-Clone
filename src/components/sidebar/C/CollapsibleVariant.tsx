@@ -13,6 +13,7 @@ import ProfileHolder from "../../server/ProfileHolder";
 import SidebarNavLink from "../../common/sidebar_buttons/SidebarNavTab";
 import SidebarServerIcon from "../../common/sidebar_buttons/SidebarServerIcon";
 import MobileSearchModal from "@/components/mobile_v_comps/MobileSearchModal";
+import { UserButton } from "@clerk/clerk-react";
 
 const CollapsibleVariant = () => {
 	const { isMobile } = useSidebar();
@@ -71,7 +72,8 @@ const CollapsibleVariant = () => {
 
 					<SidebarNavLink to="inbox" icon="inbox" label="Inbox" />
 
-					<ProfileHolder />
+					{/* <ProfileHolder /> */}
+					<UserButton />
 				</SidebarMenu>
 			</SidebarFooter>
 		</Sidebar>

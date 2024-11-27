@@ -70,16 +70,18 @@ const Home = () => {
 							FAQ
 						</Link>
 
-						<Button className="bg-discord-blue rounded-[5px]" asChild>
-							<Link to={"signup"}>Sign Up</Link>
-						</Button>
-						<Button
-							variant={"ghost"}
-							className="border border-discord-blue rounded-[5px] text-discord-blue"
-							asChild
-						>
-							<Link to={"login"}>Log In</Link>
-						</Button>
+						<SignedOut>
+							<Button className="bg-discord-blue rounded-[5px]" asChild>
+								<Link to={"sign-up"}>Sign Up</Link>
+							</Button>
+							<Button
+								variant={"ghost"}
+								className="border border-discord-blue rounded-[5px] text-discord-blue"
+								asChild
+							>
+								<Link to={"sign-in"}>Log In</Link>
+							</Button>
+						</SignedOut>
 					</nav>
 				)}
 			</header>
@@ -332,6 +334,7 @@ import {
 	SheetTrigger,
 } from "@/components/ui/sheet";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { SignedOut } from "@clerk/clerk-react";
 
 export function SheetMenu() {
 	return (
@@ -397,16 +400,19 @@ export function SheetMenu() {
 							FAQ
 						</Link>
 					</nav>
-					<Button className="bg-discord-blue rounded-[5px]" asChild>
-						<Link to={"signup"}>Sign Up</Link>
-					</Button>
-					<Button
-						variant={"ghost"}
-						className="border border-discord-blue rounded-[5px] text-discord-blue"
-						asChild
-					>
-						<Link to={"login"}>Log In</Link>
-					</Button>
+
+					<SignedOut>
+						<Button className="bg-discord-blue rounded-[5px]" asChild>
+							<Link to={"sign-up"}>Sign Up</Link>
+						</Button>
+						<Button
+							variant={"ghost"}
+							className="border border-discord-blue rounded-[5px] text-discord-blue"
+							asChild
+						>
+							<Link to={"sign-in"}>Log In</Link>
+						</Button>
+					</SignedOut>
 				</div>
 			</SheetContent>
 		</Sheet>
