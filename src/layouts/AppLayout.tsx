@@ -1,12 +1,7 @@
 import CollapsibleSidebar from "@/components/sidebar/CollapsibleSidebar";
 import { Outlet } from "react-router-dom";
 
-import {
-	SignedIn,
-	SignedOut,
-	SignInButton,
-	UserButton,
-} from "@clerk/clerk-react";
+import { SignedIn } from "@clerk/clerk-react";
 
 function AppLayout() {
 	return (

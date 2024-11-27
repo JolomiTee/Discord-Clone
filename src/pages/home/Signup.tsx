@@ -1,21 +1,6 @@
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { MessageSquare, Eye, EyeOff } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
 import { SignUp } from "@clerk/clerk-react";
-// import { useRouter } from "next/navigation";
 
 export default function Signup() {
-	const [showPassword, setShowPassword] = useState(false);
-	const navigate = useNavigate();
-
-	async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-		event.preventDefault();
-		navigate("/user");
-	}
-
 	return (
 		<SignUp path="/sign-up" />
 		// <div className="flex min-h-screen bg-gray-100">
