@@ -1,8 +1,8 @@
-import { SignUp } from "@clerk/clerk-react";
+import { SignIn } from "@clerk/clerk-react";
 
-export default function Signup() {
+export default function Login() {
+	const RedirectURL = import.meta.env.BASE_AUTH_REDIRECT_URL;
 	return (
-		<SignUp path="/sign-up" />
 		// <div className="flex min-h-screen bg-gray-100">
 		// 	<div className="m-auto w-full max-w-md bg-white rounded-xl shadow-md overflow-hidden">
 		// 		<div className="p-6 sm:p-8">
@@ -10,7 +10,7 @@ export default function Signup() {
 		// 				<MessageSquare className="h-12 w-12 text-discord-blue" />
 		// 			</div>
 		// 			<h2 className="mt-6 text-center text-3xl font-extrabold text-discord-blue">
-		// 				Create your account
+		// 				Sign in to Rediscord
 		// 			</h2>
 		// 			<form className="mt-8 space-y-6" onSubmit={handleSubmit}>
 		// 				<div className="space-y-4">
@@ -19,19 +19,8 @@ export default function Signup() {
 		// 						<Input
 		// 							id="username"
 		// 							name="username"
-		// 							type="text"
+		// 							type="username"
 		// 							autoComplete="username"
-		// 							required
-		// 							className="mt-1"
-		// 						/>
-		// 					</div>
-		// 					<div>
-		// 						<Label htmlFor="email">Email address</Label>
-		// 						<Input
-		// 							id="email"
-		// 							name="email"
-		// 							type="email"
-		// 							autoComplete="email"
 		// 							required
 		// 							className="mt-1"
 		// 						/>
@@ -43,7 +32,7 @@ export default function Signup() {
 		// 								id="password"
 		// 								name="password"
 		// 								type={showPassword ? "text" : "password"}
-		// 								autoComplete="new-password"
+		// 								autoComplete="current-password"
 		// 								required
 		// 								className="pr-10"
 		// 							/>
@@ -62,54 +51,52 @@ export default function Signup() {
 		// 					</div>
 		// 				</div>
 
-		// 				<div className="flex items-center">
-		// 					<input
-		// 						id="terms"
-		// 						name="terms"
-		// 						type="checkbox"
-		// 						className="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
-		// 						required
-		// 					/>
-		// 					<Label
-		// 						htmlFor="terms"
-		// 						className="ml-2 block text-sm text-gray-900"
-		// 					>
-		// 						I agree to the{" "}
+		// 				<div className="flex items-center justify-between">
+		// 					<div className="flex items-center">
+		// 						<input
+		// 							id="remember-me"
+		// 							name="remember-me"
+		// 							type="checkbox"
+		// 							className="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
+		// 						/>
+		// 						<Label
+		// 							htmlFor="remember-me"
+		// 							className="ml-2 block text-sm text-gray-900"
+		// 						>
+		// 							Remember me
+		// 						</Label>
+		// 					</div>
+
+		// 					<div className="text-sm">
 		// 						<Link
-		// 							to="/tnc"
+		// 							to="#"
 		// 							className="font-medium text-primary hover:text-primary/80"
 		// 						>
-		// 							Terms of Service
-		// 						</Link>{" "}
-		// 						and{" "}
-		// 						<Link
-		// 							to="/tnc"
-		// 							className="font-medium text-primary hover:text-primary/80"
-		// 						>
-		// 							Privacy Policy
+		// 							Forgot your password?
 		// 						</Link>
-		// 					</Label>
+		// 					</div>
 		// 				</div>
 
 		// 				<Button
 		// 					type="submit"
 		// 					className="w-full bg-discord-blue/80 hover:bg-discord-blue"
 		// 				>
-		// 					Sign up
+		// 					Sign in
 		// 				</Button>
 		// 			</form>
 
 		// 			<p className="mt-8 text-center text-sm text-gray-600">
-		// 				Already have an account?{" "}
+		// 				Not a member?{" "}
 		// 				<Link
-		// 					to="/login"
+		// 					to="/signup"
 		// 					className="font-medium text-primary hover:text-primary/80"
 		// 				>
-		// 					Sign in
+		// 					Sign up now
 		// 				</Link>
 		// 			</p>
 		// 		</div>
 		// 	</div>
 		// </div>
+		<SignIn path="/sign-in" fallbackRedirectUrl={RedirectURL} />
 	);
 }
