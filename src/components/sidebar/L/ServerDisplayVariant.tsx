@@ -15,9 +15,10 @@ import {
 	SidebarHeader,
 	useSidebar,
 } from "@/components/ui/sidebar";
-import { textChannels, voiceChannels } from "@/data";
+import { serverList } from "@/data/servers";
 import { useSidebarStateStore } from "@/hooks/base-context";
 import { useOpenSearchBar } from "@/hooks/use-open-sidebar";
+import { Channels, Servers } from "@/types";
 import {
 	Archive,
 	Ellipsis,
@@ -25,7 +26,7 @@ import {
 	MessageCircleWarning,
 	Pin,
 } from "lucide-react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import IconButtons from "../../common/IconButtons";
 import { AspectRatio } from "../../ui/aspect-ratio";
 import { Separator } from "../../ui/separator";
@@ -54,13 +55,24 @@ const ServerDisplayVariant = ({
 		}
 	}, [l_sidebar_state, open]);
 
+	const [voiceChannels, setVoiceChannels] = useState<Channels[]>();
+	const [textChannels, setTextChannels] = useState<Channels[]>();
+	const [serverInfo, setserverInfo] = useState<Servers>();
+
+	useEffect(() => {
+		const _server = serverList.find((server) => server.id === serverId);
+		setserverInfo(_server);
+		setTextChannels(_server?.channels.textChannels);
+		setVoiceChannels(_server?.channels.voiceChannels);
+	}, [serverId, voiceChannels, textChannels]);
+
 	return (
 		<Sidebar className="border-none">
 			<SidebarHeader className="bg-carbon p-0">
 				<AspectRatio ratio={16 / 6}>
 					<img
-						src="/touchgrasshq.png"
-						alt="touchgrasshq"
+						src={serverInfo?.server_img}
+						alt={serverInfo?.slug}
 						className="object-cover h-full w-full"
 					/>
 				</AspectRatio>
@@ -68,7 +80,7 @@ const ServerDisplayVariant = ({
 					<div className="flex items-center justify-between">
 						<div className="flex items-center gap-2 text-white">
 							<img src="/icons/verified.svg" width={25} height={25} />
-							TouchGrass HQ
+							{serverInfo?.name}
 						</div>
 
 						<DropdownMenu>

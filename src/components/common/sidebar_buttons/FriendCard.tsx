@@ -14,7 +14,7 @@ import { SidebarMenuButton } from "@/components/ui/sidebar";
 interface props {
 	profileImg: string;
 	user: string;
-	dmId: number;
+	dmId: string;
 	online: boolean;
 	hasMessage: boolean;
 	messageCount?: number;

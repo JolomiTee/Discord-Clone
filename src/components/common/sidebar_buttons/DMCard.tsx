@@ -6,7 +6,7 @@ import { SidebarMenuButton } from "@/components/ui/sidebar";
 interface props {
 	profileImg: string;
 	user: string;
-	dmId: number;
+	dmId: string;
 	slug: string;
 	online: boolean;
 	hasMessage: boolean;
