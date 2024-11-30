@@ -9,7 +9,6 @@ import "./assets/backgrounds.css";
 
 // Import your publishable key
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
-const RedirectURL = import.meta.env.BASE_AUTH_REDIRECT_URL;
 
 if (!PUBLISHABLE_KEY) {
 	throw new Error("Missing Publishable Key");
@@ -17,12 +16,7 @@ if (!PUBLISHABLE_KEY) {
 
 createRoot(document.getElementById("root")!).render(
 	<StrictMode>
-		<ClerkProvider
-			publishableKey={PUBLISHABLE_KEY}
-			afterSignOutUrl="/"
-			signInFallbackRedirectUrl={RedirectURL}
-			signUpFallbackRedirectUrl={RedirectURL}
-		>
+		<ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
 			<BrowserRouter>
 				<App />
 			</BrowserRouter>

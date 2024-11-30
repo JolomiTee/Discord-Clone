@@ -2,7 +2,7 @@ import { SignIn } from "@clerk/clerk-react";
 
 export default function Login() {
 	return (
-		<SignIn path="/sign-in" />
+		<SignIn path="/sign-in" redirectUrl="/user/@me" />
 
 		// <div className="flex min-h-screen bg-gray-100">
 		// 	<div className="m-auto w-full max-w-md bg-white rounded-xl shadow-md overflow-hidden">
