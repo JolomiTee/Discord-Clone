@@ -10,15 +10,14 @@ import {
 	useSidebar,
 } from "@/components/ui/sidebar";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import { useSidebarStateStore } from "@/hooks/base-context";
 import { UserButton } from "@clerk/clerk-react";
 import { ExternalLink, MenuIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const ProfileHolder = () => {
-	const toggle_c_sidebar = useSidebarStateStore(
-		(state) => state.toggle_c_sidebar
-	);
+	// const toggle_c_sidebar = useSidebarStateStore(
+	// 	(state) => state.toggle_c_sidebar
+	// );
 	const { isMobile } = useSidebar();
 
 	return (
