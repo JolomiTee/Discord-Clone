@@ -4,16 +4,13 @@ import {
 	AccordionItem,
 	AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Button } from "@/components/ui/button";
-import {
-	MessageSquare,
-	MoreHorizontal,
-	Rocket,
-	Users,
-	Video,
-} from "lucide-react";
-import { Link } from "react-router-dom";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { MessageSquare, Rocket, Users, Video } from "lucide-react";
+import { Link } from "react-router-dom";
+import AuthContextButtons from "../components/AuthContextButtons";
+import { SheetMenu } from "../components/MobileSheetMenu";
 
 const Home = () => {
 	const isMobile = useIsMobile();
@@ -70,16 +67,7 @@ const Home = () => {
 							FAQ
 						</Link>
 
-						<Button className="bg-discord-blue rounded-[5px]" asChild>
-							<Link to={"signup"}>Sign Up</Link>
-						</Button>
-						<Button
-							variant={"ghost"}
-							className="border border-discord-blue rounded-[5px] text-discord-blue"
-							asChild
-						>
-							<Link to={"login"}>Log In</Link>
-						</Button>
+						<AuthContextButtons />
 					</nav>
 				)}
 			</header>
@@ -124,6 +112,7 @@ const Home = () => {
 						</div>
 					</div>
 				</section>
+
 				<section
 					id="features"
 					className="w-full py-12 md:py-24 lg:py-32 bg-white"
@@ -174,6 +163,7 @@ const Home = () => {
 						</div>
 					</div>
 				</section>
+
 				<section
 					id="testimonials"
 					className="w-full py-12 md:py-24 lg:py-32 bg-gray-100"
@@ -237,6 +227,7 @@ const Home = () => {
 						</div>
 					</div>
 				</section>
+
 				<section id="faq" className="w-full py-12 md:py-24 lg:py-32">
 					<div className="container px-4 md:px-6">
 						<h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-center mb-12">
@@ -324,91 +315,3 @@ const Home = () => {
 
 export default Home;
 
-import {
-	Sheet,
-	SheetContent,
-	SheetHeader,
-	SheetTitle,
-	SheetTrigger,
-} from "@/components/ui/sheet";
-import { useIsMobile } from "@/hooks/use-mobile";
-
-export function SheetMenu() {
-	return (
-		<Sheet>
-			<SheetTrigger asChild>
-				<Button
-					variant="outline"
-					className="rounded-[8px] border-discord-blue/50 bg-transparent border-2 hover:bg-discord-blue"
-					size={"icon"}
-				>
-					<MoreHorizontal className="text-white " size={30} />
-				</Button>
-			</SheetTrigger>
-			<SheetContent>
-				<SheetHeader>
-					<SheetTitle>Menu</SheetTitle>
-				</SheetHeader>
-				<div className="grid gap-4 py-4">
-					<Link
-						className="flex items-center justify-center text-discord-blue"
-						to="#"
-					>
-						<MessageSquare className="h-6 w-6 text-primary" />
-						<span className="ml-2 text-2xl font-bold text-primary">
-							Rediscord
-						</span>
-					</Link>
-					<nav className="flex flex-col items-end gap-4 sm:gap-6">
-						<Link
-							className="text-sm font-medium hover:underline underline-offset-4"
-							to="#features"
-							onClick={(e) => {
-								e.preventDefault();
-								document
-									.getElementById("features")
-									?.scrollIntoView({ behavior: "smooth" });
-							}}
-						>
-							Features
-						</Link>
-						<Link
-							className="text-sm font-medium hover:underline underline-offset-4"
-							to="#testimonials"
-							onClick={(e) => {
-								e.preventDefault();
-								document
-									.getElementById("testimonials")
-									?.scrollIntoView({ behavior: "smooth" });
-							}}
-						>
-							Testimonials
-						</Link>
-						<Link
-							className="text-sm font-medium hover:underline underline-offset-4"
-							to="#faq"
-							onClick={(e) => {
-								e.preventDefault();
-								document
-									.getElementById("faq")
-									?.scrollIntoView({ behavior: "smooth" });
-							}}
-						>
-							FAQ
-						</Link>
-					</nav>
-					<Button className="bg-discord-blue rounded-[5px]" asChild>
-						<Link to={"signup"}>Sign Up</Link>
-					</Button>
-					<Button
-						variant={"ghost"}
-						className="border border-discord-blue rounded-[5px] text-discord-blue"
-						asChild
-					>
-						<Link to={"login"}>Log In</Link>
-					</Button>
-				</div>
-			</SheetContent>
-		</Sheet>
-	);
-}
