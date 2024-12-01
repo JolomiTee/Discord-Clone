@@ -28,26 +28,17 @@ const ProfileHolder = () => {
 				<SidebarMenuItem className="group-data-[collapsible=icon]:flex group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:items-center">
 					<SidebarMenuButton
 						size="lg"
-						className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground h-[60px] group-data-[collapsible=icon]:[&>div:last-child]:hidden group-data-[collapsible=icon]:overflow-visible py-0 px-2 shrink-0 gap-0 group-data-[collapsible=icon]:-ms-1.5"
+						className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground h-[60px] group-data-[collapsible=icon]:[&>div:last-child]:hidden group-data-[collapsible=icon]:overflow-visible py-0 px-2 shrink-0 gap-0 group-data-[collapsible=icon]:-ms-1"
 						// onClick={toggle_c_sidebar}
 					>
-						{/* <Avatar className="relative group-data-[collapsible=icon]:rounded-full size-[60px] group-data-[collapsible=icon]:size-[55px] flex items-center justify-center bg-charcoal rounded-[15px] p-[10px] group-data-[collapsible=icon]:p-1.5 overflow-visible rounded-r-none">
-							<AvatarImage src="/silly.png" className="rounded-full" />
-							<AvatarFallback className="bg-discord-blue">
-							<img
-							src="/icons/discord.svg"
-							className="size-[30px] "
-							/>
-							</AvatarFallback>
-							</Avatar> */}
-						<div className="relative ">
+						<div className="relative flex justify-center">
 							<div className="absolute right-2 group-data-[collapsible=icon]:-right-0.5 bottom-0.5 bg-emerald rounded-full size-[14px] border-[2px] border-charcoal z-20"></div>
 							<UserButton
 								appearance={{
 									elements: {
 										userButtonAvatarBox:
-											"size-[55px] flex justify-center items-center bg-charcoal",
-										userButtonAvatarImage: "size-[45px] rounded-full",
+											"size-[50px] flex justify-center items-center bg-charcoal",
+										userButtonAvatarImage: "size-[40px] rounded-full",
 									},
 								}}
 							/>
