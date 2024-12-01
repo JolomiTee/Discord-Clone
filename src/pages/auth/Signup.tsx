@@ -1,11 +1,9 @@
-import { CLERK_SIGN_UP_FORCE_REDIRECT_URL, CLERK_SIGN_UP_URL } from "@/env";
 import { SignUp } from "@clerk/clerk-react";
 
 export default function Signup() {
 	return (
 		<SignUp
-			path={CLERK_SIGN_UP_URL}
-			forceRedirectUrl={CLERK_SIGN_UP_FORCE_REDIRECT_URL}
+			path={"/sign-up"}
 			appearance={{
 				elements: {
 					rootBox: "w-full h-full flex justify-center items-center ",
