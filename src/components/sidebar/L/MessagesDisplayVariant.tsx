@@ -16,7 +16,7 @@ import { useEffect } from "react";
 import IconButtons from "../../common/IconButtons";
 import DMCard from "../../common/sidebar_buttons/DMCard";
 import FriendCard from "../../common/sidebar_buttons/FriendCard";
-
+import AddFriendModal from "@/components/friends/AddFriendModal";
 
 const MessagesDisplayVariant = () => {
 	const openSearchBar = useOpenSearchBar();
@@ -106,12 +106,8 @@ const MessagesDisplayVariant = () => {
 									) : (
 										<MobileSearchModal type="l_sidebar_search" />
 									)}
-									<IconButtons
-										src="plus"
-										alt="Add"
-										sizes="size-[18px]"
-										buttonStyles="rounded-full size-[35px] p-0 bg-[#FFFFFF08] border border-solid border-[#FFFFFF0F]"
-									/>
+
+									<AddFriendModal />
 								</div>
 							</div>
 						</div>
