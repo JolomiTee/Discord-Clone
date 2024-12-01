@@ -10,7 +10,7 @@ export const textChannelConversation: textChannelConversations[] = [
 				time: "10:30 am",
 				message: "What an amazing day!",
 				profileImg: "",
-				senderId: "1001",
+				senderId: "user_2pRD2D2BrOoiWXsgiLCtYrAughl",
 			},
 			{
 				messageId: "2",
@@ -26,7 +26,7 @@ export const textChannelConversation: textChannelConversations[] = [
 				time: "10:33 am",
 				message: "No??? To go out and enjoy the sun and touch grass.",
 				profileImg: "",
-				senderId: "1001",
+				senderId: "user_2pRD2D2BrOoiWXsgiLCtYrAughl",
 			},
 		],
 	},

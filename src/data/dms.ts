@@ -13,12 +13,12 @@ export const friends: Friends[] = [
 	},
 	{
 		profileImg: "/silly.png",
-		user: "Joloo",
+		user: "Silly",
 		online: true,
 		hasMessage: true,
 		messageCount: 5,
 		pinned: false,
-		slug: "joloo",
+		slug: "silly",
 		id: "1002",
 	},
 	{
@@ -55,8 +55,8 @@ export const friends: Friends[] = [
 
 export const conversations: Conversation[] = [
 	{
-		conversationId: "convo-1000-1001", // Unique identifier for this conversation
-		participants: [1000, 1001], // User IDs of participants
+		conversationId: "convo-user_2pRD2D2BrOoiWXsgiLCtYrAughl-1001", // Unique identifier for this conversation
+		participants: ["user_2pRD2D2BrOoiWXsgiLCtYrAughl", "1001"], // User IDs of participants
 		lastMessage: [
 			{
 				userId: 1001,
@@ -75,7 +75,7 @@ export const conversations: Conversation[] = [
 		messages: [
 			{
 				messageId: "msg-1", // Unique message ID
-				senderId: "1000", // User ID of the sender
+				senderId: "user_2pRD2D2BrOoiWXsgiLCtYrAughl", // User ID of the sender
 				time: "15:34",
 				message: "Shepard, we've secured the intel. Moving to extraction.",
 			},
@@ -88,7 +88,7 @@ export const conversations: Conversation[] = [
 			},
 			{
 				messageId: "msg-3",
-				senderId: "1000",
+				senderId: "user_2pRD2D2BrOoiWXsgiLCtYrAughl",
 				time: "15:36",
 				message: "Copy that. See you soon.",
 			},
@@ -100,7 +100,7 @@ export const conversations: Conversation[] = [
 			},
 			{
 				messageId: "msg-5",
-				senderId: "1000",
+				senderId: "user_2pRD2D2BrOoiWXsgiLCtYrAughl",
 				time: "15:38",
 				message: "Thanks, General. We couldn't have done it without you.",
 			},
@@ -112,7 +112,7 @@ export const conversations: Conversation[] = [
 			},
 			{
 				messageId: "msg-7",
-				senderId: "1000",
+				senderId: "user_2pRD2D2BrOoiWXsgiLCtYrAughl",
 				time: "15:39",
 				message: "What's that?",
 			},
@@ -124,7 +124,7 @@ export const conversations: Conversation[] = [
 			},
 			{
 				messageId: "msg-9",
-				senderId: "1000",
+				senderId: "user_2pRD2D2BrOoiWXsgiLCtYrAughl",
 				time: "15:41",
 				message: "Shepard, what are you doing?!",
 			},
@@ -136,7 +136,7 @@ export const conversations: Conversation[] = [
 			},
 			{
 				messageId: "msg-11",
-				senderId: "1000",
+				senderId: "user_2pRD2D2BrOoiWXsgiLCtYrAughl",
 				time: "15:43",
 				message: "You son of a—",
 			},
@@ -148,15 +148,15 @@ export const conversations: Conversation[] = [
 			},
 			{
 				messageId: "msg-13",
-				senderId: "1000",
+				senderId: "user_2pRD2D2BrOoiWXsgiLCtYrAughl",
 				time: "15:45",
 				message: "*Falls to the ground*",
 			},
 		],
 	},
 	{
-		conversationId: "convo-1000-1002",
-		participants: [1000, 1002],
+		conversationId: "convo-user_2pRD2D2BrOoiWXsgiLCtYrAughl-1002",
+		participants: ["user_2pRD2D2BrOoiWXsgiLCtYrAughl", "1002"],
 		lastMessage: [
 			{
 				userId: 1002,
@@ -170,7 +170,7 @@ export const conversations: Conversation[] = [
 		messages: [
 			{
 				messageId: "msg-1",
-				senderId: "1000",
+				senderId: "user_2pRD2D2BrOoiWXsgiLCtYrAughl",
 				time: "13:45",
 				message: "Hey Joloo, how’s everything going?",
 			},
@@ -183,8 +183,8 @@ export const conversations: Conversation[] = [
 		],
 	},
 	{
-		conversationId: "convo-1000-1003",
-		participants: [1000, 1003],
+		conversationId: "convo-user_2pRD2D2BrOoiWXsgiLCtYrAughl-1003",
+		participants: ["user_2pRD2D2BrOoiWXsgiLCtYrAughl", "1003"],
 		lastMessage: [
 			{
 				userId: 1003,
@@ -204,7 +204,7 @@ export const conversations: Conversation[] = [
 			},
 			{
 				messageId: "msg-2",
-				senderId: "1000",
+				senderId: "user_2pRD2D2BrOoiWXsgiLCtYrAughl",
 				time: "12:15",
 				message: "Sure, I’ll take a look now.",
 			},
@@ -217,8 +217,8 @@ export const conversations: Conversation[] = [
 		],
 	},
 	{
-		conversationId: "convo-1000-1004",
-		participants: [1000, 1004],
+		conversationId: "convo-user_2pRD2D2BrOoiWXsgiLCtYrAughl-1004",
+		participants: ["user_2pRD2D2BrOoiWXsgiLCtYrAughl", "1004"],
 		lastMessage: [
 			{
 				userId: 1004,
@@ -238,7 +238,7 @@ export const conversations: Conversation[] = [
 			},
 			{
 				messageId: "msg-2",
-				senderId: "1000",
+				senderId: "user_2pRD2D2BrOoiWXsgiLCtYrAughl",
 				time: "16:00",
 				message: "Not much, just wrapping up some work.",
 			},
@@ -251,8 +251,8 @@ export const conversations: Conversation[] = [
 		],
 	},
 	{
-		conversationId: "convo-1000-1005",
-		participants: [1000, 1005],
+		conversationId: "convo-user_2pRD2D2BrOoiWXsgiLCtYrAughl-1005",
+		participants: ["user_2pRD2D2BrOoiWXsgiLCtYrAughl", "1005"],
 		lastMessage: [
 			{
 				userId: 1005,
@@ -273,7 +273,7 @@ export const conversations: Conversation[] = [
 			},
 			{
 				messageId: "msg-2",
-				senderId: "1000",
+				senderId: "user_2pRD2D2BrOoiWXsgiLCtYrAughl",
 				time: "17:00",
 				message: "Sure, what’s up?",
 			},

@@ -52,7 +52,7 @@ export interface Messages {
 }
 export interface Conversation {
 	conversationId: string;
-	participants: number[];
+	participants: string[];
 	lastMessage: LastMessage[];
 	unreadMessageCount: number;
 	pinned: boolean;

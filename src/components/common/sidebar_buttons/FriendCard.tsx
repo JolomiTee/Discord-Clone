@@ -10,8 +10,10 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Avatar, AvatarFallback, AvatarImage } from "../../ui/avatar";
 import { SidebarMenuButton } from "@/components/ui/sidebar";
+import { MessageSquarePlus, UserRoundPlus } from "lucide-react";
 
 interface props {
+	friendReqCard?: boolean;
 	profileImg: string;
 	user: string;
 	dmId: string;
@@ -23,6 +25,7 @@ interface props {
 	action?: () => void;
 }
 const FriendCard = ({
+	friendReqCard,
 	profileImg,
 	dmId,
 	user,
@@ -67,24 +70,41 @@ const FriendCard = ({
 				</span>
 
 				<div className="flex items-center justify-start gap-3 ms-auto me-0 ">
-					<DropdownMenu>
-						<DropdownMenuTrigger asChild>
+					{friendReqCard ? (
+						<div className="flex gap-3">
 							<Button
-								size={"icon"}
-								className="bg-transparent shadow-none rounded-full"
+								title="Send friend request"
+								className="rounded-[10px] bg-discord-blue "
 							>
-								<img
-									src={`/icons/more_h.svg`}
-									alt="more"
-									className="size-5"
-								/>
+								<UserRoundPlus strokeWidth={2.5} /> Send Request
 							</Button>
-						</DropdownMenuTrigger>
-						<DropdownMenuContent className="bg-onyx w-40 text-sidebar-primary-foreground rounded-[8px]">
-							<DropdownMenuItem>Unfriend</DropdownMenuItem>
-							<DropdownMenuItem>Block</DropdownMenuItem>
-						</DropdownMenuContent>
-					</DropdownMenu>
+							<Button
+								title="Send a message"
+								className="rounded-[10px] bg-discord-blue "
+							>
+								<MessageSquarePlus strokeWidth={2.5} />
+							</Button>
+						</div>
+					) : (
+						<DropdownMenu>
+							<DropdownMenuTrigger asChild>
+								<Button
+									size={"icon"}
+									className="bg-transparent shadow-none rounded-full"
+								>
+									<img
+										src={`/icons/more_h.svg`}
+										alt="more"
+										className="size-5"
+									/>
+								</Button>
+							</DropdownMenuTrigger>
+							<DropdownMenuContent className="bg-onyx w-40 text-sidebar-primary-foreground rounded-[8px]">
+								<DropdownMenuItem>Unfriend</DropdownMenuItem>
+								<DropdownMenuItem>Block</DropdownMenuItem>
+							</DropdownMenuContent>
+						</DropdownMenu>
+					)}
 				</div>
 			</Link>
 		</SidebarMenuButton>
