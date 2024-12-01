@@ -6,17 +6,20 @@ import { ClerkProvider } from "@clerk/clerk-react";
 import App from "./App.tsx";
 import "./index.css";
 import "./assets/backgrounds.css";
+import { VITE_CLERK_PUBLISHABLE_KEY } from "./env.tsx";
 
 // Import your publishable key
-const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
-if (!PUBLISHABLE_KEY) {
+if (!VITE_CLERK_PUBLISHABLE_KEY) {
 	throw new Error("Missing Publishable Key");
 }
 
 createRoot(document.getElementById("root")!).render(
 	<StrictMode>
-		<ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
+		<ClerkProvider
+			publishableKey={VITE_CLERK_PUBLISHABLE_KEY}
+			afterSignOutUrl="/"
+		>
 			<BrowserRouter>
 				<App />
 			</BrowserRouter>
