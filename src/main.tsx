@@ -19,6 +19,8 @@ createRoot(document.getElementById("root")!).render(
 		<ClerkProvider
 			publishableKey={VITE_CLERK_PUBLISHABLE_KEY}
 			afterSignOutUrl="/"
+			signUpForceRedirectUrl="/user/@me"
+			signInForceRedirectUrl="/user/@me"
 		>
 			<BrowserRouter>
 				<App />
