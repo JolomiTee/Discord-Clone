@@ -5,12 +5,12 @@ import { SignedIn } from "@clerk/clerk-react";
 
 function AppLayout() {
 	return (
-		// <SignedIn>
-		<div className="w-full flex overflow-hidden max-h-dvh font-open-sans">
-			<CollapsibleSidebar />
-			<Outlet />
-		</div>
-		// </SignedIn>
+		<SignedIn>
+			<div className="w-full flex overflow-hidden max-h-dvh font-open-sans">
+				<CollapsibleSidebar />
+				<Outlet />
+			</div>
+		</SignedIn>
 	);
 }
 
