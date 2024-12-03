@@ -10,6 +10,7 @@ import { Plus } from "lucide-react";
 import { Button } from "../ui/button";
 import { SidebarMenuButton } from "../ui/sidebar";
 
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
 	Form,
 	FormControl,
@@ -21,10 +22,8 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { createServerFormSchema } from "@/lib/formSchemas/createServerSchema";
-import { z } from "zod";
-import { Separator } from "../ui/separator";
 import { useState } from "react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { z } from "zod";
 
 const CreateServer = () => {
 	const { form, formSchema } = createServerFormSchema();
