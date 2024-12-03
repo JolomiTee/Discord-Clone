@@ -1,19 +1,13 @@
+import { ClerkProvider } from "@clerk/clerk-react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Analytics } from "@vercel/analytics/react";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
-import { ClerkProvider } from "@clerk/clerk-react";
 import App from "./App.tsx";
-import "./index.css";
 import "./assets/backgrounds.css";
 import { VITE_CLERK_PUBLISHABLE_KEY } from "./env.tsx";
-import {
-	useQuery,
-	useMutation,
-	useQueryClient,
-	QueryClient,
-	QueryClientProvider,
-} from "@tanstack/react-query";
+import "./index.css";
 
 const queryClient = new QueryClient();
 

@@ -2,7 +2,7 @@ import { getRandomColor } from "@/lib/utils";
 
 import { Button } from "@/components/ui/button";
 import { SidebarMenuButton } from "@/components/ui/sidebar";
-import { MessageSquarePlus, UserRoundPlus } from "lucide-react";
+import { UserRoundPlus } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
