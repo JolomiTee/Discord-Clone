@@ -44,11 +44,25 @@ interface LastMessage {
 	message: string;
 }
 
-export interface Messages {
-	messageId: string;
-	senderId: string;
+// Define the currentUser interface
+interface CurrentUser {
+	userId: string | undefined;
+	username: string | null | undefined;
+	userProfileImage: string | undefined;
+}
+
+// Define the message structure
+export interface Message {
+	msg_id: string;
 	time: string;
 	message: string;
+	sender_info: CurrentUser;
+}
+
+// Define the Zustand store's state and actions
+export interface DirectMessagesStateProps {
+	messages: Message[]; // Array of Message objects
+	updateMessages: (newMessage: Message) => void; // Accept a new Message object
 }
 export interface Conversation {
 	conversationId: string;
@@ -57,7 +71,7 @@ export interface Conversation {
 	unreadMessageCount: number;
 	pinned: boolean;
 	isFriend: boolean;
-	messages: Messages[];
+	messages: Message[];
 }
 
 export interface Channels {
