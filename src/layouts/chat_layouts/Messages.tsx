@@ -9,10 +9,10 @@ import { Conversation, Friends } from "@/types";
 import HMenu from "@/components/common/HMenu";
 import Wumpus from "../Wumpus";
 import { useUser } from "@clerk/clerk-react";
+import { useDirectMessagesState } from "@/hooks/use-dms";
 const MessagesLayout = () => {
 	// Logged-in user details
 	const { user } = useUser();
-	console.log("userid: ", user?.id);
 
 	const currentUser = {
 		userId: user?.id,
@@ -41,6 +41,10 @@ const MessagesLayout = () => {
 		setFriendInfo(friend || null);
 	}, [dmId]);
 
+	console.log(chatConversations);
+
+	const messages = useDirectMessagesState((state) => state.messages);
+
 	return (
 		<MainContainer>
 			<>
@@ -50,7 +54,6 @@ const MessagesLayout = () => {
 					profile_image={friendInfo?.profileImg}
 				/>
 
-				{/* Messages */}
 				<div className="h-full flex flex-col gap-[30px] relative overflow-auto scrollbar-hidden pb-5 p-3 md:p-4 lg:p-5">
 					{/* Example badge */}
 					<Badge className="mx-auto bg-charcoal rounded-[8px] px-3 py-2 sticky top-0 z-10 text-[11px] md:text-xs">
@@ -58,19 +61,15 @@ const MessagesLayout = () => {
 					</Badge>
 
 					{/* Render Chat Bubbles */}
-					{chatConversations && chatConversations?.messages.length > 0 ? (
-						chatConversations?.messages.map((msg) => {
-							const { messageId, senderId, time, message } = msg;
-
+					{messages && messages.length > 0 ? (
+						messages.map((msg) => {
 							return (
 								<ChatBubble
-									key={messageId}
-									messageId={messageId}
-									senderId={senderId}
-									time={time}
-									message={message}
-									friend={friendInfo} // Pass friend data
-									user={currentUser} // Pass logged-in user data
+									key={msg.msg_id}
+									messageId={msg.msg_id}
+									time={msg.time}
+									message={msg.message}
+									user={msg.sender_info} // Pass logged-in user data
 								/>
 							);
 						})
@@ -79,8 +78,7 @@ const MessagesLayout = () => {
 					)}
 				</div>
 
-				{/* Input field for new messages */}
-				<Keyboard />
+				<Keyboard currentUser={currentUser} />
 			</>
 		</MainContainer>
 	);

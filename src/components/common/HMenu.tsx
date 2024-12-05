@@ -32,8 +32,6 @@ const HMenu = ({ name, channelType, profile_image }: Props) => {
 	);
 	const openSearchBar = useOpenSearchBar();
 
-	console.log(channelType);
-
 	return (
 		<header className="flex justify-between items-center gap-3 h-full max-h-[50px] px-2 md:px-3 lg:px-4 bg-onyx w-full sticky top-0 shrink-0 bg-background py-2">
 			<div className="flex items-center gap-2">
