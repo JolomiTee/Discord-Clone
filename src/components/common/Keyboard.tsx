@@ -1,12 +1,13 @@
 import { Textarea } from "@/components/ui/textarea";
-import IconButtons from "./IconButtons";
+import { CurrentUser } from "@/types";
+import { Button } from "../ui/button";
+import { SendHorizonal } from "lucide-react";
 
-const Keyboard = () => {
+const Keyboard = ({ userId, userProfileImage, username }: CurrentUser) => {
+	console.log(username, userId, userProfileImage);
 	return (
 		<div className="bg-charcoal p-3">
 			<div className="bg-onyx rounded-[15px] py-1 px-2 flex items-center gap-1 sticky bottom-0 ring-1 border border-charcoal shadow">
-				<IconButtons src="add" alt="Add attachment" sizes="size-10" />
-
 				<Textarea
 					onFocus={(e) => {
 						e.target.placeholder = "Start typing...";
@@ -23,6 +24,10 @@ const Keyboard = () => {
 						// overflow: "hidden",
 					}}
 				/>
+
+				<Button className="size-[40px] bg-discord-blue rounded-[10px] p-0">
+					<SendHorizonal width={50} height={50} />
+				</Button>
 			</div>
 		</div>
 	);

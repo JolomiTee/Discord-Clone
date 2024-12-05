@@ -45,7 +45,7 @@ interface LastMessage {
 }
 
 // Define the currentUser interface
-interface CurrentUser {
+export interface CurrentUser {
 	userId: string | undefined;
 	username: string | null | undefined;
 	userProfileImage: string | undefined;
