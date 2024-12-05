@@ -17,8 +17,17 @@ import IconButtons from "../../common/IconButtons";
 import DMCard from "../../common/sidebar_buttons/DMCard";
 import FriendCard from "../../common/sidebar_buttons/FriendCard";
 import AddFriendModal from "@/components/friends/AddFriendModal";
+import useClerkQuery from "@/hooks/use-query";
 
 const MessagesDisplayVariant = () => {
+	const { data, isLoading, error } = useClerkQuery(
+		"http://localhost:6464/api/user"
+	);
+
+	if (error instanceof Error) return <div>Error: {error.message}</div>;
+
+	console.log(data);
+
 	const openSearchBar = useOpenSearchBar();
 	const l_sidebar_state = useSidebarStateStore(
 		(state) => state.l_sidebar_state

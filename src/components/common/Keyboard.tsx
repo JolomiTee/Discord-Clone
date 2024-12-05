@@ -3,8 +3,7 @@ import { CurrentUser } from "@/types";
 import { Button } from "../ui/button";
 import { SendHorizonal } from "lucide-react";
 
-const Keyboard = ({ userId, userProfileImage, username }: CurrentUser) => {
-	console.log(username, userId, userProfileImage);
+const Keyboard = ({ currentUser }: { currentUser: CurrentUser }) => {
 	return (
 		<div className="bg-charcoal p-3">
 			<div className="bg-onyx rounded-[15px] py-1 px-2 flex items-center gap-1 sticky bottom-0 ring-1 border border-charcoal shadow">
@@ -21,7 +20,6 @@ const Keyboard = ({ userId, userProfileImage, username }: CurrentUser) => {
 					style={{
 						minHeight: "30px",
 						maxHeight: "100px",
-						// overflow: "hidden",
 					}}
 				/>
 
