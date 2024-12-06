@@ -6,8 +6,10 @@ import { Plus } from "lucide-react";
 
 const FriendsList = () => {
 	const { data, isLoading, error } = useClerkQuery(
-		"http://localhost:6464/api/user"
+		"http://localhost:6464/api/user/friends"
 	);
+
+	console.log(data);
 
 	return (
 		<div className=" grid overflow-y-auto max-h-full scrollbar-hidden">
@@ -19,33 +21,36 @@ const FriendsList = () => {
 				<div className="text-center">
 					Wumpus was unable to find your friends
 				</div>
-			) : data.length > 0 ? (
+			) : data.friends.length > 0 ? (
 				data.map((friends: Friends) => {
 					const {
-						profileImg,
-						user,
-						online,
-						hasMessage,
-						messageCount,
-						id,
-						slug,
-						pinned,
+						_id,
+						username,
+						firstName,
+						lastName,
+						email_address,
+						profile_image_url,
 					} = friends;
 					return (
 						<FriendCard
-							key={id}
-							slug={slug}
-							dmId={id}
-							user={user}
-							profileImg={profileImg}
-							online={online}
-							hasMessage={hasMessage}
-							messageCount={messageCount}
-							pinned={pinned}
+							key={_id}
+							slug={username}
+							dmId={_id}
+							user={username}
+							profileImg={profile_image_url}
+							// online={online}
+							// hasMessage={hasMessage}
+							// messageCount={messageCount}
+							// pinned={pinned}
 						/>
 					);
 				})
 			) : (
+				// data.friends.map((friend: any) => {
+				// 	const { username } = friend;
+
+				// 	return <div>{username}</div>;
+				// })
 				<div className="text-center">
 					No friends here, just Wumpus <br />
 					<p className="text-xs flex gap-1 justify-center pt-1">

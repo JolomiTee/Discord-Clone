@@ -28,14 +28,17 @@ export interface MessageNotification extends BaseNotification {
 }
 
 export interface Friends {
-	profileImg: string;
-	user: string;
-	online: boolean;
-	hasMessage: boolean;
-	messageCount: number;
-	pinned: boolean;
-	slug: string;
-	id: string;
+	_id: string;
+	username: string;
+	email_address: string;
+	profile_image_url: string;
+	firstName: string;
+	lastName: string;
+
+	// online: boolean;
+	// hasMessage: boolean;
+	// messageCount: number;
+	// pinned: boolean;
 }
 
 interface LastMessage {

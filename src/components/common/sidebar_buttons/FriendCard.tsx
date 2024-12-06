@@ -17,10 +17,10 @@ interface props {
 	profileImg: string;
 	user: string;
 	dmId: string;
-	online: boolean;
-	hasMessage: boolean;
-	messageCount?: number;
-	pinned: boolean;
+	// online: boolean;
+	// hasMessage: boolean;
+	// messageCount?: number;
+	// pinned: boolean;
 	slug: string;
 	action?: () => void;
 }
@@ -29,8 +29,8 @@ const FriendCard = ({
 	profileImg,
 	dmId,
 	user,
-	online,
-	hasMessage,
+	// online,
+	// hasMessage,
 	action,
 	slug,
 }: props) => {
@@ -59,15 +59,15 @@ const FriendCard = ({
 							/>
 						</AvatarFallback>
 					</Avatar>
-					<div
+					{/* <div
 						className={`absolute -right-0 bottom-0 ${
 							online ? "bg-emerald" : "bg-gray"
 						} rounded-full size-3 border-[2px] border-solid border-charcoal`}
-					></div>
+					></div> */}
 				</div>
-				<span className={hasMessage ? "font-bold" : "font-normal"}>
-					{user}
-				</span>
+				{/* <span className={hasMessage ? "font-bold" : "font-normal"}> */}
+				{user}
+				{/* </span> */}
 
 				<div className="flex items-center justify-start gap-3 ms-auto me-0 ">
 					{friendReqCard ? (
