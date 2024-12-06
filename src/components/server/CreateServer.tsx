@@ -68,7 +68,7 @@ const CreateServer = () => {
 					>
 						<FormField
 							control={form.control}
-							name="serverName"
+							name="name"
 							render={({ field }) => (
 								<FormItem>
 									<FormLabel>Server Name</FormLabel>
@@ -116,7 +116,7 @@ const CreateServer = () => {
 						/>
 						<FormField
 							control={form.control}
-							name="iconFile"
+							name="icon"
 							render={({ field }) => (
 								<FormItem>
 									<FormLabel>Server Icon</FormLabel>

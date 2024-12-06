@@ -10,13 +10,18 @@ import {
 	SidebarMenu,
 	useSidebar,
 } from "@/components/ui/sidebar";
-import { serverList } from "@/data/servers";
 import SidebarNavLink from "../../common/sidebar_buttons/SidebarNavTab";
 import SidebarServerIcon from "../../common/sidebar_buttons/SidebarServerIcon";
 import ProfileHolder from "../../server/ProfileHolder";
+import useClerkQuery from "@/hooks/use-query";
+import { Skeleton } from "@/components/ui/skeleton";
+import { Servers } from "@/types";
 
 const CollapsibleVariant = () => {
 	const { isMobile } = useSidebar();
+	const { isLoading, data, error } = useClerkQuery(
+		"http://localhost:6464/api/user/servers"
+	);
 	return (
 		<Sidebar
 			collapsible={!isMobile ? "icon" : "none"}
@@ -43,25 +48,28 @@ const CollapsibleVariant = () => {
 			<SidebarContent className="bg-onyx scrollbar-hidden group-data-[collapsible=icon]:overflow-scroll pt-2">
 				<SidebarGroup className="p-0">
 					<SidebarMenu className="gap-y-3">
-						{serverList.map((item) => {
-							const {
-								id,
-								slug,
-								name,
-								server_img: serverIcon,
-								muted,
-							} = item;
-							return (
-								<SidebarServerIcon
-									key={id}
-									slug={slug}
-									name={name}
-									serverIcon={serverIcon}
-									hasNotification={muted}
-									serverId={id}
-								/>
-							);
-						})}
+						{isLoading ? (
+							<>
+								<Skeleton className="size-[45px] md:size-[50px] rounded-full mb-3 bg-discord-blue/20 mx-auto" />
+							</>
+						) : error ? (
+							<div className="text-center">NF</div>
+						) : data.servers.length > 0 ? (
+							data.servers.map((server: Servers) => {
+								const { _id, name, profile_image_url } = server;
+								return (
+									<SidebarServerIcon
+										key={_id}
+										serverId={_id}
+										name={name}
+										profile_image_url={profile_image_url}
+										hasNotification={true}
+									/>
+								);
+							})
+						) : (
+							<div className="text-center">NS</div>
+						)}
 					</SidebarMenu>
 				</SidebarGroup>
 			</SidebarContent>

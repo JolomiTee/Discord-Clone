@@ -85,7 +85,7 @@ export interface Channels {
 	type: string;
 	name: string;
 	slug: string;
-	id: string;
+	_id: string;
 }
 
 export interface CurrentChannels {
@@ -106,10 +106,10 @@ export interface textChannelConversations {
 	}[];
 }
 export interface Servers {
-	id: string;
+	_id: string;
 	slug: string;
 	name: string;
-	server_img: string;
+	profile_image_url: string;
 	online: number;
 	members: number;
 	lastSeen: string;

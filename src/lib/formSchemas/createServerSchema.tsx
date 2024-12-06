@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 
 export const createServerFormSchema = () => {
 	const formSchema = z.object({
-		serverName: z
+		name: z
 			.string()
 			.min(2, { message: "Server name must be at least 2 characters long." })
 			.max(100, { message: "Server name cannot exceed 100 characters." }),
@@ -12,7 +12,7 @@ export const createServerFormSchema = () => {
 			.string()
 			.max(250, { message: "Description cannot exceed 250 characters." })
 			.optional(),
-		iconFile: z
+		icon: z
 			.custom<File>((file) => file instanceof File, {
 				message: "Must be a valid file.",
 			})
@@ -29,7 +29,7 @@ export const createServerFormSchema = () => {
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
-			serverName: "",
+			name: "",
 			description: "",
 		},
 	});
