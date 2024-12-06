@@ -24,3 +24,16 @@ export function formatNumber(value: number): string {
     return value.toString();
   }
 }
+
+export const sessionStorageProvider = {
+	getItem: (name: string) => {
+		const storedValue = sessionStorage.getItem(name);
+		return storedValue ? JSON.parse(storedValue) : undefined;
+	},
+	setItem: (name: string, value: any) => {
+		sessionStorage.setItem(name, JSON.stringify(value));
+	},
+	removeItem: (name: string) => {
+		sessionStorage.removeItem(name);
+	},
+};

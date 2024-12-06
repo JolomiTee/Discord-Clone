@@ -1,47 +1,26 @@
 import ChatBubble from "@/components/common/ChatBubble";
-import MainContainer from "@/layouts/MainContainer";
-import { Badge } from "@/components/ui/badge";
-import Keyboard from "@/components/common/Keyboard";
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { conversations, friends } from "@/data/dms";
-import { Conversation, Friends } from "@/types";
 import HMenu from "@/components/common/HMenu";
-import Wumpus from "../Wumpus";
+import Keyboard from "@/components/common/Keyboard";
+import { Badge } from "@/components/ui/badge";
+import {
+	useDirectMessagesState,
+	useHMenuSelectedClient,
+} from "@/hooks/use-dms";
+import MainContainer from "@/layouts/MainContainer";
+import { Friends } from "@/types";
 import { useUser } from "@clerk/clerk-react";
-import { useDirectMessagesState } from "@/hooks/use-dms";
+import Wumpus from "../Wumpus";
 const MessagesLayout = () => {
 	// Logged-in user details
 	const { user } = useUser();
+
+	const client = useHMenuSelectedClient((state) => state.client) as Friends;
 
 	const currentUser = {
 		userId: user?.id,
 		username: user?.username,
 		userProfileImage: user?.imageUrl,
 	};
-
-	const [chatConversations, setChatConversations] =
-		useState<Conversation | null>(null);
-	const [friendInfo, setFriendInfo] = useState<Friends | null>(null);
-
-	// Retrieve the DM ID from the route parameters
-	const { dmId } = useParams();
-
-	useEffect(() => {
-		// Find the conversation matching the user and DM
-		const chats = conversations.find(
-			(convo) =>
-				convo.conversationId === `convo-${currentUser.userId}-${dmId}`
-		);
-
-		// Find the friend information based on dmId
-		const friend = friends.find((friend) => friend.id === dmId);
-
-		setChatConversations(chats || null);
-		setFriendInfo(friend || null);
-	}, [dmId]);
-
-	console.log(chatConversations);
 
 	const messages = useDirectMessagesState((state) => state.messages);
 
@@ -50,8 +29,8 @@ const MessagesLayout = () => {
 			<>
 				{/* Display friend info at the top */}
 				<HMenu
-					name={friendInfo?.user}
-					profile_image={friendInfo?.profileImg}
+					name={client.username}
+					profile_image={client.profile_image_url}
 				/>
 
 				<div className="h-full flex flex-col gap-[30px] relative overflow-auto scrollbar-hidden pb-5 p-3 md:p-4 lg:p-5">

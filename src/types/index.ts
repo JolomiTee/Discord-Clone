@@ -67,6 +67,10 @@ export interface DirectMessagesStateProps {
 	messages: Message[]; // Array of Message objects
 	updateMessages: (newMessage: Message) => void; // Accept a new Message object
 }
+export interface HMenuSelectedClient {
+	client: Friends | CurrentChannels; // Array of Message objects
+	updateHMenuSelectedClient: (newClient: Friends | CurrentChannels) => void; // Accept a new client object
+}
 export interface Conversation {
 	conversationId: string;
 	participants: string[];
