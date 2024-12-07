@@ -30,8 +30,34 @@ const CreateServer = () => {
 	const [preview, setPreview] = useState<string | undefined>(undefined);
 	const [name, setName] = useState<string | undefined>(undefined);
 
+	const { mutate, isLoading: isMutationLoading } =
+		useClerkPost("/joined-servegrs");
+
 	function onSubmit(values: z.infer<typeof formSchema>) {
 		console.log(values);
+		const formData = new FormData();
+
+		// Append all text fields
+		formData.append("name", values.name);
+		formData.append("description", values.description);
+
+		// Append the icon file if it exists
+		if (values.icon) {
+			formData.append("icon", values.icon);
+		}
+		mutate(
+			{
+				url: "servers",
+				body: formData,
+			},
+			{
+				onSuccess: () => {
+					console.log(
+						"POST successful and initial servers have been invalidated!"
+					);
+				},
+			}
+		);
 	}
 
 	return (
@@ -151,6 +177,7 @@ const CreateServer = () => {
 						<Button
 							type="submit"
 							className="bg-discord-blue rounded-[8px]"
+							disabled={isMutationLoading}
 						>
 							Create Server
 						</Button>
@@ -165,6 +192,7 @@ export default CreateServer;
 
 import React from "react";
 import { Card } from "../ui/card";
+import { useClerkPost } from "@/hooks/use-query";
 
 const ServerPreview = ({
 	preview,

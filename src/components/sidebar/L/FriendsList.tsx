@@ -6,9 +6,7 @@ import { Plus } from "lucide-react";
 
 const FriendsList = () => {
 
-	const { data, isLoading, error } = useClerkQuery(
-		"http://localhost:6464/api/user/friends"
-	);
+	const { data, isLoading, error } = useClerkQuery("added-friends");
 
 	return (
 		<div className=" grid overflow-y-auto max-h-full scrollbar-hidden">

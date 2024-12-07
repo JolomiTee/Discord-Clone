@@ -10,8 +10,7 @@ export const createServerFormSchema = () => {
 			.max(100, { message: "Server name cannot exceed 100 characters." }),
 		description: z
 			.string()
-			.max(250, { message: "Description cannot exceed 250 characters." })
-			.optional(),
+			.max(250, { message: "Description cannot exceed 250 characters." }),
 		icon: z
 			.custom<File>((file) => file instanceof File, {
 				message: "Must be a valid file.",
