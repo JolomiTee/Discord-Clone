@@ -9,10 +9,14 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select";
+import { Skeleton } from "@/components/ui/skeleton";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { discordServers } from "@/data";
+import useClerkQuery from "@/hooks/use-query";
+import { Servers as IServer } from "@/types";
+import { Plus } from "lucide-react";
 
 const Servers = () => {
+	const { isLoading, data, error } = useClerkQuery("servers");
 	return (
 		<div className="w-full bg-onyx overflow-auto scrollbar-hidden">
 			<Tabs defaultValue="myservers" className="w-full">
@@ -59,30 +63,42 @@ const Servers = () => {
 					value="myservers"
 					className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-10 p-3 mb-10"
 				>
-					{discordServers.map((servers) => {
-						const {
-							id,
-							slug,
-							name,
-							online,
-							members,
-							lastSeen,
-							server_img,
-						} = servers;
+					{isLoading ? (
+						<>
+							<Skeleton className="h-10 w-full mb-3 bg-discord-blue/20" />
+						</>
+					) : error ? (
+						<div className="text-center">
+							Wumpus was unable to find your Servers
+						</div>
+					) : data.servers.length > 0 ? (
+						data.servers.map((servers: IServer) => {
+							const { _id, profile_image_url, name, members } = servers;
 
-						return (
-							<ServerCard
-								slug={slug}
-								key={id}
-								serverId={id}
-								name={name}
-								online={online}
-								members={members}
-								lastSeen={lastSeen}
-								server_img={server_img}
-							/>
-						);
-					})}
+							return (
+								<ServerCard
+									key={_id}
+									_id={_id}
+									name={name}
+									// online={online}
+									members={members}
+									profile_image_url={profile_image_url}
+								/>
+							);
+						})
+					) : (
+						<div className="text-center">
+							No friends here, just Wumpus <br />
+							<p className="text-xs flex gap-1 justify-center pt-1">
+								Add some by clicking the{" "}
+								<Plus
+									className="inline-flex text-discord-blue"
+									size={15}
+								/>{" "}
+								icon
+							</p>
+						</div>
+					)}
 				</TabsContent>
 				<TabsContent value="discover" className=" p-3">
 					Discover other servers here

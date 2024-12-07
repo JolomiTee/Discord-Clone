@@ -30,8 +30,10 @@ const CreateServer = () => {
 	const [preview, setPreview] = useState<string | undefined>(undefined);
 	const [name, setName] = useState<string | undefined>(undefined);
 
-	const { mutate, isLoading: isMutationLoading } =
-		useClerkPost("/joined-servegrs");
+	const { mutate, isLoading: isMutationLoading } = useClerkPost([
+		"joined-servers",
+		"servers",
+	]);
 
 	function onSubmit(values: z.infer<typeof formSchema>) {
 		console.log(values);

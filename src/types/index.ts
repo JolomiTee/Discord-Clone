@@ -107,14 +107,9 @@ export interface textChannelConversations {
 }
 export interface Servers {
 	_id: string;
-	slug: string;
 	name: string;
 	profile_image_url: string;
-	online: number;
-	members: number;
-	lastSeen: string;
-	link: string;
-	muted: boolean;
+	members: [];
 	channels: {
 		textChannels: Channels[];
 		voiceChannels: Channels[];
