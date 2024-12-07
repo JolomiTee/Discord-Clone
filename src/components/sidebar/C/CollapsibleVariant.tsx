@@ -19,7 +19,7 @@ import { Servers } from "@/types";
 
 const CollapsibleVariant = () => {
 	const { isMobile } = useSidebar();
-	const { isLoading, data, error } = useClerkQuery("joined-servgers");
+	const { isLoading, data, error } = useClerkQuery("joined-servers");
 	return (
 		<Sidebar
 			collapsible={!isMobile ? "icon" : "none"}
