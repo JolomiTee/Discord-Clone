@@ -6,7 +6,7 @@ import { Plus } from "lucide-react";
 
 const FriendsList = () => {
 
-	const { data, isLoading, error } = useClerkQuery("added-friends");
+	const { data, isLoading, error } = useClerkQuery<Friends[]>("added-friends");
 
 	return (
 		<div className=" grid overflow-y-auto max-h-full scrollbar-hidden">
@@ -18,8 +18,8 @@ const FriendsList = () => {
 				<div className="text-center">
 					Wumpus was unable to find your friends
 				</div>
-			) : data.friends.length > 0 ? (
-				data.friends.map((friends: Friends) => {
+			) : data.data.length > 0 ? (
+				data.data.map((friends: Friends) => {
 					const {
 						_id,
 						username,

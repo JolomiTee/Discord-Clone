@@ -16,7 +16,7 @@ import { Servers as IServer } from "@/types";
 import { Plus } from "lucide-react";
 
 const Servers = () => {
-	const { isLoading, data, error } = useClerkQuery("servers");
+	const { isLoading, data, error } = useClerkQuery<IServer[]>("servers");
 	return (
 		<div className="w-full bg-onyx overflow-auto scrollbar-hidden">
 			<Tabs defaultValue="myservers" className="w-full">
@@ -71,8 +71,8 @@ const Servers = () => {
 						<div className="text-center">
 							Wumpus was unable to find your Servers
 						</div>
-					) : data.servers.length > 0 ? (
-						data.servers.map((servers: IServer) => {
+					) : data.data.length > 0 ? (
+						data.data.map((servers) => {
 							const { _id, profile_image_url, name, members } = servers;
 
 							return (

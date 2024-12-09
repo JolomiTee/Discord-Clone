@@ -56,27 +56,38 @@ const ServerDisplayVariant = ({
 		}
 	}, [l_sidebar_state, open]);
 
-	const {
-		isLoading,
-		data: { server },
-		error,
-	} = useClerkQuery(`servers/${serverId}`);
+	const [voiceChannels, setVoiceChannels] = useState<Channels[]>();
+	const [textChannels, setTextChannels] = useState<Channels[]>();
+	const [serverInfo, setserverInfo] = useState<Servers>();
+
+	useEffect(() => {
+		const _server = serverList.find((server) => server._id === serverId);
+		setserverInfo(_server);
+		setTextChannels(_server?.channels.textChannels);
+		setVoiceChannels(_server?.channels.voiceChannels);
+	}, [serverId, voiceChannels, textChannels]);
+
+	const { data, error, isLoading } = useClerkQuery<Servers[]>(
+		`server/${serverId}`
+	);
+
+	console.log(data?.data);
 
 	return (
 		<Sidebar className="border-none">
 			<SidebarHeader className="bg-carbon p-0">
 				<AspectRatio ratio={16 / 6}>
 					<img
-						src={server.profile_image_url}
-						alt={server.name}
+						src={serverInfo?.profile_image_url}
+						alt={serverInfo?.name}
 						className="object-cover h-full w-full"
 					/>
 				</AspectRatio>
 				<div className="p-3 grid gap-3">
 					<div className="flex items-center justify-between">
-						<div className="flex items-center gap-2 text-white font-bold">
-							{/* <img src="/icons/verified.svg" width={25} height={25} /> */}
-							{server.name}
+						<div className="flex items-center gap-2 text-white">
+							<img src="/icons/verified.svg" width={25} height={25} />
+							{serverInfo?.name}
 						</div>
 
 						<DropdownMenu>
@@ -102,8 +113,6 @@ const ServerDisplayVariant = ({
 							</DropdownMenuContent>
 						</DropdownMenu>
 					</div>
-
-					<p className="text-xs">{server.description}</p>
 
 					<div className="flex justify-between items-center">
 						<IconButtons
@@ -144,7 +153,7 @@ const ServerDisplayVariant = ({
 					className="w-full"
 					data-state="open"
 				>
-					{/* <ChannelList
+					<ChannelList
 						serverId={serverId}
 						value="text-channels"
 						section="TEXT CHANNELS"
@@ -155,7 +164,7 @@ const ServerDisplayVariant = ({
 						value="voice-channels"
 						section="VOICE CHANNELS"
 						channel={voiceChannels}
-					/> */}
+					/>
 				</Accordion>
 			</SidebarContent>
 

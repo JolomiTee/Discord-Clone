@@ -17,15 +17,21 @@ const BASE_URL = "http://localhost:6464/api/user/";
  * @param {UseQueryOptions} [options] - Optional react-query options.
  * @returns {UseQueryResult} The query result including data, status, and error.
  */
-export default function useClerkQuery(url: string, options = {}) {
+export default function useClerkQuery<T>(
+	url: string,
+	options: Omit<
+		UseQueryOptions<{ message: string; data: T }, Error>,
+		"queryKey" | "queryFn"
+	> = {}
+): UseQueryResult<{ message: string; data: T }, Error> {
 	const { getToken } = useAuth();
 
-	return useQuery(
+	return useQuery<{ message: string; data: T }, Error>(
 		[url], // Use the URL as the query key
 		async () => {
 			const token = await getToken(); // Get the Clerk token
 
-			// Combine the base URL, endpoint, and query string
+			// Combine the base URL and endpoint
 			const fullUrl = `${BASE_URL}${url}`;
 
 			const res = await fetch(fullUrl, {
@@ -36,11 +42,19 @@ export default function useClerkQuery(url: string, options = {}) {
 				throw new Error(`Error fetching data: ${res.statusText}`);
 			}
 
-			return res.json(); // Parse the response as JSON
+			const json = await res.json();
+
+			// Ensure the response matches the expected shape
+			if (typeof json !== "object" || !json.message || !json.data) {
+				throw new Error("Unexpected response format");
+			}
+
+			return json as { message: string; data: T }; // Safely cast after validation
 		},
 		options // Pass optional query options
 	);
 }
+
 
 /**
  * A custom hook for POST requests with Clerk authentication and react-query.
