@@ -30,7 +30,7 @@ const CreateServer = () => {
 	const [preview, setPreview] = useState<string | undefined>(undefined);
 	const [name, setName] = useState<string | undefined>(undefined);
 
-	const { mutate, isLoading: isMutationLoading } = useClerkPost([
+	const { mutate, isLoading: isMutationLoading } = useClerkRequest("POST", [
 		"joined-servers",
 		"servers",
 	]);
@@ -194,7 +194,7 @@ export default CreateServer;
 
 import React from "react";
 import { Card } from "../ui/card";
-import { useClerkPost } from "@/hooks/use-query";
+import { useClerkRequest } from "@/hooks/use-query";
 
 const ServerPreview = ({
 	preview,

@@ -62,7 +62,8 @@ export default function useClerkQuery<T>(
  * @param {UseMutationOptions<any, any, { url: string; body: any }>} mutationOptions - Optional mutation options.
  * @returns {UseMutationResult} - The mutation object for making POST requests.
  */
-export function useClerkPost(
+export function useClerkRequest(
+	method: "POST" | "PUT" | "PATCH" | "DELETE" = "POST", // Default to POST
 	invalidateQueryKey?: string | string[], // Query key(s) to invalidate
 	mutationOptions?: UseMutationOptions<any, any, { url: string; body: any }>
 ): UseMutationResult<any, any, { url: string; body: any }> {
@@ -79,7 +80,7 @@ export function useClerkPost(
 			};
 
 			const options: RequestInit = {
-				method: "POST",
+				method, // Use the dynamic HTTP method
 				headers,
 			};
 
@@ -94,7 +95,9 @@ export function useClerkPost(
 			const res = await fetch(fullUrl, options);
 
 			if (!res.ok) {
-				throw new Error(`Error making POST request: ${res.statusText}`);
+				throw new Error(
+					`Error making ${method} request: ${res.statusText}`
+				);
 			}
 
 			return res.json();
@@ -116,4 +119,5 @@ export function useClerkPost(
 		}
 	);
 }
+
 

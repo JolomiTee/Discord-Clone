@@ -16,7 +16,7 @@ import {
 	FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { useClerkPost } from "@/hooks/use-query";
+import { useClerkRequest } from "@/hooks/use-query";
 import { createChannelFormSchema } from "@/lib/formSchemas/createChannelSchema";
 import { z } from "zod";
 import IconButtons from "../common/IconButtons";
@@ -25,7 +25,7 @@ import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 const CreateChannel = ({ serverId }: { serverId: string | undefined }) => {
 	const { form, formSchema } = createChannelFormSchema();
 
-	const { mutate, isLoading: isMutationLoading } = useClerkPost([
+	const { mutate, isLoading: isMutationLoading } = useClerkRequest("PUT", [
 		"joined-servers",
 		"servers",
 	]);
@@ -41,19 +41,19 @@ const CreateChannel = ({ serverId }: { serverId: string | undefined }) => {
 		// if (values.icon) {
 		// 	formData.append("icon", values.icon);
 		// }
-		// mutate(
-		// 	{
-		// 		url: `server/${serverId}/channel`,
-		// 		body: formData,
-		// 	},
-		// 	{
-		// 		onSuccess: () => {
-		// 			console.log(
-		// 				"POST successful and channels route have been invalidated!"
-		// 			);
-		// 		},
-		// 	}
-		// );
+		mutate(
+			{
+				url: `server/${serverId}`,
+				body: values,
+			},
+			{
+				onSuccess: () => {
+					console.log(
+						"POST successful and channels route have been invalidated!"
+					);
+				},
+			}
+		);
 	}
 
 	return (
