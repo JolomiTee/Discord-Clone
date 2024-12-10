@@ -16,11 +16,25 @@ import useClerkQuery from "@/hooks/use-query";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Servers } from "@/types";
 import CreateServer from "@/components/forms/CreateServer";
+import { ChevronRight } from "lucide-react";
+import {
+	DoubleArrowLeftIcon,
+	DoubleArrowRightIcon,
+} from "@radix-ui/react-icons";
+import { Button } from "@/components/ui/button";
+import { useSidebarStateStore } from "@/hooks/base-context";
 
 const CollapsibleVariant = () => {
 	const { isMobile } = useSidebar();
 	const { isLoading, data, error } =
 		useClerkQuery<Servers[]>("joined-servers");
+
+	const toggle_c_sidebar = useSidebarStateStore(
+		(state) => state.toggle_c_sidebar
+	);
+	const c_sidebar_state = useSidebarStateStore(
+		(state) => state.c_sidebar_state
+	);
 	return (
 		<Sidebar
 			collapsible={!isMobile ? "icon" : "none"}
@@ -42,6 +56,29 @@ const CollapsibleVariant = () => {
 						<SidebarNavLink to="@server" icon="servers" label="Servers" />
 					</SidebarMenu>
 				</SidebarGroup>
+
+				<div className="px-0.5 mb-2">
+					<Button
+						className="flex justify-center w-full h-[22px] bg-charcoal rounded-[8px]"
+						onClick={toggle_c_sidebar}
+						title={c_sidebar_state ? "Hide sidebar" : "Expand sidebar"}
+					>
+						{c_sidebar_state ? (
+							<DoubleArrowLeftIcon
+								strokeWidth={3}
+								className="text-sm font-bold"
+							/>
+						) : (
+							<DoubleArrowRightIcon
+								strokeWidth={3}
+								className="text-sm font-bold"
+							/>
+						)}
+						<span className={c_sidebar_state ? "block" : "hidden"}>
+							Hide sidebar
+						</span>
+					</Button>
+				</div>
 			</SidebarHeader>
 
 			<SidebarContent className="bg-onyx scrollbar-hidden group-data-[collapsible=icon]:overflow-scroll pt-2">

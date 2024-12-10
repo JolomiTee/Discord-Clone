@@ -15,9 +15,7 @@ import { ExternalLink, MenuIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const ProfileHolder = () => {
-	// const toggle_c_sidebar = useSidebarStateStore(
-	// 	(state) => state.toggle_c_sidebar
-	// );
+
 	const { isMobile } = useSidebar();
 
 	return (
@@ -29,7 +27,6 @@ const ProfileHolder = () => {
 					<SidebarMenuButton
 						size="lg"
 						className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground h-[60px] group-data-[collapsible=icon]:[&>div:last-child]:hidden group-data-[collapsible=icon]:overflow-visible py-0 px-2 shrink-0 gap-0 group-data-[collapsible=icon]:-ms-1"
-						// onClick={toggle_c_sidebar}
 					>
 						<div className="relative flex justify-center">
 							<div className="absolute right-2 group-data-[collapsible=icon]:-right-0.5 bottom-0.5 bg-emerald rounded-full size-[14px] border-[2px] border-charcoal z-20"></div>
