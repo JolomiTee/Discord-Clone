@@ -82,10 +82,9 @@ export interface Conversation {
 }
 
 export interface Channels {
-	type: string;
-	name: string;
-	slug: string;
 	_id: string;
+	channelType: string;
+	name: string;
 }
 
 export interface CurrentChannels {
@@ -113,10 +112,7 @@ export interface Servers {
 	banner_image_url: string;
 	profile_image_url: string;
 	members: string[];
-	channels: {
-		textChannels: Channels[];
-		voiceChannels: Channels[];
-	};
+	channels: Channels[];
 };
 
 // *============================= HOOKS ============================//

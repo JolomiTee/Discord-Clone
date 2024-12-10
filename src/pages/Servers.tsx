@@ -17,7 +17,6 @@ import { Plus } from "lucide-react";
 
 const Servers = () => {
 	const { isLoading, data, error } = useClerkQuery<IServer[]>("servers");
-	console.log(data);
 	return (
 		<div className="w-full bg-onyx overflow-auto scrollbar-hidden">
 			<Tabs defaultValue="myservers" className="w-full">

@@ -26,8 +26,7 @@ const CreateChannel = ({ serverId }: { serverId: string | undefined }) => {
 	const { form, formSchema } = createChannelFormSchema();
 
 	const { mutate, isLoading: isMutationLoading } = useClerkRequest("PUT", [
-		"joined-servers",
-		"servers",
+		`server/${serverId}`,
 	]);
 
 	function onSubmit(values: z.infer<typeof formSchema>) {

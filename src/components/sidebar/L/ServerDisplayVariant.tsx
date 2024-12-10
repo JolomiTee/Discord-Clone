@@ -64,11 +64,21 @@ const ServerDisplayVariant = ({
 	const [voiceChannels, setVoiceChannels] = useState<Channels[]>();
 	const [textChannels, setTextChannels] = useState<Channels[]>();
 
-	useEffect(() => {
-		setServer(data?.data);
-		// setTextChannels(_server?.channels.textChannels);
-		// setVoiceChannels(_server?.channels.voiceChannels);
-	}, [data]);
+useEffect(() => {
+	if (data?.data) {
+		setServer(data.data);
+
+		// Filter channels based on type
+		const channels = data.data.channels || [];
+
+		setTextChannels(
+			channels.filter((channel) => channel.channelType === "text")
+		);
+		setVoiceChannels(
+			channels.filter((channel) => channel.channelType === "voice")
+		);
+	}
+}, [data]);
 
 	return (
 		<Sidebar className="border-none">
