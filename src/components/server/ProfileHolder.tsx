@@ -15,7 +15,6 @@ import { ExternalLink, MenuIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const ProfileHolder = () => {
-
 	const { isMobile } = useSidebar();
 
 	return (
