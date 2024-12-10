@@ -11,40 +11,57 @@ import { Link } from "react-router-dom";
 import { Avatar, AvatarFallback, AvatarImage } from "../../ui/avatar";
 import { SidebarMenuButton } from "@/components/ui/sidebar";
 import { MessageSquarePlus, UserRoundPlus } from "lucide-react";
+import { useHMenuSelectedClient } from "@/hooks/use-dms";
 
 interface props {
 	friendReqCard?: boolean;
-	profileImg: string;
-	user: string;
-	dmId: string;
-	online: boolean;
-	hasMessage: boolean;
-	messageCount?: number;
-	pinned: boolean;
+	profile_image_url: string;
+	username: string;
+	_id: string;
+	firstName: string;
+	lastName: string;
+	email_address: string;
+	// online: boolean;
+	// hasMessage: boolean;
+	// messageCount?: number;
+	// pinned: boolean;
 	slug: string;
-	action?: () => void;
 }
 const FriendCard = ({
 	friendReqCard,
-	profileImg,
-	dmId,
-	user,
-	online,
-	hasMessage,
-	action,
+	profile_image_url,
+	_id,
+	username,
+	firstName,
+	lastName,
+	email_address,
+	// online,
+	// hasMessage,
 	slug,
 }: props) => {
+	const updateHMenuSelectedClient = useHMenuSelectedClient(
+		(state) => state.updateHMenuSelectedClient
+	);
 	return (
-		<SidebarMenuButton className="p-0 ms-0 text-white " asChild>
+		<SidebarMenuButton id={slug} className="p-0 ms-0 text-white " asChild>
 			<Link
-				to={`@me/dm/${String(dmId)}`}
+				to={`@me/dm/${String(_id)}`}
 				className="flex items-center justify-start h-[55px] gap-3 bg-transparent shadow-none"
-				onClick={action}
+				onClick={() => {
+					updateHMenuSelectedClient({
+						_id,
+						username,
+						firstName,
+						lastName,
+						email_address,
+						profile_image_url,
+					});
+				}}
 			>
 				<div className="relative">
 					<Avatar className="flex items-center justify-center">
 						<AvatarImage
-							src={profileImg}
+							src={profile_image_url}
 							alt={slug}
 							className="size-[40px]  rounded-full"
 						/>
@@ -59,15 +76,15 @@ const FriendCard = ({
 							/>
 						</AvatarFallback>
 					</Avatar>
-					<div
+					{/* <div
 						className={`absolute -right-0 bottom-0 ${
 							online ? "bg-emerald" : "bg-gray"
 						} rounded-full size-3 border-[2px] border-solid border-charcoal`}
-					></div>
+					></div> */}
 				</div>
-				<span className={hasMessage ? "font-bold" : "font-normal"}>
-					{user}
-				</span>
+				{/* <span className={hasMessage ? "font-bold" : "font-normal"}> */}
+				{username}
+				{/* </span> */}
 
 				<div className="flex items-center justify-start gap-3 ms-auto me-0 ">
 					{friendReqCard ? (

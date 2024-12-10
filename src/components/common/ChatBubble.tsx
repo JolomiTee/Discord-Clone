@@ -1,12 +1,10 @@
 import { getRandomColor } from "@/lib/utils";
+import { useAuth } from "@clerk/clerk-react";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import { Friends } from "@/types";
 interface ChatBubbleProps {
 	messageId: string;
 	time: string;
 	message: string;
-	senderId: string;
-	friend: Friends | null; // Information about the friend
 	user: {
 		userId: string | undefined;
 		username: string | null | undefined;
@@ -14,14 +12,10 @@ interface ChatBubbleProps {
 	};
 }
 
-const ChatBubble = ({
-	time,
-	message,
-	friend,
-	senderId,
-	user,
-}: ChatBubbleProps) => {
-	const isUserMessage = senderId === user.userId; // Check if the sender is the user
+const ChatBubble = ({ time, message, user }: ChatBubbleProps) => {
+	const { userId } = useAuth();
+
+	const isUserMessage = userId === user.userId; // Check if the sender is the user
 
 	return (
 		<div
@@ -32,7 +26,7 @@ const ChatBubble = ({
 			{/* Avatar */}
 			<Avatar className="flex items-center justify-center size-[35px] md:size-[40px] lg:size-[45px]">
 				<AvatarImage
-					src={isUserMessage ? user.userProfileImage : friend?.profileImg}
+					src={isUserMessage ? user.userProfileImage : ""}
 					className="size-[40px] lg:size-[45px] rounded-full"
 				/>
 				<AvatarFallback
@@ -54,11 +48,7 @@ const ChatBubble = ({
 					}`}
 				>
 					<span className="font-bold text-[#FFFFFFE5] text-[13px] md:text-[14px]">
-						{isUserMessage
-							? user.username
-							: friend?.user
-							? friend?.user
-							: "<No-name-yet>"}
+						{isUserMessage ? user.username : "Someone Else"}
 					</span>
 					<span className="font-bold text-[#FFFFFF80] text-[11px] md:text-xs">
 						{time}
