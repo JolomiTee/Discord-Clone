@@ -9,7 +9,8 @@ import {
 	UseQueryResult,
 } from "@tanstack/react-query";
 
-const BASE_URL = "http://localhost:6464/api/user/";
+const BASE_URL =
+	import.meta.env.VITE_API_PORT || "http://localhost:6464/api/user/";
 
 /**
  * A custom hook for fetching data with Clerk authentication and react-query.
