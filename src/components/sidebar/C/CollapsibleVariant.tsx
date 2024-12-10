@@ -1,5 +1,4 @@
 import MobileSearchModal from "@/components/mobile_v_comps/MobileSearchModal";
-import CreateServer from "@/components/server/CreateServer";
 import { Separator } from "@/components/ui/separator";
 import {
 	Sidebar,
@@ -16,6 +15,7 @@ import ProfileHolder from "../../server/ProfileHolder";
 import useClerkQuery from "@/hooks/use-query";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Servers } from "@/types";
+import CreateServer from "@/components/forms/CreateServer";
 
 const CollapsibleVariant = () => {
 	const { isMobile } = useSidebar();

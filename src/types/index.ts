@@ -108,8 +108,11 @@ export interface textChannelConversations {
 export interface Servers {
 	_id: string;
 	name: string;
+	ownedby: string;
+	description: string;
+	banner_image_url: string;
 	profile_image_url: string;
-	members: [];
+	members: string[];
 	channels: {
 		textChannels: Channels[];
 		voiceChannels: Channels[];

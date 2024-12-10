@@ -17,6 +17,7 @@ import { Plus } from "lucide-react";
 
 const Servers = () => {
 	const { isLoading, data, error } = useClerkQuery<IServer[]>("servers");
+	console.log(data);
 	return (
 		<div className="w-full bg-onyx overflow-auto scrollbar-hidden">
 			<Tabs defaultValue="myservers" className="w-full">
@@ -73,16 +74,27 @@ const Servers = () => {
 						</div>
 					) : data.data.length > 0 ? (
 						data.data.map((servers) => {
-							const { _id, profile_image_url, name, members } = servers;
+							const {
+								_id,
+								profile_image_url,
+								name,
+								members,
+								banner_image_url,
+								ownedby,
+								description,
+							} = servers;
 
 							return (
 								<ServerCard
 									key={_id}
 									_id={_id}
 									name={name}
+									ownedby={ownedby}
+									description={description}
 									// online={online}
 									members={members}
 									profile_image_url={profile_image_url}
+									banner_image_url={banner_image_url}
 								/>
 							);
 						})

@@ -29,9 +29,9 @@ export default function useClerkQuery<T>(
 	return useQuery<{ message: string; data: T }, Error>(
 		[url], // Use the URL as the query key
 		async () => {
-			const token = await getToken(); // Get the Clerk token
+			const token = await getToken();
 
-			// Combine the base URL and endpoint
+			// Combine the base URL and en````dpoint
 			const fullUrl = `${BASE_URL}${url}`;
 
 			const res = await fetch(fullUrl, {
@@ -44,12 +44,12 @@ export default function useClerkQuery<T>(
 
 			const json = await res.json();
 
-			// Ensure the response matches the expected shape
+			// response matches the expected shape
 			if (typeof json !== "object" || !json.message || !json.data) {
 				throw new Error("Unexpected response format");
 			}
 
-			return json as { message: string; data: T }; // Safely cast after validation
+			return json as { message: string; data: T };
 		},
 		options // Pass optional query options
 	);
