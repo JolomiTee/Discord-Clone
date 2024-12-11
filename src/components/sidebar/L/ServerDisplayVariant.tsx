@@ -56,9 +56,7 @@ const ServerDisplayVariant = ({
 		}
 	}, [l_sidebar_state, open]);
 
-	const { data, error, isLoading } = useClerkQuery<Servers>(
-		`server/${serverId}`
-	);
+	const { data } = useClerkQuery<Servers>(`server/${serverId}`);
 
 	const [server, setServer] = useState<Servers>();
 	const [voiceChannels, setVoiceChannels] = useState<Channels[]>();

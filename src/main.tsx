@@ -6,19 +6,18 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App.tsx";
 import "./assets/backgrounds.css";
-import { VITE_CLERK_PUBLISHABLE_KEY } from "./env.tsx";
 import "./index.css";
 
 const queryClient = new QueryClient();
 
-if (!VITE_CLERK_PUBLISHABLE_KEY) {
+if (!import.meta.env.VITE_CLERK_PUBLISHABLE_KEY) {
 	throw new Error("Missing Publishable Key");
 }
 
 createRoot(document.getElementById("root")!).render(
 	<StrictMode>
 		<ClerkProvider
-			publishableKey={VITE_CLERK_PUBLISHABLE_KEY}
+			publishableKey={import.meta.env.VITE_CLERK_PUBLISHABLE_KEY}
 			afterSignOutUrl="/"
 			signUpForceRedirectUrl="/user/@me"
 			signInForceRedirectUrl="/user/@me"
