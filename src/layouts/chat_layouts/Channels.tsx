@@ -1,14 +1,10 @@
-import ChatBubble from "@/components/common/ChatBubble";
 import HMenu from "@/components/common/HMenu";
 import Keyboard from "@/components/common/Keyboard";
-import { Badge } from "@/components/ui/badge";
 import MainContainer from "@/layouts/MainContainer";
 import { useUser } from "@clerk/clerk-react";
-import { useParams } from "react-router-dom";
 import Wumpus from "../Wumpus";
 
 const ChannelsLayout = () => {
-	const { channelId } = useParams();
 	const { user } = useUser();
 	console.log("userid: ", user?.id);
 

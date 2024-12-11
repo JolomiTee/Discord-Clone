@@ -4,13 +4,10 @@ import {
 	DialogHeader,
 	DialogTrigger,
 } from "@/components/ui/dialog";
-import { voiceChannels } from "@/data";
 import usePersistAppState from "@/hooks/use-persist-app-state";
 import { ChevronDown, Filter, Search } from "lucide-react";
-import { Link } from "react-router-dom";
 import ChatBubble from "../common/ChatBubble";
 import IconButtons from "../common/IconButtons";
-import SearchResultServerIcon from "../search/result_ui/SearchResultServerIcon";
 import {
 	Accordion,
 	AccordionContent,
