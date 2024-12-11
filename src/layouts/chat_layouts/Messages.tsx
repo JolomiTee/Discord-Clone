@@ -12,9 +12,8 @@ import { useUser } from "@clerk/clerk-react";
 import Wumpus from "../Wumpus";
 const MessagesLayout = () => {
 	// Logged-in user details
-	const { user } = useUser();
-
 	const client = useHMenuSelectedClient((state) => state.client) as Friends;
+	const { user } = useUser();
 
 	const currentUser = {
 		userId: user?.id,
@@ -40,7 +39,7 @@ const MessagesLayout = () => {
 					</Badge>
 
 					{/* Render Chat Bubbles */}
-					{messages && messages.length > 0 ? (
+					{messages.length > 0 ? (
 						messages.map((msg) => {
 							return (
 								<ChatBubble

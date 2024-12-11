@@ -21,12 +21,12 @@ import {
 	FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { createServerFormSchema } from "@/lib/formSchemas/createServerSchema";
+import { useCreateServerFormSchema } from "@/lib/formSchemas/createServerSchema";
 import { useState } from "react";
 import { z } from "zod";
 
 const CreateServer = () => {
-	const { form, formSchema } = createServerFormSchema();
+	const { form, formSchema } = useCreateServerFormSchema();
 	const [preview, setPreview] = useState<string | undefined>(undefined);
 	const [name, setName] = useState<string | undefined>(undefined);
 
@@ -91,7 +91,7 @@ const CreateServer = () => {
 
 				<Form {...form}>
 					<form
-						onSubmit={form.handleSubmit(onSubmit)}
+						onSubmit={() => form.handleSubmit(onSubmit)}
 						className="space-y-5"
 					>
 						<FormField

@@ -17,16 +17,16 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useClerkRequest } from "@/hooks/use-query";
-import { createChannelFormSchema } from "@/lib/formSchemas/createChannelSchema";
+import { useCreateChannelFormSchema } from "@/lib/formSchemas/createChannelSchema";
 import { z } from "zod";
 import IconButtons from "../common/IconButtons";
 import { Button } from "../ui/button";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 const CreateChannel = ({ serverId }: { serverId: string | undefined }) => {
-	const { form, formSchema } = createChannelFormSchema();
+	const { form, formSchema } = useCreateChannelFormSchema();
 
 	const { mutate, isLoading: isMutationLoading } = useClerkRequest("PUT", [
-		`server/${serverId}`,
+		`server/${serverId as string}`,
 	]);
 
 	function onSubmit(values: z.infer<typeof formSchema>) {
@@ -74,7 +74,7 @@ const CreateChannel = ({ serverId }: { serverId: string | undefined }) => {
 
 				<Form {...form}>
 					<form
-						onSubmit={form.handleSubmit(onSubmit)}
+						onSubmit={() => form.handleSubmit(onSubmit)}
 						className="space-y-5"
 					>
 						<FormField

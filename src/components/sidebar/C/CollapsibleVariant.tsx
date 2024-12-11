@@ -1,4 +1,6 @@
+import CreateServer from "@/components/forms/CreateServer";
 import MobileSearchModal from "@/components/mobile_v_comps/MobileSearchModal";
+import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import {
 	Sidebar,
@@ -9,20 +11,17 @@ import {
 	SidebarMenu,
 	useSidebar,
 } from "@/components/ui/sidebar";
-import SidebarNavLink from "../../common/sidebar_buttons/SidebarNavTab";
-import SidebarServerIcon from "../../common/sidebar_buttons/SidebarServerIcon";
-import ProfileHolder from "../../server/ProfileHolder";
-import useClerkQuery from "@/hooks/use-query";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useSidebarStateStore } from "@/hooks/base-context";
+import useClerkQuery from "@/hooks/use-query";
 import { Servers } from "@/types";
-import CreateServer from "@/components/forms/CreateServer";
-import { ChevronRight } from "lucide-react";
 import {
 	DoubleArrowLeftIcon,
 	DoubleArrowRightIcon,
 } from "@radix-ui/react-icons";
-import { Button } from "@/components/ui/button";
-import { useSidebarStateStore } from "@/hooks/base-context";
+import SidebarNavLink from "../../common/sidebar_buttons/SidebarNavTab";
+import SidebarServerIcon from "../../common/sidebar_buttons/SidebarServerIcon";
+import ProfileHolder from "../../server/ProfileHolder";
 
 const CollapsibleVariant = () => {
 	const { isMobile } = useSidebar();

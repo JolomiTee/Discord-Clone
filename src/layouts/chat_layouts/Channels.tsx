@@ -3,14 +3,13 @@ import HMenu from "@/components/common/HMenu";
 import Keyboard from "@/components/common/Keyboard";
 import { Badge } from "@/components/ui/badge";
 import { textChannelConversation } from "@/data/channels";
-import { friends } from "@/data/dms";
 import { serverList } from "@/data/servers";
 import MainContainer from "@/layouts/MainContainer";
 import { CurrentChannels, textChannelConversations } from "@/types";
+import { useUser } from "@clerk/clerk-react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Wumpus from "../Wumpus";
-import { useUser } from "@clerk/clerk-react";
 
 const ChannelsLayout = () => {
 	const { channelId } = useParams();
@@ -35,16 +34,13 @@ const ChannelsLayout = () => {
 		);
 
 		const currChannel = serverList
-			.flatMap((server) => [
-				...server.channels.textChannels,
-				...server.channels.voiceChannels,
-			])
-			.find((ch) => ch.id === channelId);
+			.flatMap((server) => [...server.channels])
+			.find((ch) => ch._id === channelId);
 
 		setCurrentChannelMessages(channel);
 		setcurrentChannel({
 			name: currChannel?.name,
-			channelType: currChannel?.type,
+			channelType: currChannel?.channelType,
 		});
 	}, [channelId]);
 
@@ -65,20 +61,14 @@ const ChannelsLayout = () => {
 					{currentChannelMessages &&
 					currentChannelMessages.messages.length > 0 ? (
 						currentChannelMessages?.messages.map((msg) => {
-							const { messageId, time, message, senderId } = msg;
+							const { messageId, time, message } = msg;
 
 							return (
 								<ChatBubble
 									key={messageId}
 									messageId={messageId}
-									senderId={senderId}
 									time={time}
 									message={message}
-									friend={
-										friends.find(
-											(friend) => friend.id === senderId
-										) || null
-									}
 									user={currentUser}
 								/>
 							);
@@ -88,7 +78,7 @@ const ChannelsLayout = () => {
 					)}
 				</div>
 
-				<Keyboard />
+				<Keyboard currentUser={currentUser} />
 			</>
 		</MainContainer>
 	);

@@ -4,6 +4,7 @@ import { Button } from "../ui/button";
 import { SendHorizonal } from "lucide-react";
 
 const Keyboard = ({ currentUser }: { currentUser: CurrentUser }) => {
+	console.log(currentUser);
 	return (
 		<div className="bg-charcoal p-3">
 			<div className="bg-onyx rounded-[15px] py-1 px-2 flex items-center gap-1 sticky bottom-0 ring-1 border border-charcoal shadow">

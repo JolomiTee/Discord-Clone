@@ -2,7 +2,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
-export const createChannelFormSchema = () => {
+export const useCreateChannelFormSchema = () => {
 	const formSchema = z.object({
 		name: z
 			.string()
@@ -28,11 +28,11 @@ export const createChannelFormSchema = () => {
 	return { form, formSchema };
 };
 
-const permissionsSchema = z.object({
-	manageChannels: z.boolean().default(false),
-	manageRoles: z.boolean().default(false),
-	kickMembers: z.boolean().default(false),
-	banMembers: z.boolean().default(false),
-	sendMessages: z.boolean().default(true),
-	connect: z.boolean().default(true),
-});
+// const permissionsSchema = z.object({
+// 	manageChannels: z.boolean().default(false),
+// 	manageRoles: z.boolean().default(false),
+// 	kickMembers: z.boolean().default(false),
+// 	banMembers: z.boolean().default(false),
+// 	sendMessages: z.boolean().default(true),
+// 	connect: z.boolean().default(true),
+// });
