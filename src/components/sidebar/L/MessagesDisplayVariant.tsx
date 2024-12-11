@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
+import AddFriendModal from "@/components/friends/AddFriendModal";
 import MobileSearchModal from "@/components/mobile_v_comps/MobileSearchModal";
 import { Sidebar, SidebarContent, useSidebar } from "@/components/ui/sidebar";
 import { messageList } from "@/data";
@@ -15,8 +16,7 @@ import { useOpenSearchBar } from "@/hooks/use-open-sidebar";
 import { useEffect } from "react";
 import IconButtons from "../../common/IconButtons";
 import DMCard from "../../common/sidebar_buttons/DMCard";
-import FriendCard from "../../common/sidebar_buttons/FriendCard";
-import AddFriendModal from "@/components/friends/AddFriendModal";
+import FriendsList from "./FriendsList";
 
 const MessagesDisplayVariant = () => {
 	const openSearchBar = useOpenSearchBar();
@@ -146,33 +146,7 @@ const MessagesDisplayVariant = () => {
 							value="friends"
 							className="px-3 text-[#FFFFFF99]  pt-[120px] pb-[50px]"
 						>
-							<div className=" grid overflow-y-auto max-h-full scrollbar-hidden">
-								{messageList.map((message) => {
-									const {
-										profileImg,
-										user,
-										online,
-										hasMessage,
-										messageCount,
-										id,
-										slug,
-										pinned,
-									} = message;
-									return (
-										<FriendCard
-											key={id}
-											slug={slug}
-											dmId={id}
-											user={user}
-											profileImg={profileImg}
-											online={online}
-											hasMessage={hasMessage}
-											messageCount={messageCount}
-											pinned={pinned}
-										/>
-									);
-								})}
-							</div>
+							<FriendsList />
 						</TabsContent>
 					</Tabs>
 				</section>

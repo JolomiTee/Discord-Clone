@@ -89,7 +89,10 @@ export function AccountStepsCheckBoxes() {
 
 	return (
 		<Form {...form}>
-			<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+			<form
+				onSubmit={() => form.handleSubmit(onSubmit)}
+				className="space-y-8"
+			>
 				<FormField
 					control={form.control}
 					name="items"
@@ -109,11 +112,11 @@ export function AccountStepsCheckBoxes() {
 												<FormControl>
 													<Checkbox
 														className="rounded-full size-6 data-[state=checked]:bg-discord-blue"
-														checked={field.value?.includes(
+														checked={field.value.includes(
 															item.id
 														)}
 														onCheckedChange={(checked) => {
-															return checked
+															checked
 																? field.onChange([
 																		...field.value,
 																		item.id,

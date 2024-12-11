@@ -33,15 +33,15 @@ const ChannelList = ({
 			<AccordionTrigger className="pt-0">{section}</AccordionTrigger>
 			<AccordionContent className="px-0 flex flex-col gap-3">
 				{channel?.map((channels) => {
-					const { id, name, type, slug } = channels;
+					const { _id, name, channelType } = channels;
 					return (
 						<ChannelsButton
-							key={id}
+							key={_id}
 							serverId={serverId}
-							channelId={id}
+							channelId={_id}
 							name={name}
-							slug={slug}
-							type={type}
+							slug={name}
+							type={channelType}
 						/>
 					);
 				})}
@@ -68,7 +68,12 @@ const ChannelsButton = ({
 				to={`@server/${String(serverId)}/@channel/${String(channelId)}`}
 				className="flex justify-start items-center gap-2 text-base"
 			>
-				<img src={`/icons/${type}.svg`} alt={slug} width={22} height={22} />
+				<img
+					src={`/icons/${type}-channel.svg`}
+					alt={slug}
+					width={22}
+					height={22}
+				/>
 				{name}
 			</Link>
 		</SidebarMenuButton>

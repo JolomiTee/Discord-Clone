@@ -15,9 +15,9 @@ import {
 	SidebarHeader,
 	useSidebar,
 } from "@/components/ui/sidebar";
-import { serverList } from "@/data/servers";
 import { useSidebarStateStore } from "@/hooks/base-context";
 import { useOpenSearchBar } from "@/hooks/use-open-sidebar";
+import useClerkQuery from "@/hooks/use-query";
 import { Channels, Servers } from "@/types";
 import {
 	Archive,
@@ -30,6 +30,7 @@ import { useEffect, useState } from "react";
 import IconButtons from "../../common/IconButtons";
 import { AspectRatio } from "../../ui/aspect-ratio";
 import { Separator } from "../../ui/separator";
+import CreateChannel from "@/components/forms/CreateChannel";
 
 const ServerDisplayVariant = ({
 	serverId,
@@ -55,32 +56,43 @@ const ServerDisplayVariant = ({
 		}
 	}, [l_sidebar_state, open]);
 
+	const { data } = useClerkQuery<Servers>(`server/${serverId}`);
+
+	const [server, setServer] = useState<Servers>();
 	const [voiceChannels, setVoiceChannels] = useState<Channels[]>();
 	const [textChannels, setTextChannels] = useState<Channels[]>();
-	const [serverInfo, setserverInfo] = useState<Servers>();
 
-	useEffect(() => {
-		const _server = serverList.find((server) => server.id === serverId);
-		setserverInfo(_server);
-		setTextChannels(_server?.channels.textChannels);
-		setVoiceChannels(_server?.channels.voiceChannels);
-	}, [serverId, voiceChannels, textChannels]);
+useEffect(() => {
+	if (data?.data) {
+		setServer(data.data);
+
+		// Filter channels based on type
+		const channels = data.data.channels || [];
+
+		setTextChannels(
+			channels.filter((channel) => channel.channelType === "text")
+		);
+		setVoiceChannels(
+			channels.filter((channel) => channel.channelType === "voice")
+		);
+	}
+}, [data]);
 
 	return (
 		<Sidebar className="border-none">
 			<SidebarHeader className="bg-carbon p-0">
 				<AspectRatio ratio={16 / 6}>
 					<img
-						src={serverInfo?.server_img}
-						alt={serverInfo?.slug}
+						src={server?.banner_image_url}
+						alt={server?.name}
 						className="object-cover h-full w-full"
 					/>
 				</AspectRatio>
 				<div className="p-3 grid gap-3">
-					<div className="flex items-center justify-between">
-						<div className="flex items-center gap-2 text-white">
-							<img src="/icons/verified.svg" width={25} height={25} />
-							{serverInfo?.name}
+					<div className="flex items-start justify-between">
+						<div className="grid items-center gap-2 text-white">
+							<p>{server?.name}</p>
+							<p className="text-xs">{server?.description}</p>
 						</div>
 
 						<DropdownMenu>
@@ -113,21 +125,21 @@ const ServerDisplayVariant = ({
 							alt="Notifications"
 							sizes="size-7"
 						/>
+
 						<IconButtons
 							src="server_guide"
 							alt="Notifications"
 							sizes="size-7"
 						/>
+
 						<IconButtons
 							src="browse_channels"
 							alt="Notifications"
 							sizes="size-7"
 						/>
-						<IconButtons
-							src="events"
-							alt="Notifications"
-							sizes="size-7"
-						/>
+
+						<CreateChannel serverId={server?._id} />
+
 						<IconButtons
 							src="search"
 							alt="Notifications"

@@ -9,16 +9,14 @@ import usePersistAppState from "@/hooks/use-persist-app-state";
 import { Link } from "react-router-dom";
 
 interface props {
-	slug: string;
 	name: string;
-	serverIcon: string;
+	profile_image_url: string;
 	hasNotification: boolean;
 	serverId: string;
 }
 const SidebarServerIcon = ({
-	slug,
 	name,
-	serverIcon,
+	profile_image_url,
 	hasNotification,
 	serverId,
 }: props) => {
@@ -80,7 +78,7 @@ const SidebarServerIcon = ({
 								: "group-hover/item:rounded-[12px]"
 						}`}
 					>
-						<AvatarImage src={serverIcon} alt={slug} />
+						<AvatarImage src={profile_image_url} alt={name} />
 						<AvatarFallback
 							className={
 								selectedServer === serverId
@@ -91,7 +89,7 @@ const SidebarServerIcon = ({
 							<img
 								src="/icons/discord.svg"
 								className="size-[30px]"
-								alt={slug}
+								alt={name}
 							/>
 						</AvatarFallback>
 					</Avatar>

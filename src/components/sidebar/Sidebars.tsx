@@ -19,7 +19,7 @@ export const LSidebar = () => {
 			className="text-[#B5BFE7] max-h-dvh max-w-fit"
 		>
 			{(location.pathname.includes("@me") ||
-				location.pathname.includes(`/@server/${serverId}`)) &&
+				location.pathname.includes(`/@server/${String(serverId)}`)) &&
 				(l_sidebar_display_context === "server" ? (
 					<ServerDisplayVariant serverId={serverId} />
 				) : (

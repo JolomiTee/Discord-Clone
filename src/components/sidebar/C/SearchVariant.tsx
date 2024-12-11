@@ -10,14 +10,13 @@ import {
 	useCollapsibleSidebarStore,
 	useSidebarStateStore,
 } from "@/hooks/base-context";
+import usePersistAppState from "@/hooks/use-persist-app-state";
 import { ChevronDown, Search, SidebarClose } from "lucide-react";
 import ChatBubble from "../../common/ChatBubble";
-import ServerSearch from "../../search/ServerSearch";
 import SidebarServerIcon from "../../common/sidebar_buttons/SidebarServerIcon";
+import ServerSearch from "../../search/ServerSearch";
 import { Button } from "../../ui/button";
 import { Input } from "../../ui/input";
-import usePersistAppState from "@/hooks/use-persist-app-state";
-import { friends } from "@/data/dms";
 
 const SearchVariant = () => {
 	const selectedTab = usePersistAppState((state) => state.selectedTab);
@@ -86,16 +85,14 @@ const SearchVariant = () => {
 					</SidebarGroupLabel>
 					<SidebarMenu className="gap-3 px-0  text-white">
 						<SidebarServerIcon
-							slug="planters-of-grass"
 							name="Planters of Grass"
-							serverIcon="/servers/midjourney.png"
+							profile_image_url="/servers/midjourney.png"
 							hasNotification={true}
 							serverId={"1"}
 						/>
 						<SidebarServerIcon
-							slug="harvesters-of-grass"
 							name="Harvesters of Grass"
-							serverIcon="/servers/apex-legends.png"
+							profile_image_url="/servers/apex-legends.png"
 							hasNotification={true}
 							serverId={"2"}
 						/>
@@ -117,25 +114,15 @@ const SearchVariant = () => {
 						<ChatBubble
 							key="1234"
 							messageId={"12345r"}
-							senderId={"1234rtg"}
 							time={"15:45"}
 							message={"Into the Grasslands"}
-							friend={
-								friends.find((friend) => friend.id === "12774rtg") ||
-								null
-							}
 							user={user}
 						/>
 						<ChatBubble
 							key="1234"
 							messageId={"3467"}
-							senderId={"12774rtg"}
 							time={"19:15"}
 							message={"A land of Grass and Weed"}
-							friend={
-								friends.find((friend) => friend.id === "12774rtg") ||
-								null
-							}
 							user={user}
 						/>
 					</SidebarMenu>
