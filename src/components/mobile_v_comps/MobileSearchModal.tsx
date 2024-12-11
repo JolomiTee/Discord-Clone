@@ -5,7 +5,6 @@ import {
 	DialogTrigger,
 } from "@/components/ui/dialog";
 import { voiceChannels } from "@/data";
-import { serverList } from "@/data/servers";
 import usePersistAppState from "@/hooks/use-persist-app-state";
 import { ChevronDown, Filter, Search } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -134,7 +133,7 @@ const MobileSearchModal = ({ type, open, onOpenChange }: Props) => {
 								SERVERS
 							</AccordionTrigger>
 							<AccordionContent className="pe-3 flex flex-col gap-3">
-								{serverList.map((item, i) => {
+								{/* {serverList.map((item, i) => {
 									const {
 										name,
 										profile_image_url: serverIcon,
@@ -149,7 +148,8 @@ const MobileSearchModal = ({ type, open, onOpenChange }: Props) => {
 											i={_id}
 										/>
 									);
-								})}
+								})} */}
+								No Servers Found
 							</AccordionContent>
 						</AccordionItem>
 
@@ -158,7 +158,7 @@ const MobileSearchModal = ({ type, open, onOpenChange }: Props) => {
 								CHANNELS
 							</AccordionTrigger>
 							<AccordionContent className="px-3 flex flex-col gap-3">
-								{voiceChannels.map((channel, i) => {
+								{/* {voiceChannels.map((channel, i) => {
 									return (
 										<Link
 											key={i}
@@ -175,7 +175,8 @@ const MobileSearchModal = ({ type, open, onOpenChange }: Props) => {
 											{channel.name}
 										</Link>
 									);
-								})}
+								})} */}
+								No Channels Found
 							</AccordionContent>
 						</AccordionItem>
 
