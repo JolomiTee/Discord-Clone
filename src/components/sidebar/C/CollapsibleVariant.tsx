@@ -56,9 +56,9 @@ const CollapsibleVariant = () => {
 					</SidebarMenu>
 				</SidebarGroup>
 
-				<div className="px-0.5 mb-2">
+				<div className="px-0.5 md:mb-4">
 					<Button
-						className="flex justify-center w-full h-[22px] bg-charcoal rounded-[8px]"
+						className="md:flex justify-center w-full h-[22px] bg-charcoal rounded-[8px] hidden"
 						onClick={toggle_c_sidebar}
 						title={c_sidebar_state ? "Hide sidebar" : "Expand sidebar"}
 					>
@@ -80,7 +80,7 @@ const CollapsibleVariant = () => {
 				</div>
 			</SidebarHeader>
 
-			<SidebarContent className="bg-onyx scrollbar-hidden group-data-[collapsible=icon]:overflow-scroll pt-2">
+			<SidebarContent className="bg-onyx scrollbar-hidden group-data-[collapsible=icon]:overflow-scroll">
 				<SidebarGroup className="p-0">
 					<SidebarMenu className="gap-y-3">
 						{isLoading ? (
@@ -115,6 +115,7 @@ const CollapsibleVariant = () => {
 					<Separator className="lg:group-data-[collapsible=icon]:w-[80%] group-data-[collapsible=icon]:mx-auto rounded-full bg-charcoal h-1 md:w-[45px] mt-2 md:ms-3" />
 
 					<SidebarNavLink to="inbox" icon="inbox" label="Inbox" />
+
 					<ProfileHolder />
 				</SidebarMenu>
 			</SidebarFooter>

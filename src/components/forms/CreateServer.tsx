@@ -67,7 +67,7 @@ const CreateServer = () => {
 			<DialogTrigger asChild>
 				<SidebarMenuButton
 					tooltip={"Create a server"}
-					className="gap-3 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden p-0 group-data-[collapsible=icon]:ps-0 px-3 md:ps-3 data-[active=true]:text-white data-[active=true]:font-bold mx-auto"
+					className="gap-3 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden p-0 group-data-[collapsible=icon]:ps-0 px-2 md:ps-3 data-[active=true]:text-white data-[active=true]:font-bold mx-auto"
 				>
 					<Button className="bg-charcoal rounded-full size-[45px] group-data-[collapsible=icon]:md:size-[50px]">
 						<Plus />
@@ -91,7 +91,7 @@ const CreateServer = () => {
 
 				<Form {...form}>
 					<form
-						onSubmit={() => form.handleSubmit(onSubmit)}
+						onSubmit={form.handleSubmit(onSubmit)}
 						className="space-y-5"
 					>
 						<FormField
