@@ -1,3 +1,4 @@
+import LoadingServers from "@/components/common/skeletons/LoadingServers";
 import CreateServer from "@/components/forms/CreateServer";
 import MobileSearchModal from "@/components/mobile_v_comps/MobileSearchModal";
 import { Button } from "@/components/ui/button";
@@ -11,7 +12,6 @@ import {
 	SidebarMenu,
 	useSidebar,
 } from "@/components/ui/sidebar";
-import { Skeleton } from "@/components/ui/skeleton";
 import { useSidebarStateStore } from "@/hooks/base-context";
 import useClerkQuery from "@/hooks/use-query";
 import { Servers } from "@/types";
@@ -84,11 +84,15 @@ const CollapsibleVariant = () => {
 				<SidebarGroup className="p-0">
 					<SidebarMenu className="gap-y-3">
 						{isLoading ? (
-							<>
-								<Skeleton className="size-[45px] md:size-[50px] rounded-full mb-3 bg-discord-blue/20 mx-auto" />
-							</>
+							<LoadingServers />
 						) : error ? (
-							<div className="text-center">NF</div>
+							<div className="text-center">
+								<img
+									className="rounded-full size-[50px] object-cover cursor-not-allowed mx-auto"
+									title="Couldn't get servers"
+									src="/error_fetching_servers.jpeg"
+								/>
+							</div>
 						) : data.data.length > 0 ? (
 							data.data.map((server: Servers) => {
 								const { _id, name, profile_image_url } = server;
@@ -103,7 +107,13 @@ const CollapsibleVariant = () => {
 								);
 							})
 						) : (
-							<div className="text-center">NS</div>
+							<div className="text-center">
+								<img
+									className="rounded-full size-[50px] object-cover cursor-not-allowed mx-auto"
+									title="No Servers found"
+									src="/no_servers_found.png"
+								/>
+							</div>
 						)}
 					</SidebarMenu>
 				</SidebarGroup>
