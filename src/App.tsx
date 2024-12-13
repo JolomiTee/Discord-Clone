@@ -10,7 +10,6 @@ import Help from "./pages/Help";
 import Home from "./pages/home/Home";
 import TnC from "./pages/home/TnC";
 import Inbox from "./pages/Inbox";
-import Profile from "./pages/Profile";
 import Servers from "./pages/Servers";
 
 function App() {
@@ -46,7 +45,6 @@ function App() {
 
 				<Route path="inbox" element={<Inbox />} />
 				<Route path="help" element={<Help />} />
-				<Route path="profile/:id" element={<Profile />} />
 			</Route>
 		</Routes>
 	);
