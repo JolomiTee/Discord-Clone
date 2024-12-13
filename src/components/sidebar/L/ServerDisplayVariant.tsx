@@ -21,10 +21,12 @@ import useClerkQuery from "@/hooks/use-query";
 import { Channels, Servers } from "@/types";
 import {
 	Archive,
+	Edit,
 	Ellipsis,
 	FileDown,
 	MessageCircleWarning,
 	Pin,
+	Trash,
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import IconButtons from "../../common/IconButtons";
@@ -62,21 +64,21 @@ const ServerDisplayVariant = ({
 	const [voiceChannels, setVoiceChannels] = useState<Channels[]>();
 	const [textChannels, setTextChannels] = useState<Channels[]>();
 
-useEffect(() => {
-	if (data?.data) {
-		setServer(data.data);
+	useEffect(() => {
+		if (data?.data) {
+			setServer(data.data);
 
-		// Filter channels based on type
-		const channels = data.data.channels || [];
+			// Filter channels based on type
+			const channels = data.data.channels || [];
 
-		setTextChannels(
-			channels.filter((channel) => channel.channelType === "text")
-		);
-		setVoiceChannels(
-			channels.filter((channel) => channel.channelType === "voice")
-		);
-	}
-}, [data]);
+			setTextChannels(
+				channels.filter((channel) => channel.channelType === "text")
+			);
+			setVoiceChannels(
+				channels.filter((channel) => channel.channelType === "voice")
+			);
+		}
+	}, [data]);
 
 	return (
 		<Sidebar className="border-none">
@@ -99,45 +101,23 @@ useEffect(() => {
 							<DropdownMenuTrigger>
 								<Ellipsis />
 							</DropdownMenuTrigger>
-							<DropdownMenuContent className="rounded-[8px]">
-								<DropdownMenuLabel>Actions</DropdownMenuLabel>
+							<DropdownMenuContent className="rounded-[8px] bg-charcoal ">
+								<DropdownMenuLabel className="text-white">
+									Actions
+								</DropdownMenuLabel>
 								<DropdownMenuSeparator />
-								<DropdownMenuItem>
-									<Archive /> Archive
+								<DropdownMenuItem className="text-white">
+									<Edit /> Edit Server
 								</DropdownMenuItem>
-								<DropdownMenuItem>
-									<FileDown />
-									Export{" "}
-								</DropdownMenuItem>
-								<DropdownMenuItem>
-									<Pin /> Pin
-								</DropdownMenuItem>
-								<DropdownMenuItem>
-									<MessageCircleWarning /> Report
+								<Separator className="my-1" />
+								<DropdownMenuItem className="text-white bg-crimson rounded">
+									<Trash /> Delete Server
 								</DropdownMenuItem>
 							</DropdownMenuContent>
 						</DropdownMenu>
 					</div>
 
-					<div className="flex justify-between items-center">
-						<IconButtons
-							src="notification"
-							alt="Notifications"
-							sizes="size-7"
-						/>
-
-						<IconButtons
-							src="server_guide"
-							alt="Notifications"
-							sizes="size-7"
-						/>
-
-						<IconButtons
-							src="browse_channels"
-							alt="Notifications"
-							sizes="size-7"
-						/>
-
+					<div className="flex justify-start items-center">
 						<CreateChannel serverId={server?._id} />
 
 						<IconButtons

@@ -71,7 +71,7 @@
 
 /* ERROR 404 PAGE */
 .wrap-error {
-  background-color: #667bf2;
+  background-color: #2C2D31;
   background-image: url("/error_page_bg.svg");
   background-attachment: fixed;
   background-size: cover;
@@ -84,7 +84,7 @@
   font-family: montserrat, sans-serif;
 }
 h1 span {
-  text-shadow: -8px 0 0 rgb(102 123 242);
+  text-shadow: -8px 0 0 #5865F2;
 }
 .text-9xl {
   font-size: 5.5rem;

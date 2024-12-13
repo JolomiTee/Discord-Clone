@@ -38,6 +38,10 @@ const ProfileHolder = () => {
 											"md:group-data-[collapsible=icon]:size-[55px] size-[60px] flex justify-center items-center bg-charcoal group-data-[collapsible=icon]:rounded-full rounded-none rounded-l-full overflow-hidden",
 										userButtonAvatarImage:
 											"size-[40px] md:size-[45px] rounded-full",
+										userButtonPopoverCard: "bg-black text-white",
+										userButtonPopoverMain: "bg-black text-white",
+										userButtonPopoverActionButton:
+											"bg--black text-white hover:text-discord-blue",
 									},
 								}}
 							>
