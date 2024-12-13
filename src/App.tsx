@@ -11,11 +11,13 @@ import Home from "./pages/home/Home";
 import TnC from "./pages/home/TnC";
 import Inbox from "./pages/Inbox";
 import Servers from "./pages/Servers";
+import Error404 from "./pages/Error404";
 
 function App() {
 	return (
 		<Routes>
 			<Route path="/" element={<Home />} />
+			<Route path="*" element={<Error404 />} />
 
 			<Route path="/sign-in/*" element={<Login />} />
 			<Route path="/sign-up/*" element={<Signup />} />

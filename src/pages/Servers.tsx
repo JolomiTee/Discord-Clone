@@ -66,7 +66,7 @@ const Servers = () => {
 					{isLoading ? (
 						<LoadingServerList />
 					) : error ? (
-						<div className="text-center text-lg">
+						<div className="text-center text-lg text-white">
 							Wumpus ran into an error fetching servers
 						</div>
 					) : data.data.length > 0 ? (
