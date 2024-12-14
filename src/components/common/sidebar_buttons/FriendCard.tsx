@@ -39,9 +39,11 @@ const FriendCard = ({
 	// hasMessage,
 	slug,
 }: props) => {
+
 	const updateHMenuSelectedClient = useHMenuSelectedClient(
 		(state) => state.updateHMenuSelectedClient
 	);
+
 	return (
 		<SidebarMenuButton id={slug} className="p-0 ms-0 text-white " asChild>
 			<Link

@@ -88,9 +88,9 @@ export interface Channels {
 }
 
 export interface CurrentChannels {
+	_id: string;
 	name: string | undefined;
 	channelType?: string | undefined;
-	profile_image?: string | undefined;
 }
 
 export interface textChannelConversations {

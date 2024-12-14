@@ -84,11 +84,17 @@ const ServerDisplayVariant = ({
 		<Sidebar className="border-none">
 			<SidebarHeader className="bg-carbon p-0">
 				<AspectRatio ratio={16 / 6}>
-					<img
-						src={server?.banner_image_url}
-						alt={server?.name}
-						className="object-cover h-full w-full"
-					/>
+					{server?.banner_image_url ? (
+						<img
+							src={server?.banner_image_url}
+							alt={server?.name}
+							className="object-cover h-full w-full"
+						/>
+					) : (
+						<div className="w-full h-full flex justify-center items-center">
+							No Banner Image
+						</div>
+					)}
 				</AspectRatio>
 				<div className="p-3 grid gap-3">
 					<div className="flex items-start justify-between">
@@ -119,12 +125,6 @@ const ServerDisplayVariant = ({
 
 					<div className="flex justify-start items-center">
 						<CreateChannel serverId={server?._id} />
-
-						<IconButtons
-							src="search"
-							alt="Notifications"
-							action={openSearchBar}
-						/>
 					</div>
 
 					<Separator className="bg-[#FFFFFF26] h-0.5" />

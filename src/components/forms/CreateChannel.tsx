@@ -57,8 +57,13 @@ const CreateChannel = ({ serverId }: { serverId: string | undefined }) => {
 
 	return (
 		<Dialog>
-			<DialogTrigger>
-				<IconButtons src="plus" alt="Create Channel" sizes="size-5" />
+			<DialogTrigger asChild>
+				<Button
+					size={"sm"}
+					className="rounded-[18px] bg-discord-blue px-2 h-[30px] "
+				>
+					Add Channel
+				</Button>
 			</DialogTrigger>
 			<DialogContent className="rounded-[15px] md:rounded-[15px] py-7 bg-onyx text-white">
 				<DialogHeader className="text-start">

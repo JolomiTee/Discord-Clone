@@ -41,7 +41,6 @@ const CreateServer = () => {
 	]);
 
 	function onSubmit(values: z.infer<typeof formSchema>) {
-		console.log(values);
 		const formData = new FormData();
 
 		// Append all text fields
@@ -55,7 +54,6 @@ const CreateServer = () => {
 		if (values.banner) {
 			formData.append("banner", values.banner);
 		}
-		console.log(values);
 		mutate(
 			{
 				url: "servers",
@@ -98,14 +96,15 @@ const CreateServer = () => {
 				</DialogHeader>
 
 				<div className="bg-onyx z-10 overflow-y-scroll scrollbar-hidden h-full relative grid gap-3">
-					<div className="max-w-[450px] h-[120px] pb-0">
-						<img
-							src={bannerPreview}
-							alt="Image"
-							className="rounded-md w-full h-full object-center object-cover "
-						/>
-					</div>
-
+					{bannerPreview && (
+						<div className="max-w-[450px] h-[120px] pb-0">
+							<img
+								src={bannerPreview}
+								alt="Image"
+								className="rounded-md w-full h-full object-center object-cover "
+							/>
+						</div>
+					)}
 					<ServerIconPreview iconPreview={iconPreview} name={name} />
 
 					<Form {...form}>
