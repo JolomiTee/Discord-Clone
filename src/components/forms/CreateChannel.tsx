@@ -19,7 +19,6 @@ import { Input } from "@/components/ui/input";
 import { useClerkRequest } from "@/hooks/use-query";
 import { useCreateChannelFormSchema } from "@/lib/formSchemas/createChannelSchema";
 import { z } from "zod";
-import IconButtons from "../common/IconButtons";
 import { Button } from "../ui/button";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 const CreateChannel = ({ serverId }: { serverId: string | undefined }) => {

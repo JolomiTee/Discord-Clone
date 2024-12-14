@@ -1,4 +1,5 @@
 import ChannelList from "@/components/common/sidebar_buttons/ChannelsButton";
+import CreateChannel from "@/components/forms/CreateChannel";
 import { Accordion } from "@/components/ui/accordion";
 import {
 	DropdownMenu,
@@ -16,30 +17,18 @@ import {
 	useSidebar,
 } from "@/components/ui/sidebar";
 import { useSidebarStateStore } from "@/hooks/base-context";
-import { useOpenSearchBar } from "@/hooks/use-open-sidebar";
 import useClerkQuery from "@/hooks/use-query";
 import { Channels, Servers } from "@/types";
-import {
-	Archive,
-	Edit,
-	Ellipsis,
-	FileDown,
-	MessageCircleWarning,
-	Pin,
-	Trash,
-} from "lucide-react";
+import { Edit, Ellipsis, Trash } from "lucide-react";
 import { useEffect, useState } from "react";
-import IconButtons from "../../common/IconButtons";
 import { AspectRatio } from "../../ui/aspect-ratio";
 import { Separator } from "../../ui/separator";
-import CreateChannel from "@/components/forms/CreateChannel";
 
 const ServerDisplayVariant = ({
 	serverId,
 }: {
 	serverId: string | undefined;
 }) => {
-	const openSearchBar = useOpenSearchBar();
 	const l_sidebar_state = useSidebarStateStore(
 		(state) => state.l_sidebar_state
 	);
