@@ -4,6 +4,7 @@ import {
 	AccordionTrigger,
 } from "@/components/ui/accordion";
 import { SidebarMenuButton } from "@/components/ui/sidebar";
+import { useHMenuSelectedClient } from "@/hooks/use-dms";
 import { Channels } from "@/types";
 import { Link } from "react-router-dom";
 
@@ -57,6 +58,9 @@ const ChannelsButton = ({
 	type,
 	slug,
 }: ChannelsButtonProps) => {
+	const updateHMenuSelectedClient = useHMenuSelectedClient(
+		(state) => state.updateHMenuSelectedClient
+	);
 	return (
 		<SidebarMenuButton
 			id={`${slug}-${String(channelId)}`}
@@ -67,6 +71,13 @@ const ChannelsButton = ({
 			<Link
 				to={`@server/${String(serverId)}/@channel/${String(channelId)}`}
 				className="flex justify-start items-center gap-2 text-base"
+				onClick={() => {
+					updateHMenuSelectedClient({
+						_id: channelId,
+						name,
+						channelType: type,
+					});
+				}}
 			>
 				<img
 					src={`/icons/${type}-channel.svg`}

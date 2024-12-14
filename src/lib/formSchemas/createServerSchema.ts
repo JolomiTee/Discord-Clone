@@ -11,6 +11,18 @@ export const useCreateServerFormSchema = () => {
 		description: z
 			.string()
 			.max(250, { message: "Description cannot exceed 250 characters." }),
+		banner: z
+			.custom<File>((file) => file instanceof File, {
+				message: "Must be a valid file.",
+			})
+			.refine((file) => file?.type?.startsWith("image/"), {
+				message: "File must be an image.",
+			})
+			.refine(
+				(file) => file?.size <= 5 * 1024 * 1024, // 5MB limit
+				{ message: "File size must not exceed 5MB." }
+			)
+			.optional(),
 		icon: z
 			.custom<File>((file) => file instanceof File, {
 				message: "Must be a valid file.",

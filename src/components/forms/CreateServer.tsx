@@ -27,7 +27,12 @@ import { z } from "zod";
 
 const CreateServer = () => {
 	const { form, formSchema } = useCreateServerFormSchema();
-	const [preview, setPreview] = useState<string | undefined>(undefined);
+	const [iconPreview, setIconPreview] = useState<string | undefined>(
+		undefined
+	);
+	const [bannerPreview, setBannerPreview] = useState<string | undefined>(
+		undefined
+	);
 	const [name, setName] = useState<string | undefined>(undefined);
 
 	const { mutate, isLoading: isMutationLoading } = useClerkRequest("POST", [
@@ -36,7 +41,6 @@ const CreateServer = () => {
 	]);
 
 	function onSubmit(values: z.infer<typeof formSchema>) {
-		console.log(values);
 		const formData = new FormData();
 
 		// Append all text fields
@@ -46,6 +50,9 @@ const CreateServer = () => {
 		// Append the icon file if it exists
 		if (values.icon) {
 			formData.append("icon", values.icon);
+		}
+		if (values.banner) {
+			formData.append("banner", values.banner);
 		}
 		mutate(
 			{
@@ -75,7 +82,8 @@ const CreateServer = () => {
 					<span className="text-[15px]">Create a server</span>
 				</SidebarMenuButton>
 			</DialogTrigger>
-			<DialogContent className="rounded-[15px] md:rounded-[15px] py-7">
+
+			<DialogContent className="rounded-[15px] md:rounded-[15px] py-7 bg-onyx text-white overflow-hidden">
 				<DialogHeader className="text-start">
 					<DialogTitle className="text-start text-xl text-discord-blue">
 						Creating a Server? Cool!
@@ -87,104 +95,158 @@ const CreateServer = () => {
 					</DialogDescription>
 				</DialogHeader>
 
-				<ServerPreview preview={preview} name={name} />
+				<div className="bg-onyx z-10 overflow-y-scroll scrollbar-hidden h-full relative grid gap-3">
+					{bannerPreview && (
+						<div className="max-w-[450px] h-[120px] pb-0">
+							<img
+								src={bannerPreview}
+								alt="Image"
+								className="rounded-md w-full h-full object-center object-cover "
+							/>
+						</div>
+					)}
+					<ServerIconPreview iconPreview={iconPreview} name={name} />
 
-				<Form {...form}>
-					<form
-						onSubmit={form.handleSubmit(onSubmit)}
-						className="space-y-5"
-					>
-						<FormField
-							control={form.control}
-							name="name"
-							render={({ field }) => (
-								<FormItem>
-									<FormLabel>Server Name</FormLabel>
-									<FormControl>
-										<Input
-											className="rounded-[8px]"
-											onChange={(e) => {
-												field.onChange(e.target.value);
-												setName(e.target.value);
-											}}
-											placeholder="Give your server a name"
-											onBlur={field.onBlur}
-											name={field.name}
-											ref={field.ref}
-										/>
-									</FormControl>
-									<FormDescription>
-										This will be the publicly displayed name for your
-										server
-									</FormDescription>
-									<FormMessage />
-								</FormItem>
-							)}
-						/>
-						<FormField
-							control={form.control}
-							name="description"
-							render={({ field }) => (
-								<FormItem>
-									<FormLabel>Server Description</FormLabel>
-									<FormControl>
-										<Input
-											className="rounded-[8px]"
-											placeholder="Add a brief description"
-											{...field}
-										/>
-									</FormControl>
-									<FormDescription>
-										This will be the publicly displayed description
-										for your server
-									</FormDescription>
-									<FormMessage />
-								</FormItem>
-							)}
-						/>
-						<FormField
-							control={form.control}
-							name="icon"
-							render={({ field }) => (
-								<FormItem>
-									<FormLabel>Server Icon</FormLabel>
-									<FormControl>
-										<Input
-											type="file"
-											accept="image/*"
-											className="rounded-[8px]"
-											placeholder="Select Image"
-											onChange={(
-												e: React.ChangeEvent<HTMLInputElement>
-											) => {
-												const file = e.target.files?.[0];
-												field.onChange(file);
-												if (file) {
-													setPreview(URL.createObjectURL(file)); // Create a temporary preview URL
-												}
-											}} // Pass the selected file to `field.onChange`
-											onBlur={field.onBlur}
-											name={field.name}
-											ref={field.ref}
-										/>
-									</FormControl>
-									<FormDescription>
-										This will be the publicly displayed icon for your
-										server
-									</FormDescription>
-									<FormMessage />
-								</FormItem>
-							)}
-						/>
-						<Button
-							type="submit"
-							className="bg-discord-blue rounded-[8px]"
-							disabled={isMutationLoading}
+					<Form {...form}>
+						<form
+							onSubmit={form.handleSubmit(onSubmit)}
+							className="space-y-5"
 						>
-							Create Server
-						</Button>
-					</form>
-				</Form>
+							<FormField
+								control={form.control}
+								name="name"
+								render={({ field }) => (
+									<FormItem>
+										<FormLabel>Server Name</FormLabel>
+										<FormControl>
+											<Input
+												className="rounded-[8px]"
+												onChange={(e) => {
+													field.onChange(e.target.value);
+													setName(e.target.value);
+												}}
+												placeholder="Give your server a name"
+												onBlur={field.onBlur}
+												name={field.name}
+												ref={field.ref}
+											/>
+										</FormControl>
+										<FormDescription>
+											This will be the publicly displayed name for
+											your server
+										</FormDescription>
+										<FormMessage />
+									</FormItem>
+								)}
+							/>
+							<FormField
+								control={form.control}
+								name="description"
+								render={({ field }) => (
+									<FormItem>
+										<FormLabel>Server Description</FormLabel>
+										<FormControl>
+											<Input
+												className="rounded-[8px]"
+												placeholder="Add a brief description"
+												{...field}
+											/>
+										</FormControl>
+										<FormDescription>
+											This will be the publicly displayed description
+											for your server
+										</FormDescription>
+										<FormMessage />
+									</FormItem>
+								)}
+							/>
+
+							<div className="flex items-center gap-3">
+								<FormField
+									control={form.control}
+									name="icon"
+									render={({ field }) => (
+										<FormItem>
+											<FormLabel>Server Icon</FormLabel>
+											<FormControl>
+												<Input
+													type="file"
+													accept="image/*"
+													className="rounded-[8px]"
+													placeholder="Select Image"
+													onChange={(
+														e: React.ChangeEvent<HTMLInputElement>
+													) => {
+														const file = e.target.files?.[0];
+														field.onChange(file);
+														if (file) {
+															setIconPreview(
+																URL.createObjectURL(file)
+															); // Create a temporary iconPreview URL
+														}
+													}} // Pass the selected file to `field.onChange`
+													onBlur={field.onBlur}
+													name={field.name}
+													ref={field.ref}
+												/>
+											</FormControl>
+											<FormDescription>
+												This will be the publicly displayed icon for
+												your server
+											</FormDescription>
+											<FormMessage />
+										</FormItem>
+									)}
+								/>
+
+								<FormField
+									control={form.control}
+									name="banner"
+									render={({ field }) => (
+										<FormItem>
+											<FormLabel>Choose a banner</FormLabel>
+											<FormControl>
+												<Input
+													type="file"
+													accept="image/*"
+													className="rounded-[8px]"
+													placeholder="Select Image"
+													onChange={(
+														e: React.ChangeEvent<HTMLInputElement>
+													) => {
+														const file = e.target.files?.[0];
+														field.onChange(file);
+														if (file) {
+															setBannerPreview(
+																URL.createObjectURL(file)
+															); // Create a temporary iconPreview URL
+														}
+													}} // Pass the selected file to `field.onChange`
+													onBlur={field.onBlur}
+													name={field.name}
+													ref={field.ref}
+												/>
+											</FormControl>
+											<FormDescription>
+												Banner will be publicly displayed for your
+												server
+											</FormDescription>
+											<FormMessage />
+										</FormItem>
+									)}
+								/>
+							</div>
+
+							<Button
+								type="submit"
+								className="bg-discord-blue rounded-[8px]"
+								disabled={isMutationLoading}
+							>
+								Create Server
+							</Button>
+						</form>
+					</Form>
+				</div>
 			</DialogContent>
 		</Dialog>
 	);
@@ -192,21 +254,21 @@ const CreateServer = () => {
 
 export default CreateServer;
 
+import { useClerkRequest } from "@/hooks/use-query";
 import React from "react";
 import { Card } from "../ui/card";
-import { useClerkRequest } from "@/hooks/use-query";
 
-const ServerPreview = ({
-	preview,
+const ServerIconPreview = ({
+	iconPreview,
 	name,
 }: {
-	preview: string | undefined;
+	iconPreview: string | undefined;
 	name: string | undefined;
 }) => {
 	return (
-		<Card className="flex gap-3 p-2 px-3 items-center w-fit mx-auto cursor-not-allowed">
+		<Card className="flex gap-3 p-2 px-3 items-center w-fit  cursor-not-allowed mx-auto bg-charcoal">
 			<Avatar className={`size-[45px] rounded-full hover:rounded-[12px]`}>
-				<AvatarImage src={preview} alt={"server"} />
+				<AvatarImage src={iconPreview} alt={"server"} />
 				<AvatarFallback className="bg-discord-blue rounded-[15px]">
 					<img
 						src="/icons/discord.svg"

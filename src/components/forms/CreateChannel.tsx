@@ -19,7 +19,6 @@ import { Input } from "@/components/ui/input";
 import { useClerkRequest } from "@/hooks/use-query";
 import { useCreateChannelFormSchema } from "@/lib/formSchemas/createChannelSchema";
 import { z } from "zod";
-import IconButtons from "../common/IconButtons";
 import { Button } from "../ui/button";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 const CreateChannel = ({ serverId }: { serverId: string | undefined }) => {
@@ -57,8 +56,13 @@ const CreateChannel = ({ serverId }: { serverId: string | undefined }) => {
 
 	return (
 		<Dialog>
-			<DialogTrigger>
-				<IconButtons src="plus" alt="Create Channel" sizes="size-5" />
+			<DialogTrigger asChild>
+				<Button
+					size={"sm"}
+					className="rounded-[18px] bg-discord-blue px-2 h-[30px] "
+				>
+					Add Channel
+				</Button>
 			</DialogTrigger>
 			<DialogContent className="rounded-[15px] md:rounded-[15px] py-7 bg-onyx text-white">
 				<DialogHeader className="text-start">

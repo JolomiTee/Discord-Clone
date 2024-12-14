@@ -1,19 +1,16 @@
 import FriendCard from "@/components/common/sidebar_buttons/FriendCard";
-import { Skeleton } from "@/components/ui/skeleton";
+import LoadingFriendList from "@/components/common/skeletons/LoadingFriendList";
 import useClerkQuery from "@/hooks/use-query";
 import { Friends } from "@/types";
 import { Plus } from "lucide-react";
 
 const FriendsList = () => {
-
 	const { data, isLoading, error } = useClerkQuery<Friends[]>("added-friends");
 
 	return (
 		<div className=" grid overflow-y-auto max-h-full scrollbar-hidden">
 			{isLoading ? (
-				<>
-					<Skeleton className="h-10 w-full mb-3 bg-discord-blue/20" />
-				</>
+				<LoadingFriendList />
 			) : error ? (
 				<div className="text-center">
 					Wumpus was unable to find your friends

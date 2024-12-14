@@ -1,3 +1,4 @@
+import LoadingServerList from "@/components/common/skeletons/LoadingServerList";
 import ServerCard from "@/components/server/ServerCard";
 import { Button } from "@/components/ui/button";
 
@@ -9,7 +10,6 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select";
-import { Skeleton } from "@/components/ui/skeleton";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import useClerkQuery from "@/hooks/use-query";
 import { Servers as IServer } from "@/types";
@@ -64,12 +64,10 @@ const Servers = () => {
 					className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-10 p-3 mb-10"
 				>
 					{isLoading ? (
-						<>
-							<Skeleton className="h-10 w-full mb-3 bg-discord-blue/20" />
-						</>
+						<LoadingServerList />
 					) : error ? (
-						<div className="text-center">
-							Wumpus was unable to find your Servers
+						<div className="text-center text-lg text-white">
+							Wumpus ran into an error fetching servers
 						</div>
 					) : data.data.length > 0 ? (
 						data.data.map((servers) => {
@@ -99,15 +97,28 @@ const Servers = () => {
 						})
 					) : (
 						<div className="text-center">
-							No friends here, just Wumpus <br />
-							<p className="text-xs flex gap-1 justify-center pt-1">
-								Add some by clicking the{" "}
-								<Plus
-									className="inline-flex text-discord-blue"
-									size={15}
-								/>{" "}
-								icon
-							</p>
+							<div className="grid gap-2 justify-center pt-1 relative text-center">
+								<span className="flex-wrap flex text-nowrap items-center justify-center gap-1">
+									Join some by clicking the{" "}
+									<span className="font-semibold text-sm border px-2 py-1 rounded-[10px] inline-flex">
+										Discover
+									</span>
+									tab above
+								</span>
+								<div>
+									<span className="flex-wrap flex text-nowrap items-center justify-center gap-1">
+										or create your own with the{" "}
+										<span className="border p-1 rounded-full inline-flex">
+											<Plus />
+										</span>
+										icon
+									</span>
+									<img
+										src="/downright-arrow.png"
+										className="h-[200px] -rotate-[25deg] ms-auto me-5"
+									/>
+								</div>
+							</div>
 						</div>
 					)}
 				</TabsContent>

@@ -130,13 +130,16 @@ const FormDescription = React.forwardRef<
   const { formDescriptionId } = useFormField()
 
   return (
-    <p
-      ref={ref}
-      id={formDescriptionId}
-      className={cn("text-[0.8rem] text-zinc-500 dark:text-zinc-400", className)}
-      {...props}
-    />
-  )
+		<p
+			ref={ref}
+			id={formDescriptionId}
+			className={cn(
+				"sr-only text-[0.8rem] text-zinc-500 dark:text-zinc-400",
+				className
+			)}
+			{...props}
+		/>
+  );
 })
 FormDescription.displayName = "FormDescription"
 

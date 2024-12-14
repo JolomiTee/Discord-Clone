@@ -68,3 +68,24 @@
 		repeating-conic-gradient(from 45deg, #a31e39 0 25%, #31570e 0 50%);
 	background-size: calc(2 * var(--s)) calc(2 * var(--s));
 }
+
+/* ERROR 404 PAGE */
+.wrap-error {
+  background-color: #2C2D31;
+  background-image: url("/error_page_bg.svg");
+  background-attachment: fixed;
+  background-size: cover;
+  height: calc(var(--vh, 1vh) * 100);
+}
+.wrap-error h1 {
+  font-size: 6.875rem;
+  letter-spacing: -13px;
+  line-height: 1;
+  font-family: montserrat, sans-serif;
+}
+h1 span {
+  text-shadow: -8px 0 0 #5865F2;
+}
+.text-9xl {
+  font-size: 5.5rem;
+}

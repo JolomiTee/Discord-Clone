@@ -1,4 +1,5 @@
 import ChannelList from "@/components/common/sidebar_buttons/ChannelsButton";
+import CreateChannel from "@/components/forms/CreateChannel";
 import { Accordion } from "@/components/ui/accordion";
 import {
 	DropdownMenu,
@@ -16,28 +17,18 @@ import {
 	useSidebar,
 } from "@/components/ui/sidebar";
 import { useSidebarStateStore } from "@/hooks/base-context";
-import { useOpenSearchBar } from "@/hooks/use-open-sidebar";
 import useClerkQuery from "@/hooks/use-query";
 import { Channels, Servers } from "@/types";
-import {
-	Archive,
-	Ellipsis,
-	FileDown,
-	MessageCircleWarning,
-	Pin,
-} from "lucide-react";
+import { Edit, Ellipsis, Trash } from "lucide-react";
 import { useEffect, useState } from "react";
-import IconButtons from "../../common/IconButtons";
 import { AspectRatio } from "../../ui/aspect-ratio";
 import { Separator } from "../../ui/separator";
-import CreateChannel from "@/components/forms/CreateChannel";
 
 const ServerDisplayVariant = ({
 	serverId,
 }: {
 	serverId: string | undefined;
 }) => {
-	const openSearchBar = useOpenSearchBar();
 	const l_sidebar_state = useSidebarStateStore(
 		(state) => state.l_sidebar_state
 	);
@@ -62,31 +53,37 @@ const ServerDisplayVariant = ({
 	const [voiceChannels, setVoiceChannels] = useState<Channels[]>();
 	const [textChannels, setTextChannels] = useState<Channels[]>();
 
-useEffect(() => {
-	if (data?.data) {
-		setServer(data.data);
+	useEffect(() => {
+		if (data?.data) {
+			setServer(data.data);
 
-		// Filter channels based on type
-		const channels = data.data.channels || [];
+			// Filter channels based on type
+			const channels = data.data.channels || [];
 
-		setTextChannels(
-			channels.filter((channel) => channel.channelType === "text")
-		);
-		setVoiceChannels(
-			channels.filter((channel) => channel.channelType === "voice")
-		);
-	}
-}, [data]);
+			setTextChannels(
+				channels.filter((channel) => channel.channelType === "text")
+			);
+			setVoiceChannels(
+				channels.filter((channel) => channel.channelType === "voice")
+			);
+		}
+	}, [data]);
 
 	return (
 		<Sidebar className="border-none">
 			<SidebarHeader className="bg-carbon p-0">
 				<AspectRatio ratio={16 / 6}>
-					<img
-						src={server?.banner_image_url}
-						alt={server?.name}
-						className="object-cover h-full w-full"
-					/>
+					{server?.banner_image_url ? (
+						<img
+							src={server?.banner_image_url}
+							alt={server?.name}
+							className="object-cover h-full w-full"
+						/>
+					) : (
+						<div className="w-full h-full flex justify-center items-center">
+							No Banner Image
+						</div>
+					)}
 				</AspectRatio>
 				<div className="p-3 grid gap-3">
 					<div className="flex items-start justify-between">
@@ -99,52 +96,24 @@ useEffect(() => {
 							<DropdownMenuTrigger>
 								<Ellipsis />
 							</DropdownMenuTrigger>
-							<DropdownMenuContent className="rounded-[8px]">
-								<DropdownMenuLabel>Actions</DropdownMenuLabel>
+							<DropdownMenuContent className="rounded-[8px] bg-charcoal ">
+								<DropdownMenuLabel className="text-white">
+									Actions
+								</DropdownMenuLabel>
 								<DropdownMenuSeparator />
-								<DropdownMenuItem>
-									<Archive /> Archive
+								<DropdownMenuItem className="text-white">
+									<Edit /> Edit Server
 								</DropdownMenuItem>
-								<DropdownMenuItem>
-									<FileDown />
-									Export{" "}
-								</DropdownMenuItem>
-								<DropdownMenuItem>
-									<Pin /> Pin
-								</DropdownMenuItem>
-								<DropdownMenuItem>
-									<MessageCircleWarning /> Report
+								<Separator className="my-1" />
+								<DropdownMenuItem className="text-white bg-crimson rounded">
+									<Trash /> Delete Server
 								</DropdownMenuItem>
 							</DropdownMenuContent>
 						</DropdownMenu>
 					</div>
 
-					<div className="flex justify-between items-center">
-						<IconButtons
-							src="notification"
-							alt="Notifications"
-							sizes="size-7"
-						/>
-
-						<IconButtons
-							src="server_guide"
-							alt="Notifications"
-							sizes="size-7"
-						/>
-
-						<IconButtons
-							src="browse_channels"
-							alt="Notifications"
-							sizes="size-7"
-						/>
-
+					<div className="flex justify-start items-center">
 						<CreateChannel serverId={server?._id} />
-
-						<IconButtons
-							src="search"
-							alt="Notifications"
-							action={openSearchBar}
-						/>
 					</div>
 
 					<Separator className="bg-[#FFFFFF26] h-0.5" />
