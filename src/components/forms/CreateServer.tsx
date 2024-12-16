@@ -48,10 +48,10 @@ const CreateServer = () => {
 		formData.append("description", values.description);
 
 		// Append the icon file if it exists
-		if (values.icon) {
+		if (values.icon instanceof File) {
 			formData.append("icon", values.icon);
 		}
-		if (values.banner) {
+		if (values.banner instanceof File) {
 			formData.append("banner", values.banner);
 		}
 		mutate(
