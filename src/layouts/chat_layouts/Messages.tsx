@@ -10,6 +10,12 @@ import MainContainer from "@/layouts/MainContainer";
 import { Friends } from "@/types";
 import { useUser } from "@clerk/clerk-react";
 import Wumpus from "../Wumpus";
+import { useSendMessageFormSchema } from "@/lib/formSchemas/sendMessageSchema";
+import { toast } from "sonner";
+import { z } from "zod";
+import { Form } from "@/components/ui/form";
+import { FormProvider } from "react-hook-form";
+
 const MessagesLayout = () => {
 	// Logged-in user details
 	const client = useHMenuSelectedClient((state) => state.client) as Friends;
@@ -23,6 +29,17 @@ const MessagesLayout = () => {
 
 	const messages = useDirectMessagesState((state) => state.messages);
 
+	const { form, formSchema } = useSendMessageFormSchema();
+
+	function onSubmit(data: z.infer<typeof formSchema>) {
+		toast(
+			<div>
+				Message sent
+				<span>{data.message}</span>
+			</div>
+		);
+	}
+
 	return (
 		<MainContainer>
 			<>
@@ -33,12 +50,6 @@ const MessagesLayout = () => {
 				/>
 
 				<div className="h-full flex flex-col gap-[30px] relative overflow-auto scrollbar-hidden pb-5 p-3 md:p-4 lg:p-5">
-					{/* Example badge */}
-					<Badge className="mx-auto bg-charcoal rounded-[8px] px-3 py-2 sticky top-0 z-10 text-[11px] md:text-xs">
-						September 26, 2024
-					</Badge>
-
-					{/* Render Chat Bubbles */}
 					{messages.length > 0 ? (
 						messages.map((msg) => {
 							return (
@@ -56,7 +67,13 @@ const MessagesLayout = () => {
 					)}
 				</div>
 
-				<Keyboard currentUser={currentUser} />
+				<FormProvider {...form}>
+					<Form {...form}>
+						<form onSubmit={form.handleSubmit(onSubmit)} className="">
+							<Keyboard currentUser={currentUser} />
+						</form>
+					</Form>
+				</FormProvider>
 			</>
 		</MainContainer>
 	);

@@ -37,7 +37,8 @@ const MessagesDisplayVariant = () => {
 			setLSidebarState(false);
 		}
 	}, [l_sidebar_state, open]);
-
+	console.log(messagesFilter);
+	console.log(tabTriggers);
 	return (
 		<Sidebar className="border-none">
 			<SidebarContent>
