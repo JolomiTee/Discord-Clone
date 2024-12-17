@@ -19,29 +19,26 @@ const ChatBubble = ({ time, message, user }: ChatBubbleProps) => {
 
 	return (
 		<div
-			className={`flex items-start p-2   ${
+			className={`flex items-start p-2 relative  ${
 				isUserMessage ? "flex-row-reverse py-1" : "justify-start py-3"
-			} gap-2 md:gap-3`}
+			} gap-2`}
 		>
-			{/* Avatar */}
-			{!isUserMessage && (
-				<Avatar className="flex items-center justify-center size-[35px] md:size-[40px] lg:size-[45px]">
-					<AvatarImage
-						src={user.userProfileImage}
-						className="size-[40px] lg:size-[45px] rounded-full"
+			<Avatar className="hidden md:flex items-center justify-center size-[35px] md:size-[40px]">
+				<AvatarImage
+					src={user.userProfileImage}
+					className="size-[40px] rounded-full"
+				/>
+				<AvatarFallback
+					style={{ backgroundColor: getRandomColor() }}
+					className="flex items-center justify-center size-[40px] lg:size-[50px]"
+				>
+					{/* Fallback */}
+					<img
+						src="/icons/discord.svg"
+						className="size-[30px] rounded-full m-auto"
 					/>
-					<AvatarFallback
-						style={{ backgroundColor: getRandomColor() }}
-						className="flex items-center justify-center size-[40px] lg:size-[50px]"
-					>
-						{/* Fallback */}
-						<img
-							src="/icons/discord.svg"
-							className="size-[30px] rounded-full m-auto"
-						/>
-					</AvatarFallback>
-				</Avatar>
-			)}
+				</AvatarFallback>
+			</Avatar>
 
 			<div className="max-w-[90%] sm:max-w-[80%] flex flex-col gap-1 border px-3 py-3 rounded-[10px]">
 				<div
