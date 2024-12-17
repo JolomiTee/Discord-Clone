@@ -1,3 +1,29 @@
+export const messagesFilter = [
+	{
+		title: "Oldest",
+		label: "oldest",
+	},
+	{
+		title: "Read",
+		label: "label",
+	},
+	{
+		title: "Unread",
+		label: "unread",
+	},
+];
+
+export const tabTriggers = [
+	{
+		value: "messages",
+		label: "Messages",
+	},
+	{
+		value: "friends",
+		label: "Friends",
+	},
+];
+
 export const messageList = [
 	{
 		profileImg: "/ghost.png",
