@@ -21,6 +21,9 @@ import { useCreateChannelFormSchema } from "@/lib/formSchemas/createChannelSchem
 import { z } from "zod";
 import { Button } from "../ui/button";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
+import { useState } from "react";
+import { Loader } from "lucide-react";
+import { toast } from "sonner";
 const CreateChannel = ({ serverId }: { serverId: string | undefined }) => {
 	const { form, formSchema } = useCreateChannelFormSchema();
 
@@ -46,18 +49,28 @@ const CreateChannel = ({ serverId }: { serverId: string | undefined }) => {
 			},
 			{
 				onSuccess: () => {
-					console.log(
-						"POST successful and channels route have been invalidated!"
-					);
+					handleCloseDialog();
+					toast("Channel created!");
 				},
 			}
 		);
 	}
 
+	const [openDialog, setOpenDialog] = useState<boolean>(false);
+
+	const handleOpenDialog = () => {
+		setOpenDialog((prev) => !prev);
+	};
+
+	const handleCloseDialog = () => {
+		setOpenDialog((prev) => !prev);
+	};
+
 	return (
-		<Dialog>
+		<Dialog open={openDialog}>
 			<DialogTrigger asChild>
 				<Button
+					onClick={handleOpenDialog}
 					size={"sm"}
 					className="rounded-[18px] bg-discord-blue px-2 h-[30px] "
 				>
@@ -169,7 +182,14 @@ const CreateChannel = ({ serverId }: { serverId: string | undefined }) => {
 							className="bg-discord-blue rounded-[8px]"
 							disabled={isMutationLoading}
 						>
-							Create Server
+							{isMutationLoading ? (
+								<>
+									<Loader size={4} className="size-4 animate-spin" />
+									Creating Channel
+								</>
+							) : (
+								<>Create Channel </>
+							)}
 						</Button>
 					</form>
 				</Form>
