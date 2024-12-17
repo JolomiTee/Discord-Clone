@@ -1,19 +1,20 @@
+import ChatBubble from "@/components/common/ChatBubble";
 import HMenu from "@/components/common/HMenu";
 import Keyboard from "@/components/common/Keyboard";
-import MainContainer from "@/layouts/MainContainer";
-import { useUser } from "@clerk/clerk-react";
-import Wumpus from "../Wumpus";
+import { Form } from "@/components/ui/form";
 import {
 	useDirectMessagesState,
 	useHMenuSelectedClient,
 } from "@/hooks/use-dms";
-import { CurrentChannels } from "@/types";
+import MainContainer from "@/layouts/MainContainer";
 import { useSendMessageFormSchema } from "@/lib/formSchemas/sendMessageSchema";
+import { CurrentChannels } from "@/types";
+import { useUser } from "@clerk/clerk-react";
 import { FormProvider } from "react-hook-form";
-import { Form } from "@/components/ui/form";
-import { toast } from "sonner";
+import { v4 as uuidv4 } from "uuid";
 import { z } from "zod";
-import ChatBubble from "@/components/common/ChatBubble";
+import Wumpus from "../Wumpus";
+import { formatDate } from "@/lib/utils";
 
 const ChannelsLayout = () => {
 	const { user } = useUser();
@@ -31,14 +32,17 @@ const ChannelsLayout = () => {
 
 	const { form, formSchema } = useSendMessageFormSchema();
 	const messages = useDirectMessagesState((state) => state.messages);
+	const updateMessages = useDirectMessagesState(
+		(state) => state.updateMessages
+	);
 
 	function onSubmit(data: z.infer<typeof formSchema>) {
-		toast(
-			<div>
-				Message sent
-				<span>{data.message}</span>
-			</div>
-		);
+		updateMessages({
+			message: data.message,
+			msg_id: uuidv4(),
+			time: formatDate(new Date(Date.now())),
+			sender_info: currentUser,
+		});
 	}
 
 	return (
