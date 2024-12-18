@@ -5,14 +5,23 @@ import {
 	SignOutButton,
 	UserButton,
 } from "@clerk/clerk-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const AuthContextButtons = () => {
+	const navigate = useNavigate();
 	return (
 		<>
 			<SignedIn>
 				<SignOutButton />
 				<UserButton />
+				<Button
+					className="bg-discord-blue rounded-[6px]"
+					onClick={() => {
+						navigate("user/@me");
+					}}
+				>
+					Dashboard
+				</Button>
 			</SignedIn>
 
 			<SignedOut>

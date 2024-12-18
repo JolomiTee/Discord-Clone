@@ -33,6 +33,7 @@ export interface Friends {
 	email_address: string;
 	profile_image_url: string;
 	firstName: string;
+	isFriend: boolean;
 	lastName: string;
 
 	// online: boolean;

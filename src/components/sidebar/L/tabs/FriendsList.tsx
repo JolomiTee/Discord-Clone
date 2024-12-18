@@ -72,6 +72,7 @@ const FriendsList = ({ isMobile }: { isMobile: boolean }) => {
 							lastName,
 							email_address,
 							profile_image_url,
+							isFriend,
 						} = friends;
 
 						return (
@@ -84,6 +85,7 @@ const FriendsList = ({ isMobile }: { isMobile: boolean }) => {
 								firstName={firstName}
 								lastName={lastName}
 								email_address={email_address}
+								isFriend={isFriend}
 								// online={online}
 								// hasMessage={hasMessage}
 								// messageCount={messageCount}

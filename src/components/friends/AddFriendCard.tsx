@@ -2,34 +2,36 @@ import { getRandomColor } from "@/lib/utils";
 
 import { Button } from "@/components/ui/button";
 import { SidebarMenuButton } from "@/components/ui/sidebar";
-import { UserRoundPlus } from "lucide-react";
+import { CheckCheck, UserRoundPlus } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
 interface props {
 	profileImg: string;
 	user: string;
-	dmId: string;
+	userId: string;
 	online: boolean;
 	hasMessage: boolean;
 	messageCount?: number;
 	pinned: boolean;
 	slug: string;
 	action?: () => void;
+	isFriend: boolean;
 }
 const AddFriendCard = ({
 	profileImg,
-	dmId,
+	userId,
 	user,
 	online,
 	hasMessage,
 	action,
+	isFriend,
 	slug,
 }: props) => {
 	return (
 		<SidebarMenuButton className="p-0 ms-0 text-white " asChild>
 			<Link
-				to={`@me/dm/${String(dmId)}`}
+				to={`@me/dm/${String(userId)}`}
 				className="flex flex-wrap h-full gap-3 bg-transparent shadow-none"
 				onClick={action}
 			>
@@ -61,17 +63,37 @@ const AddFriendCard = ({
 					{user}
 				</span>
 
-				<div className="flex me-0 ms-auto ">
-					<div className="flex gap-3">
+				{isFriend ? (
+					<div className="flex me-0 ms-auto ">
+						<div className="flex gap-3">
+							<Button
+								disabled
+								title="Already Friends"
+								className="rounded-[10px] bg-discord-blue "
+							>
+								<CheckCheck width={30} height={30} strokeWidth={2.5} />{" "}
+								<span className="hidden sm:block">Already friends</span>
+							</Button>
+						</div>
+					</div>
+				) : (
+					<div className="flex items-center gap-3 me-0 ms-auto ">
+						{/* <Button
+								title="Send friend request"
+								className="rounded-[10px] bg-discord-blue "
+							>
+								<Send width={30} height={30} strokeWidth={2.5} />{" "}
+								<span className="hidden sm:block">Send Request</span>
+							</Button> */}
 						<Button
 							title="Send friend request"
 							className="rounded-[10px] bg-discord-blue "
 						>
 							<UserRoundPlus width={30} height={30} strokeWidth={2.5} />{" "}
-							<span className="hidden sm:block">Send Request</span>
+							<span className="hidden sm:block">Add</span>
 						</Button>
 					</div>
-				</div>
+				)}
 			</Link>
 		</SidebarMenuButton>
 	);
