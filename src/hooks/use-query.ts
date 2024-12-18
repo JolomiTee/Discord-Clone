@@ -65,13 +65,13 @@ export default function useClerkQuery<T>(
 export function useClerkRequest(
 	method: "POST" | "PUT" | "PATCH" | "DELETE" = "POST",
 	invalidateQueryKey?: string | string[],
-	mutationOptions?: UseMutationOptions<any, any, { url: string; body: any }>
-): UseMutationResult<any, any, { url: string; body: any }> {
+	mutationOptions?: UseMutationOptions<any, any, { url: string; body?: any }>
+): UseMutationResult<any, any, { url: string; body?: any }> {
 	const { getToken } = useAuth();
 	const queryClient = useQueryClient();
 
 	return useMutation(
-		async ({ url, body }: { url: string; body: any }) => {
+		async ({ url, body }: { url: string; body?: any }) => {
 			const token = await getToken();
 			const fullUrl = `${BASE_URL}${url}`;
 

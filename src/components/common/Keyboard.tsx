@@ -12,8 +12,12 @@ import {
 	FormMessage,
 } from "../ui/form";
 
-const Keyboard = ({ currentUser }: { currentUser: CurrentUser }) => {
-	console.log(currentUser);
+interface KeyboardProps {
+	currentUser?: CurrentUser;
+	currentDmClientId?: string;
+}
+
+const Keyboard = ({}: KeyboardProps) => {
 	return (
 		<ConnectForm>
 			{({ control }) => (

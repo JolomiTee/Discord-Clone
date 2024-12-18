@@ -6,20 +6,27 @@ import {
 	useDirectMessagesState,
 	useHMenuSelectedClient,
 } from "@/hooks/use-dms";
+import { useClerkRequest } from "@/hooks/use-query";
 import MainContainer from "@/layouts/MainContainer";
 import { useSendMessageFormSchema } from "@/lib/formSchemas/sendMessageSchema";
+import { formatDate } from "@/lib/utils";
 import { Friends } from "@/types";
 import { useUser } from "@clerk/clerk-react";
+import { Loader } from "lucide-react";
 import { FormProvider } from "react-hook-form";
+import { toast } from "sonner";
 import { v4 as uuidv4 } from "uuid";
 import { z } from "zod";
 import Wumpus from "../Wumpus";
-import { formatDate } from "@/lib/utils";
 
 const MessagesLayout = () => {
 	// Logged-in user details
 	const client = useHMenuSelectedClient((state) => state.client) as Friends;
 	const { user } = useUser();
+
+	const { mutate, isLoading: isMutationLoading } = useClerkRequest("POST", [
+		"recent-chat",
+	]);
 
 	const currentUser = {
 		userId: user?.id,
@@ -35,12 +42,40 @@ const MessagesLayout = () => {
 	const { form, formSchema } = useSendMessageFormSchema();
 
 	function onSubmit(data: z.infer<typeof formSchema>) {
-		updateMessages({
-			message: data.message,
-			msg_id: uuidv4(),
-			time: formatDate(new Date(Date.now())),
-			sender_info: currentUser,
-		});
+		if (messages.length >= 1) {
+			// socket logic and mongoose push
+			updateMessages({
+				message: data.message,
+				msg_id: uuidv4(),
+				time: formatDate(new Date(Date.now())),
+				sender_info: currentUser,
+			});
+		} else {
+			mutate(
+				{
+					url: `recent-chat/${client._id}`,
+				},
+				{
+					onSuccess: () => {
+						toast(
+							<div>
+								{isMutationLoading ? (
+									<Loader className="animate-spin" />
+								) : (
+									`${client.username} added to message list`
+								)}
+							</div>
+						);
+						updateMessages({
+							message: data.message,
+							msg_id: uuidv4(),
+							time: formatDate(new Date(Date.now())),
+							sender_info: currentUser,
+						});
+					},
+				}
+			);
+		}
 	}
 
 	return (
@@ -73,7 +108,10 @@ const MessagesLayout = () => {
 				<FormProvider {...form}>
 					<Form {...form}>
 						<form onSubmit={form.handleSubmit(onSubmit)} className="">
-							<Keyboard currentUser={currentUser} />
+							<Keyboard
+								currentUser={currentUser}
+								currentDmClientId={client._id}
+							/>
 						</form>
 					</Form>
 				</FormProvider>

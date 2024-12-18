@@ -5,6 +5,7 @@ import { Friends } from "@/types";
 
 const MessageList = () => {
 	const { data, isLoading, error } = useClerkQuery<Friends[]>("recent-chat");
+	console.log(data?.data);
 
 	return (
 		<div className=" grid overflow-y-auto max-h-full scrollbar-hidden">
