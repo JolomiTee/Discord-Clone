@@ -14,11 +14,10 @@ import { MessageSquarePlus, UserRoundPlus } from "lucide-react";
 import { useHMenuSelectedClient } from "@/hooks/use-dms";
 import { Friends } from "@/types";
 
-interface props extends Friends {
+interface Props extends Friends {
 	slug: string;
 	friendReqCard?: boolean;
 }
-
 
 const FriendCard = ({
 	friendReqCard,
@@ -30,7 +29,7 @@ const FriendCard = ({
 	email_address,
 	isFriend,
 	slug,
-}: props) => {
+}: Props) => {
 	const updateHMenuSelectedClient = useHMenuSelectedClient(
 		(state) => state.updateHMenuSelectedClient
 	);
