@@ -1,7 +1,7 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import { Sidebar, SidebarContent, useSidebar } from "@/components/ui/sidebar";
-import { messagesFilter, tabTriggers } from "@/data";
+import { tabTriggers } from "@/data";
 import { useSidebarStateStore } from "@/hooks/base-context";
 import { useEffect } from "react";
 import FriendsList from "./tabs/FriendsList";
@@ -25,8 +25,6 @@ const MessagesDisplayVariant = () => {
 			setLSidebarState(false);
 		}
 	}, [l_sidebar_state, open]);
-	console.log(messagesFilter);
-	console.log(tabTriggers);
 	return (
 		<Sidebar className="border-none">
 			<SidebarContent>
