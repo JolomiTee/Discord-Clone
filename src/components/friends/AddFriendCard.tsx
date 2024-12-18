@@ -9,7 +9,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 interface props {
 	profileImg: string;
 	user: string;
-	dmId: string;
+	userId: string;
 	online: boolean;
 	hasMessage: boolean;
 	messageCount?: number;
@@ -20,7 +20,7 @@ interface props {
 }
 const AddFriendCard = ({
 	profileImg,
-	dmId,
+	userId,
 	user,
 	online,
 	hasMessage,
@@ -31,7 +31,7 @@ const AddFriendCard = ({
 	return (
 		<SidebarMenuButton className="p-0 ms-0 text-white " asChild>
 			<Link
-				to={`@me/dm/${String(dmId)}`}
+				to={`@me/dm/${String(userId)}`}
 				className="flex flex-wrap h-full gap-3 bg-transparent shadow-none"
 				onClick={action}
 			>
@@ -77,20 +77,21 @@ const AddFriendCard = ({
 						</div>
 					</div>
 				) : (
-					<div className="flex me-0 ms-auto ">
-						<div className="flex gap-3">
-							<Button
+					<div className="flex items-center gap-3 me-0 ms-auto ">
+						{/* <Button
 								title="Send friend request"
 								className="rounded-[10px] bg-discord-blue "
 							>
-								<UserRoundPlus
-									width={30}
-									height={30}
-									strokeWidth={2.5}
-								/>{" "}
+								<Send width={30} height={30} strokeWidth={2.5} />{" "}
 								<span className="hidden sm:block">Send Request</span>
-							</Button>
-						</div>
+							</Button> */}
+						<Button
+							title="Send friend request"
+							className="rounded-[10px] bg-discord-blue "
+						>
+							<UserRoundPlus width={30} height={30} strokeWidth={2.5} />{" "}
+							<span className="hidden sm:block">Add</span>
+						</Button>
 					</div>
 				)}
 			</Link>

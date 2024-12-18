@@ -106,8 +106,8 @@ const AddFriendModal = () => {
 						) : searchQuery && isLoading ? (
 							<p className="text-gray-500 mt-3">Loading...</p>
 						) : data && data.data?.length > 0 ? (
-							<div className="mt-5">
-								<h3 className="text-lg font-semibold">
+							<div className="">
+								<h3 className="text-lg font-medium mb-3">
 									Search Results:
 								</h3>
 								<div className="space-y-3">
@@ -116,7 +116,7 @@ const AddFriendModal = () => {
 											key={friend._id}
 											profileImg={friend.profile_image_url}
 											user={friend.username}
-											dmId={friend._id}
+											userId={friend._id}
 											online={false} // Add logic to determine this
 											hasMessage={false}
 											pinned={false}
