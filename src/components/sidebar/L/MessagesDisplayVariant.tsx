@@ -47,7 +47,7 @@ const MessagesDisplayVariant = () => {
 
 						<TabsContent
 							value="messages"
-							className="text-[#FFFFFF99] pb-[50px]"
+							className="text-[#FFFFFF99] pt-3 pb-[50px]"
 						>
 							<MessageList />
 						</TabsContent>

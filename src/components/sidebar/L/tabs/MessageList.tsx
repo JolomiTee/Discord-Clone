@@ -8,7 +8,7 @@ const MessageList = () => {
 	console.log(data?.data);
 
 	return (
-		<div className=" grid overflow-y-auto max-h-full scrollbar-hidden">
+		<div className="grid overflow-y-auto max-h-full scrollbar-hidden">
 			{isLoading ? (
 				<LoadingFriendList />
 			) : error ? (
@@ -20,21 +20,24 @@ const MessageList = () => {
 					const {
 						_id,
 						username,
-						// firstName,
-						// lastName,
-						// email_address,
+						firstName,
+						lastName,
+						email_address,
 						profile_image_url,
+						isFriend,
 					} = dms;
 
 					return (
 						<DMCard
 							key={_id}
-							dmId={_id}
+							slug={username}
+							_id={_id}
 							username={username}
-							profileImg={profile_image_url}
-							// online={online}
-							// hasMessage={hasMessage}
-							// messageCount={messageCount}
+							profile_image_url={profile_image_url}
+							firstName={firstName}
+							lastName={lastName}
+							email_address={email_address}
+							isFriend={isFriend}
 						/>
 					);
 				})
