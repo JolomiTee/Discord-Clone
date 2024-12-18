@@ -39,14 +39,8 @@ const ChatBubble = ({ time, message, user }: ChatBubbleProps) => {
 					/>
 				</AvatarFallback>
 			</Avatar>
-			{/* flex flex-col gap-1 relative bg-blue-500 text-white p-3 rounded-2xl
-			rounded-tr-none max-w-[90%] sm:max-w-[80%] text-sm before:content-['']
-			before:absolute before:top-0 before:right-[-10px] before:border-[10px]
-			before:border-t-transparent before:border-b-transparent
-			before:border-r-transparent before:border-l-blue-500 before:rotate-90
-			before:rounded-tl-[6px] */}
 			<div
-				className={`flex flex-col gap-1 relative  bg-blue-500 text-white p-3 rounded-2xl max-w-[90%] sm:max-w-[80%] text-sm before:content-[''] before:absolute before:top-0  before:border-[10px] before:border-t-transparent before:border-b-transparent before:border-r-transparent before:border-l-blue-500 before:rotate-90 ${
+				className={`flex flex-col gap-1 relative  bg-blue-500 text-white p-3 rounded-2xl max-w-[95%] sm:max-w-[80%] md:max-w-[70%] text-xs sm:text-sm before:content-[''] before:absolute before:top-0  before:border-[10px] before:border-t-transparent before:border-b-transparent before:border-r-transparent before:border-l-blue-500 before:rotate-90 ${
 					isUserMessage
 						? "rounded-tr-none before:right-[-10px]"
 						: "rounded-tl-none before:left-[-10px]"
