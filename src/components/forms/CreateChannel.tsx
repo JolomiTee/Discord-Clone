@@ -27,7 +27,7 @@ import { toast } from "sonner";
 const CreateChannel = ({ serverId }: { serverId: string | undefined }) => {
 	const { form, formSchema } = useCreateChannelFormSchema();
 
-	const { mutate, isLoading: isMutationLoading } = useClerkRequest("PUT", [
+	const { mutate, isLoading: isMutationLoading } = useClerkRequest("POST", [
 		`server/${serverId as string}`,
 	]);
 
@@ -44,7 +44,7 @@ const CreateChannel = ({ serverId }: { serverId: string | undefined }) => {
 		// }
 		mutate(
 			{
-				url: `server/${serverId}`,
+				url: `channels?serverId=${serverId as string}`,
 				body: values,
 			},
 			{
