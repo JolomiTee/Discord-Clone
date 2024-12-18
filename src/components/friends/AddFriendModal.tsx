@@ -6,11 +6,14 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from "@/components/ui/dialog";
+import useClerkQuery from "@/hooks/use-query";
+import { searchFriendSchema } from "@/lib/formSchemas/searchFriendSchema";
+import { Friends } from "@/types";
 import { Rocket, Search } from "lucide-react";
+import { useState } from "react";
+import { z } from "zod";
 import IconButtons from "../common/IconButtons";
-import { Input } from "../ui/input";
-import { Separator } from "../ui/separator";
-import AddFriendCard from "./AddFriendCard";
+import { Button } from "../ui/button";
 import {
 	Form,
 	FormControl,
@@ -19,13 +22,9 @@ import {
 	FormItem,
 	FormMessage,
 } from "../ui/form";
-import { Button } from "../ui/button";
-import { searchFriendSchema } from "@/lib/formSchemas/searchFriendSchema";
-import { z } from "zod";
-import { toast } from "sonner";
-import useClerkQuery from "@/hooks/use-query";
-import { useState } from "react";
-import { Friends } from "@/types";
+import { Input } from "../ui/input";
+import { Separator } from "../ui/separator";
+import AddFriendCard from "./AddFriendCard";
 
 const AddFriendModal = () => {
 	const { form, formSchema } = searchFriendSchema();
@@ -39,7 +38,6 @@ const AddFriendModal = () => {
 	);
 
 	function onSubmit(data: z.infer<typeof formSchema>) {
-		toast(<span>{data.username}</span>);
 		setSearchQuery(data.username);
 	}
 
@@ -113,16 +111,17 @@ const AddFriendModal = () => {
 									Search Results:
 								</h3>
 								<div className="space-y-3">
-									{data.data.map((friend: any) => (
+									{data.data.map((friend: Friends) => (
 										<AddFriendCard
-											key={friend.id}
+											key={friend._id}
 											profileImg={friend.profile_image_url}
 											user={friend.username}
-											dmId={friend.id}
+											dmId={friend._id}
 											online={false} // Add logic to determine this
 											hasMessage={false}
 											pinned={false}
 											slug={friend.username}
+											isFriend={friend.isFriend}
 										/>
 									))}
 								</div>

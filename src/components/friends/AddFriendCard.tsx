@@ -2,7 +2,7 @@ import { getRandomColor } from "@/lib/utils";
 
 import { Button } from "@/components/ui/button";
 import { SidebarMenuButton } from "@/components/ui/sidebar";
-import { UserRoundPlus } from "lucide-react";
+import { CheckCheck, UserRoundPlus } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
@@ -16,6 +16,7 @@ interface props {
 	pinned: boolean;
 	slug: string;
 	action?: () => void;
+	isFriend: boolean;
 }
 const AddFriendCard = ({
 	profileImg,
@@ -24,6 +25,7 @@ const AddFriendCard = ({
 	online,
 	hasMessage,
 	action,
+	isFriend,
 	slug,
 }: props) => {
 	return (
@@ -61,17 +63,36 @@ const AddFriendCard = ({
 					{user}
 				</span>
 
-				<div className="flex me-0 ms-auto ">
-					<div className="flex gap-3">
-						<Button
-							title="Send friend request"
-							className="rounded-[10px] bg-discord-blue "
-						>
-							<UserRoundPlus width={30} height={30} strokeWidth={2.5} />{" "}
-							<span className="hidden sm:block">Send Request</span>
-						</Button>
+				{isFriend ? (
+					<div className="flex me-0 ms-auto ">
+						<div className="flex gap-3">
+							<Button
+								disabled
+								title="Already Friends"
+								className="rounded-[10px] bg-discord-blue "
+							>
+								<CheckCheck width={30} height={30} strokeWidth={2.5} />{" "}
+								<span className="hidden sm:block">Already friends</span>
+							</Button>
+						</div>
 					</div>
-				</div>
+				) : (
+					<div className="flex me-0 ms-auto ">
+						<div className="flex gap-3">
+							<Button
+								title="Send friend request"
+								className="rounded-[10px] bg-discord-blue "
+							>
+								<UserRoundPlus
+									width={30}
+									height={30}
+									strokeWidth={2.5}
+								/>{" "}
+								<span className="hidden sm:block">Send Request</span>
+							</Button>
+						</div>
+					</div>
+				)}
 			</Link>
 		</SidebarMenuButton>
 	);
