@@ -30,10 +30,10 @@ export interface MessageNotification extends BaseNotification {
 export interface Friends {
 	_id: string;
 	username: string;
-	email_address?: string;
+	email_address: string;
 	profile_image_url: string;
-	firstName?: string;
-	lastName?: string;
+	firstName: string;
+	lastName: string;
 
 	// online: boolean;
 	// hasMessage: boolean;
