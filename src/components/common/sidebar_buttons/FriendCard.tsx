@@ -12,21 +12,14 @@ import { Avatar, AvatarFallback, AvatarImage } from "../../ui/avatar";
 import { SidebarMenuButton } from "@/components/ui/sidebar";
 import { MessageSquarePlus, UserRoundPlus } from "lucide-react";
 import { useHMenuSelectedClient } from "@/hooks/use-dms";
+import { Friends } from "@/types";
 
-interface props {
-	friendReqCard?: boolean;
-	profile_image_url: string;
-	username: string;
-	_id: string;
-	firstName: string;
-	lastName: string;
-	email_address: string;
-	// online: boolean;
-	// hasMessage: boolean;
-	// messageCount?: number;
-	// pinned: boolean;
+interface props extends Friends {
 	slug: string;
+	friendReqCard?: boolean;
 }
+
+
 const FriendCard = ({
 	friendReqCard,
 	profile_image_url,
@@ -35,11 +28,9 @@ const FriendCard = ({
 	firstName,
 	lastName,
 	email_address,
-	// online,
-	// hasMessage,
+	isFriend,
 	slug,
 }: props) => {
-
 	const updateHMenuSelectedClient = useHMenuSelectedClient(
 		(state) => state.updateHMenuSelectedClient
 	);
@@ -57,6 +48,7 @@ const FriendCard = ({
 						lastName,
 						email_address,
 						profile_image_url,
+						isFriend,
 					});
 				}}
 			>

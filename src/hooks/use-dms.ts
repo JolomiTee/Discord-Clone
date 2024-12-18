@@ -24,6 +24,7 @@ export const useHMenuSelectedClient = create<HMenuSelectedClient>()(
 				profile_image_url: "",
 				firstName: "",
 				lastName: "",
+				isFriend: false,
 			},
 			updateHMenuSelectedClient: (newClient) =>
 				set(() => ({
