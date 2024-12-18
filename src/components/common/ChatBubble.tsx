@@ -19,15 +19,14 @@ const ChatBubble = ({ time, message, user }: ChatBubbleProps) => {
 
 	return (
 		<div
-			className={`flex items-start ${
-				isUserMessage ? "flex-row-reverse" : "justify-start"
-			} gap-2 md:gap-3`}
+			className={`flex items-start p-2 relative  ${
+				isUserMessage ? "flex-row-reverse py-1" : "justify-start py-3"
+			} gap-2`}
 		>
-			{/* Avatar */}
-			<Avatar className="flex items-center justify-center size-[35px] md:size-[40px] lg:size-[45px]">
+			<Avatar className="hidden md:flex items-center justify-center size-[35px] md:size-[40px]">
 				<AvatarImage
-					src={isUserMessage ? user.userProfileImage : ""}
-					className="size-[40px] lg:size-[45px] rounded-full"
+					src={user.userProfileImage}
+					className="size-[40px] rounded-full"
 				/>
 				<AvatarFallback
 					style={{ backgroundColor: getRandomColor() }}
@@ -41,23 +40,21 @@ const ChatBubble = ({ time, message, user }: ChatBubbleProps) => {
 				</AvatarFallback>
 			</Avatar>
 
-			<div className="max-w-[60%]">
+			<div className="max-w-[90%] sm:max-w-[80%] flex flex-col gap-1 border px-3 py-3 rounded-[10px]">
 				<div
 					className={`flex items-baseline gap-4 ${
 						isUserMessage ? "justify-end" : "justify-start"
 					}`}
 				>
-					<span className="font-bold text-[#FFFFFFE5] text-[13px] md:text-[14px]">
-						{isUserMessage ? user.username : "Someone Else"}
-					</span>
-					<span className="font-bold text-[#FFFFFF80] text-[11px] md:text-xs">
-						{time}
+					<span className="font-bold text-[#FFFFFFE5] text-[13px] md:text-[15px]">
+						{!isUserMessage && user.username}
 					</span>
 				</div>
 
-				<p className="text-[13px] md:text-[14px] text-[#FFFFFFCC]">
-					{message}
-				</p>
+				<p className="text-[13px] md:text-[14px] text-white">{message}</p>
+				<div className="flex font-bold text-[#FFFFFF80] text-[11px] md:text-xs">
+					<time className="ms-auto me-0">{time}</time>
+				</div>
 			</div>
 		</div>
 	);

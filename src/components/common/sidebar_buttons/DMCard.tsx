@@ -5,21 +5,21 @@ import { SidebarMenuButton } from "@/components/ui/sidebar";
 
 interface props {
 	profileImg: string;
-	user: string;
+	username: string;
 	dmId: string;
-	slug: string;
-	online: boolean;
-	hasMessage: boolean;
-	messageCount?: number;
+	// slug: string;
+	// online: boolean;
+	// hasMessage: boolean;
+	// messageCount?: number;
 	action?: () => void;
 }
 const DMCard = ({
 	profileImg,
 	dmId,
-	user,
-	slug,
-	online,
-	hasMessage,
+	username,
+	// slug,
+	// online,
+	// hasMessage,
 	action,
 }: props) => {
 	const location = useLocation();
@@ -38,7 +38,7 @@ const DMCard = ({
 					<Avatar className="flex items-center justify-center">
 						<AvatarImage
 							src={profileImg}
-							alt={slug}
+							alt={username}
 							className="size-[40px]  rounded-full"
 						/>
 						<AvatarFallback
@@ -47,19 +47,24 @@ const DMCard = ({
 						>
 							<img
 								src="/icons/discord.svg"
-								alt={slug}
+								alt={username}
 								className="size-[35px] rounded-full"
 							/>
 						</AvatarFallback>
 					</Avatar>
-					<div
+					{/* <div
 						className={`absolute -right-0 bottom-0 ${
 							online ? "bg-emerald" : "bg-gray"
 						} rounded-full size-3 border-[2px] border-solid border-charcoal`}
-					></div>
+					></div> */}
 				</div>
-				<span className={hasMessage ? "font-bold" : "font-normal"}>
-					{user}
+				<span
+					className={
+						// hasMessage ? "font-bold" :
+						"font-normal"
+					}
+				>
+					{username}
 				</span>
 
 				{/* <div className="flex items-center justify-start gap-3 ms-auto me-0 ">

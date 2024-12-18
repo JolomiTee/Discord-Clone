@@ -7,6 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App.tsx";
 import "./assets/backgrounds.css";
 import "./index.css";
+import { Toaster } from "@/components/ui/sonner";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +26,7 @@ createRoot(document.getElementById("root")!).render(
 			<QueryClientProvider client={queryClient}>
 				<BrowserRouter>
 					<App />
+					<Toaster />
 				</BrowserRouter>
 			</QueryClientProvider>
 		</ClerkProvider>
