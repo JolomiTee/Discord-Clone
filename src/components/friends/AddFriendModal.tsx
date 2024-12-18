@@ -6,13 +6,44 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from "@/components/ui/dialog";
-import { Rocket } from "lucide-react";
+import { Rocket, Search } from "lucide-react";
 import IconButtons from "../common/IconButtons";
 import { Input } from "../ui/input";
 import { Separator } from "../ui/separator";
 import AddFriendCard from "./AddFriendCard";
+import {
+	Form,
+	FormControl,
+	FormDescription,
+	FormField,
+	FormItem,
+	FormMessage,
+} from "../ui/form";
+import { Button } from "../ui/button";
+import { searchFriendSchema } from "@/lib/formSchemas/searchFriendSchema";
+import { z } from "zod";
+import { toast } from "sonner";
+import useClerkQuery from "@/hooks/use-query";
+import { useState } from "react";
+import { Friends } from "@/types";
 
 const AddFriendModal = () => {
+	const { form, formSchema } = searchFriendSchema();
+	const [searchQuery, setSearchQuery] = useState("");
+
+	const { data, isLoading, error } = useClerkQuery<Friends[]>(
+		`friends/search?username=${encodeURIComponent(searchQuery)}`,
+		{
+			enabled: !!searchQuery, // Query only runs when there's a search term
+		}
+	);
+
+	function onSubmit(data: z.infer<typeof formSchema>) {
+		toast(<span>{data.username}</span>);
+		setSearchQuery(data.username);
+	}
+
+	console.log(data);
 	return (
 		<Dialog>
 			<DialogTrigger>
@@ -33,40 +64,75 @@ const AddFriendModal = () => {
 					</DialogDescription>
 
 					<div className="grid gap-3">
-						<Input
-							placeholder="Search by username"
-							className="rounded-full placeholder:text-white mt-5 h-[50px]"
-						/>
+						<Form {...form}>
+							<form
+								onSubmit={form.handleSubmit(onSubmit)}
+								className="flex w-full"
+							>
+								<div className="flex items-center justify-start relative w-full">
+									<FormField
+										control={form.control}
+										name="username"
+										render={({ field }) => (
+											<FormItem className="w-full">
+												<FormControl className="w-full">
+													<Input
+														placeholder="Search by username"
+														className="rounded-full placeholder:text-white h-[50px] w-full"
+														{...field}
+													/>
+												</FormControl>
+												<FormDescription>
+													This is your public display name.
+												</FormDescription>
+												<FormMessage />
+											</FormItem>
+										)}
+									/>
+									<Button
+										type="submit"
+										className="absolute size-10 rounded-full bg-transparent top-1/2 right-3 -translate-y-1/2"
+									>
+										<Search />
+									</Button>
+								</div>
+							</form>
+						</Form>
 
 						<Separator />
 
-						<AddFriendCard
-							profileImg="/silly.png"
-							user="Grasscutter"
-							dmId="7878"
-							online
-							hasMessage
-							pinned
-							slug="grasscutter"
-						/>
-						<AddFriendCard
-							profileImg="/silly.png"
-							user="Supreme_Grasster"
-							dmId="7878"
-							online
-							hasMessage
-							pinned
-							slug="grasscutter"
-						/>
-						<AddFriendCard
-							profileImg="/silly.png"
-							user="Grass_Daemon"
-							dmId="7878"
-							online
-							hasMessage
-							pinned
-							slug="grasscutter"
-						/>
+						{error ? (
+							<p className="text-red-500 mt-3">
+								{error.message || "An error occurred."}
+							</p>
+						) : searchQuery && isLoading ? (
+							<p className="text-gray-500 mt-3">Loading...</p>
+						) : data && data.data?.length > 0 ? (
+							<div className="mt-5">
+								<h3 className="text-lg font-semibold">
+									Search Results:
+								</h3>
+								<div className="space-y-3">
+									{data.data.map((friend: any) => (
+										<AddFriendCard
+											key={friend.id}
+											profileImg={friend.profile_image_url}
+											user={friend.username}
+											dmId={friend.id}
+											online={false} // Add logic to determine this
+											hasMessage={false}
+											pinned={false}
+											slug={friend.username}
+										/>
+									))}
+								</div>
+							</div>
+						) : (
+							data &&
+							data.data?.length === 0 && (
+								<p className="text-gray-500 mt-3">No friends found.</p>
+							)
+						)}
 					</div>
 				</DialogHeader>
 			</DialogContent>
