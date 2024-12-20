@@ -2,42 +2,51 @@ import { getRandomColor } from "@/lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "../../ui/avatar";
 import { Link, useLocation } from "react-router-dom";
 import { SidebarMenuButton } from "@/components/ui/sidebar";
+import { useHMenuSelectedClient } from "@/hooks/use-dms";
+import { Friends } from "@/types";
 
-interface props {
-	profileImg: string;
-	username: string;
-	dmId: string;
-	// slug: string;
-	// online: boolean;
-	// hasMessage: boolean;
-	// messageCount?: number;
-	action?: () => void;
+interface Props extends Friends {
+	slug: string;
 }
 const DMCard = ({
-	profileImg,
-	dmId,
+	_id,
 	username,
-	// slug,
-	// online,
-	// hasMessage,
-	action,
-}: props) => {
+	firstName,
+	lastName,
+	email_address,
+	profile_image_url,
+	isFriend,
+}: Props) => {
+	const updateHMenuSelectedClient = useHMenuSelectedClient(
+		(state) => state.updateHMenuSelectedClient
+	);
+
 	const location = useLocation();
 	return (
 		<SidebarMenuButton
 			className="p-0 ms-1 ps-2 data-[active=true]:rounded-s-full data-[active=true]:text-white data-[active=true]:bg-charcoal transition-all duration-500"
-			isActive={location.pathname.includes(String(dmId))}
+			isActive={location.pathname.includes(String(_id))}
 			asChild
 		>
 			<Link
-				to={`@me/dm/${String(dmId)}`}
+				to={`@me/dm/${String(_id)}`}
 				className="flex items-center justify-start h-[55px] gap-3 bg-transparent shadow-none"
-				onClick={action}
+				onClick={() => {
+					updateHMenuSelectedClient({
+						profile_image_url,
+						_id,
+						username,
+						firstName,
+						lastName,
+						email_address,
+						isFriend,
+					});
+				}}
 			>
 				<div className="relative">
 					<Avatar className="flex items-center justify-center">
 						<AvatarImage
-							src={profileImg}
+							src={profile_image_url}
 							alt={username}
 							className="size-[40px]  rounded-full"
 						/>

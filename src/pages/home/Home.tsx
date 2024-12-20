@@ -15,7 +15,7 @@ import { SheetMenu } from "../components/MobileSheetMenu";
 const Home = () => {
 	const isMobile = useIsMobile();
 	return (
-		<div className="flex flex-col min-h-screen">
+		<div className="flex flex-col min-h-screen bg-carbon text-white">
 			<header className="px-4 lg:px-6 h-14 flex items-center justify-between sticky top-0 w-full bg-charcoal z-20">
 				<Link
 					className="flex items-center justify-center text-discord-blue"
@@ -93,12 +93,12 @@ const Home = () => {
 									<Button className="bg-discord-blue text-white rounded-[8px] hover:bg-gray-100">
 										<Link to={"signup"}>Get Started</Link>
 									</Button>
-									<Button
+									{/* <Button
 										variant="outline"
-										className="border-white hover:bg-discord-blue/10 rounded-[8px]"
+										className="border-white text-discord-blue hover:bg-discord-blue/10 hover:text-white rounded-[8px]"
 									>
 										Learn More
-									</Button>
+									</Button> */}
 								</div>
 							</div>
 
@@ -113,10 +113,7 @@ const Home = () => {
 					</div>
 				</section>
 
-				<section
-					id="features"
-					className="w-full py-12 md:py-24 lg:py-32 bg-white"
-				>
+				<section id="features" className="w-full py-12 md:py-24 lg:py-32">
 					<div className="container px-4 md:px-6">
 						<div className="flex flex-col gap-6 mx-auto text-center mb-12 max-w-[600px]">
 							<h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">

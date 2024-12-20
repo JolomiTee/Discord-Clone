@@ -87,7 +87,7 @@ const MessagesLayout = () => {
 					profile_image={client.profile_image_url}
 				/>
 
-				<div className="h-full flex flex-col relative overflow-auto scrollbar-hidden">
+				<div className="h-full flex flex-col relative overflow-auto scrollbar-hidden pb-5 p-3 md:p-4 lg:p-5">
 					{messages.length > 0 ? (
 						messages.map((msg) => {
 							return (
