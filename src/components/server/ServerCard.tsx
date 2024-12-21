@@ -5,14 +5,14 @@ import { Link } from "react-router-dom";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Servers } from "@/types";
 
-type ServerWithoutChannels = Omit<Servers, "channels">;
+// type ServerWithoutChannels = Omit<Servers, "channels">;
 
 const ServerCard = ({
 	name,
 	_id: serverId,
 	members,
 	profile_image_url,
-}: ServerWithoutChannels) => {
+}: Servers) => {
 	const toggle_selected_server = usePersistAppState(
 		(state) => state.toggle_selected_server
 	);
@@ -48,14 +48,13 @@ const ServerCard = ({
 				<CardContent className="grid gap-2 text-white/[60%] text-sm p-0">
 					<CardTitle className="text-white">{name}</CardTitle>
 					<div className="flex flex-wrap items-start gap-1 sm:gap-3 text-xs sm:text-sm">
-						<div className="flex items-center gap-2">
+						{/* <div className="flex items-center gap-2">
 							<div className="bg-emerald size-2 rounded-full shrink-0" />
 							{formatNumber(2)} online
-						</div>
+						</div> */}
 						<div className="flex items-center gap-2">
 							<div className="bg-[#898989] size-2 rounded-full shrink-0" />
-							{/* {formatNumber(members)} members */}
-							{members.length} member
+							{members?.length} member
 						</div>
 					</div>
 					<p className="text-xs sm:text-sm leading-none">
