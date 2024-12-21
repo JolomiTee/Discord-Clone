@@ -111,17 +111,13 @@ const AddFriendModal = () => {
 									Search Results:
 								</h3>
 								<div className="space-y-3">
-									{data.data.map((friend: Friends) => (
+									{data.data.map((user: Friends) => (
 										<AddFriendCard
-											key={friend._id}
-											profileImg={friend.profile_image_url}
-											user={friend.username}
-											userId={friend._id}
-											online={false} // Add logic to determine this
-											hasMessage={false}
-											pinned={false}
-											slug={friend.username}
-											isFriend={friend.isFriend}
+											key={user._id}
+											profile_image_url={user.profile_image_url}
+											username={user.username}
+											_id={user._id}
+											isFriend={user.isFriend}
 										/>
 									))}
 								</div>
@@ -129,7 +125,7 @@ const AddFriendModal = () => {
 						) : (
 							data &&
 							data.data?.length === 0 && (
-								<p className="text-gray-500 mt-3">No friends found.</p>
+								<p className="text-gray-500 mt-3">No users found.</p>
 							)
 						)}
 					</div>

@@ -2,44 +2,50 @@ import { getRandomColor } from "@/lib/utils";
 
 import { Button } from "@/components/ui/button";
 import { SidebarMenuButton } from "@/components/ui/sidebar";
-import { CheckCheck, UserRoundPlus } from "lucide-react";
+import { useClerkRequest } from "@/hooks/use-query";
+import { Friends } from "@/types";
+import { CheckCheck, Loader, UserRoundPlus } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { toast } from "sonner";
 
-interface props {
-	profileImg: string;
-	user: string;
-	userId: string;
-	online: boolean;
-	hasMessage: boolean;
-	messageCount?: number;
-	pinned: boolean;
-	slug: string;
-	action?: () => void;
-	isFriend: boolean;
-}
 const AddFriendCard = ({
-	profileImg,
-	userId,
-	user,
-	online,
-	hasMessage,
-	action,
+	profile_image_url,
+	_id,
+	username,
 	isFriend,
-	slug,
-}: props) => {
+}: Omit<Friends, "firstName" | "lastName" | "email_address">) => {
+	console.log(_id);
+
+	const { mutate, isLoading: isMutationLoading } = useClerkRequest("POST", [
+		"added-friends",
+	]);
+
+	const handleAddFriend = () => {
+		mutate(
+			{
+				url: `friends/${_id}`,
+			},
+			{
+				onSuccess: () => {
+					toast(`${username} is now a friend`);
+				},
+			}
+		);
+	};
+
 	return (
 		<SidebarMenuButton className="p-0 ms-0 text-white " asChild>
 			<Link
-				to={`@me/dm/${String(userId)}`}
+				to={`@me/dm/${String(_id)}`}
 				className="flex flex-wrap h-full gap-3 bg-transparent shadow-none"
-				onClick={action}
+				onClick={handleAddFriend}
 			>
 				<div className="relative">
 					<Avatar className="flex items-center justify-center">
 						<AvatarImage
-							src={profileImg}
-							alt={slug}
+							src={profile_image_url}
+							alt={username}
 							className="size-[40px]  rounded-full"
 						/>
 						<AvatarFallback
@@ -48,19 +54,14 @@ const AddFriendCard = ({
 						>
 							<img
 								src="/icons/discord.svg"
-								alt={slug}
+								alt={username}
 								className="size-[35px] rounded-full"
 							/>
 						</AvatarFallback>
 					</Avatar>
-					<div
-						className={`absolute -right-0 bottom-0 ${
-							online ? "bg-emerald" : "bg-gray"
-						} rounded-full size-3 border-[2px] border-solid border-charcoal`}
-					></div>
 				</div>
-				<span className={hasMessage ? "font-bold" : "font-normal"}>
-					{user}
+				<span className={isFriend ? "font-bold" : "font-normal"}>
+					{username}
 				</span>
 
 				{isFriend ? (
@@ -78,19 +79,27 @@ const AddFriendCard = ({
 					</div>
 				) : (
 					<div className="flex items-center gap-3 me-0 ms-auto ">
-						{/* <Button
-								title="Send friend request"
-								className="rounded-[10px] bg-discord-blue "
-							>
-								<Send width={30} height={30} strokeWidth={2.5} />{" "}
-								<span className="hidden sm:block">Send Request</span>
-							</Button> */}
 						<Button
+							disabled={isMutationLoading}
 							title="Send friend request"
 							className="rounded-[10px] bg-discord-blue "
+							onClick={handleAddFriend}
 						>
-							<UserRoundPlus width={30} height={30} strokeWidth={2.5} />{" "}
-							<span className="hidden sm:block">Add</span>
+							{isMutationLoading ? (
+								<>
+									<Loader size={4} className="size-4 animate-spin" />
+									Adding Friend
+								</>
+							) : (
+								<>
+									<UserRoundPlus
+										width={30}
+										height={30}
+										strokeWidth={2.5}
+									/>{" "}
+									<span className="hidden sm:block">Add</span>
+								</>
+							)}
 						</Button>
 					</div>
 				)}
