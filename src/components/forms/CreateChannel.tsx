@@ -72,7 +72,7 @@ const CreateChannel = ({ serverId }: { serverId: string | undefined }) => {
 				<Button
 					onClick={handleOpenDialog}
 					size={"sm"}
-					className="rounded-[18px] bg-discord-blue px-2 h-[30px] "
+					className="rounded-md bg-discord-blue px-2 h-[30px] "
 				>
 					Add Channel
 				</Button>

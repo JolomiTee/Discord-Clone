@@ -5,7 +5,6 @@ import ServerCard from "./ServerCard";
 
 const Discover = () => {
 	const { isLoading, data, error } = useClerkQuery<Servers[]>("all-servers");
-	console.log(data);
 	return (
 		<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-10 p-3 mb-10">
 			{isLoading ? (

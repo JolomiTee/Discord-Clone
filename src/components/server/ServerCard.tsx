@@ -1,9 +1,8 @@
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import usePersistAppState from "@/hooks/use-persist-app-state";
-import { formatNumber } from "@/lib/utils";
+import { Servers } from "@/types";
 import { Link } from "react-router-dom";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-import { Servers } from "@/types";
 
 // type ServerWithoutChannels = Omit<Servers, "channels">;
 

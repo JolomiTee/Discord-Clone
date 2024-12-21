@@ -1,4 +1,5 @@
 import ChannelList from "@/components/common/sidebar_buttons/ChannelsButton";
+import JoinServer from "@/components/common/sidebar_buttons/JoinServer";
 import CreateChannel from "@/components/forms/CreateChannel";
 import { Accordion } from "@/components/ui/accordion";
 import {
@@ -19,16 +20,15 @@ import {
 import { useSidebarStateStore } from "@/hooks/base-context";
 import useClerkQuery from "@/hooks/use-query";
 import { Channels, Servers } from "@/types";
+import { useUser } from "@clerk/clerk-react";
 import { Edit, Ellipsis, Trash } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { AspectRatio } from "../../ui/aspect-ratio";
 import { Separator } from "../../ui/separator";
 
-const ServerDisplayVariant = ({
-	serverId,
-}: {
-	serverId: string | undefined;
-}) => {
+const ServerDisplayVariant = () => {
+	const { serverId } = useParams();
 	const l_sidebar_state = useSidebarStateStore(
 		(state) => state.l_sidebar_state
 	);
@@ -69,6 +69,11 @@ const ServerDisplayVariant = ({
 		}
 	}, [data]);
 
+	const { user } = useUser();
+	useEffect(() => {
+		console.log("Owner: ", server?.ownedby.username === user?.username);
+	}, [serverId]);
+
 	return (
 		<Sidebar className="border-none">
 			<SidebarHeader className="bg-carbon p-0">
@@ -85,6 +90,7 @@ const ServerDisplayVariant = ({
 						</div>
 					)}
 				</AspectRatio>
+
 				<div className="p-3 grid gap-3">
 					<div className="flex items-start justify-between">
 						<div className="grid items-center gap-2 text-white">
@@ -101,6 +107,11 @@ const ServerDisplayVariant = ({
 									Actions
 								</DropdownMenuLabel>
 								<DropdownMenuSeparator />
+								{server?.ownedby.username === user?.username && (
+									<DropdownMenuItem className="text-white">
+										<CreateChannel serverId={serverId} />
+									</DropdownMenuItem>
+								)}
 								<DropdownMenuItem className="text-white">
 									<Edit /> Edit Server
 								</DropdownMenuItem>
@@ -113,7 +124,11 @@ const ServerDisplayVariant = ({
 					</div>
 
 					<div className="flex justify-start items-center">
-						<CreateChannel serverId={server?._id} />
+						{!server?.members?.find(
+							(member) => member.username === user?.username
+						) ? (
+							<JoinServer serverId={serverId} />
+						) : null}
 					</div>
 
 					<Separator className="bg-[#FFFFFF26] h-0.5" />
