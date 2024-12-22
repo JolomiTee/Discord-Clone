@@ -1,5 +1,6 @@
 import ChannelList from "@/components/common/sidebar_buttons/ChannelsButton";
 import JoinServer from "@/components/common/sidebar_buttons/JoinServer";
+import LoadingSidebar from "@/components/common/skeletons/LoadingSidebar";
 import CreateChannel from "@/components/forms/CreateChannel";
 import { Accordion } from "@/components/ui/accordion";
 import {
@@ -21,6 +22,7 @@ import { useSidebarStateStore } from "@/hooks/base-context";
 import useClerkQuery from "@/hooks/use-query";
 import { Channels, Servers } from "@/types";
 import { useUser } from "@clerk/clerk-react";
+import { ExitIcon } from "@radix-ui/react-icons";
 import { Edit, Ellipsis, Trash } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -47,32 +49,35 @@ const ServerDisplayVariant = () => {
 		}
 	}, [l_sidebar_state, open]);
 
-	const { data } = useClerkQuery<Servers>(`server/${serverId}`);
+	const { data, isLoading } = useClerkQuery<Servers>(`server/${serverId}`);
 
 	const [server, setServer] = useState<Servers>();
 	const [voiceChannels, setVoiceChannels] = useState<Channels[]>();
 	const [textChannels, setTextChannels] = useState<Channels[]>();
 
 	useEffect(() => {
-		if (data?.data) {
-			setServer(data.data);
-
-			// Filter channels based on type
-			const channels = data.data.channels || [];
-
-			setTextChannels(
-				channels.filter((channel) => channel.channelType === "text")
-			);
-			setVoiceChannels(
-				channels.filter((channel) => channel.channelType === "voice")
-			);
+		if (!data) {
+			return;
 		}
+
+		setServer(data.data);
+
+		// Filter channels based on type
+		const channels = data.data.channels || [];
+
+		setTextChannels(
+			channels.filter((channel) => channel.channelType === "text")
+		);
+		setVoiceChannels(
+			channels.filter((channel) => channel.channelType === "voice")
+		);
 	}, [data]);
 
 	const { user } = useUser();
-	useEffect(() => {
-		console.log("Owner: ", server?.ownedby.username === user?.username);
-	}, [serverId]);
+
+	if (isLoading) {
+		return <LoadingSidebar />;
+	}
 
 	return (
 		<Sidebar className="border-none">
@@ -107,29 +112,33 @@ const ServerDisplayVariant = () => {
 									Actions
 								</DropdownMenuLabel>
 								<DropdownMenuSeparator />
-								{server?.ownedby.username === user?.username && (
-									<DropdownMenuItem className="text-white">
-										<CreateChannel serverId={serverId} />
+								{server?.ownedby.username === user?.username ? (
+									<>
+										<DropdownMenuItem className="text-white">
+											<CreateChannel serverId={serverId} />
+										</DropdownMenuItem>
+										<DropdownMenuItem className="text-white">
+											<Edit /> Edit Server
+										</DropdownMenuItem>
+										<Separator className="my-1" />
+										<DropdownMenuItem className="text-white bg-crimson rounded">
+											<Trash /> Delete Server
+										</DropdownMenuItem>
+									</>
+								) : (
+									<DropdownMenuItem className="text-white bg-crimson rounded">
+										<ExitIcon /> Leave Server
 									</DropdownMenuItem>
 								)}
-								<DropdownMenuItem className="text-white">
-									<Edit /> Edit Server
-								</DropdownMenuItem>
-								<Separator className="my-1" />
-								<DropdownMenuItem className="text-white bg-crimson rounded">
-									<Trash /> Delete Server
-								</DropdownMenuItem>
 							</DropdownMenuContent>
 						</DropdownMenu>
 					</div>
 
-					<div className="flex justify-start items-center">
-						{!server?.members?.find(
-							(member) => member.username === user?.username
-						) ? (
-							<JoinServer serverId={serverId} />
-						) : null}
-					</div>
+					{!server?.members?.find(
+						(member) => member.username === user?.username
+					) ? (
+						<JoinServer serverId={serverId} />
+					) : null}
 
 					<Separator className="bg-[#FFFFFF26] h-0.5" />
 				</div>

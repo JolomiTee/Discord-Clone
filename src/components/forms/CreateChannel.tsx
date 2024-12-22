@@ -18,12 +18,13 @@ import {
 import { Input } from "@/components/ui/input";
 import { useClerkRequest } from "@/hooks/use-query";
 import { useCreateChannelFormSchema } from "@/lib/formSchemas/createChannelSchema";
+import { Loader, PlusSquareIcon } from "lucide-react";
+import { useState } from "react";
+import { toast } from "sonner";
 import { z } from "zod";
 import { Button } from "../ui/button";
+import { DropdownMenuItem } from "../ui/dropdown-menu";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
-import { useState } from "react";
-import { Loader } from "lucide-react";
-import { toast } from "sonner";
 const CreateChannel = ({ serverId }: { serverId: string | undefined }) => {
 	const { form, formSchema } = useCreateChannelFormSchema();
 
@@ -69,13 +70,9 @@ const CreateChannel = ({ serverId }: { serverId: string | undefined }) => {
 	return (
 		<Dialog open={openDialog}>
 			<DialogTrigger asChild>
-				<Button
-					onClick={handleOpenDialog}
-					size={"sm"}
-					className="rounded-md bg-discord-blue px-2 h-[30px] "
-				>
-					Add Channel
-				</Button>
+				<DropdownMenuItem onClick={handleOpenDialog} className="px-0">
+					<PlusSquareIcon /> Add Channel
+				</DropdownMenuItem>
 			</DialogTrigger>
 			<DialogContent className="rounded-[15px] md:rounded-[15px] py-7 bg-onyx text-white">
 				<DialogHeader className="text-start">
