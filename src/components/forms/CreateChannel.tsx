@@ -1,11 +1,14 @@
 import {
-	Dialog,
-	DialogContent,
-	DialogDescription,
-	DialogHeader,
-	DialogTitle,
-	DialogTrigger,
-} from "@/components/ui/dialog";
+	AlertDialog,
+	AlertDialogAction,
+	AlertDialogCancel,
+	AlertDialogContent,
+	AlertDialogDescription,
+	AlertDialogFooter,
+	AlertDialogHeader,
+	AlertDialogTitle,
+	AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 import {
 	Form,
 	FormControl,
@@ -24,7 +27,10 @@ import { toast } from "sonner";
 import { z } from "zod";
 import { Button } from "../ui/button";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
+
 const CreateChannel = ({ serverId }: { serverId: string | undefined }) => {
+	const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
+
 	const { form, formSchema } = useCreateChannelFormSchema();
 
 	const { mutate, isLoading: isMutationLoading } = useClerkRequest("POST", [
@@ -34,14 +40,6 @@ const CreateChannel = ({ serverId }: { serverId: string | undefined }) => {
 	function onSubmit(values: z.infer<typeof formSchema>) {
 		console.log(values);
 
-		// Append all text fields
-		// formData.append("name", values.name);
-		// formData.append("description", values.description);
-
-		// // Append the icon file if it exists
-		// if (values.icon) {
-		// 	formData.append("icon", values.icon);
-		// }
 		mutate(
 			{
 				url: `channels?serverId=${serverId as string}`,
@@ -49,44 +47,37 @@ const CreateChannel = ({ serverId }: { serverId: string | undefined }) => {
 			},
 			{
 				onSuccess: () => {
-					handleCloseDialog();
+					setIsDialogOpen(false);
 					toast("Channel created!");
+				},
+				onError: (error) => {
+					toast.error("Failed to delete server. Please try again.", error);
+					setIsDialogOpen(false);
 				},
 			}
 		);
 	}
 
-	const [openDialog, setOpenDialog] = useState<boolean>(false);
-
-	const handleOpenDialog = () => {
-		setOpenDialog((prev) => !prev);
-	};
-
-	const handleCloseDialog = () => {
-		setOpenDialog((prev) => !prev);
-	};
-
 	return (
-		<Dialog open={openDialog}>
-			<DialogTrigger asChild>
-				<Button
-					onClick={handleOpenDialog}
-					className="h-full w-full rounded justify-start px-2 bg-transparent shadow-none"
-				>
+		<AlertDialog
+			open={isDialogOpen || isMutationLoading}
+			onOpenChange={setIsDialogOpen}
+		>
+			<AlertDialogTrigger asChild>
+				<Button className="h-full w-full rounded bg-transparent justify-start px-2 shadow-none">
 					<PlusSquareIcon /> Add Channel
 				</Button>
-			</DialogTrigger>
-			<DialogContent className="rounded-[15px] md:rounded-[15px] py-7 bg-onyx text-white">
-				<DialogHeader className="text-start">
-					<DialogTitle className="text-start text-xl text-discord-blue">
+			</AlertDialogTrigger>
+			<AlertDialogContent className="rounded-[15px] md:rounded-[15px] py-7 bg-onyx text-white">
+				<AlertDialogHeader className="text-start">
+					<AlertDialogTitle className="text-start text-xl text-discord-blue">
 						More Channels, More Fun!!
-					</DialogTitle>
-
-					<DialogDescription className="text-white">
+					</AlertDialogTitle>
+					<AlertDialogDescription className="text-white">
 						Channels help manage interactions on your server based on
 						topics, ideas, locations and even voice communication!
-					</DialogDescription>
-				</DialogHeader>
+					</AlertDialogDescription>
+				</AlertDialogHeader>
 
 				<Form {...form}>
 					<form
@@ -155,7 +146,6 @@ const CreateChannel = ({ serverId }: { serverId: string | undefined }) => {
 												<FormLabel className="font-normal">
 													Text Channel
 												</FormLabel>
-
 												<small className="absolute bottom-0.5 right-2 text-[9px]">
 													default
 												</small>
@@ -176,24 +166,34 @@ const CreateChannel = ({ serverId }: { serverId: string | undefined }) => {
 							)}
 						/>
 
-						<Button
-							type="submit"
-							className="bg-discord-blue rounded-[8px]"
-							disabled={isMutationLoading}
-						>
-							{isMutationLoading ? (
-								<>
-									<Loader size={4} className="size-4 animate-spin" />
-									Creating Channel
-								</>
-							) : (
-								<>Create Channel </>
-							)}
-						</Button>
+						<AlertDialogFooter>
+							<AlertDialogCancel className="text-onyx rounded">
+								Cancel
+							</AlertDialogCancel>
+							<AlertDialogAction asChild>
+								<Button
+									type="submit"
+									className="bg-discord-blue rounded-[8px]"
+									disabled={isMutationLoading}
+								>
+									{isMutationLoading ? (
+										<>
+											<Loader
+												size={4}
+												className="size-4 animate-spin"
+											/>
+											Creating Channel
+										</>
+									) : (
+										<>Create Channel </>
+									)}
+								</Button>
+							</AlertDialogAction>
+						</AlertDialogFooter>
 					</form>
 				</Form>
-			</DialogContent>
-		</Dialog>
+			</AlertDialogContent>
+		</AlertDialog>
 	);
 };
 

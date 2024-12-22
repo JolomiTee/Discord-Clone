@@ -46,10 +46,7 @@ const DeleteServer = ({ serverId }: { serverId: string | undefined }) => {
 			onOpenChange={setIsDialogOpen}
 		>
 			<AlertDialogTrigger asChild>
-				<Button
-					// onClick={() => setopenDialog(!openDialog)}
-					className="h-full w-full rounded bg-transparent justify-start px-2"
-				>
+				<Button className="h-full w-full rounded bg-transparent justify-start px-2 shadow-none">
 					<Trash /> Delete Server
 				</Button>
 			</AlertDialogTrigger>

@@ -122,7 +122,10 @@ const ServerDisplayVariant = () => {
 									<DropdownMenuSeparator />
 									{serverOwner ? (
 										<>
-											<DropdownMenuItem className="text-white p-0 rounded">
+											<DropdownMenuItem
+												className="text-white p-0 rounded"
+												asChild
+											>
 												<CreateChannel serverId={serverId} />
 											</DropdownMenuItem>
 											<DropdownMenuItem className="text-white">
