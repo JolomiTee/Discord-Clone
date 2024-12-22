@@ -1,4 +1,5 @@
 import ChannelList from "@/components/common/sidebar_buttons/ChannelsButton";
+import DeleteServer from "@/components/common/sidebar_buttons/DeleteServer";
 import JoinServer from "@/components/common/sidebar_buttons/JoinServer";
 import LeaveServer from "@/components/common/sidebar_buttons/LeaveServer";
 import LoadingSidebar from "@/components/common/skeletons/LoadingSidebar";
@@ -23,7 +24,7 @@ import { useSidebarStateStore } from "@/hooks/base-context";
 import useClerkQuery from "@/hooks/use-query";
 import { Channels, Servers } from "@/types";
 import { useUser } from "@clerk/clerk-react";
-import { Edit, Ellipsis, Trash } from "lucide-react";
+import { Edit, Ellipsis } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { AspectRatio } from "../../ui/aspect-ratio";
@@ -128,12 +129,18 @@ const ServerDisplayVariant = () => {
 												<Edit /> Edit Server
 											</DropdownMenuItem>
 											<Separator className="my-1" />
-											<DropdownMenuItem className="text-white bg-crimson rounded">
-												<Trash /> Delete Server
+											<DropdownMenuItem
+												className="text-white bg-crimson rounded p-0"
+												asChild
+											>
+												<DeleteServer serverId={serverId} />
 											</DropdownMenuItem>
 										</>
 									) : (
-										<DropdownMenuItem className="text-white p-0 rounded">
+										<DropdownMenuItem
+											className="text-white bg-crimson rounded p-0"
+											asChild
+										>
 											<LeaveServer serverId={serverId} />
 										</DropdownMenuItem>
 									)}

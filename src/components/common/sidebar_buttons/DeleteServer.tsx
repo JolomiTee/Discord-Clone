@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { useClerkRequest } from "@/hooks/use-query";
-import { ExitIcon } from "@radix-ui/react-icons";
-import { Loader } from "lucide-react";
+import { Loader, Trash } from "lucide-react";
 import { toast } from "sonner";
+
 import {
 	AlertDialog,
 	AlertDialogAction,
@@ -15,22 +15,27 @@ import {
 	AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { useState } from "react";
-const LeaveServer = ({ serverId }: { serverId: string | undefined }) => {
-	const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-	const { mutate, isLoading: isMutationLoading } = useClerkRequest("POST", [
+const DeleteServer = ({ serverId }: { serverId: string | undefined }) => {
+	const [isDialogOpen, setIsDialogOpen] = useState(false);
+	const { mutate, isLoading: isMutationLoading } = useClerkRequest("DELETE", [
 		"joined-servers",
 		`server/${String(serverId)}`,
 	]);
 
-	const handleLeaveServer = () => {
+	const handleDeleteServer = () => {
 		mutate(
 			{
-				url: `server/leave-server/${serverId as string}`,
+				url: `server/delete-server/${serverId as string}`,
 			},
 			{
 				onSuccess: () => {
-					toast("You have left the server!");
+					toast("Server Deleted!");
+					setIsDialogOpen(false);
+				},
+				onError: (error) => {
+					toast.error("Failed to delete server. Please try again.", error);
+					setIsDialogOpen(false);
 				},
 			}
 		);
@@ -45,17 +50,17 @@ const LeaveServer = ({ serverId }: { serverId: string | undefined }) => {
 					// onClick={() => setopenDialog(!openDialog)}
 					className="h-full w-full rounded bg-transparent justify-start px-2"
 				>
-					<ExitIcon /> Leave Server
+					<Trash /> Delete Server
 				</Button>
 			</AlertDialogTrigger>
 			<AlertDialogContent className="bg-onyx md:rounded-[10px] ">
 				<AlertDialogHeader>
 					<AlertDialogTitle className="text-white">
-						Are you sure you want to Leave this server?
+						Are you sure you want to delete this server?
 					</AlertDialogTitle>
 					<AlertDialogDescription className="text-white">
-						You will still be able to join the server by finding it in the
-						discover tab
+						This action cannot be undone. This will permanently delete
+						your server and all its channels.
 					</AlertDialogDescription>
 				</AlertDialogHeader>
 				<AlertDialogFooter>
@@ -65,15 +70,15 @@ const LeaveServer = ({ serverId }: { serverId: string | undefined }) => {
 					<AlertDialogAction
 						className="bg-crimson rounded"
 						disabled={isMutationLoading}
-						onClick={handleLeaveServer}
+						onClick={handleDeleteServer}
 					>
 						{isMutationLoading ? (
 							<>
 								<Loader size={4} className="size-4 animate-spin" />
-								Leaving server
+								Deleting server
 							</>
 						) : (
-							<>Yes, Leave</>
+							<>Delete</>
 						)}
 					</AlertDialogAction>
 				</AlertDialogFooter>
@@ -82,4 +87,4 @@ const LeaveServer = ({ serverId }: { serverId: string | undefined }) => {
 	);
 };
 
-export default LeaveServer;
+export default DeleteServer;
