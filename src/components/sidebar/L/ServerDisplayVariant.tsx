@@ -1,5 +1,6 @@
 import ChannelList from "@/components/common/sidebar_buttons/ChannelsButton";
 import JoinServer from "@/components/common/sidebar_buttons/JoinServer";
+import LeaveServer from "@/components/common/sidebar_buttons/LeaveServer";
 import LoadingSidebar from "@/components/common/skeletons/LoadingSidebar";
 import CreateChannel from "@/components/forms/CreateChannel";
 import { Accordion } from "@/components/ui/accordion";
@@ -22,7 +23,6 @@ import { useSidebarStateStore } from "@/hooks/base-context";
 import useClerkQuery from "@/hooks/use-query";
 import { Channels, Servers } from "@/types";
 import { useUser } from "@clerk/clerk-react";
-import { ExitIcon } from "@radix-ui/react-icons";
 import { Edit, Ellipsis, Trash } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -31,13 +31,27 @@ import { Separator } from "../../ui/separator";
 
 const ServerDisplayVariant = () => {
 	const { serverId } = useParams();
+	const { user } = useUser();
+
+	const { open, toggleSidebar, isMobile } = useSidebar();
+	const { data, isLoading } = useClerkQuery<Servers>(`server/${serverId}`);
+
+	const [server, setServer] = useState<Servers>();
+	const [voiceChannels, setVoiceChannels] = useState<Channels[]>();
+	const [textChannels, setTextChannels] = useState<Channels[]>();
+
+	const serverMember = server?.members?.find(
+		(member) => member.username === user?.username
+	);
+
+	const serverOwner = server?.ownedby.username === user?.username;
+
 	const l_sidebar_state = useSidebarStateStore(
 		(state) => state.l_sidebar_state
 	);
 	const setLSidebarState = useSidebarStateStore(
 		(state) => state.setLSidebarState
 	);
-	const { open, toggleSidebar, isMobile } = useSidebar();
 
 	useEffect(() => {
 		if ((l_sidebar_state && !open) || (!l_sidebar_state && open)) {
@@ -48,12 +62,6 @@ const ServerDisplayVariant = () => {
 			setLSidebarState(false);
 		}
 	}, [l_sidebar_state, open]);
-
-	const { data, isLoading } = useClerkQuery<Servers>(`server/${serverId}`);
-
-	const [server, setServer] = useState<Servers>();
-	const [voiceChannels, setVoiceChannels] = useState<Channels[]>();
-	const [textChannels, setTextChannels] = useState<Channels[]>();
 
 	useEffect(() => {
 		if (!data) {
@@ -72,8 +80,6 @@ const ServerDisplayVariant = () => {
 			channels.filter((channel) => channel.channelType === "voice")
 		);
 	}, [data]);
-
-	const { user } = useUser();
 
 	if (isLoading) {
 		return <LoadingSidebar />;
@@ -103,42 +109,40 @@ const ServerDisplayVariant = () => {
 							<p className="text-xs">{server?.description}</p>
 						</div>
 
-						<DropdownMenu>
-							<DropdownMenuTrigger>
-								<Ellipsis />
-							</DropdownMenuTrigger>
-							<DropdownMenuContent className="rounded-[8px] bg-charcoal ">
-								<DropdownMenuLabel className="text-white">
-									Actions
-								</DropdownMenuLabel>
-								<DropdownMenuSeparator />
-								{server?.ownedby.username === user?.username ? (
-									<>
-										<DropdownMenuItem className="text-white">
-											<CreateChannel serverId={serverId} />
+						{serverMember && (
+							<DropdownMenu>
+								<DropdownMenuTrigger>
+									<Ellipsis />
+								</DropdownMenuTrigger>
+								<DropdownMenuContent className="rounded-[8px] bg-charcoal ">
+									<DropdownMenuLabel className="text-white">
+										Actions
+									</DropdownMenuLabel>
+									<DropdownMenuSeparator />
+									{serverOwner ? (
+										<>
+											<DropdownMenuItem className="text-white p-0 rounded">
+												<CreateChannel serverId={serverId} />
+											</DropdownMenuItem>
+											<DropdownMenuItem className="text-white">
+												<Edit /> Edit Server
+											</DropdownMenuItem>
+											<Separator className="my-1" />
+											<DropdownMenuItem className="text-white bg-crimson rounded">
+												<Trash /> Delete Server
+											</DropdownMenuItem>
+										</>
+									) : (
+										<DropdownMenuItem className="text-white p-0 rounded">
+											<LeaveServer serverId={serverId} />
 										</DropdownMenuItem>
-										<DropdownMenuItem className="text-white">
-											<Edit /> Edit Server
-										</DropdownMenuItem>
-										<Separator className="my-1" />
-										<DropdownMenuItem className="text-white bg-crimson rounded">
-											<Trash /> Delete Server
-										</DropdownMenuItem>
-									</>
-								) : (
-									<DropdownMenuItem className="text-white bg-crimson rounded">
-										<ExitIcon /> Leave Server
-									</DropdownMenuItem>
-								)}
-							</DropdownMenuContent>
-						</DropdownMenu>
+									)}
+								</DropdownMenuContent>
+							</DropdownMenu>
+						)}
 					</div>
 
-					{!server?.members?.find(
-						(member) => member.username === user?.username
-					) ? (
-						<JoinServer serverId={serverId} />
-					) : null}
+					{!serverMember ? <JoinServer serverId={serverId} /> : null}
 
 					<Separator className="bg-[#FFFFFF26] h-0.5" />
 				</div>

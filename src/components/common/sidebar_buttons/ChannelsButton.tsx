@@ -33,19 +33,23 @@ const ChannelList = ({
 		<AccordionItem value={value} className="border-none">
 			<AccordionTrigger className="pt-0">{section}</AccordionTrigger>
 			<AccordionContent className="px-0 flex flex-col gap-3">
-				{channel?.map((channels) => {
-					const { _id, name, channelType } = channels;
-					return (
-						<ChannelsButton
-							key={_id}
-							serverId={serverId}
-							channelId={_id}
-							name={name}
-							slug={name}
-							type={channelType}
-						/>
-					);
-				})}
+				{channel && channel.length === 0 ? (
+					<span className="ps-5">No {section.toLowerCase()}</span>
+				) : (
+					channel?.map((channels) => {
+						const { _id, name, channelType } = channels;
+						return (
+							<ChannelsButton
+								key={_id}
+								serverId={serverId}
+								channelId={_id}
+								name={name}
+								slug={name}
+								type={channelType}
+							/>
+						);
+					})
+				)}
 			</AccordionContent>
 		</AccordionItem>
 	);

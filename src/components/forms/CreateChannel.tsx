@@ -23,7 +23,6 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { z } from "zod";
 import { Button } from "../ui/button";
-import { DropdownMenuItem } from "../ui/dropdown-menu";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 const CreateChannel = ({ serverId }: { serverId: string | undefined }) => {
 	const { form, formSchema } = useCreateChannelFormSchema();
@@ -70,9 +69,12 @@ const CreateChannel = ({ serverId }: { serverId: string | undefined }) => {
 	return (
 		<Dialog open={openDialog}>
 			<DialogTrigger asChild>
-				<DropdownMenuItem onClick={handleOpenDialog} className="px-0">
+				<Button
+					onClick={handleOpenDialog}
+					className="h-full w-full rounded justify-start px-2 bg-transparent shadow-none"
+				>
 					<PlusSquareIcon /> Add Channel
-				</DropdownMenuItem>
+				</Button>
 			</DialogTrigger>
 			<DialogContent className="rounded-[15px] md:rounded-[15px] py-7 bg-onyx text-white">
 				<DialogHeader className="text-start">
