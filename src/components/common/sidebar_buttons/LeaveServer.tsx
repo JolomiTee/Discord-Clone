@@ -1,8 +1,3 @@
-import { Button } from "@/components/ui/button";
-import { useClerkRequest } from "@/hooks/use-query";
-import { ExitIcon } from "@radix-ui/react-icons";
-import { Loader } from "lucide-react";
-import { toast } from "sonner";
 import {
 	AlertDialog,
 	AlertDialogAction,
@@ -14,11 +9,14 @@ import {
 	AlertDialogTitle,
 	AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { forwardRef, useState } from "react";
-const LeaveServer = forwardRef<
-	HTMLButtonElement,
-	{ serverId: string | undefined }
->(({ serverId }, ref) => {
+import { Button } from "@/components/ui/button";
+import { useClerkRequest } from "@/hooks/use-query";
+import { ExitIcon } from "@radix-ui/react-icons";
+import { Loader } from "lucide-react";
+import { useState } from "react";
+import { toast } from "sonner";
+
+const LeaveServer = ({ serverId }: { serverId: string | undefined }) => {
 	const [isDialogOpen, setIsDialogOpen] = useState(false);
 
 	const { mutate, isLoading: isMutationLoading } = useClerkRequest("POST", [
@@ -47,7 +45,6 @@ const LeaveServer = forwardRef<
 				<Button
 					title="Leave Server"
 					className="h-full w-fit rounded bg-transparent justify-start px-2"
-					ref={ref}
 				>
 					<ExitIcon />
 				</Button>
@@ -84,6 +81,6 @@ const LeaveServer = forwardRef<
 			</AlertDialogContent>
 		</AlertDialog>
 	);
-});
+};
 
 export default LeaveServer;

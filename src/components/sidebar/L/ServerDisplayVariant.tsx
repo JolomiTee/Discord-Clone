@@ -29,6 +29,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { AspectRatio } from "../../ui/aspect-ratio";
 import { Separator } from "../../ui/separator";
+import { Dialog } from "@radix-ui/react-dialog";
+import CreateServer from "@/components/forms/CreateServer";
 
 const ServerDisplayVariant = () => {
 	const { serverId } = useParams();
@@ -109,52 +111,24 @@ const ServerDisplayVariant = () => {
 							<p>{server?.name}</p>
 							<p className="text-xs">{server?.description}</p>
 						</div>
-
-						{serverMember && (
-							<DropdownMenu>
-								<DropdownMenuTrigger>
-									<Ellipsis />
-								</DropdownMenuTrigger>
-								<DropdownMenuContent className="rounded-[8px] bg-charcoal ">
-									<DropdownMenuLabel className="text-white">
-										Actions
-									</DropdownMenuLabel>
-									<DropdownMenuSeparator />
-									{serverOwner ? (
-										<>
-											<DropdownMenuItem
-												className="text-white p-0 rounded"
-												asChild
-											>
-												<CreateChannel serverId={serverId} />
-											</DropdownMenuItem>
-											<DropdownMenuItem className="text-white">
-												<Edit /> Edit Server
-											</DropdownMenuItem>
-											<Separator className="my-1" />
-											<DropdownMenuItem
-												className="text-white bg-crimson rounded p-0"
-												asChild
-											>
-												<DeleteServer serverId={serverId} />
-											</DropdownMenuItem>
-										</>
-									) : (
-										<DropdownMenuItem
-											className="text-white bg-crimson rounded p-0"
-											asChild
-										>
-											<LeaveServer serverId={serverId} />
-										</DropdownMenuItem>
-									)}
-								</DropdownMenuContent>
-							</DropdownMenu>
-						)}
 					</div>
 
 					{!serverMember ? <JoinServer serverId={serverId} /> : null}
 
 					<Separator className="bg-[#FFFFFF26] h-0.5" />
+
+					<div className="flex gap-2">
+						{serverMember &&
+							(serverOwner ? (
+								<>
+									<CreateServer trigger="edit" />
+									<DeleteServer serverId={serverId} />
+									<CreateChannel serverId={serverId} />
+								</>
+							) : (
+								<LeaveServer serverId={serverId} />
+							))}
+					</div>
 				</div>
 			</SidebarHeader>
 
