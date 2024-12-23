@@ -7,15 +7,21 @@ const MessageList = () => {
 	const { data, isLoading, error } = useClerkQuery<Friends[]>("recent-chat");
 	console.log(data?.data);
 
+	if (!data) {
+		return;
+	}
+
+	if (isLoading) {
+		<LoadingFriendList />;
+	}
+
+	if (error) {
+		<div className="text-center">Wumpus couldnt find your recent chats</div>;
+	}
+
 	return (
 		<div className="grid overflow-y-auto max-h-full scrollbar-hidden">
-			{isLoading ? (
-				<LoadingFriendList />
-			) : error ? (
-				<div className="text-center">
-					Wumpus couldnt find your recent chats
-				</div>
-			) : data.data.length > 0 ? (
+			{data.data.length > 0 ? (
 				data.data.map((dms: Friends) => {
 					const {
 						_id,
