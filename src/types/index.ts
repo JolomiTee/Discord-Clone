@@ -107,9 +107,10 @@ export interface textChannelConversations {
 }
 
 // Type for a Member
-interface Member {
-  _id: string;
-  username: string;
+export interface Member {
+	_id: string;
+	username: string;
+	profile_image_url: string;
 }
 
 // Type for the OwnedBy field
@@ -168,3 +169,9 @@ export interface AppNotificationStateProps {
 	selectedTab: string;
 	toggle_selected_tab: (newAppState: string) => void;
 }
+
+
+export type SelectedServerMembers = {
+	members: Member[];
+	setServerMembers: (newAppState: Member[]) => void;
+};

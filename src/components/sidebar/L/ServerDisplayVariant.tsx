@@ -4,15 +4,8 @@ import JoinServer from "@/components/common/sidebar_buttons/JoinServer";
 import LeaveServer from "@/components/common/sidebar_buttons/LeaveServer";
 import LoadingSidebar from "@/components/common/skeletons/LoadingSidebar";
 import CreateChannel from "@/components/forms/CreateChannel";
+import CreateServer from "@/components/forms/CreateServer";
 import { Accordion } from "@/components/ui/accordion";
-import {
-	DropdownMenu,
-	DropdownMenuContent,
-	DropdownMenuItem,
-	DropdownMenuLabel,
-	DropdownMenuSeparator,
-	DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import {
 	Sidebar,
 	SidebarContent,
@@ -24,13 +17,11 @@ import { useSidebarStateStore } from "@/hooks/base-context";
 import useClerkQuery from "@/hooks/use-query";
 import { Channels, Servers } from "@/types";
 import { useUser } from "@clerk/clerk-react";
-import { Edit, Ellipsis } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { AspectRatio } from "../../ui/aspect-ratio";
 import { Separator } from "../../ui/separator";
-import { Dialog } from "@radix-ui/react-dialog";
-import CreateServer from "@/components/forms/CreateServer";
+import { useSelectedServerMembersStore } from "@/hooks/use-server-members";
 
 const ServerDisplayVariant = () => {
 	const { serverId } = useParams();
@@ -48,6 +39,10 @@ const ServerDisplayVariant = () => {
 	);
 
 	const serverOwner = server?.ownedby.username === user?.username;
+
+	const setServerMembers = useSelectedServerMembersStore(
+		(state) => state.setServerMembers
+	);
 
 	const l_sidebar_state = useSidebarStateStore(
 		(state) => state.l_sidebar_state
@@ -72,6 +67,7 @@ const ServerDisplayVariant = () => {
 		}
 
 		setServer(data.data);
+		setServerMembers(data.data.members);
 
 		// Filter channels based on type
 		const channels = data.data.channels || [];
