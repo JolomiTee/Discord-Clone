@@ -14,8 +14,11 @@ import {
 	AlertDialogTitle,
 	AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { useState } from "react";
-const LeaveServer = ({ serverId }: { serverId: string | undefined }) => {
+import { forwardRef, useState } from "react";
+const LeaveServer = forwardRef<
+	HTMLButtonElement,
+	{ serverId: string | undefined }
+>(({ serverId }, ref) => {
 	const [isDialogOpen, setIsDialogOpen] = useState(false);
 
 	const { mutate, isLoading: isMutationLoading } = useClerkRequest("POST", [
@@ -42,10 +45,11 @@ const LeaveServer = ({ serverId }: { serverId: string | undefined }) => {
 		>
 			<AlertDialogTrigger asChild>
 				<Button
-					// onClick={() => setopenDialog(!openDialog)}
-					className="h-full w-full rounded bg-transparent justify-start px-2"
+					title="Leave Server"
+					className="h-full w-fit rounded bg-transparent justify-start px-2"
+					ref={ref}
 				>
-					<ExitIcon /> Leave Server
+					<ExitIcon />
 				</Button>
 			</AlertDialogTrigger>
 			<AlertDialogContent className="bg-onyx md:rounded-[10px] ">
@@ -80,6 +84,6 @@ const LeaveServer = ({ serverId }: { serverId: string | undefined }) => {
 			</AlertDialogContent>
 		</AlertDialog>
 	);
-};
+});
 
 export default LeaveServer;

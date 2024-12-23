@@ -14,9 +14,12 @@ import {
 	AlertDialogTitle,
 	AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { useState } from "react";
+import { forwardRef, useState } from "react";
 
-const DeleteServer = ({ serverId }: { serverId: string | undefined }) => {
+const DeleteServer = forwardRef<
+	HTMLButtonElement,
+	{ serverId: string | undefined }
+>(({ serverId }, ref) => {
 	const [isDialogOpen, setIsDialogOpen] = useState(false);
 	const { mutate, isLoading: isMutationLoading } = useClerkRequest("DELETE", [
 		"joined-servers",
@@ -46,8 +49,11 @@ const DeleteServer = ({ serverId }: { serverId: string | undefined }) => {
 			onOpenChange={setIsDialogOpen}
 		>
 			<AlertDialogTrigger asChild>
-				<Button className="h-full w-full rounded bg-transparent justify-start px-2 shadow-none">
-					<Trash /> Delete Server
+				<Button
+					title="Delete Server"
+					className="h-full w-fit rounded bg-transparent justify-start px-2 shadow-none"
+				>
+					<Trash />
 				</Button>
 			</AlertDialogTrigger>
 			<AlertDialogContent className="bg-onyx md:rounded-[10px] ">
@@ -82,6 +88,6 @@ const DeleteServer = ({ serverId }: { serverId: string | undefined }) => {
 			</AlertDialogContent>
 		</AlertDialog>
 	);
-};
+});
 
 export default DeleteServer;
