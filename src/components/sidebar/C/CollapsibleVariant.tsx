@@ -1,5 +1,4 @@
 import LoadingServers from "@/components/common/skeletons/LoadingServers";
-import CreateServer from "@/components/forms/CreateServer";
 import MobileSearchModal from "@/components/mobile_v_comps/MobileSearchModal";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -22,6 +21,7 @@ import {
 import SidebarNavLink from "../../common/sidebar_buttons/SidebarNavTab";
 import SidebarServerIcon from "../../common/sidebar_buttons/SidebarServerIcon";
 import ProfileHolder from "../../server/ProfileHolder";
+import ServerCrudActions from "@/components/dialogs/ServerCrudActions";
 
 const CollapsibleVariant = () => {
 	const { isMobile } = useSidebar();
@@ -121,7 +121,7 @@ const CollapsibleVariant = () => {
 
 			<SidebarFooter className="bg-onyx p-0 pt-3 pb-5">
 				<SidebarMenu>
-					<CreateServer trigger="create" />
+					<ServerCrudActions trigger="create" />
 					<Separator className="lg:group-data-[collapsible=icon]:w-[80%] group-data-[collapsible=icon]:mx-auto rounded-full bg-charcoal h-1 md:w-[45px] mt-2 md:ms-3" />
 
 					<SidebarNavLink to="inbox" icon="inbox" label="Inbox" />
