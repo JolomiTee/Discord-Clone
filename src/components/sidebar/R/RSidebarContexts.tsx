@@ -8,7 +8,6 @@ import { useSidebarStateStore } from "@/hooks/base-context";
 import { useEffect } from "react";
 import ChInfoDisplayVariant from "./ChannelInfo";
 import Members from "./Members";
-import MemberList from "./Members/MemberList";
 import FooterCard from "./Members/FooterCard";
 
 const RSidebarContexts = () => {
@@ -32,7 +31,6 @@ const RSidebarContexts = () => {
 		if (isMobile) {
 			setRSidebarState(false);
 		}
-
 	}, [r_sidebar_state, open]);
 	return (
 		<Sidebar side="right" className="border-none">
@@ -47,7 +45,7 @@ const RSidebarContexts = () => {
 			<SidebarFooter className="border-t-2 border-t-white/[8%] border-dashed bg-carbon relative text-white p-3 pe-0">
 				{r_sidebar_display_context === "members" && (
 					<>
-						<MemberList />
+						{/* <MemberList /> */}
 						<FooterCard />
 					</>
 				)}

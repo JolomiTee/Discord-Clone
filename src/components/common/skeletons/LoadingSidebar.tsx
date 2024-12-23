@@ -16,16 +16,18 @@ const LoadingSidebar = () => {
 				</AspectRatio>
 
 				<div className="p-3 grid gap-3">
-					<div className="flex items-center justify-between">
-						<div className="grid items-center gap-2 text-white">
-							<Skeleton className="bg-loading w-20 h-4 rounded" />
-							<Skeleton className="bg-loading w-[120px] h-4 rounded" />
-						</div>
-
-						<Skeleton className="bg-loading size-7 rounded" />
+					<div className="grid items-center gap-2 text-white">
+						<Skeleton className="bg-loading w-20 h-4 rounded" />
+						<Skeleton className="bg-loading w-[120px] h-4 rounded" />
 					</div>
 
 					<Skeleton className="bg-loading h-0.5 w-full" />
+				</div>
+				<div className="flex p-3 gap-3 items-center">
+					<Skeleton className="bg-loading size-7 rounded" />
+					<Skeleton className="bg-loading size-7 rounded" />
+					<Skeleton className="bg-loading size-7 rounded" />
+					<Skeleton className="bg-loading size-7 rounded" />
 				</div>
 			</SidebarHeader>
 

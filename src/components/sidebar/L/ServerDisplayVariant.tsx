@@ -22,6 +22,7 @@ import { useParams } from "react-router-dom";
 import { AspectRatio } from "../../ui/aspect-ratio";
 import { Separator } from "../../ui/separator";
 import { useSelectedServerMembersStore } from "@/hooks/use-server-members";
+import ViewMembers from "@/components/common/sidebar_buttons/ViewMembers";
 
 const ServerDisplayVariant = () => {
 	const { serverId } = useParams();
@@ -86,7 +87,7 @@ const ServerDisplayVariant = () => {
 
 	return (
 		<Sidebar className="border-none">
-			<SidebarHeader className="bg-carbon p-0">
+			<SidebarHeader className="bg-carbon p-0 gap-0">
 				<AspectRatio ratio={16 / 6}>
 					{server?.banner_image_url ? (
 						<img
@@ -120,6 +121,7 @@ const ServerDisplayVariant = () => {
 									<CreateServer trigger="edit" />
 									<DeleteServer serverId={serverId} />
 									<CreateChannel serverId={serverId} />
+									<ViewMembers />
 								</>
 							) : (
 								<LeaveServer serverId={serverId} />
@@ -128,7 +130,7 @@ const ServerDisplayVariant = () => {
 				</div>
 			</SidebarHeader>
 
-			<SidebarContent className="scrollbar-hidden pt-0 p-3 bg-carbon relative text-[#FFFFFF99] h-full">
+			<SidebarContent className="scrollbar-hidden p-3 pt-0 bg-carbon relative text-[#FFFFFF99] h-full">
 				<Accordion
 					type="multiple"
 					defaultValue={["text-channels", "voice-channels"]}

@@ -84,21 +84,6 @@ const HMenu = ({ name, channelType, profile_image }: Props) => {
 								console.log("hello");
 							}}
 						/>
-						<IconButtons
-							src="members"
-							alt="Members"
-							sizes="size-8"
-							action={() => {
-								if (r_sidebar_display_context !== "members") {
-									if (!r_sidebar_state) {
-										toggle_r_sidebar();
-									}
-									switchRightSidebarContext("members");
-								} else {
-									toggle_r_sidebar();
-								}
-							}}
-						/>
 					</>
 				) : (
 					<>

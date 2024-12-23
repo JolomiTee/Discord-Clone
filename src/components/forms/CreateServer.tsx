@@ -98,6 +98,7 @@ const CreateServer = ({ trigger }: { trigger?: "edit" | "create" }) => {
 				</SidebarMenuButton>
 			) : (
 				<Button
+					title="Edit Server"
 					className="h-full w-fit rounded bg-transparent justify-start px-2 shadow-none"
 					onClick={handleOpenDialog}
 				>
