@@ -5,7 +5,6 @@ import { Friends } from "@/types";
 
 const MessageList = () => {
 	const { data, isLoading, error } = useClerkQuery<Friends[]>("recent-chat");
-	console.log(data?.data);
 
 	if (!data) {
 		return;

@@ -8,6 +8,22 @@ import { useHMenuSelectedClient } from "@/hooks/use-dms";
 import { Channels } from "@/types";
 import { Link } from "react-router-dom";
 
+import {
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuItem,
+	DropdownMenuLabel,
+	DropdownMenuSeparator,
+	DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { EllipsisVertical, MoreHorizontal } from "lucide-react";
+import DeleteChannel from "./DeleteChannel";
+import CreateChannel, {
+	CreateChannelDialogContent,
+} from "@/components/forms/CreateChannel";
+import { Dialog, DialogTrigger } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+
 interface ChannelListProps {
 	value: string;
 	section: string;
@@ -89,7 +105,36 @@ const ChannelsButton = ({
 					width={22}
 					height={22}
 				/>
-				{name}
+				<span className="truncate w-full text-nowrap">{name}</span>
+
+				<Dialog>
+					<DropdownMenu modal={false}>
+						<DropdownMenuTrigger asChild>
+							<Button
+								variant="ghost"
+								className="size-7 p-0 ms-auto me-0"
+							>
+								<span className="sr-only">Open menu</span>
+								<MoreHorizontal />
+							</Button>
+						</DropdownMenuTrigger>
+						<DropdownMenuContent align="end">
+							<DialogTrigger asChild>
+								<DropdownMenuItem>Edit</DropdownMenuItem>
+							</DialogTrigger>
+
+							<DeleteChannel />
+						</DropdownMenuContent>
+					</DropdownMenu>
+
+					{/* Dialog content */}
+
+					<CreateChannelDialogContent
+						serverId={serverId}
+						trigger={"edit"}
+						channelId={channelId}
+					/>
+				</Dialog>
 			</Link>
 		</SidebarMenuButton>
 	);

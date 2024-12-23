@@ -2,10 +2,12 @@ import ChannelList from "@/components/common/sidebar_buttons/ChannelsButton";
 import DeleteServer from "@/components/common/sidebar_buttons/DeleteServer";
 import JoinServer from "@/components/common/sidebar_buttons/JoinServer";
 import LeaveServer from "@/components/common/sidebar_buttons/LeaveServer";
+import ViewMembers from "@/components/common/sidebar_buttons/ViewMembers";
 import LoadingSidebar from "@/components/common/skeletons/LoadingSidebar";
 import CreateChannel from "@/components/forms/CreateChannel";
 import CreateServer from "@/components/forms/CreateServer";
 import { Accordion } from "@/components/ui/accordion";
+import { Badge } from "@/components/ui/badge";
 import {
 	Sidebar,
 	SidebarContent,
@@ -15,14 +17,13 @@ import {
 } from "@/components/ui/sidebar";
 import { useSidebarStateStore } from "@/hooks/base-context";
 import useClerkQuery from "@/hooks/use-query";
+import { useSelectedServerMembersStore } from "@/hooks/use-server-members";
 import { Channels, Servers } from "@/types";
 import { useUser } from "@clerk/clerk-react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { AspectRatio } from "../../ui/aspect-ratio";
 import { Separator } from "../../ui/separator";
-import { useSelectedServerMembersStore } from "@/hooks/use-server-members";
-import ViewMembers from "@/components/common/sidebar_buttons/ViewMembers";
 
 const ServerDisplayVariant = () => {
 	const { serverId } = useParams();
@@ -103,11 +104,20 @@ const ServerDisplayVariant = () => {
 				</AspectRatio>
 
 				<div className="p-3 grid gap-3">
-					<div className="flex items-start justify-between">
-						<div className="grid items-center gap-2 text-white">
-							<p>{server?.name}</p>
-							<p className="text-xs">{server?.description}</p>
+					<div className="flex flex-col justify-center gap-2 text-white">
+						<div className="flex items-center justify-between w-full">
+							<p>{server?.name} </p>
+							{serverOwner && (
+								<Badge
+									variant={"outline"}
+									className="text-xs rounded-full ms-auto me-0 bg-discord-blue border-none cursor-default"
+									title="You are a server admin"
+								>
+									Admin
+								</Badge>
+							)}
 						</div>
+						<p className="text-xs">{server?.description}</p>
 					</div>
 
 					{!serverMember ? <JoinServer serverId={serverId} /> : null}
@@ -120,12 +130,15 @@ const ServerDisplayVariant = () => {
 								<>
 									<CreateServer trigger="edit" />
 									<DeleteServer serverId={serverId} />
-									<CreateChannel serverId={serverId} />
-									<ViewMembers />
+									<CreateChannel
+										serverId={serverId}
+										trigger="create"
+									/>
 								</>
 							) : (
 								<LeaveServer serverId={serverId} />
 							))}
+						<ViewMembers />
 					</div>
 				</div>
 			</SidebarHeader>

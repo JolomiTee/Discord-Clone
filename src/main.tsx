@@ -8,6 +8,7 @@ import App from "./App.tsx";
 import "./assets/backgrounds.css";
 import "./index.css";
 import { Toaster } from "@/components/ui/sonner";
+// import Sandbox from "./Sandbox.tsx";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +27,7 @@ createRoot(document.getElementById("root")!).render(
 			<QueryClientProvider client={queryClient}>
 				<BrowserRouter>
 					<App />
+					{/* <Sandbox /> */}
 					<Toaster />
 				</BrowserRouter>
 			</QueryClientProvider>
