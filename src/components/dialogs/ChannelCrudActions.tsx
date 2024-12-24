@@ -42,8 +42,8 @@ const ChannelCrudActions = forwardRef<HTMLDivElement, Props>(
 				{
 					url: `${
 						trigger === "create"
-							? `channels?serverId=${serverId as string}`
-							: `channels?channelId=${channelId as string}`
+							? `channel?serverId=${serverId as string}`
+							: `channel?channelId=${channelId as string}`
 					}`,
 					body: values,
 				},

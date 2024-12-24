@@ -23,17 +23,17 @@ type CreateChannelProps = {
 };
 
 const DeleteChannel = forwardRef<HTMLButtonElement, CreateChannelProps>(
-	({ channelId }, ref) => {
+	({ channelId, serverId }, ref) => {
 		const [isDialogOpen, setIsDialogOpen] = useState(false);
 		const { mutate, isLoading: isMutationLoading } = useClerkRequest(
 			"DELETE",
-			["joined-servers", `server/${String(channelId)}`]
+			[`server/${String(serverId)}`, `channel/${String(channelId)}`]
 		);
 
 		const handleDeleteChannel = () => {
 			mutate(
 				{
-					url: `channel/delete-channel/${channelId as string}`,
+					url: `channel/${channelId}?serverId=${serverId}`,
 				},
 				{
 					onSuccess: () => {
