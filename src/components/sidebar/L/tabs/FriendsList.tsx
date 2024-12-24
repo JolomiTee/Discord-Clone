@@ -11,7 +11,7 @@ import useClerkQuery from "@/hooks/use-query";
 import { Friends } from "@/types";
 import { Plus } from "lucide-react";
 
-import AddFriendModal from "@/components/friends/AddFriendModal";
+import AddFriendModal from "@/components/dialogs/AddFriendModal";
 import MobileSearchModal from "@/components/mobile_v_comps/MobileSearchModal";
 import { messagesFilter } from "@/data";
 import IconButtons from "@/components/common/IconButtons";

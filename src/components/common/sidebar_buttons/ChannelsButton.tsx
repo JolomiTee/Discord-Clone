@@ -17,8 +17,7 @@ import {
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { MoreHorizontal } from "lucide-react";
-import DeleteChannel from "./DeleteChannel";
-import { useUser } from "@clerk/clerk-react";
+import DeleteChannel from "../../dialogs/DeleteChannel";
 
 interface ChannelListProps {
 	value: string;

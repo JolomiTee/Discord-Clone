@@ -4,14 +4,12 @@ import { Servers } from "@/types";
 import { Link } from "react-router-dom";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
-// type ServerWithoutChannels = Omit<Servers, "channels">;
-
 const ServerCard = ({
 	name,
 	_id: serverId,
 	members,
 	profile_image_url,
-}: Servers) => {
+}: Omit<Servers, "roles">) => {
 	const toggle_selected_server = usePersistAppState(
 		(state) => state.toggle_selected_server
 	);

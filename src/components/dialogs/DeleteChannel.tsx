@@ -23,7 +23,7 @@ type CreateChannelProps = {
 };
 
 const DeleteChannel = forwardRef<HTMLButtonElement, CreateChannelProps>(
-	({ serverId, trigger, channelId }, ref) => {
+	({ channelId }, ref) => {
 		const [isDialogOpen, setIsDialogOpen] = useState(false);
 		const { mutate, isLoading: isMutationLoading } = useClerkRequest(
 			"DELETE",
