@@ -7,7 +7,6 @@ import {
 	AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { useClerkRequest } from "@/hooks/use-query";
-import { useCreateServerFormSchema } from "@/lib/formSchemas/createServerSchema";
 import { Edit, PlusSquareIcon } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -20,34 +19,54 @@ interface Props {
 	channelId?: string | undefined;
 }
 
+import { useCreateChannelFormSchema } from "@/lib/formSchemas/createChannelSchema";
 import { forwardRef } from "react";
-import { DropdownMenuItem } from "../ui/dropdown-menu";
 import ChannelForm from "../forms/CreateChannel";
+import { DropdownMenuItem } from "../ui/dropdown-menu";
 
 const ChannelCrudActions = forwardRef<HTMLDivElement, Props>(
-	({ trigger, channelId }, ref) => {
-		const { form, formSchema } = useCreateServerFormSchema();
+	({ trigger, channelId, serverId }, ref) => {
 		const [open, setOpen] = useState(false);
+		const { form, formSchema } = useCreateChannelFormSchema();
 
-		const { mutate, isLoading: isMutationLoading } = useClerkRequest("PUT", [
-			`server/${channelId as string}`,
-		]);
+		const { mutate, isLoading: isMutationLoading } = useClerkRequest(
+			`${trigger === "create" ? "POST" : "PUT"}`,
+			[
+				`server/${serverId}`,
+				`${trigger === "edit" && `channel/${channelId}`}`,
+			]
+		);
 
 		function onSubmit(values: z.infer<typeof formSchema>) {
 			mutate(
 				{
-					url: `channels?channelId=${channelId as string}`,
+					url: `${
+						trigger === "create"
+							? `channel?serverId=${serverId as string}`
+							: `channel?channelId=${channelId as string}`
+					}`,
 					body: values,
 				},
 				{
 					onSuccess: () => {
-						toast("Channel created!");
-					},
-					onError: (error) => {
-						toast.error(
-							"Failed to create channel. Please try again.",
-							error
+						toast(
+							`${
+								trigger === "create"
+									? "Channel created"
+									: "Channel updated"
+							}`
 						);
+						setOpen(false);
+					},
+					onError: () => {
+						toast(
+							`${
+								trigger === "create"
+									? "Unable to create channel"
+									: "Unable to update channel"
+							}`
+						);
+						setOpen(false);
 					},
 				}
 			);
@@ -57,13 +76,13 @@ const ChannelCrudActions = forwardRef<HTMLDivElement, Props>(
 			<AlertDialog
 				open={open}
 				onOpenChange={(newState) => {
-					// Avoid unnecessary updates
 					if (newState !== open) setOpen(newState);
 				}}
 			>
 				<AlertDialogTrigger asChild>
 					{trigger === "edit" ? (
 						<DropdownMenuItem
+							disabled
 							onSelect={(e) => e.preventDefault()}
 							title="Edit channel"
 							className="h-full w-full rounded bg-transparent justify-start px-2 shadow-none"

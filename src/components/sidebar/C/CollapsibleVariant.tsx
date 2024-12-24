@@ -122,6 +122,7 @@ const CollapsibleVariant = () => {
 			<SidebarFooter className="bg-onyx p-0 pt-3 pb-5">
 				<SidebarMenu>
 					<ServerCrudActions trigger="create" />
+
 					<Separator className="lg:group-data-[collapsible=icon]:w-[80%] group-data-[collapsible=icon]:mx-auto rounded-full bg-charcoal h-1 md:w-[45px] mt-2 md:ms-3" />
 
 					<SidebarNavLink to="inbox" icon="inbox" label="Inbox" />

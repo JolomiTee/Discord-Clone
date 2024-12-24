@@ -22,6 +22,7 @@ interface Props {
 }
 
 const ChannelForm = ({ form, onSubmit, isMutationLoading, trigger }: Props) => {
+	const edit = trigger === "edit";
 	return (
 		<Form {...form}>
 			<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
@@ -30,7 +31,7 @@ const ChannelForm = ({ form, onSubmit, isMutationLoading, trigger }: Props) => {
 					name="name"
 					render={({ field }) => (
 						<FormItem>
-							<FormLabel>Channel Name</FormLabel>
+							<FormLabel>{edit && "New"} Channel Name</FormLabel>
 							<FormControl>
 								<Input
 									className="rounded-[8px]"
@@ -51,7 +52,9 @@ const ChannelForm = ({ form, onSubmit, isMutationLoading, trigger }: Props) => {
 					name="description"
 					render={({ field }) => (
 						<FormItem>
-							<FormLabel>Channel Description (Optional)</FormLabel>
+							<FormLabel>
+								{edit && "New"} Channel Description (Optional)
+							</FormLabel>
 							<FormControl>
 								<Input
 									className="rounded-[8px]"
@@ -120,10 +123,10 @@ const ChannelForm = ({ form, onSubmit, isMutationLoading, trigger }: Props) => {
 						{isMutationLoading ? (
 							<>
 								<Loader size={4} className="size-4 animate-spin" />
-								Creating Channel
+								{edit ? "Editing" : "Creating"} Channel
 							</>
 						) : (
-							<>Create Channel</>
+							<>{edit ? "Edit" : "Create"} Channel</>
 						)}
 					</Button>
 				</AlertDialogFooter>

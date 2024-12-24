@@ -125,7 +125,10 @@ const ChannelsButton = ({
 									trigger={"edit"}
 									channelId={channelId}
 								/>
-								<DeleteChannel />
+								<DeleteChannel
+									channelId={channelId}
+									serverId={serverId}
+								/>
 							</DropdownMenuContent>
 						</DropdownMenu>
 

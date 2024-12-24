@@ -75,6 +75,7 @@ export function useClerkRequest(
 			const token = await getToken();
 			const fullUrl = `${BASE_URL}${url}`;
 
+			// Set up headers and options
 			const headers: Record<string, string> = {
 				Authorization: `Bearer ${token}`,
 			};
@@ -84,10 +85,9 @@ export function useClerkRequest(
 				headers,
 			};
 
-			// Check if the body contains a File and use FormData if necessary
+			// Handle body formatting for JSON or FormData
 			if (body instanceof FormData) {
-				// Remove the Content-Type header to let the browser set it automatically
-				delete headers["Content-Type"];
+				delete headers["Content-Type"]; // Browser sets this automatically for FormData
 				options.body = body;
 			} else {
 				headers["Content-Type"] = "application/json";
@@ -107,15 +107,34 @@ export function useClerkRequest(
 		{
 			...mutationOptions,
 			onSuccess: (data, variables, context) => {
+				// Invalidate query keys
 				if (invalidateQueryKey) {
 					const queryKeyArray = Array.isArray(invalidateQueryKey)
 						? invalidateQueryKey
 						: [invalidateQueryKey];
-					queryClient.invalidateQueries(queryKeyArray);
+
+					queryKeyArray.forEach((key) => {
+						// Ensure each key is wrapped in an array as required by queryClient.invalidateQueries
+						queryClient.invalidateQueries(
+							Array.isArray(key) ? key : [key]
+						);
+					});
+
+					console.log("Invalidated query keys:", queryKeyArray);
 				}
 
-				mutationOptions?.onSuccess?.(data, variables, context);
+				// Call custom onSuccess handler if provided
+				if (mutationOptions?.onSuccess) {
+					mutationOptions.onSuccess(data, variables, context);
+				}
+			},
+			onError: (error, variables, context) => {
+				// Call custom onError handler if provided
+				if (mutationOptions?.onError) {
+					mutationOptions.onError(error, variables, context);
+				}
 			},
 		}
 	);
 }
+
