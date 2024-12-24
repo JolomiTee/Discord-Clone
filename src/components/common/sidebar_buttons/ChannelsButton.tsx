@@ -18,12 +18,14 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { MoreHorizontal } from "lucide-react";
 import DeleteChannel from "./DeleteChannel";
+import { useUser } from "@clerk/clerk-react";
 
 interface ChannelListProps {
 	value: string;
 	section: string;
 	serverId: string | undefined;
 	channel: Channels[] | undefined;
+	serverOwner: boolean;
 }
 
 interface ChannelsButtonProps {
@@ -32,6 +34,7 @@ interface ChannelsButtonProps {
 	name: string;
 	type: string;
 	slug: string;
+	serverOwner: boolean;
 }
 
 const ChannelList = ({
@@ -39,6 +42,7 @@ const ChannelList = ({
 	section,
 	channel,
 	serverId,
+	serverOwner,
 }: ChannelListProps) => {
 	return (
 		<AccordionItem value={value} className="border-none">
@@ -51,6 +55,7 @@ const ChannelList = ({
 						const { _id, name, channelType } = channels;
 						return (
 							<ChannelsButton
+								serverOwner={serverOwner}
 								key={_id}
 								serverId={serverId}
 								channelId={_id}
@@ -72,6 +77,7 @@ const ChannelsButton = ({
 	name,
 	type,
 	slug,
+	serverOwner,
 }: ChannelsButtonProps) => {
 	const updateHMenuSelectedClient = useHMenuSelectedClient(
 		(state) => state.updateHMenuSelectedClient
@@ -102,29 +108,31 @@ const ChannelsButton = ({
 				/>
 				<span className="truncate w-full text-nowrap">{name}</span>
 
-				<Dialog>
-					<DropdownMenu modal={false}>
-						<DropdownMenuTrigger asChild>
-							<Button
-								variant="ghost"
-								className="size-7 rounded-full p-0 ms-auto me-0"
-							>
-								<span className="sr-only">Open menu</span>
-								<MoreHorizontal size={7} />
-							</Button>
-						</DropdownMenuTrigger>
-						<DropdownMenuContent align="end">
-							<ChannelCrudActions
-								serverId={serverId}
-								trigger={"edit"}
-								channelId={channelId}
-							/>
-							<DeleteChannel />
-						</DropdownMenuContent>
-					</DropdownMenu>
+				{serverOwner && (
+					<Dialog>
+						<DropdownMenu modal={false}>
+							<DropdownMenuTrigger asChild>
+								<Button
+									variant="ghost"
+									className="size-7 rounded-full p-0 ms-auto me-0"
+								>
+									<span className="sr-only">Open menu</span>
+									<MoreHorizontal size={7} />
+								</Button>
+							</DropdownMenuTrigger>
+							<DropdownMenuContent align="end">
+								<ChannelCrudActions
+									serverId={serverId}
+									trigger={"edit"}
+									channelId={channelId}
+								/>
+								<DeleteChannel />
+							</DropdownMenuContent>
+						</DropdownMenu>
 
-					{/* Dialog content */}
-				</Dialog>
+						{/* Dialog content */}
+					</Dialog>
+				)}
 			</Link>
 		</SidebarMenuButton>
 	);

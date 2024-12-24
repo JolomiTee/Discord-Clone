@@ -159,12 +159,14 @@ const ServerDisplayVariant = () => {
 						value="text-channels"
 						section="TEXT CHANNELS"
 						channel={textChannels}
+						serverOwner={serverOwner}
 					/>
 					<ChannelList
 						serverId={serverId}
 						value="voice-channels"
 						section="VOICE CHANNELS"
 						channel={voiceChannels}
+						serverOwner={serverOwner}
 					/>
 				</Accordion>
 			</SidebarContent>
