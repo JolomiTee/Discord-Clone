@@ -8,17 +8,16 @@ import { useHMenuSelectedClient } from "@/hooks/use-dms";
 import { Channels } from "@/types";
 import { Link } from "react-router-dom";
 
+import ChannelCrudActions from "@/components/dialogs/ChannelCrudActions";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog } from "@/components/ui/dialog";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
-	DropdownMenuItem,
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { MoreHorizontal } from "lucide-react";
 import DeleteChannel from "./DeleteChannel";
-import ChannelCrudActions from "@/components/dialogs/ChannelCrudActions";
 
 interface ChannelListProps {
 	value: string;
@@ -108,10 +107,10 @@ const ChannelsButton = ({
 						<DropdownMenuTrigger asChild>
 							<Button
 								variant="ghost"
-								className="size-7 p-0 ms-auto me-0"
+								className="size-7 rounded-full p-0 ms-auto me-0"
 							>
 								<span className="sr-only">Open menu</span>
-								<MoreHorizontal />
+								<MoreHorizontal size={7} />
 							</Button>
 						</DropdownMenuTrigger>
 						<DropdownMenuContent align="end">

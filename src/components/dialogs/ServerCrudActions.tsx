@@ -68,7 +68,7 @@ const ServerCrudActions = ({ trigger, serverId }: Props) => {
 	}
 	return (
 		<AlertDialog open={open} onOpenChange={setOpen}>
-			<AlertDialogTrigger>
+			<AlertDialogTrigger asChild>
 				{trigger === "create" ? (
 					<SidebarMenuButton
 						tooltip={"Create a onConCloseonCloselose"}
