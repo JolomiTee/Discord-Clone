@@ -1,14 +1,13 @@
 import ChannelList from "@/components/common/sidebar_buttons/ChannelsButton";
-import CreateChannel from "@/components/forms/CreateChannel";
+import DeleteServer from "@/components/dialogs/DeleteServer";
+import JoinServer from "@/components/common/sidebar_buttons/JoinServer";
+import LeaveServer from "@/components/dialogs/LeaveServer";
+import ViewMembers from "@/components/common/sidebar_buttons/ViewMembers";
+import LoadingSidebar from "@/components/common/skeletons/LoadingSidebar";
+import ChannelCrudActions from "@/components/dialogs/ChannelCrudActions";
+import ServerCrudActions from "@/components/dialogs/ServerCrudActions";
 import { Accordion } from "@/components/ui/accordion";
-import {
-	DropdownMenu,
-	DropdownMenuContent,
-	DropdownMenuItem,
-	DropdownMenuLabel,
-	DropdownMenuSeparator,
-	DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { Badge } from "@/components/ui/badge";
 import {
 	Sidebar,
 	SidebarContent,
@@ -18,24 +17,41 @@ import {
 } from "@/components/ui/sidebar";
 import { useSidebarStateStore } from "@/hooks/base-context";
 import useClerkQuery from "@/hooks/use-query";
+import { useSelectedServerMembersStore } from "@/hooks/use-server-members";
 import { Channels, Servers } from "@/types";
-import { Edit, Ellipsis, Trash } from "lucide-react";
+import { useUser } from "@clerk/clerk-react";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { AspectRatio } from "../../ui/aspect-ratio";
 import { Separator } from "../../ui/separator";
 
-const ServerDisplayVariant = ({
-	serverId,
-}: {
-	serverId: string | undefined;
-}) => {
+const ServerDisplayVariant = () => {
+	const { serverId } = useParams();
+	const { user } = useUser();
+
+	const { open, toggleSidebar, isMobile } = useSidebar();
+	const { data, isLoading } = useClerkQuery<Servers>(`server/${serverId}`);
+
+	const [server, setServer] = useState<Servers>();
+	const [voiceChannels, setVoiceChannels] = useState<Channels[]>();
+	const [textChannels, setTextChannels] = useState<Channels[]>();
+
+	const serverMember = server?.members?.find(
+		(member) => member.username === user?.username
+	);
+
+	const serverOwner = server?.ownedby.username === user?.username;
+
+	const setServerMembers = useSelectedServerMembersStore(
+		(state) => state.setServerMembers
+	);
+
 	const l_sidebar_state = useSidebarStateStore(
 		(state) => state.l_sidebar_state
 	);
 	const setLSidebarState = useSidebarStateStore(
 		(state) => state.setLSidebarState
 	);
-	const { open, toggleSidebar, isMobile } = useSidebar();
 
 	useEffect(() => {
 		if ((l_sidebar_state && !open) || (!l_sidebar_state && open)) {
@@ -47,31 +63,32 @@ const ServerDisplayVariant = ({
 		}
 	}, [l_sidebar_state, open]);
 
-	const { data } = useClerkQuery<Servers>(`server/${serverId}`);
-
-	const [server, setServer] = useState<Servers>();
-	const [voiceChannels, setVoiceChannels] = useState<Channels[]>();
-	const [textChannels, setTextChannels] = useState<Channels[]>();
-
 	useEffect(() => {
-		if (data?.data) {
-			setServer(data.data);
-
-			// Filter channels based on type
-			const channels = data.data.channels || [];
-
-			setTextChannels(
-				channels.filter((channel) => channel.channelType === "text")
-			);
-			setVoiceChannels(
-				channels.filter((channel) => channel.channelType === "voice")
-			);
+		if (!data) {
+			return;
 		}
+
+		setServer(data.data);
+		setServerMembers(data.data.members);
+
+		// Filter channels based on type
+		const channels = data.data.channels || [];
+
+		setTextChannels(
+			channels.filter((channel) => channel.channelType === "text")
+		);
+		setVoiceChannels(
+			channels.filter((channel) => channel.channelType === "voice")
+		);
 	}, [data]);
+
+	if (isLoading) {
+		return <LoadingSidebar />;
+	}
 
 	return (
 		<Sidebar className="border-none">
-			<SidebarHeader className="bg-carbon p-0">
+			<SidebarHeader className="bg-carbon p-0 gap-0">
 				<AspectRatio ratio={16 / 6}>
 					{server?.banner_image_url ? (
 						<img
@@ -85,42 +102,52 @@ const ServerDisplayVariant = ({
 						</div>
 					)}
 				</AspectRatio>
+
 				<div className="p-3 grid gap-3">
-					<div className="flex items-start justify-between">
-						<div className="grid items-center gap-2 text-white">
-							<p>{server?.name}</p>
-							<p className="text-xs">{server?.description}</p>
+					<div className="flex flex-col justify-center gap-2 text-white">
+						<div className="flex items-center justify-between w-full">
+							<p>{server?.name} </p>
+							{serverOwner && (
+								<Badge
+									variant={"outline"}
+									className="text-xs rounded-full ms-auto me-0 bg-discord-blue border-none cursor-default"
+									title="You are a server admin"
+								>
+									Admin
+								</Badge>
+							)}
 						</div>
-
-						<DropdownMenu>
-							<DropdownMenuTrigger>
-								<Ellipsis />
-							</DropdownMenuTrigger>
-							<DropdownMenuContent className="rounded-[8px] bg-charcoal ">
-								<DropdownMenuLabel className="text-white">
-									Actions
-								</DropdownMenuLabel>
-								<DropdownMenuSeparator />
-								<DropdownMenuItem className="text-white">
-									<Edit /> Edit Server
-								</DropdownMenuItem>
-								<Separator className="my-1" />
-								<DropdownMenuItem className="text-white bg-crimson rounded">
-									<Trash /> Delete Server
-								</DropdownMenuItem>
-							</DropdownMenuContent>
-						</DropdownMenu>
+						<p className="text-xs">{server?.description}</p>
 					</div>
 
-					<div className="flex justify-start items-center">
-						<CreateChannel serverId={server?._id} />
-					</div>
+					{!serverMember ? <JoinServer serverId={serverId} /> : null}
 
 					<Separator className="bg-[#FFFFFF26] h-0.5" />
+
+					<div className="flex gap-2">
+						{serverMember &&
+							(serverOwner ? (
+								<>
+									<ServerCrudActions
+										serverId={serverId}
+										trigger="edit"
+									/>
+									<DeleteServer serverId={serverId} />
+
+									<ChannelCrudActions
+										serverId={serverId}
+										trigger="create"
+									/>
+								</>
+							) : (
+								<LeaveServer serverId={serverId} />
+							))}
+						<ViewMembers />
+					</div>
 				</div>
 			</SidebarHeader>
 
-			<SidebarContent className="scrollbar-hidden pt-0 p-3 bg-carbon relative text-[#FFFFFF99] h-full">
+			<SidebarContent className="scrollbar-hidden p-3 pt-0 bg-carbon relative text-[#FFFFFF99] h-full">
 				<Accordion
 					type="multiple"
 					defaultValue={["text-channels", "voice-channels"]}
@@ -132,12 +159,14 @@ const ServerDisplayVariant = ({
 						value="text-channels"
 						section="TEXT CHANNELS"
 						channel={textChannels}
+						serverOwner={serverOwner}
 					/>
 					<ChannelList
 						serverId={serverId}
 						value="voice-channels"
 						section="VOICE CHANNELS"
 						channel={voiceChannels}
+						serverOwner={serverOwner}
 					/>
 				</Accordion>
 			</SidebarContent>

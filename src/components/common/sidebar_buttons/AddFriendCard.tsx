@@ -6,7 +6,7 @@ import { useClerkRequest } from "@/hooks/use-query";
 import { Friends } from "@/types";
 import { CheckCheck, Loader, UserRoundPlus } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "../../ui/avatar";
 import { toast } from "sonner";
 
 const AddFriendCard = ({

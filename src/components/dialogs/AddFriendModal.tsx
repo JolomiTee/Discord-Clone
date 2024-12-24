@@ -24,7 +24,7 @@ import {
 } from "../ui/form";
 import { Input } from "../ui/input";
 import { Separator } from "../ui/separator";
-import AddFriendCard from "./AddFriendCard";
+import AddFriendCard from "../common/sidebar_buttons/AddFriendCard";
 
 const AddFriendModal = () => {
 	const { form, formSchema } = searchFriendSchema();

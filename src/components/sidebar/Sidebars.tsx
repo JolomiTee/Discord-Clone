@@ -21,7 +21,7 @@ export const LSidebar = () => {
 			{(location.pathname.includes("@me") ||
 				location.pathname.includes(`/@server/${String(serverId)}`)) &&
 				(l_sidebar_display_context === "server" ? (
-					<ServerDisplayVariant serverId={serverId} />
+					<ServerDisplayVariant />
 				) : (
 					<MessagesDisplayVariant />
 				))}

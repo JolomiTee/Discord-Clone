@@ -105,14 +105,29 @@ export interface textChannelConversations {
 		senderId: string;
 	}[];
 }
+
+// Type for a Member
+export interface Member {
+	_id: string;
+	username: string;
+	profile_image_url: string;
+}
+
+// Type for the OwnedBy field
+interface OwnedBy {
+  _id: string;
+  username: string;
+}
+
 export interface Servers {
 	_id: string;
 	name: string;
-	ownedby: string;
+	ownedby: OwnedBy;
 	description: string;
-	banner_image_url: string;
 	profile_image_url: string;
-	members: string[];
+	banner_image_url: string;
+	members: Member[];
+	roles: any[]; // Define this if you have a specific structure for roles
 	channels: Channels[];
 };
 
@@ -154,3 +169,9 @@ export interface AppNotificationStateProps {
 	selectedTab: string;
 	toggle_selected_tab: (newAppState: string) => void;
 }
+
+
+export type SelectedServerMembers = {
+	members: Member[];
+	setServerMembers: (newAppState: Member[]) => void;
+};
