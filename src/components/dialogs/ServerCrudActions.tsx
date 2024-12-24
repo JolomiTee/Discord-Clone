@@ -12,7 +12,7 @@ import { Edit, Plus } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 import { z } from "zod";
-import { CreateServerForm } from "../forms/CreateServer";
+import { ServerForm } from "../forms/CreateServer";
 import ServerIconPreview from "../server/ServerIconPreview";
 import { Button } from "../ui/button";
 import { SidebarMenuButton } from "../ui/sidebar";
@@ -22,7 +22,7 @@ interface Props {
 	serverId?: string | undefined;
 }
 
-const ServerCrudActions = ({ trigger, serverId }: Props) => {
+const ServerCrudActions = ({ trigger }: Props) => {
 	const { form, formSchema } = useCreateServerFormSchema();
 	const [iconPreview, setIconPreview] = useState<string | undefined>(
 		undefined
@@ -112,7 +112,7 @@ const ServerCrudActions = ({ trigger, serverId }: Props) => {
 					)}
 					<ServerIconPreview iconPreview={iconPreview} name={name} />
 
-					<CreateServerForm
+					<ServerForm
 						form={form}
 						onSubmit={onSubmit}
 						setIconPreview={setIconPreview}

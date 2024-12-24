@@ -18,9 +18,10 @@ interface Props {
 	form: any;
 	onSubmit: (values: any) => void;
 	isMutationLoading: boolean;
+	trigger?: string;
 }
 
-const CreateChannelForm = ({ form, onSubmit, isMutationLoading }: Props) => {
+const ChannelForm = ({ form, onSubmit, isMutationLoading, trigger }: Props) => {
 	return (
 		<Form {...form}>
 			<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
@@ -66,43 +67,47 @@ const CreateChannelForm = ({ form, onSubmit, isMutationLoading }: Props) => {
 						</FormItem>
 					)}
 				/>
-				<FormField
-					control={form.control}
-					name="channelType"
-					render={({ field }) => (
-						<FormItem className="space-y-3">
-							<FormLabel>What type of channel is this?</FormLabel>
-							<FormControl>
-								<RadioGroup
-									onValueChange={field.onChange}
-									defaultValue={field.value}
-									className="flex space-x-1"
-								>
-									<FormItem className="flex items-center space-x-3 space-y-0 border border-carbon rounded-[10px] p-4 pe-6 w-fit relative">
-										<FormControl>
-											<RadioGroupItem value="text" />
-										</FormControl>
-										<FormLabel className="font-normal">
-											Text Channel
-										</FormLabel>
-										<small className="absolute bottom-0.5 right-2 text-[9px]">
-											default
-										</small>
-									</FormItem>
-									<FormItem className="flex items-center space-x-3 space-y-0 border border-carbon rounded-[10px] p-4 pe-6 w-fit">
-										<FormControl>
-											<RadioGroupItem value="voice" />
-										</FormControl>
-										<FormLabel className="font-normal">
-											Voice Channel
-										</FormLabel>
-									</FormItem>
-								</RadioGroup>
-							</FormControl>
-							<FormMessage />
-						</FormItem>
-					)}
-				/>
+
+				{trigger !== "edit" && (
+					<FormField
+						control={form.control}
+						name="channelType"
+						render={({ field }) => (
+							<FormItem className="space-y-3">
+								<FormLabel>What type of channel is this?</FormLabel>
+								<FormControl>
+									<RadioGroup
+										onValueChange={field.onChange}
+										defaultValue={field.value}
+										className="flex space-x-1"
+									>
+										<FormItem className="flex items-center space-x-3 space-y-0 border border-carbon rounded-[10px] p-4 pe-6 w-fit relative">
+											<FormControl>
+												<RadioGroupItem value="text" />
+											</FormControl>
+											<FormLabel className="font-normal">
+												Text Channel
+											</FormLabel>
+											<small className="absolute bottom-0.5 right-2 text-[9px]">
+												default
+											</small>
+										</FormItem>
+										<FormItem className="flex items-center space-x-3 space-y-0 border border-carbon rounded-[10px] p-4 pe-6 w-fit">
+											<FormControl>
+												<RadioGroupItem value="voice" />
+											</FormControl>
+											<FormLabel className="font-normal">
+												Voice Channel
+											</FormLabel>
+										</FormItem>
+									</RadioGroup>
+								</FormControl>
+								<FormMessage />
+							</FormItem>
+						)}
+					/>
+				)}
+
 				<AlertDialogFooter>
 					<AlertDialogCancel className="text-onyx rounded">
 						Cancel
@@ -127,5 +132,5 @@ const CreateChannelForm = ({ form, onSubmit, isMutationLoading }: Props) => {
 	);
 };
 
-export default CreateChannelForm;
+export default ChannelForm;
 

@@ -22,7 +22,7 @@ interface Props {
 	isMutationLoading: boolean;
 }
 
-export const CreateServerForm = ({
+export const ServerForm = ({
 	form,
 	onSubmit,
 	setIconPreview,

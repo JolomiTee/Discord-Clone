@@ -12,7 +12,6 @@ import { Edit, PlusSquareIcon } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 import { z } from "zod";
-import CreateChannelForm from "../forms/CreateChannel";
 import { Button } from "../ui/button";
 
 interface Props {
@@ -21,11 +20,12 @@ interface Props {
 	channelId?: string | undefined;
 }
 
-import React, { forwardRef } from "react";
+import { forwardRef } from "react";
 import { DropdownMenuItem } from "../ui/dropdown-menu";
+import ChannelForm from "../forms/CreateChannel";
 
 const ChannelCrudActions = forwardRef<HTMLDivElement, Props>(
-	({ trigger, serverId, channelId }, ref) => {
+	({ trigger, channelId }, ref) => {
 		const { form, formSchema } = useCreateServerFormSchema();
 		const [open, setOpen] = useState(false);
 
@@ -95,7 +95,8 @@ const ChannelCrudActions = forwardRef<HTMLDivElement, Props>(
 						</AlertDialogDescription>
 					</AlertDialogHeader>
 					<div className="bg-onyx z-10 overflow-y-scroll scrollbar-hidden h-full relative grid gap-3">
-						<CreateChannelForm
+						<ChannelForm
+							trigger={trigger}
 							form={form}
 							onSubmit={onSubmit}
 							isMutationLoading={isMutationLoading}
