@@ -22,22 +22,26 @@ interface Props {
 	serverId?: string | undefined;
 }
 
-const ServerCrudActions = ({ trigger }: Props) => {
-	const { form, formSchema } = useCreateServerFormSchema();
+const ServerCrudActions = ({ trigger, serverId }: Props) => {
+	const [open, setOpen] = useState(false);
+	const [name, setName] = useState<string | undefined>(undefined);
 	const [iconPreview, setIconPreview] = useState<string | undefined>(
 		undefined
 	);
 	const [bannerPreview, setBannerPreview] = useState<string | undefined>(
 		undefined
 	);
-	const [name, setName] = useState<string | undefined>(undefined);
 
-	const { mutate, isLoading: isMutationLoading } = useClerkRequest("POST", [
-		"joined-servers",
-		"servers",
-	]);
+	const { mutate, isLoading: isMutationLoading } = useClerkRequest(
+		`${trigger === "create" ? "POST" : "PUT"}`,
+		[
+			"joined-servers",
+			"servers",
+			`${trigger === "edit" && `server/${serverId}`}`,
+		]
+	);
 
-	const [open, setOpen] = useState(false);
+	const { form, formSchema } = useCreateServerFormSchema();
 
 	function onSubmit(values: z.infer<typeof formSchema>) {
 		const formData = new FormData();
@@ -55,23 +59,38 @@ const ServerCrudActions = ({ trigger }: Props) => {
 		}
 		mutate(
 			{
-				url: "servers",
+				url: `${trigger === "create" ? "servers" : `server/${serverId}`}`,
 				body: formData,
 			},
 			{
 				onSuccess: () => {
-					toast("Server created");
+					toast(
+						`${
+							trigger === "create" ? "Server created" : "Server updated"
+						}`
+					);
+					setOpen(false);
+				},
+				onError: () => {
+					toast(
+						`${
+							trigger === "create"
+								? "Unable to create server"
+								: "Unable to update server"
+						}`
+					);
 					setOpen(false);
 				},
 			}
 		);
 	}
+
 	return (
 		<AlertDialog open={open} onOpenChange={setOpen}>
 			<AlertDialogTrigger asChild>
 				{trigger === "create" ? (
 					<SidebarMenuButton
-						tooltip={"Create a onConCloseonCloselose"}
+						tooltip={"Create a Server"}
 						className=" gap-3 text-base h-fit group-data-[collapsible=icon]:[&>span:last-child]:hidden p-0 group-data-[collapsible=icon]:ps-0 px-2 md:ps-3 data-[active=true]:text-white data-[active=true]:font-bold mx-auto group-data-[collapsible=icon]:md:size-[50px] group-data-[collapsible=icon]:rounded-full group-data-[collapsible=icon]:size-[45px] group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:bg-charcoal"
 					>
 						<div className="flex items-center justify-center bg-charcoal/50 size-[45px] rounded-full">
