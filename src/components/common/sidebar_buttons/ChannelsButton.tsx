@@ -8,21 +8,17 @@ import { useHMenuSelectedClient } from "@/hooks/use-dms";
 import { Channels } from "@/types";
 import { Link } from "react-router-dom";
 
+import { Button } from "@/components/ui/button";
+import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
-	DropdownMenuLabel,
-	DropdownMenuSeparator,
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { EllipsisVertical, MoreHorizontal } from "lucide-react";
+import { MoreHorizontal } from "lucide-react";
 import DeleteChannel from "./DeleteChannel";
-import CreateChannel, {
-	CreateChannelDialogContent,
-} from "@/components/forms/CreateChannel";
-import { Dialog, DialogTrigger } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
+import ChannelCrudActions from "@/components/dialogs/ChannelCrudActions";
 
 interface ChannelListProps {
 	value: string;
@@ -119,21 +115,16 @@ const ChannelsButton = ({
 							</Button>
 						</DropdownMenuTrigger>
 						<DropdownMenuContent align="end">
-							<DialogTrigger asChild>
-								<DropdownMenuItem>Edit</DropdownMenuItem>
-							</DialogTrigger>
-
+							<ChannelCrudActions
+								serverId={serverId}
+								trigger={"edit"}
+								channelId={channelId}
+							/>
 							<DeleteChannel />
 						</DropdownMenuContent>
 					</DropdownMenu>
 
 					{/* Dialog content */}
-
-					<CreateChannelDialogContent
-						serverId={serverId}
-						trigger={"edit"}
-						channelId={channelId}
-					/>
 				</Dialog>
 			</Link>
 		</SidebarMenuButton>

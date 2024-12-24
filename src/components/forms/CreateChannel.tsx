@@ -8,211 +8,124 @@ import {
 	FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { useClerkRequest } from "@/hooks/use-query";
-import { useCreateChannelFormSchema } from "@/lib/formSchemas/createChannelSchema";
-import { Edit, Loader, PlusSquareIcon } from "lucide-react";
-import { toast } from "sonner";
-import { z } from "zod";
+import { Loader } from "lucide-react";
 import { Button } from "../ui/button";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 
-import {
-	Dialog,
-	DialogContent,
-	DialogDescription,
-	DialogFooter,
-	DialogHeader,
-	DialogTitle,
-	DialogTrigger,
-} from "@/components/ui/dialog";
-import { DropdownMenuItem } from "@radix-ui/react-dropdown-menu";
+import { AlertDialogCancel, AlertDialogFooter } from "../ui/alert-dialog";
 
-type CreateChannelProps = {
-	serverId?: string;
-	channelId?: string; // Made optional in case it's not always required
-	trigger?: React.ReactNode; // Updated to accept any valid React node as a trigger
-};
+interface Props {
+	form: any;
+	onSubmit: (values: any) => void;
+	isMutationLoading: boolean;
+}
 
-const CreateChannel = ({
-	serverId,
-	trigger,
-	channelId,
-}: CreateChannelProps) => {
+const CreateChannelForm = ({ form, onSubmit, isMutationLoading }: Props) => {
 	return (
-		<Dialog>
-			<DialogTrigger asChild>
-				{trigger === "edit" ? (
-					<DropdownMenuItem
-						onSelect={(e) => e.preventDefault()}
-						title="Edit channel"
-						className="h-full w-full rounded bg-transparent justify-start px-2 shadow-none"
-					>
-						<Edit /> Edit Channel
-					</DropdownMenuItem>
-				) : (
+		<Form {...form}>
+			<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
+				<FormField
+					control={form.control}
+					name="name"
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Channel Name</FormLabel>
+							<FormControl>
+								<Input
+									className="rounded-[8px]"
+									placeholder="Give your server a name"
+									{...field}
+								/>
+							</FormControl>
+							<FormDescription>
+								This will be the publicly displayed name for your
+								channel unless made private.
+							</FormDescription>
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name="description"
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Channel Description (Optional)</FormLabel>
+							<FormControl>
+								<Input
+									className="rounded-[8px]"
+									placeholder="Add a brief description"
+									{...field}
+								/>
+							</FormControl>
+							<FormDescription>
+								This will be the publicly displayed description for your
+								channel.
+							</FormDescription>
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name="channelType"
+					render={({ field }) => (
+						<FormItem className="space-y-3">
+							<FormLabel>What type of channel is this?</FormLabel>
+							<FormControl>
+								<RadioGroup
+									onValueChange={field.onChange}
+									defaultValue={field.value}
+									className="flex space-x-1"
+								>
+									<FormItem className="flex items-center space-x-3 space-y-0 border border-carbon rounded-[10px] p-4 pe-6 w-fit relative">
+										<FormControl>
+											<RadioGroupItem value="text" />
+										</FormControl>
+										<FormLabel className="font-normal">
+											Text Channel
+										</FormLabel>
+										<small className="absolute bottom-0.5 right-2 text-[9px]">
+											default
+										</small>
+									</FormItem>
+									<FormItem className="flex items-center space-x-3 space-y-0 border border-carbon rounded-[10px] p-4 pe-6 w-fit">
+										<FormControl>
+											<RadioGroupItem value="voice" />
+										</FormControl>
+										<FormLabel className="font-normal">
+											Voice Channel
+										</FormLabel>
+									</FormItem>
+								</RadioGroup>
+							</FormControl>
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<AlertDialogFooter>
+					<AlertDialogCancel className="text-onyx rounded">
+						Cancel
+					</AlertDialogCancel>
 					<Button
-						title="Create channel"
-						className="h-full w-fit rounded bg-transparent justify-start px-2 shadow-none"
+						type="submit"
+						className="bg-discord-blue rounded-[8px]"
+						disabled={isMutationLoading}
 					>
-						<PlusSquareIcon />
+						{isMutationLoading ? (
+							<>
+								<Loader size={4} className="size-4 animate-spin" />
+								Creating Channel
+							</>
+						) : (
+							<>Create Channel</>
+						)}
 					</Button>
-				)}
-			</DialogTrigger>
-
-			<CreateChannelDialogContent
-				serverId={serverId}
-				trigger={trigger}
-				channelId={channelId}
-			/>
-		</Dialog>
+				</AlertDialogFooter>
+			</form>
+		</Form>
 	);
 };
 
-export default CreateChannel;
+export default CreateChannelForm;
 
-export const CreateChannelDialogContent = ({
-	serverId,
-	trigger,
-	channelId,
-}: CreateChannelProps) => {
-	const { form, formSchema } = useCreateChannelFormSchema();
-
-	const { mutate, isLoading: isMutationLoading } = useClerkRequest("PUT", [
-		`server/${channelId as string}`,
-	]);
-
-	function onSubmit(values: z.infer<typeof formSchema>) {
-		mutate(
-			{
-				url: `channels?channelId=${channelId as string}`,
-				body: values,
-			},
-			{
-				onSuccess: () => {
-					toast("Channel created!");
-				},
-				onError: (error) => {
-					toast.error(
-						"Failed to create channel. Please try again.",
-						error
-					);
-				},
-			}
-		);
-	}
-
-	return (
-		<DialogContent>
-			<DialogHeader>
-				<DialogTitle className="text-start text-xl text-discord-blue">
-					More Channels, More Fun!!
-				</DialogTitle>
-				<DialogDescription className="text-white">
-					Channels help manage interactions on your server based on topics,
-					ideas, locations, and even voice communication!
-				</DialogDescription>
-			</DialogHeader>
-
-			<Form {...form}>
-				<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
-					<FormField
-						control={form.control}
-						name="name"
-						render={({ field }) => (
-							<FormItem>
-								<FormLabel>Channel Name</FormLabel>
-								<FormControl>
-									<Input
-										className="rounded-[8px]"
-										placeholder="Give your server a name"
-										{...field}
-									/>
-								</FormControl>
-								<FormDescription>
-									This will be the publicly displayed name for your
-									channel unless made private.
-								</FormDescription>
-								<FormMessage />
-							</FormItem>
-						)}
-					/>
-					<FormField
-						control={form.control}
-						name="description"
-						render={({ field }) => (
-							<FormItem>
-								<FormLabel>Channel Description (Optional)</FormLabel>
-								<FormControl>
-									<Input
-										className="rounded-[8px]"
-										placeholder="Add a brief description"
-										{...field}
-									/>
-								</FormControl>
-								<FormDescription>
-									This will be the publicly displayed description for
-									your channel.
-								</FormDescription>
-								<FormMessage />
-							</FormItem>
-						)}
-					/>
-					<FormField
-						control={form.control}
-						name="channelType"
-						render={({ field }) => (
-							<FormItem className="space-y-3">
-								<FormLabel>What type of channel is this?</FormLabel>
-								<FormControl>
-									<RadioGroup
-										onValueChange={field.onChange}
-										defaultValue={field.value}
-										className="flex space-x-1"
-									>
-										<FormItem className="flex items-center space-x-3 space-y-0 border border-carbon rounded-[10px] p-4 pe-6 w-fit relative">
-											<FormControl>
-												<RadioGroupItem value="text" />
-											</FormControl>
-											<FormLabel className="font-normal">
-												Text Channel
-											</FormLabel>
-											<small className="absolute bottom-0.5 right-2 text-[9px]">
-												default
-											</small>
-										</FormItem>
-										<FormItem className="flex items-center space-x-3 space-y-0 border border-carbon rounded-[10px] p-4 pe-6 w-fit">
-											<FormControl>
-												<RadioGroupItem value="voice" />
-											</FormControl>
-											<FormLabel className="font-normal">
-												Voice Channel
-											</FormLabel>
-										</FormItem>
-									</RadioGroup>
-								</FormControl>
-								<FormMessage />
-							</FormItem>
-						)}
-					/>
-					<DialogFooter>
-						<Button className="text-onyx rounded">Cancel</Button>
-						<Button
-							type="submit"
-							className="bg-discord-blue rounded-[8px]"
-							disabled={isMutationLoading}
-						>
-							{isMutationLoading ? (
-								<>
-									<Loader size={4} className="size-4 animate-spin" />
-									Creating Channel
-								</>
-							) : (
-								<>Create Channel</>
-							)}
-						</Button>
-					</DialogFooter>
-				</form>
-			</Form>
-		</DialogContent>
-	);
-};

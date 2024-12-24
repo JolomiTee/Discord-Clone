@@ -21,6 +21,7 @@ interface Props {
 	trigger?: "edit" | "create";
 	serverId?: string | undefined;
 }
+
 const ServerCrudActions = ({ trigger, serverId }: Props) => {
 	const { form, formSchema } = useCreateServerFormSchema();
 	const [iconPreview, setIconPreview] = useState<string | undefined>(

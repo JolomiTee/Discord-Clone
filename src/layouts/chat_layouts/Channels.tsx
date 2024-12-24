@@ -18,7 +18,6 @@ import { formatDate } from "@/lib/utils";
 
 const ChannelsLayout = () => {
 	const { user } = useUser();
-	console.log("userid: ", user?.id);
 
 	const client = useHMenuSelectedClient(
 		(state) => state.client

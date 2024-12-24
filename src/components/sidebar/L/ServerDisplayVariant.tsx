@@ -4,7 +4,8 @@ import JoinServer from "@/components/common/sidebar_buttons/JoinServer";
 import LeaveServer from "@/components/common/sidebar_buttons/LeaveServer";
 import ViewMembers from "@/components/common/sidebar_buttons/ViewMembers";
 import LoadingSidebar from "@/components/common/skeletons/LoadingSidebar";
-import CreateChannel from "@/components/forms/CreateChannel";
+import ChannelCrudActions from "@/components/dialogs/ChannelCrudActions";
+import ServerCrudActions from "@/components/dialogs/ServerCrudActions";
 import { Accordion } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -23,7 +24,6 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { AspectRatio } from "../../ui/aspect-ratio";
 import { Separator } from "../../ui/separator";
-import ServerCrudActions from "@/components/dialogs/ServerCrudActions";
 
 const ServerDisplayVariant = () => {
 	const { serverId } = useParams();
@@ -133,12 +133,11 @@ const ServerDisplayVariant = () => {
 										trigger="edit"
 									/>
 									<DeleteServer serverId={serverId} />
-									{/*
 
-									<CreateChannel
+									<ChannelCrudActions
 										serverId={serverId}
 										trigger="create"
-									/> */}
+									/>
 								</>
 							) : (
 								<LeaveServer serverId={serverId} />
