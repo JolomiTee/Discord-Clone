@@ -28,14 +28,18 @@ export interface MessageNotification extends BaseNotification {
 }
 
 export interface Friends {
-	profileImg: string;
-	user: string;
-	online: boolean;
-	hasMessage: boolean;
-	messageCount: number;
-	pinned: boolean;
-	slug: string;
-	id: string;
+	_id: string;
+	username: string;
+	email_address: string;
+	profile_image_url: string;
+	firstName: string;
+	isFriend: boolean;
+	lastName: string;
+
+	// online: boolean;
+	// hasMessage: boolean;
+	// messageCount: number;
+	// pinned: boolean;
 }
 
 interface LastMessage {
@@ -45,7 +49,7 @@ interface LastMessage {
 }
 
 // Define the currentUser interface
-interface CurrentUser {
+export interface CurrentUser {
 	userId: string | undefined;
 	username: string | null | undefined;
 	userProfileImage: string | undefined;
@@ -64,6 +68,10 @@ export interface DirectMessagesStateProps {
 	messages: Message[]; // Array of Message objects
 	updateMessages: (newMessage: Message) => void; // Accept a new Message object
 }
+export interface HMenuSelectedClient {
+	client: Friends | CurrentChannels; // Array of Message objects
+	updateHMenuSelectedClient: (newClient: Friends | CurrentChannels) => void; // Accept a new client object
+}
 export interface Conversation {
 	conversationId: string;
 	participants: string[];
@@ -75,16 +83,15 @@ export interface Conversation {
 }
 
 export interface Channels {
-	type: string;
+	_id: string;
+	channelType: string;
 	name: string;
-	slug: string;
-	id: string;
 }
 
 export interface CurrentChannels {
+	_id: string;
 	name: string | undefined;
 	channelType?: string | undefined;
-	profile_image?: string | undefined;
 }
 
 export interface textChannelConversations {
@@ -98,20 +105,30 @@ export interface textChannelConversations {
 		senderId: string;
 	}[];
 }
+
+// Type for a Member
+export interface Member {
+	_id: string;
+	username: string;
+	profile_image_url: string;
+}
+
+// Type for the OwnedBy field
+interface OwnedBy {
+  _id: string;
+  username: string;
+}
+
 export interface Servers {
-	id: string;
-	slug: string;
+	_id: string;
 	name: string;
-	server_img: string;
-	online: number;
-	members: number;
-	lastSeen: string;
-	link: string;
-	muted: boolean;
-	channels: {
-		textChannels: Channels[];
-		voiceChannels: Channels[];
-	};
+	ownedby: OwnedBy;
+	description: string;
+	profile_image_url: string;
+	banner_image_url: string;
+	members: Member[];
+	roles: any[]; // Define this if you have a specific structure for roles
+	channels: Channels[];
 };
 
 // *============================= HOOKS ============================//
@@ -152,3 +169,9 @@ export interface AppNotificationStateProps {
 	selectedTab: string;
 	toggle_selected_tab: (newAppState: string) => void;
 }
+
+
+export type SelectedServerMembers = {
+	members: Member[];
+	setServerMembers: (newAppState: Member[]) => void;
+};

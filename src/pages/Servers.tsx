@@ -1,4 +1,5 @@
-import ServerCard from "@/components/server/ServerCard";
+import Discover from "@/components/server/Discover";
+import MyServers from "@/components/server/MyServers";
 import { Button } from "@/components/ui/button";
 
 import { Input } from "@/components/ui/input";
@@ -10,21 +11,53 @@ import {
 	SelectValue,
 } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { discordServers } from "@/data";
 
 const Servers = () => {
+	const triggers = [
+		{
+			value: "myservers",
+			label: "My Servers",
+		},
+		{
+			value: "discover",
+			label: "Discover",
+		},
+	];
+
+	const selectItems = [
+		{
+			value: "activity",
+			label: "Last Active",
+		},
+		{
+			value: "oldest",
+			label: "Oldest",
+		},
+		{
+			value: "newest",
+			label: "Newest",
+		},
+		{
+			value: "muted",
+			label: "Muted",
+		},
+	];
 	return (
 		<div className="w-full bg-onyx overflow-auto scrollbar-hidden">
 			<Tabs defaultValue="myservers" className="w-full">
 				<div className="sticky top-0 z-20">
 					<TabsList className="w-full h-[50px] justify-start px-2 gap-4">
-						<TabsTrigger value="myservers" className="px-5 py-1.5">
-							My Servers
-						</TabsTrigger>
-						<TabsTrigger value="discover" className="px-5 py-1.5">
-							Discover
-						</TabsTrigger>
+						{triggers.map((trigger) => (
+							<TabsTrigger
+								key={trigger.value}
+								value={trigger.value}
+								className="px-5 py-1.5"
+							>
+								{trigger.label}
+							</TabsTrigger>
+						))}
 					</TabsList>
+
 					<div className="flex flex-wrap items-center justify-start gap-2 p-3 bg-onyx ">
 						<Input
 							placeholder="Find a server"
@@ -38,10 +71,11 @@ const Servers = () => {
 								/>
 							</SelectTrigger>
 							<SelectContent className="bg-onyx text-white rounded-[8px] py-1">
-								<SelectItem value="activity">Last Active</SelectItem>
-								<SelectItem value="oldest">Oldest</SelectItem>
-								<SelectItem value="newest">Newest</SelectItem>
-								<SelectItem value="muted">Muted</SelectItem>
+								{selectItems.map((item) => (
+									<SelectItem key={item.value} value={item.value}>
+										{item.label}
+									</SelectItem>
+								))}
 							</SelectContent>
 						</Select>
 
@@ -55,37 +89,12 @@ const Servers = () => {
 					</div>
 				</div>
 
-				<TabsContent
-					value="myservers"
-					className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-10 p-3 mb-10"
-				>
-					{discordServers.map((servers) => {
-						const {
-							id,
-							slug,
-							name,
-							online,
-							members,
-							lastSeen,
-							server_img,
-						} = servers;
-
-						return (
-							<ServerCard
-								slug={slug}
-								key={id}
-								serverId={id}
-								name={name}
-								online={online}
-								members={members}
-								lastSeen={lastSeen}
-								server_img={server_img}
-							/>
-						);
-					})}
+				<TabsContent value="myservers">
+					<MyServers />
 				</TabsContent>
-				<TabsContent value="discover" className=" p-3">
-					Discover other servers here
+
+				<TabsContent value="discover">
+					<Discover />
 				</TabsContent>
 			</Tabs>
 		</div>

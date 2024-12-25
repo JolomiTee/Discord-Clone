@@ -10,15 +10,14 @@ import {
 	useSidebar,
 } from "@/components/ui/sidebar";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import { UserButton } from "@clerk/clerk-react";
-import { ExternalLink, MenuIcon } from "lucide-react";
+import Profile from "@/pages/Profile";
+import { UserButton, useUser } from "@clerk/clerk-react";
+import { ExternalLink, MenuIcon, Settings } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const ProfileHolder = () => {
-	// const toggle_c_sidebar = useSidebarStateStore(
-	// 	(state) => state.toggle_c_sidebar
-	// );
 	const { isMobile } = useSidebar();
+	const { user } = useUser();
 
 	return (
 		<>
@@ -29,7 +28,6 @@ const ProfileHolder = () => {
 					<SidebarMenuButton
 						size="lg"
 						className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground h-[60px] group-data-[collapsible=icon]:[&>div:last-child]:hidden group-data-[collapsible=icon]:overflow-visible py-0 px-2 shrink-0 gap-0 group-data-[collapsible=icon]:-ms-1"
-						// onClick={toggle_c_sidebar}
 					>
 						<div className="relative flex justify-center">
 							<div className="absolute right-2 group-data-[collapsible=icon]:-right-0.5 bottom-0.5 bg-emerald rounded-full size-[14px] border-[2px] border-charcoal z-20"></div>
@@ -37,19 +35,31 @@ const ProfileHolder = () => {
 								appearance={{
 									elements: {
 										userButtonAvatarBox:
-											"size-[50px] flex justify-center items-center bg-charcoal",
-										userButtonAvatarImage: "size-[40px] rounded-full",
+											"md:group-data-[collapsible=icon]:size-[55px] size-[60px] flex justify-center items-center bg-charcoal group-data-[collapsible=icon]:rounded-full rounded-none rounded-l-full overflow-hidden",
+										userButtonAvatarImage:
+											"size-[40px] md:size-[45px] rounded-full",
+										userButtonPopoverCard: "bg-black text-white",
+										userButtonPopoverMain: "bg-black text-white",
+										userButtonPopoverActionButton:
+											"bg--black text-white hover:text-discord-blue",
 									},
 								}}
-							/>
+							>
+								<UserButton.UserProfilePage
+									label="Other Settings"
+									url="settings"
+									labelIcon={<Settings size={16} />}
+									children={<Profile />}
+								/>
+							</UserButton>
 						</div>
 
 						<div className="flex justify-center items-center bg-charcoal rounded-[15px] rounded-l-none p-2 pe-4 h-full w-full">
-							<div className="grid flex-1 text-left text-sm leading-tight">
+							<div className="grid gap-1 flex-1 text-left text-sm leading-tight">
 								<span className="truncate font-semibold text-white">
-									<Link to={"profile/12345"}>GrassMaster333</Link>
+									<p>{user?.username}</p>
 								</span>
-								<span className="truncate text-sm font-semibold">
+								<span className="truncate text-xs font-semibold">
 									Online
 								</span>
 							</div>
@@ -116,7 +126,14 @@ const MobileProfileHolder = () => {
 							userButtonAvatarImage: "size-[45px] rounded-full",
 						},
 					}}
-				/>
+				>
+					<UserButton.UserProfilePage
+						label="Other Settings"
+						url="settings"
+						labelIcon={<Settings size={16} />}
+						children={<Profile />}
+					/>
+				</UserButton>
 			</div>
 			{/* </PopoverTrigger> */}
 			<PopoverContent className="w-80 bg-onyx rounded-[15px] text-[#B5BFE7] ">

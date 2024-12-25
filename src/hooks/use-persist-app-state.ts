@@ -1,20 +1,9 @@
+import { sessionStorageProvider } from "@/lib/utils";
 import { AppPersistableStates } from "@/types";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 // Custom storage implementation for sessionStorage
-const sessionStorageProvider = {
-	getItem: (name: string) => {
-		const storedValue = sessionStorage.getItem(name);
-		return storedValue ? JSON.parse(storedValue) : undefined;
-	},
-	setItem: (name: string, value: any) => {
-		sessionStorage.setItem(name, JSON.stringify(value));
-	},
-	removeItem: (name: string) => {
-		sessionStorage.removeItem(name);
-	},
-};
 
 export const usePersistAppState = create<AppPersistableStates>()(
 	persist(

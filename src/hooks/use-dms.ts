@@ -1,14 +1,39 @@
-import { DirectMessagesStateProps, Message } from "@/types";
+import { sessionStorageProvider } from "@/lib/utils";
+import { DirectMessagesStateProps, HMenuSelectedClient } from "@/types";
 import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
-// Create the Zustand store
 export const useDirectMessagesState = create<DirectMessagesStateProps>()(
 	(set) => ({
-		messages: [], // Initialize as an empty array of Message objects
+		messages: [],
 
-		updateMessages: (newMessage: Message) =>
+		updateMessages: (newMessage) =>
 			set((state) => ({
-				messages: [...state.messages, newMessage], // Append the new message object to the array
+				messages: [...state.messages, newMessage],
 			})),
 	})
+);
+
+export const useHMenuSelectedClient = create<HMenuSelectedClient>()(
+	persist(
+		(set) => ({
+			client: {
+				_id: "",
+				username: "",
+				email_address: "",
+				profile_image_url: "",
+				firstName: "",
+				lastName: "",
+				isFriend: false,
+			},
+			updateHMenuSelectedClient: (newClient) =>
+				set(() => ({
+					client: newClient,
+				})),
+		}),
+		{
+			name: "hmenu-selected-client",
+			storage: sessionStorageProvider,
+		}
+	)
 );

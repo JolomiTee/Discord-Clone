@@ -6,10 +6,8 @@ import {
 } from "@/components/ui/dialog";
 import usePersistAppState from "@/hooks/use-persist-app-state";
 import { ChevronDown, Filter, Search } from "lucide-react";
-import { Link } from "react-router-dom";
 import ChatBubble from "../common/ChatBubble";
 import IconButtons from "../common/IconButtons";
-import SearchResultServerIcon from "../search/result_ui/SearchResultServerIcon";
 import {
 	Accordion,
 	AccordionContent,
@@ -20,9 +18,6 @@ import { Avatar, AvatarImage } from "../ui/avatar";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { SidebarMenuButton, SidebarMenuItem } from "../ui/sidebar";
-import { serverList } from "@/data/servers";
-import { voiceChannels } from "@/data";
-import { friends } from "@/data/dms";
 
 interface Props {
 	type: string;
@@ -135,23 +130,23 @@ const MobileSearchModal = ({ type, open, onOpenChange }: Props) => {
 								SERVERS
 							</AccordionTrigger>
 							<AccordionContent className="pe-3 flex flex-col gap-3">
-								{serverList.map((item, i) => {
+								{/* {serverList.map((item, i) => {
 									const {
 										name,
-										server_img: serverIcon,
-										muted,
-										id,
+										profile_image_url: serverIcon,
+										_id,
 									} = item;
 									return (
 										<SearchResultServerIcon
 											key={i}
 											name={name}
 											serverIcon={serverIcon}
-											hasNotification={muted}
-											i={id}
+											hasNotification={true}
+											i={_id}
 										/>
 									);
-								})}
+								})} */}
+								No Servers Found
 							</AccordionContent>
 						</AccordionItem>
 
@@ -160,7 +155,7 @@ const MobileSearchModal = ({ type, open, onOpenChange }: Props) => {
 								CHANNELS
 							</AccordionTrigger>
 							<AccordionContent className="px-3 flex flex-col gap-3">
-								{voiceChannels.map((channel, i) => {
+								{/* {voiceChannels.map((channel, i) => {
 									return (
 										<Link
 											key={i}
@@ -177,7 +172,8 @@ const MobileSearchModal = ({ type, open, onOpenChange }: Props) => {
 											{channel.name}
 										</Link>
 									);
-								})}
+								})} */}
+								No Channels Found
 							</AccordionContent>
 						</AccordionItem>
 
@@ -189,14 +185,8 @@ const MobileSearchModal = ({ type, open, onOpenChange }: Props) => {
 										<ChatBubble
 											key={i}
 											messageId={"12345"}
-											senderId={"searchitem123"}
 											time={"10:45"}
 											message={"Looking for some grass?"}
-											friend={
-												friends.find(
-													(friend) => friend.id === "i"
-												) || null
-											}
 											user={user}
 										/>
 									);

@@ -1,28 +1,15 @@
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import usePersistAppState from "@/hooks/use-persist-app-state";
-import { formatNumber } from "@/lib/utils";
+import { Servers } from "@/types";
 import { Link } from "react-router-dom";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
-interface DiscordServerProps {
-	slug: string;
-	name: string;
-	serverId: string;
-	online: number;
-	members: number;
-	lastSeen: string;
-	link?: string;
-	muted?: boolean;
-	server_img: string;
-}
+
 const ServerCard = ({
 	name,
-	slug,
-	serverId,
-	online,
+	_id: serverId,
 	members,
-	lastSeen,
-	server_img,
-}: DiscordServerProps) => {
+	profile_image_url,
+}: Omit<Servers, "roles">) => {
 	const toggle_selected_server = usePersistAppState(
 		(state) => state.toggle_selected_server
 	);
@@ -42,15 +29,15 @@ const ServerCard = ({
 			<Card className="flex items-start gap-2 bg-transparent border-0 shadow-none">
 				<Avatar className="rounded-[8px] size-12">
 					<AvatarImage
-						src={server_img}
-						alt={slug}
+						src={profile_image_url}
+						alt={name}
 						className="mx-auto my-auto object-cover"
 					/>
 					<AvatarFallback className="bg-discord-blue rounded-[8px]">
 						<img
 							src="/icons/discord.svg"
 							className="w-[35px] h-[35px] mx-auto my-auto"
-							alt={slug}
+							alt={name}
 						/>
 					</AvatarFallback>
 				</Avatar>
@@ -58,17 +45,17 @@ const ServerCard = ({
 				<CardContent className="grid gap-2 text-white/[60%] text-sm p-0">
 					<CardTitle className="text-white">{name}</CardTitle>
 					<div className="flex flex-wrap items-start gap-1 sm:gap-3 text-xs sm:text-sm">
-						<div className="flex items-center gap-2">
+						{/* <div className="flex items-center gap-2">
 							<div className="bg-emerald size-2 rounded-full shrink-0" />
-							{formatNumber(online)} online
-						</div>
+							{formatNumber(2)} online
+						</div> */}
 						<div className="flex items-center gap-2">
 							<div className="bg-[#898989] size-2 rounded-full shrink-0" />
-							{formatNumber(members)} members
+							{members?.length} member
 						</div>
 					</div>
 					<p className="text-xs sm:text-sm leading-none">
-						Last seen: {lastSeen}
+						Last seen: {"yesterday"}
 					</p>
 				</CardContent>
 			</Card>
