@@ -1,5 +1,4 @@
 import { Textarea } from "@/components/ui/textarea";
-import { CurrentUser } from "@/types";
 import { SendHorizonal } from "lucide-react";
 import { ReactNode } from "react";
 import { useFormContext } from "react-hook-form";
@@ -12,12 +11,7 @@ import {
 	FormMessage,
 } from "../ui/form";
 
-interface KeyboardProps {
-	currentUser?: CurrentUser;
-	currentDmClientId?: string;
-}
-
-const Keyboard = ({}: KeyboardProps) => {
+const Keyboard = () => {
 	return (
 		<ConnectForm>
 			{({ control }) => (

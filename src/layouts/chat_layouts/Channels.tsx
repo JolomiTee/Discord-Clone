@@ -36,12 +36,12 @@ const ChannelsLayout = () => {
 	);
 
 	function onSubmit(data: z.infer<typeof formSchema>) {
-		updateMessages({
-			message: data.message,
-			msg_id: uuidv4(),
-			time: formatDate(new Date(Date.now())),
-			sender_info: currentUser,
-		});
+		// updateMessages({
+		// 	message: data.message,
+		// 	msg_id: uuidv4(),
+		// 	time: formatDate(new Date(Date.now())),
+		// 	sender_info: currentUser,
+		// });
 	}
 
 	return (
@@ -70,7 +70,7 @@ const ChannelsLayout = () => {
 				<FormProvider {...form}>
 					<Form {...form}>
 						<form onSubmit={form.handleSubmit(onSubmit)} className="">
-							<Keyboard currentUser={currentUser} />
+							<Keyboard />
 						</form>
 					</Form>
 				</FormProvider>
