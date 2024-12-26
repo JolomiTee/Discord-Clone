@@ -12,11 +12,11 @@ import {
 } from "@/hooks/base-context";
 import usePersistAppState from "@/hooks/use-persist-app-state";
 import { ChevronDown, Search, SidebarClose } from "lucide-react";
-import ChatBubble from "../../common/ChatBubble";
 import SidebarServerIcon from "../../common/sidebar_buttons/SidebarServerIcon";
 import ServerSearch from "../../search/ServerSearch";
 import { Button } from "../../ui/button";
 import { Input } from "../../ui/input";
+import ChatBubble from "@/components/common/messages/ChatBubble";
 
 const SearchVariant = () => {
 	const selectedTab = usePersistAppState((state) => state.selectedTab);

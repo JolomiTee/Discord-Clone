@@ -1,6 +1,4 @@
-import ChatBubble from "@/components/common/ChatBubble";
 import HMenu from "@/components/common/HMenu";
-import Keyboard from "@/components/common/Keyboard";
 import { Form } from "@/components/ui/form";
 import {
 	useDirectMessagesState,
@@ -13,8 +11,9 @@ import { useUser } from "@clerk/clerk-react";
 import { FormProvider } from "react-hook-form";
 import { v4 as uuidv4 } from "uuid";
 import { z } from "zod";
-import Wumpus from "../Wumpus";
 import { formatDate } from "@/lib/utils";
+import Keyboard from "@/components/common/messages/Keyboard";
+import MessagesDisplayVariant from "@/components/common/messages/MessagesDisplayVariant";
 
 const ChannelsLayout = () => {
 	const { user } = useUser();
@@ -49,23 +48,7 @@ const ChannelsLayout = () => {
 			<>
 				<HMenu name={client.name} channelType={client.channelType} />
 
-				<div className="h-full flex flex-col gap-[30px] relative overflow-auto scrollbar-hidden pb-5 p-3 md:p-4 lg:p-5">
-					{messages.length > 0 ? (
-						messages.map((msg) => {
-							return (
-								<ChatBubble
-									key={msg.msg_id}
-									messageId={msg.msg_id}
-									time={msg.time}
-									message={msg.message}
-									user={msg.sender_info} // Pass logged-in user data
-								/>
-							);
-						})
-					) : (
-						<Wumpus />
-					)}
-				</div>
+				<MessagesDisplayVariant client={client} messages={messages} />
 
 				<FormProvider {...form}>
 					<Form {...form}>

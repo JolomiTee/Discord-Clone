@@ -1,6 +1,4 @@
-import ChatBubble from "@/components/common/ChatBubble";
 import HMenu from "@/components/common/HMenu";
-import Keyboard from "@/components/common/Keyboard";
 import { Form } from "@/components/ui/form";
 import {
 	useDirectMessagesState,
@@ -12,7 +10,6 @@ import { useSendMessageFormSchema } from "@/lib/formSchemas/sendMessageSchema";
 import { formatDate } from "@/lib/utils";
 import { Friends, Message } from "@/types";
 import { useUser } from "@clerk/clerk-react";
-import { Loader } from "lucide-react";
 import { FormProvider } from "react-hook-form";
 import { toast } from "sonner";
 import { v4 as uuidv4 } from "uuid";
@@ -20,6 +17,8 @@ import { z } from "zod";
 import Wumpus from "../Wumpus";
 import { useCallback, useEffect, useMemo, useRef } from "react";
 import io, { Socket } from "socket.io-client";
+import MessagesDisplayVariant from "../../components/common/messages/MessagesDisplayVariant";
+import Keyboard from "@/components/common/messages/Keyboard";
 
 // const MessagesLayout = () => {
 // 	// const socket = io("http://localhost:3000");
@@ -241,25 +240,15 @@ import io, { Socket } from "socket.io-client";
 // };
 
 const MessagesLayout = () => {
+	const socket = useMemo(() => io("http://localhost:6464"), []);
 	const { user } = useUser();
 	const { form, formSchema } = useSendMessageFormSchema();
-	const messages = useDirectMessagesState((state) => state.messages);
+
 	const client = useHMenuSelectedClient((state) => state.client) as Friends;
+	const messages = useDirectMessagesState((state) => state.messages);
 	const updateMessages = useDirectMessagesState(
 		(state) => state.updateMessages
 	);
-
-	const messagesEndRef = useRef<HTMLDivElement>(null);
-
-	const scrollToBottom = useCallback(() => {
-		messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-	}, [messages]);
-
-	useEffect(() => {
-		scrollToBottom();
-	}, [messages]);
-	// Recipients Info
-
 	const currentUser = useMemo(
 		() => ({
 			userId: user?.id,
@@ -271,7 +260,7 @@ const MessagesLayout = () => {
 
 	// ******************************
 
-	const socket = useMemo(() => io("http://localhost:6464"), []);
+	// ******************************
 
 	useEffect(() => {
 		console.log("Setting up message listener");
@@ -316,22 +305,7 @@ const MessagesLayout = () => {
 					profile_image={client.profile_image_url}
 				/>
 
-				<div className="h-full flex flex-col relative overflow-auto scrollbar-hidden pb-5 p-3 md:p-4 lg:p-5">
-					{messages.length > 0 ? (
-						messages.map((msg) => (
-							<ChatBubble
-								key={msg.msg_id + 1}
-								messageId={msg.msg_id}
-								time={msg.time}
-								message={msg.message}
-								user={msg.sender_info} // Pass logged-in user data
-							/>
-						))
-					) : (
-						<Wumpus />
-					)}
-					<div ref={messagesEndRef} />
-				</div>
+				<MessagesDisplayVariant client={client} messages={messages} />
 
 				<FormProvider {...form}>
 					<Form {...form}>
