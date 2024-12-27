@@ -1,6 +1,6 @@
 import { getRandomColor } from "@/lib/utils";
 import { useAuth } from "@clerk/clerk-react";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 interface ChatBubbleProps {
 	messageId: string;
 	time: string;

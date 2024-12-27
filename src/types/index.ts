@@ -61,6 +61,7 @@ export interface Message {
 	time: string;
 	message: string;
 	sender_info: CurrentUser;
+	reciever_info: Friends;
 }
 
 // Define the Zustand store's state and actions

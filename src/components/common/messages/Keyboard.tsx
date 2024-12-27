@@ -1,23 +1,17 @@
-import { Textarea } from "@/components/ui/textarea";
-import { CurrentUser } from "@/types";
-import { SendHorizonal } from "lucide-react";
-import { ReactNode } from "react";
-import { useFormContext } from "react-hook-form";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 import {
 	FormControl,
 	FormDescription,
 	FormField,
 	FormItem,
 	FormMessage,
-} from "../ui/form";
+} from "@/components/ui/form";
+import { Textarea } from "@/components/ui/textarea";
+import { SendHorizonal } from "lucide-react";
+import { ReactNode } from "react";
+import { useFormContext } from "react-hook-form";
 
-interface KeyboardProps {
-	currentUser?: CurrentUser;
-	currentDmClientId?: string;
-}
-
-const Keyboard = ({}: KeyboardProps) => {
+const Keyboard = () => {
 	return (
 		<ConnectForm>
 			{({ control }) => (

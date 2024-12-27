@@ -1,6 +1,5 @@
-import ChatBubble from "@/components/common/ChatBubble";
 import HMenu from "@/components/common/HMenu";
-import Keyboard from "@/components/common/Keyboard";
+import Keyboard from "@/components/common/messages/Keyboard";
 import { Form } from "@/components/ui/form";
 import {
 	useDirectMessagesState,
@@ -10,48 +9,73 @@ import { useClerkRequest } from "@/hooks/use-query";
 import MainContainer from "@/layouts/MainContainer";
 import { useSendMessageFormSchema } from "@/lib/formSchemas/sendMessageSchema";
 import { formatDate } from "@/lib/utils";
-import { Friends } from "@/types";
+import { Friends, Message } from "@/types";
 import { useUser } from "@clerk/clerk-react";
 import { Loader } from "lucide-react";
+import { useEffect, useMemo } from "react";
 import { FormProvider } from "react-hook-form";
+import io from "socket.io-client";
 import { toast } from "sonner";
 import { v4 as uuidv4 } from "uuid";
 import { z } from "zod";
-import Wumpus from "../Wumpus";
+import MessagesDisplayVariant from "../../components/common/messages/MessagesDisplayVariant";
+
+// const MessagesLayout = () => {
 
 const MessagesLayout = () => {
-	// Logged-in user details
-	const client = useHMenuSelectedClient((state) => state.client) as Friends;
+	const socket = useMemo(() => io("http://localhost:6464"), []);
 	const { user } = useUser();
+	const { form, formSchema } = useSendMessageFormSchema();
 
-	const { mutate, isLoading: isMutationLoading } = useClerkRequest("POST", [
-		"recent-chat",
-	]);
-
-	const currentUser = {
-		userId: user?.id,
-		username: user?.username,
-		userProfileImage: user?.imageUrl,
-	};
-
+	const client = useHMenuSelectedClient((state) => state.client) as Friends;
 	const messages = useDirectMessagesState((state) => state.messages);
 	const updateMessages = useDirectMessagesState(
 		(state) => state.updateMessages
 	);
+	const currentUser = useMemo(
+		() => ({
+			userId: user?.id,
+			username: user?.username,
+			userProfileImage: user?.imageUrl,
+		}),
+		[user]
+	);
 
-	const { form, formSchema } = useSendMessageFormSchema();
+	// ******************************
+	const { mutate: updateRecentChat, isLoading: isMutationLoading } =
+		useClerkRequest("POST", ["recent-chat"]);
+	// ******************************
+
+	useEffect(() => {
+		console.log("Setting up message listener");
+		const handleReceiveMessage = (data: Message) => {
+			console.log("Received message:", data);
+			updateMessages(data);
+		};
+
+		socket.on("recieve_message", handleReceiveMessage);
+
+		return () => {
+			console.log("Cleaning up message listener");
+			socket.off("recieve_message", handleReceiveMessage);
+		};
+	}, [updateMessages]);
 
 	function onSubmit(data: z.infer<typeof formSchema>) {
-		if (messages.length >= 1) {
-			// socket logic and mongoose push
-			updateMessages({
-				message: data.message,
-				msg_id: uuidv4(),
-				time: formatDate(new Date(Date.now())),
-				sender_info: currentUser,
-			});
-		} else {
-			mutate(
+		console.log("Submitting message");
+		const messageData = {
+			sender_info: currentUser,
+			reciever_info: client,
+			message: data.message,
+			msg_id: uuidv4(),
+			time: formatDate(new Date(Date.now())),
+		};
+
+		try {
+			socket.emit("send_message", messageData);
+			console.log("Optimistically updating UI");
+			updateMessages(messageData);
+			updateRecentChat(
 				{
 					url: `recent-chat/${client._id}`,
 				},
@@ -66,15 +90,17 @@ const MessagesLayout = () => {
 								)}
 							</div>
 						);
-						updateMessages({
-							message: data.message,
-							msg_id: uuidv4(),
-							time: formatDate(new Date(Date.now())),
-							sender_info: currentUser,
-						});
+						// updateMessages({
+						// 	message: data.message,
+						// 	msg_id: uuidv4(),
+						// 	time: formatDate(new Date(Date.now())),
+						// 	sender_info: currentUser,
+						// });
 					},
 				}
 			);
+		} catch (error) {
+			console.error("Failed to send message:", error);
 		}
 	}
 
@@ -87,31 +113,12 @@ const MessagesLayout = () => {
 					profile_image={client.profile_image_url}
 				/>
 
-				<div className="h-full flex flex-col relative overflow-auto scrollbar-hidden pb-5 p-3 md:p-4 lg:p-5">
-					{messages.length > 0 ? (
-						messages.map((msg) => {
-							return (
-								<ChatBubble
-									key={msg.msg_id}
-									messageId={msg.msg_id}
-									time={msg.time}
-									message={msg.message}
-									user={msg.sender_info} // Pass logged-in user data
-								/>
-							);
-						})
-					) : (
-						<Wumpus />
-					)}
-				</div>
+				<MessagesDisplayVariant client={client} messages={messages} />
 
 				<FormProvider {...form}>
 					<Form {...form}>
 						<form onSubmit={form.handleSubmit(onSubmit)} className="">
-							<Keyboard
-								currentUser={currentUser}
-								currentDmClientId={client._id}
-							/>
+							<Keyboard />
 						</form>
 					</Form>
 				</FormProvider>
@@ -121,3 +128,4 @@ const MessagesLayout = () => {
 };
 
 export default MessagesLayout;
+

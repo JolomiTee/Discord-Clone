@@ -6,7 +6,6 @@ import {
 } from "@/components/ui/dialog";
 import usePersistAppState from "@/hooks/use-persist-app-state";
 import { ChevronDown, Filter, Search } from "lucide-react";
-import ChatBubble from "../common/ChatBubble";
 import IconButtons from "../common/IconButtons";
 import {
 	Accordion,
@@ -18,6 +17,7 @@ import { Avatar, AvatarImage } from "../ui/avatar";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { SidebarMenuButton, SidebarMenuItem } from "../ui/sidebar";
+import ChatBubble from "../common/messages/ChatBubble";
 
 interface Props {
 	type: string;

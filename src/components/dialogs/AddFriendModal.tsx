@@ -41,7 +41,6 @@ const AddFriendModal = () => {
 		setSearchQuery(data.username);
 	}
 
-	console.log(data);
 	return (
 		<Dialog>
 			<DialogTrigger>
