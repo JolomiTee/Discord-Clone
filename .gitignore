@@ -24,4 +24,4 @@ dist-ssr
 *.sw?
 src/unusedFns.tsx
 
-Sandbox.tsx
+sandbox
