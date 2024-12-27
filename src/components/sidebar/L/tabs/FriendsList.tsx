@@ -16,8 +16,14 @@ import MobileSearchModal from "@/components/mobile_v_comps/MobileSearchModal";
 import { messagesFilter } from "@/data";
 import IconButtons from "@/components/common/IconButtons";
 import { useOpenSearchBar } from "@/hooks/use-open-sidebar";
+import { Dispatch, SetStateAction } from "react";
 
-const FriendsList = ({ isMobile }: { isMobile: boolean }) => {
+interface Props {
+	isMobile: boolean;
+	setSelectedTab: Dispatch<SetStateAction<string>>;
+}
+
+const FriendsList = ({ isMobile, setSelectedTab }: Props) => {
 	const { data, isLoading, error } = useClerkQuery<Friends[]>("added-friends");
 	const openSearchBar = useOpenSearchBar();
 	return (
@@ -86,6 +92,7 @@ const FriendsList = ({ isMobile }: { isMobile: boolean }) => {
 								lastName={lastName}
 								email_address={email_address}
 								isFriend={isFriend}
+								action={setSelectedTab}
 								// online={online}
 								// hasMessage={hasMessage}
 								// messageCount={messageCount}

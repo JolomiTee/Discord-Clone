@@ -13,9 +13,11 @@ import { SidebarMenuButton } from "@/components/ui/sidebar";
 import { MessageSquarePlus, UserRoundPlus } from "lucide-react";
 import { useHMenuSelectedClient } from "@/hooks/use-dms";
 import { Friends } from "@/types";
+import { Dispatch, SetStateAction } from "react";
 
 interface Props extends Friends {
 	slug: string;
+	action: Dispatch<SetStateAction<string>>;
 	friendReqCard?: boolean;
 }
 
@@ -29,6 +31,7 @@ const FriendCard = ({
 	email_address,
 	isFriend,
 	slug,
+	action,
 }: Props) => {
 	const updateHMenuSelectedClient = useHMenuSelectedClient(
 		(state) => state.updateHMenuSelectedClient
@@ -49,6 +52,9 @@ const FriendCard = ({
 						profile_image_url,
 						isFriend,
 					});
+
+					// conditionally take action
+					action("messages");
 				}}
 			>
 				<div className="relative">
