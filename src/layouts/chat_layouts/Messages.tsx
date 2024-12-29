@@ -43,7 +43,8 @@ const MessagesLayout = () => {
 
 	// ******************************
 	const { mutate: updateRecentChat, isLoading: isMutationLoading } =
-		useClerkRequest("POST", ["recent-chat"]);
+		useClerkRequest("POST", ["direct-messages"]);
+
 	// ******************************
 
 	useEffect(() => {
@@ -77,7 +78,8 @@ const MessagesLayout = () => {
 			updateMessages(messageData);
 			updateRecentChat(
 				{
-					url: `recent-chat/${client._id}`,
+					url: `direct-messages/${client._id}`,
+					body: data,
 				},
 				{
 					onSuccess: () => {

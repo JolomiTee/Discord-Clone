@@ -4,7 +4,8 @@ import useClerkQuery from "@/hooks/use-query";
 import { Friends } from "@/types";
 
 const MessageList = () => {
-	const { data, isLoading, error } = useClerkQuery<Friends[]>("recent-chat");
+	const { data, isLoading, error } =
+		useClerkQuery<Friends[]>("direct-messages");
 
 	if (!data) {
 		return;
@@ -17,6 +18,7 @@ const MessageList = () => {
 	if (error) {
 		<div className="text-center">Wumpus couldnt find your recent chats</div>;
 	}
+	console.log(data.data);
 
 	return (
 		<div className="grid overflow-y-auto max-h-full scrollbar-hidden">
