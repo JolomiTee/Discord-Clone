@@ -79,6 +79,7 @@ const FriendsList = ({ isMobile, setSelectedTab }: Props) => {
 							email_address,
 							profile_image_url,
 							isFriend,
+							chatId,
 						} = friends;
 
 						return (
@@ -92,6 +93,7 @@ const FriendsList = ({ isMobile, setSelectedTab }: Props) => {
 								lastName={lastName}
 								email_address={email_address}
 								isFriend={isFriend}
+								chatId={chatId}
 								action={setSelectedTab}
 								// online={online}
 								// hasMessage={hasMessage}

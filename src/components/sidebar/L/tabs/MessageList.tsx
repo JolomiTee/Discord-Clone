@@ -17,13 +17,13 @@ const MessageList = () => {
 	if (error) {
 		<div className="text-center">Wumpus couldnt find your recent chats</div>;
 	}
-	console.log(data.data);
 
 	return (
 		<div className="grid overflow-y-auto max-h-full scrollbar-hidden">
 			{data.data.length > 0 ? (
 				data.data.map((dms: Friends) => {
 					const {
+						chatId,
 						_id,
 						username,
 						firstName,
@@ -44,6 +44,7 @@ const MessageList = () => {
 							lastName={lastName}
 							email_address={email_address}
 							isFriend={isFriend}
+							chatId={chatId}
 						/>
 					);
 				})

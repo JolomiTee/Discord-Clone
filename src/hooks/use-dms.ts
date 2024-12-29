@@ -19,6 +19,7 @@ export const useHMenuSelectedClient = create<HMenuSelectedClient>()(
 		(set) => ({
 			client: {
 				_id: "",
+				chatId: "",
 				username: "",
 				email_address: "",
 				profile_image_url: "",

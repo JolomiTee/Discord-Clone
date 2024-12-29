@@ -25,6 +25,7 @@ interface Props extends Friends {
 }
 
 const FriendCard = ({
+	chatId,
 	friendReqCard,
 	profile_image_url,
 	_id,
@@ -104,6 +105,7 @@ const FriendCard = ({
 									email_address,
 									profile_image_url,
 									isFriend,
+									chatId,
 								});
 
 								// conditionally take action

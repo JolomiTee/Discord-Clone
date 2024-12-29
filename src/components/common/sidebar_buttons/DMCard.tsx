@@ -9,6 +9,7 @@ interface Props extends Friends {
 	slug: string;
 }
 const DMCard = ({
+	chatId,
 	_id,
 	username,
 	firstName,
@@ -40,6 +41,7 @@ const DMCard = ({
 						lastName,
 						email_address,
 						isFriend,
+						chatId,
 					});
 				}}
 			>
