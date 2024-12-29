@@ -94,7 +94,7 @@ const FriendCard = ({
 						<Link
 							type="button"
 							title="Send a message"
-							to={`@me/dm/${String(_id)}`}
+							to={`@me/dm/${username}`}
 							onClick={() => {
 								updateHMenuSelectedClient({
 									_id,

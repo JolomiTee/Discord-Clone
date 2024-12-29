@@ -2,7 +2,6 @@ import DMCard from "@/components/common/sidebar_buttons/DMCard";
 import LoadingFriendList from "@/components/common/skeletons/LoadingFriendList";
 import useClerkQuery from "@/hooks/use-query";
 import { Friends } from "@/types";
-
 const MessageList = () => {
 	const { data, isLoading, error } =
 		useClerkQuery<Friends[]>("direct-messages");

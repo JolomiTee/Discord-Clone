@@ -78,7 +78,7 @@ const MessagesLayout = () => {
 			updateMessages(messageData);
 			updateRecentChat(
 				{
-					url: `direct-messages/${client._id}`,
+					url: `direct-messages/${client.username}/${client._id}`,
 					body: data,
 				},
 				{

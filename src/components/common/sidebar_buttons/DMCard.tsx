@@ -1,9 +1,9 @@
-import { getRandomColor } from "@/lib/utils";
-import { Avatar, AvatarFallback, AvatarImage } from "../../ui/avatar";
-import { Link, useLocation } from "react-router-dom";
 import { SidebarMenuButton } from "@/components/ui/sidebar";
 import { useHMenuSelectedClient } from "@/hooks/use-dms";
+import { getRandomColor } from "@/lib/utils";
 import { Friends } from "@/types";
+import { Link } from "react-router-dom";
+import { Avatar, AvatarFallback, AvatarImage } from "../../ui/avatar";
 
 interface Props extends Friends {
 	slug: string;
@@ -20,16 +20,16 @@ const DMCard = ({
 	const updateHMenuSelectedClient = useHMenuSelectedClient(
 		(state) => state.updateHMenuSelectedClient
 	);
+	const client = useHMenuSelectedClient((state) => state.client) as Friends;
 
-	const location = useLocation();
 	return (
 		<SidebarMenuButton
 			className="p-0 ms-1 ps-2 data-[active=true]:rounded-s-full data-[active=true]:text-white data-[active=true]:bg-charcoal transition-all duration-500"
-			isActive={location.pathname.includes(String(_id))}
+			isActive={client?._id === _id}
 			asChild
 		>
 			<Link
-				to={`@me/dm/${String(_id)}`}
+				to={`@me/dm/${username}`}
 				className="flex items-center justify-start h-[55px] gap-3 bg-transparent shadow-none"
 				onClick={() => {
 					updateHMenuSelectedClient({
