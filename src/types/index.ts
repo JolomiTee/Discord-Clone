@@ -33,8 +33,9 @@ export interface Friends {
 	email_address: string;
 	profile_image_url: string;
 	firstName: string;
-	isFriend: boolean;
+	isFriend?: boolean;
 	lastName: string;
+	chatId?: string;
 
 	// online: boolean;
 	// hasMessage: boolean;
@@ -55,13 +56,17 @@ export interface CurrentUser {
 	userProfileImage: string | undefined;
 }
 
+export interface SenderInfo {
+	username: string;
+	profile_image_url: string;
+}
+
 // Define the message structure
 export interface Message {
-	msg_id: string;
+	_id: string;
 	time: string;
 	message: string;
-	sender_info: CurrentUser;
-	reciever_info: Friends;
+	sender_info: SenderInfo | null;
 }
 
 // Define the Zustand store's state and actions

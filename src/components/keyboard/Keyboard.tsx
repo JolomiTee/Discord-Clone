@@ -11,7 +11,17 @@ import { SendHorizonal } from "lucide-react";
 import { ReactNode } from "react";
 import { useFormContext } from "react-hook-form";
 
-const Keyboard = () => {
+interface ConnectFormProps {
+	children: (methods: ReturnType<typeof useFormContext>) => ReactNode;
+}
+
+export const ConnectForm: React.FC<ConnectFormProps> = ({ children }) => {
+	const methods = useFormContext();
+
+	return <>{children(methods)}</>;
+};
+
+export const Keyboard = () => {
 	return (
 		<ConnectForm>
 			{({ control }) => (
@@ -61,16 +71,4 @@ const Keyboard = () => {
 			)}
 		</ConnectForm>
 	);
-};
-
-export default Keyboard;
-
-interface ConnectFormProps {
-	children: (methods: ReturnType<typeof useFormContext>) => ReactNode;
-}
-
-export const ConnectForm: React.FC<ConnectFormProps> = ({ children }) => {
-	const methods = useFormContext();
-
-	return <>{children(methods)}</>;
 };
