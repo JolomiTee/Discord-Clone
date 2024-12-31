@@ -1,21 +1,23 @@
-import { getRandomColor } from "@/lib/utils";
-import { useAuth } from "@clerk/clerk-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { getRandomColor } from "@/lib/utils";
+import { SenderInfo } from "@/types";
 interface ChatBubbleProps {
 	messageId: string;
 	time: string;
 	message: string;
-	user: {
-		userId: string | undefined;
-		username: string | null | undefined;
-		userProfileImage: string | undefined;
-	};
+	sender: SenderInfo | null;
 }
 
-const ChatBubble = ({ time, message, user }: ChatBubbleProps) => {
-	const { userId } = useAuth();
+import { useParams } from "react-router-dom";
 
-	const isUserMessage = userId === user.userId; // Check if the sender is the user
+const ChatBubble = ({ time, message, sender }: ChatBubbleProps) => {
+	const { username } = useParams();
+
+	const isUserMessage = username !== sender?.username; // Check if the sender is the user
+
+	const whodunit = sender?.username;
+
+	console.table({ isUserMessage, username, whodunit });
 
 	return (
 		<div
@@ -25,7 +27,7 @@ const ChatBubble = ({ time, message, user }: ChatBubbleProps) => {
 		>
 			<Avatar className="hidden md:flex items-center justify-center size-[35px] md:size-[40px]">
 				<AvatarImage
-					src={user.userProfileImage}
+					src={sender?.profile_image_url}
 					className="size-[40px] rounded-full"
 				/>
 				<AvatarFallback
@@ -52,7 +54,7 @@ const ChatBubble = ({ time, message, user }: ChatBubbleProps) => {
 					}`}
 				>
 					<span className="font-bold text-[#FFFFFFE5] text-[13px] md:text-[15px]">
-						{!isUserMessage && user.username}
+						{!isUserMessage && sender?.username}
 					</span>
 				</div>
 

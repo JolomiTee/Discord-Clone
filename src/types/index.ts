@@ -57,14 +57,19 @@ export interface CurrentUser {
 }
 
 export interface SenderInfo {
+	_id: string;
 	username: string;
+	email_address: string;
+	firstName: string;
+	lastName: string;
 	profile_image_url: string;
 }
 
 // Define the message structure
 export interface Message {
 	_id: string;
-	time: string;
+	createdAt: string;
+	updatedAt: string;
 	message: string;
 	sender_info: SenderInfo | null;
 }
