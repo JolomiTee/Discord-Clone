@@ -1,10 +1,9 @@
 import Wumpus from "@/layouts/Wumpus";
-import { CurrentChannels, Friends, Message } from "@/types";
+import { Message } from "@/types";
 import { useCallback, useEffect, useRef } from "react";
 import ChatBubble from "./ChatBubble";
 
 interface Props {
-	client: Friends | CurrentChannels;
 	messages: Message[];
 }
 
@@ -18,25 +17,27 @@ const MessagesDisplayVariant = ({ messages }: Props) => {
 	useEffect(() => {
 		scrollToBottom();
 	}, [messages]);
-	// Recipients Info
+
+	// Validate messages
+	if (!Array.isArray(messages) || messages.length === 0) {
+		return <Wumpus />;
+	}
+
 	return (
 		<div className="h-full flex flex-col relative overflow-auto scrollbar-hidden pb-5 p-3 md:p-4 lg:p-5">
-			{messages.length > 0 ? (
-				messages.map((msg) => (
-					<ChatBubble
-						key={msg.msg_id + 1}
-						messageId={msg.msg_id}
-						time={msg.time}
-						message={msg.message}
-						user={msg.sender_info} // Pass logged-in user data
-					/>
-				))
-			) : (
-				<Wumpus />
-			)}
+			{messages.map((msg) => (
+				<ChatBubble
+					key={msg._id}
+					messageId={msg._id}
+					time={msg.createdAt}
+					message={msg.message}
+					sender={msg.sender_info}
+				/>
+			))}
 			<div ref={messagesEndRef} />
 		</div>
 	);
 };
+
 
 export default MessagesDisplayVariant;

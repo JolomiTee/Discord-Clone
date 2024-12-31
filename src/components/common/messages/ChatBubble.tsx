@@ -15,10 +15,6 @@ const ChatBubble = ({ time, message, sender }: ChatBubbleProps) => {
 
 	const isUserMessage = username !== sender?.username; // Check if the sender is the user
 
-	const whodunit = sender?.username;
-
-	console.table({ isUserMessage, username, whodunit });
-
 	return (
 		<div
 			className={`flex items-start p-2 relative  ${
