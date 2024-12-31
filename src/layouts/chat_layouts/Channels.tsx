@@ -1,5 +1,5 @@
 import HMenu from "@/components/common/HMenu";
-import Keyboard from "@/components/common/messages/Keyboard";
+import Keyboard from "@/components/keyboard/KeyboardWrapper";
 import MessagesDisplayVariant from "@/components/common/messages/MessagesDisplayVariant";
 import { Form } from "@/components/ui/form";
 import {
@@ -29,7 +29,7 @@ const ChannelsLayout = () => {
 			<>
 				<HMenu name={client.name} channelType={client.channelType} />
 
-				<MessagesDisplayVariant client={client} messages={messages} />
+				<MessagesDisplayVariant messages={messages} />
 
 				<FormProvider {...form}>
 					<Form {...form}>

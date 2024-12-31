@@ -2,9 +2,9 @@ import DMCard from "@/components/common/sidebar_buttons/DMCard";
 import LoadingFriendList from "@/components/common/skeletons/LoadingFriendList";
 import useClerkQuery from "@/hooks/use-query";
 import { Friends } from "@/types";
-
 const MessageList = () => {
-	const { data, isLoading, error } = useClerkQuery<Friends[]>("recent-chat");
+	const { data, isLoading, error } =
+		useClerkQuery<Friends[]>("direct-messages");
 
 	if (!data) {
 		return;
@@ -23,6 +23,7 @@ const MessageList = () => {
 			{data.data.length > 0 ? (
 				data.data.map((dms: Friends) => {
 					const {
+						chatId,
 						_id,
 						username,
 						firstName,
@@ -43,6 +44,7 @@ const MessageList = () => {
 							lastName={lastName}
 							email_address={email_address}
 							isFriend={isFriend}
+							chatId={chatId}
 						/>
 					);
 				})

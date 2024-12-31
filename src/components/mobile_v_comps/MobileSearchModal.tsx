@@ -27,9 +27,13 @@ interface Props {
 
 const MobileSearchModal = ({ type, open, onOpenChange }: Props) => {
 	const user = {
-		userId: "1000",
-		username: "GrassMaster333",
-		userProfileImage: "/beluga.png",
+		_id: "676dc93aaa8e51a7ef258c01",
+		username: "joloo",
+		email_address: "jolomitee@gmail.com",
+		profile_image_url:
+			"https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18ycWxycFg3MlZhRUhFQThtRURtdkxqSm5CRTMifQ",
+		firstName: "Jolomi Taiwo",
+		lastName: "Emmanuel",
 	};
 
 	const selected_tab = usePersistAppState((state) => state.selectedTab);
@@ -187,7 +191,7 @@ const MobileSearchModal = ({ type, open, onOpenChange }: Props) => {
 											messageId={"12345"}
 											time={"10:45"}
 											message={"Looking for some grass?"}
-											user={user}
+											sender={user}
 										/>
 									);
 								})}

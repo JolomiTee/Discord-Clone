@@ -30,7 +30,7 @@ function App() {
 
 					<Route path="@me">
 						<Route index element={<Wumpus />} />
-						<Route path="dm/:dmId" element={<MessagesLayout />} />
+						<Route path="dm/:username" element={<MessagesLayout />} />
 					</Route>
 
 					<Route path="@server">

@@ -31,9 +31,13 @@ const SearchVariant = () => {
 	);
 
 	const user = {
-		userId: "1000",
-		username: "GrassMaster333",
-		userProfileImage: "/beluga.png",
+		_id: "676dc93aaa8e51a7ef258c01",
+		username: "joloo",
+		email_address: "jolomitee@gmail.com",
+		profile_image_url:
+			"https://img.clerk.com/eyJ0eXBlIjoicHJveHkiLCJzcmMiOiJodHRwczovL2ltYWdlcy5jbGVyay5kZXYvb2F1dGhfZ29vZ2xlL2ltZ18ycWxycFg3MlZhRUhFQThtRURtdkxqSm5CRTMifQ",
+		firstName: "Jolomi Taiwo",
+		lastName: "Emmanuel",
 	};
 
 	return (
@@ -116,14 +120,14 @@ const SearchVariant = () => {
 							messageId={"12345r"}
 							time={"15:45"}
 							message={"Into the Grasslands"}
-							user={user}
+							sender={user}
 						/>
 						<ChatBubble
 							key="1234"
 							messageId={"3467"}
 							time={"19:15"}
 							message={"A land of Grass and Weed"}
-							user={user}
+							sender={user}
 						/>
 					</SidebarMenu>
 				</SidebarGroup>
