@@ -91,7 +91,7 @@ const Home = () => {
 								<div className="flex flex-row items-center gap-2 md:justify-center">
 									{/* <div className="flex flex-col justify-center items-center gap-2 min-[400px]:flex-row "> */}
 									<Button className="bg-discord-blue text-white rounded-[8px] hover:bg-gray-100">
-										<Link to={"signup"}>Get Started</Link>
+										<Link to={"sign-up"}>Get Started</Link>
 									</Button>
 									{/* <Button
 										variant="outline"
