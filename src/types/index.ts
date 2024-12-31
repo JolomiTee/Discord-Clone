@@ -57,19 +57,18 @@ export interface CurrentUser {
 }
 
 export interface SenderInfo {
-	_id: string;
-	username: string;
-	email_address: string;
-	firstName: string;
-	lastName: string;
-	profile_image_url: string;
+	_id: string | undefined;
+	username: string | undefined;
+	email_address: string | undefined;
+	firstName?: string | undefined;
+	lastName?: string | undefined;
+	profile_image_url: string | undefined;
 }
 
 // Define the message structure
 export interface Message {
 	_id: string;
 	createdAt: string;
-	updatedAt: string;
 	message: string;
 	sender_info: SenderInfo | null;
 }
@@ -77,7 +76,7 @@ export interface Message {
 // Define the Zustand store's state and actions
 export interface DirectMessagesStateProps {
 	messages: Message[]; // Array of Message objects
-	updateMessages: (newMessage: Message) => void; // Accept a new Message object
+	updateMessages: (newMessage: Message | Message[]) => void; // Accept a new Message object
 }
 export interface HMenuSelectedClient {
 	client: Friends | CurrentChannels; // Array of Message objects

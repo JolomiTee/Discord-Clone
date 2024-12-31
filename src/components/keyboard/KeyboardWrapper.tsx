@@ -6,7 +6,7 @@ import {
 import { useClerkRequest } from "@/hooks/use-query";
 import { useSendMessageFormSchema } from "@/lib/formSchemas/sendMessageSchema";
 import { formatDate } from "@/lib/utils";
-import { Friends, SenderInfo } from "@/types";
+import { Friends } from "@/types";
 import { useUser } from "@clerk/clerk-react";
 import { Loader } from "lucide-react";
 import { useMemo } from "react";
@@ -31,25 +31,18 @@ const KeyboardController = () => {
 		(state) => state.updateMessages
 	);
 
-	const currentUser: SenderInfo | null = useMemo(() => {
-		// Return null if essential fields are missing
-		if (!user?.username || !user?.imageUrl) {
-			return null;
-		}
-
-		return {
-			username: user.username || "", // Provide default empty string if null
-			profile_image_url: user.imageUrl,
-		};
-	}, [user]);
-
 	function onSubmit(data: z.infer<typeof formSchema>) {
 		console.log("Submitting message");
 		const messageData = {
-			sender_info: currentUser,
+			sender_info: {
+				_id: user?.id,
+				email_address: user?.emailAddresses[0]?.emailAddress,
+				username: user?.username ?? "Unknown User",
+				profile_image_url: user?.imageUrl,
+			},
 			message: data.message,
 			_id: uuidv4(),
-			time: formatDate(new Date(Date.now())),
+			createdAt: formatDate(new Date(Date.now())),
 		};
 
 		try {
