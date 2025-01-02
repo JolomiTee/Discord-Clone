@@ -5,7 +5,6 @@ import {
 } from "@/hooks/use-dms";
 import { useClerkRequest } from "@/hooks/use-query";
 import { useSendMessageFormSchema } from "@/lib/formSchemas/sendMessageSchema";
-import { formatDate } from "@/lib/utils";
 import { Friends } from "@/types";
 import { useUser } from "@clerk/clerk-react";
 import { Loader } from "lucide-react";
@@ -13,12 +12,15 @@ import { useMemo } from "react";
 import { FormProvider } from "react-hook-form";
 import { io } from "socket.io-client";
 import { toast } from "sonner";
-import { v4 as uuidv4 } from "uuid";
 import { z } from "zod";
 import { Keyboard } from "./Keyboard";
-
+import { v4 as uuidv4 } from "uuid";
 const KeyboardController = () => {
-	const socket = useMemo(() => io("http://localhost:6464"), []);
+	const socket = useMemo(() => {
+		return io(
+			import.meta.env.REACT_APP_SOCKET_URL || "http://localhost:6464"
+		);
+	}, []);
 	const { user } = useUser();
 
 	const client = useHMenuSelectedClient((state) => state.client) as Friends;
@@ -40,19 +42,21 @@ const KeyboardController = () => {
 				username: user?.username ?? "Unknown User",
 				profile_image_url: user?.imageUrl,
 			},
+			messageId: uuidv4(),
 			message: data.message,
-			_id: uuidv4(),
-			createdAt: formatDate(new Date(Date.now())),
+			createdAt: new Date(Date.now()),
 		};
 
 		try {
 			socket.emit("send_message", messageData);
-			console.log("Optimistically updating UI");
+
 			updateMessages(messageData);
+
+			// form.reset();
 			updateRecentChat(
 				{
 					url: `direct-messages/${client.username}/${client._id}`,
-					body: data,
+					body: messageData,
 				},
 				{
 					onSuccess: () => {
@@ -65,12 +69,6 @@ const KeyboardController = () => {
 								)}
 							</div>
 						);
-						// updateMessages({
-						// 	message: data.message,
-						// 	msg_id: uuidv4(),
-						// 	time: formatDate(new Date(Date.now())),
-						// 	sender_info: currentUser,
-						// });
 					},
 				}
 			);

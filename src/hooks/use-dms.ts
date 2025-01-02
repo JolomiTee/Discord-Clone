@@ -18,7 +18,8 @@ export const useDirectMessagesState = create<DirectMessagesStateProps>()(
 					: [newMessage];
 				const uniqueMessages = [...state.messages, ...newMessages].reduce(
 					(acc, msg) => {
-						if (!acc.some((m) => m._id === msg._id)) acc.push(msg);
+						if (!acc.some((m) => m.messageId === msg.messageId))
+							acc.push(msg);
 						return acc;
 					},
 					[] as Message[] // Ensure the accumulator is explicitly typed

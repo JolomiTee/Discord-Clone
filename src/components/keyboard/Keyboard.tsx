@@ -42,6 +42,12 @@ export const Keyboard = () => {
 												e.target.placeholder =
 													"Write your message here";
 											}}
+											// prevent new line and submit
+											// onKeyDown={(e) => {
+											// 	if (e.key === "Enter" && !e.shiftKey) {
+											// 		e.preventDefault(); // Prevent line break
+											// 	}
+											// }}
 											className="items-center flex bg-transparent border-0 focus-visible:ring-0 p-2 shadow-none text-white placeholder-primary/50 scrollbar-hidden w-full"
 											placeholder="Write your message here"
 											rows={1}

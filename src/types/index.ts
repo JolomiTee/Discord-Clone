@@ -67,8 +67,9 @@ export interface SenderInfo {
 
 // Define the message structure
 export interface Message {
-	_id: string;
-	createdAt: string;
+	_id?: string;
+	messageId: string;
+	createdAt: Date;
 	message: string;
 	sender_info: SenderInfo | null;
 }
