@@ -189,9 +189,9 @@ const MobileSearchModal = ({ type, open, onOpenChange }: Props) => {
 										<ChatBubble
 											key={i}
 											messageId={"12345"}
-											time={"10:45"}
+											createdAt={new Date(Date.now())}
 											message={"Looking for some grass?"}
-											sender={user}
+											sender_info={user}
 										/>
 									);
 								})}

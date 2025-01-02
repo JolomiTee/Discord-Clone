@@ -5,9 +5,8 @@ import { SidebarMenuButton } from "@/components/ui/sidebar";
 import { useClerkRequest } from "@/hooks/use-query";
 import { Friends } from "@/types";
 import { CheckCheck, Loader, UserRoundPlus } from "lucide-react";
-import { Link } from "react-router-dom";
-import { Avatar, AvatarFallback, AvatarImage } from "../../ui/avatar";
 import { toast } from "sonner";
+import { Avatar, AvatarFallback, AvatarImage } from "../../ui/avatar";
 
 const AddFriendCard = ({
 	profile_image_url,

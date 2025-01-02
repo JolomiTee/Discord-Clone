@@ -118,16 +118,16 @@ const SearchVariant = () => {
 						<ChatBubble
 							key="1234"
 							messageId={"12345r"}
-							time={"15:45"}
+							createdAt={new Date(Date.now())}
 							message={"Into the Grasslands"}
-							sender={user}
+							sender_info={user}
 						/>
 						<ChatBubble
 							key="1234"
 							messageId={"3467"}
-							time={"19:15"}
+							createdAt={new Date(Date.now())}
 							message={"A land of Grass and Weed"}
-							sender={user}
+							sender_info={user}
 						/>
 					</SidebarMenu>
 				</SidebarGroup>
