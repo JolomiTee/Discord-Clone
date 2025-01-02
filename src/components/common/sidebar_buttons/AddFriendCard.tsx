@@ -36,10 +36,10 @@ const AddFriendCard = ({
 
 	return (
 		<SidebarMenuButton className="p-0 ms-0 text-white " asChild>
-			<Link
-				to={`@me/dm/${String(_id)}`}
+			<div
+				// to={`@me/dm/${String(_id)}`}
 				className="flex flex-wrap h-full gap-3 bg-transparent shadow-none"
-				onClick={handleAddFriend}
+				// onClick={handleAddFriend}
 			>
 				<div className="relative">
 					<Avatar className="flex items-center justify-center">
@@ -103,7 +103,7 @@ const AddFriendCard = ({
 						</Button>
 					</div>
 				)}
-			</Link>
+			</div>
 		</SidebarMenuButton>
 	);
 };
