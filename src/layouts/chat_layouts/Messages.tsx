@@ -14,7 +14,12 @@ import MessagesDisplayVariant from "../../components/common/messages/MessagesDis
 import Wumpus from "../Wumpus";
 
 const MessagesLayout = () => {
-	const socket = useMemo(() => io("http://localhost:6464"), []);
+	const socket = useMemo(() => {
+		return io(
+			import.meta.env.REACT_APP_SOCKET_URL || "http://localhost:6464"
+		);
+	}, []);
+
 	const client = useHMenuSelectedClient((state) => state.client) as Friends;
 	const messages = useDirectMessagesState((state) => state.messages);
 	const updateMessages = useDirectMessagesState(
@@ -32,6 +37,7 @@ const MessagesLayout = () => {
 
 	useEffect(() => {
 		scrollToBottom();
+		console.log(messages);
 	}, [messages]);
 
 	useEffect(() => {
@@ -39,21 +45,19 @@ const MessagesLayout = () => {
 	}, [data]);
 
 	useEffect(() => {
-		console.log("Setting up message listener");
+		// console.log("Setting up message listener");
 		const handleReceiveMessage = (data: Message) => {
-			console.table(data);
 			updateMessages(data);
 		};
 
 		socket.on("recieve_message", handleReceiveMessage);
 
 		return () => {
-			console.log("Cleaning up message listener");
+			// console.log("Cleaning up message listener");
 			socket.off("recieve_message", handleReceiveMessage);
 		};
 	}, [socket, updateMessages]);
 
-	console.log(messages);
 
 	return (
 		<MainContainer>

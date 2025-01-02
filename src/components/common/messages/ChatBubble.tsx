@@ -1,19 +1,14 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { getRandomColor } from "@/lib/utils";
-import { SenderInfo } from "@/types";
-interface ChatBubbleProps {
-	messageId: string;
-	time: string;
-	message: string;
-	sender: SenderInfo | null;
-}
+import { Message } from "@/types";
+import { format } from "date-fns";
 
 import { useParams } from "react-router-dom";
 
-const ChatBubble = ({ time, message, sender }: ChatBubbleProps) => {
+const ChatBubble = ({ createdAt, message, sender_info }: Message) => {
 	const { username } = useParams();
 
-	const isUserMessage = username !== sender?.username; // Check if the sender is the user
+	const isUserMessage = username !== sender_info?.username; // Check if the sender_info is the user
 
 	return (
 		<div
@@ -23,7 +18,7 @@ const ChatBubble = ({ time, message, sender }: ChatBubbleProps) => {
 		>
 			<Avatar className="hidden md:flex items-center justify-center size-[35px] md:size-[40px]">
 				<AvatarImage
-					src={sender?.profile_image_url}
+					src={sender_info?.profile_image_url}
 					className="size-[40px] rounded-full"
 				/>
 				<AvatarFallback
@@ -50,13 +45,15 @@ const ChatBubble = ({ time, message, sender }: ChatBubbleProps) => {
 					}`}
 				>
 					<span className="font-bold text-[#FFFFFFE5] text-[13px] md:text-[15px]">
-						{!isUserMessage && sender?.username}
+						{!isUserMessage && sender_info?.username}
 					</span>
 				</div>
 
 				<p className="text-[13px] md:text-[14px] text-white">{message}</p>
 				<div className="flex font-bold text-[#FFFFFF80] text-[11px] md:text-xs">
-					<time className="ms-auto me-0">{time}</time>
+					<time className="ms-auto me-0">
+						{format(new Date(createdAt), "MMM d, yyyy h:mm a")}
+					</time>
 				</div>
 			</div>
 		</div>

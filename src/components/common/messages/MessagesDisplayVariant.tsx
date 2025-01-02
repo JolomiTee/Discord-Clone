@@ -27,11 +27,11 @@ const MessagesDisplayVariant = ({ messages }: Props) => {
 		<div className="h-full flex flex-col relative overflow-auto scrollbar-hidden pb-5 p-3 md:p-4 lg:p-5">
 			{messages.map((msg) => (
 				<ChatBubble
-					key={msg._id}
-					messageId={msg._id}
-					time={msg.createdAt}
+					key={msg.messageId}
+					messageId={msg.messageId}
+					createdAt={msg.createdAt}
 					message={msg.message}
-					sender={msg.sender_info}
+					sender_info={msg.sender_info}
 				/>
 			))}
 			<div ref={messagesEndRef} />

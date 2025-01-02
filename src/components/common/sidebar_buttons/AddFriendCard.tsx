@@ -5,9 +5,8 @@ import { SidebarMenuButton } from "@/components/ui/sidebar";
 import { useClerkRequest } from "@/hooks/use-query";
 import { Friends } from "@/types";
 import { CheckCheck, Loader, UserRoundPlus } from "lucide-react";
-import { Link } from "react-router-dom";
-import { Avatar, AvatarFallback, AvatarImage } from "../../ui/avatar";
 import { toast } from "sonner";
+import { Avatar, AvatarFallback, AvatarImage } from "../../ui/avatar";
 
 const AddFriendCard = ({
 	profile_image_url,
@@ -36,10 +35,10 @@ const AddFriendCard = ({
 
 	return (
 		<SidebarMenuButton className="p-0 ms-0 text-white " asChild>
-			<Link
-				to={`@me/dm/${String(_id)}`}
+			<div
+				// to={`@me/dm/${String(_id)}`}
 				className="flex flex-wrap h-full gap-3 bg-transparent shadow-none"
-				onClick={handleAddFriend}
+				// onClick={handleAddFriend}
 			>
 				<div className="relative">
 					<Avatar className="flex items-center justify-center">
@@ -103,7 +102,7 @@ const AddFriendCard = ({
 						</Button>
 					</div>
 				)}
-			</Link>
+			</div>
 		</SidebarMenuButton>
 	);
 };

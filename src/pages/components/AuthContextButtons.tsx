@@ -1,27 +1,34 @@
 import { Button } from "@/components/ui/button";
-import {
-	SignedIn,
-	SignedOut,
-	SignOutButton,
-	UserButton,
-} from "@clerk/clerk-react";
+import { SignedIn, SignedOut, SignOutButton } from "@clerk/clerk-react";
 import { Link, useNavigate } from "react-router-dom";
-
+import { useUser } from "@clerk/clerk-react";
 const AuthContextButtons = () => {
 	const navigate = useNavigate();
+	const { user } = useUser();
 	return (
 		<>
 			<SignedIn>
-				<SignOutButton />
-				<UserButton />
-				<Button
-					className="bg-discord-blue rounded-[6px]"
-					onClick={() => {
-						navigate("user/@me");
-					}}
-				>
-					Dashboard
-				</Button>
+				<div className="flex items-center w-full gap-3">
+					<div className="flex items-center justify-center size-12 rounded-full">
+						<img
+							className="rounded-full object-cover"
+							src={user?.imageUrl || "/rediscord_pro.jpeg"}
+							alt={user?.fullName || "Rediscord User"}
+						/>
+					</div>
+
+					<Button
+						className="bg-discord-blue rounded-[6px] w-full"
+						onClick={() => {
+							navigate("user/@me");
+						}}
+					>
+						Dashboard
+					</Button>
+				</div>
+				<div className="w-full">
+					<SignOutButton />
+				</div>
 			</SignedIn>
 
 			<SignedOut>

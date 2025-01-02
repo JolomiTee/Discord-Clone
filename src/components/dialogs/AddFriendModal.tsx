@@ -25,6 +25,7 @@ import {
 import { Input } from "../ui/input";
 import { Separator } from "../ui/separator";
 import AddFriendCard from "../common/sidebar_buttons/AddFriendCard";
+import { LoadingSearchedFriendList } from "../common/skeletons/LoadingFriendList";
 
 const AddFriendModal = () => {
 	const { form, formSchema } = searchFriendSchema();
@@ -54,7 +55,7 @@ const AddFriendModal = () => {
 			<DialogContent className="bg-charcoal text-white border-none shadow-lg p-3 md:p-5 py-7 md:py-10 md:rounded-[15px] rounded-[15px] lg:rounded-[15px]">
 				<DialogHeader>
 					<DialogTitle>New Friends? Yess!</DialogTitle>
-					<DialogDescription>
+					<DialogDescription className="text-white">
 						You can search for new friends by their usernames, add them to
 						your friend circle and have a nice chat{" "}
 						<Rocket className="inline-flex size-4" />
@@ -103,7 +104,7 @@ const AddFriendModal = () => {
 								{error.message || "An error occurred."}
 							</p>
 						) : searchQuery && isLoading ? (
-							<p className="text-gray-500 mt-3">Loading...</p>
+							<LoadingSearchedFriendList />
 						) : data && data.data?.length > 0 ? (
 							<div className="">
 								<h3 className="text-lg font-medium mb-3">

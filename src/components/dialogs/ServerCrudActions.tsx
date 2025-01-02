@@ -96,7 +96,9 @@ const ServerCrudActions = ({ trigger, serverId }: Props) => {
 						<div className="flex items-center justify-center bg-charcoal/50 size-[45px] rounded-full">
 							<Plus color="white" />
 						</div>
-						<span className="text-[15px]">Create a server</span>
+						<span className="text-[15px] hidden md:block">
+							Create a server
+						</span>
 					</SidebarMenuButton>
 				) : (
 					<Button
