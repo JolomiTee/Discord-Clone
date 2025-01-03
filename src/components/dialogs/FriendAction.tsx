@@ -68,25 +68,29 @@ const FriendAction = ({ trigger, friendId, username }: Props) => {
 					</>
 				)}
 			</AlertDialogTrigger>
-			<AlertDialogContent>
+			<AlertDialogContent className="bg-onyx md:rounded-[10px] text-white">
 				<AlertDialogHeader>
 					<AlertDialogTitle className="truncate">
 						{trigger === "remove"
 							? `Really want to let a friend go?`
 							: `Block ${username}`}
 					</AlertDialogTitle>
-					<AlertDialogDescription>
+					<AlertDialogDescription className="text-white">
 						This action cannot be undone, however you can add them back by
 						searching for&nbsp;
-						<b className="text-black">{username.trim()}</b>
+						<b className="text-discord-blue">{username.trim()}</b>
 						&nbsp;again
 					</AlertDialogDescription>
 				</AlertDialogHeader>
 				<AlertDialogFooter>
-					<AlertDialogCancel className="rounded-sm">
+					<AlertDialogCancel className="rounded-[8px] bg-sidebar-accent-foreground">
 						Keep 'em
 					</AlertDialogCancel>
-					<Button onClick={handleAction} disabled={isLoading}>
+					<Button
+						className="bg-crimson/80 hover:bg-crimson rounded-[8px] font-bold"
+						onClick={handleAction}
+						disabled={isLoading}
+					>
 						{trigger === "remove" ? (
 							isLoading ? (
 								<>
