@@ -17,6 +17,7 @@ import {
 import { Dispatch, SetStateAction } from "react";
 import { Link } from "react-router-dom";
 import { Avatar, AvatarFallback, AvatarImage } from "../../ui/avatar";
+import FriendAction from "@/components/dialogs/FriendAction";
 
 interface Props extends Friends {
 	slug: string;
@@ -127,9 +128,21 @@ const FriendCard = ({
 									/>
 								</Button>
 							</DropdownMenuTrigger>
-							<DropdownMenuContent className="bg-onyx w-40 text-sidebar-primary-foreground rounded-[8px]">
-								<DropdownMenuItem>Unfriend</DropdownMenuItem>
-								<DropdownMenuItem>Block</DropdownMenuItem>
+							<DropdownMenuContent className="bg-onyx w-40 text-sidebar-primary-foreground rounded-[8px] flex flex-col gap-1">
+								<DropdownMenuItem asChild>
+									<FriendAction
+										trigger="remove"
+										friendId={_id}
+										username={username}
+									/>
+								</DropdownMenuItem>
+								<DropdownMenuItem asChild>
+									<FriendAction
+										trigger="block"
+										friendId={_id}
+										username={username}
+									/>
+								</DropdownMenuItem>
 							</DropdownMenuContent>
 						</DropdownMenu>
 					</div>
