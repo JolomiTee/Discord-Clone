@@ -20,15 +20,16 @@ interface Props {
 	username: string;
 }
 const FriendAction = ({ trigger, friendId, username }: Props) => {
-	const { mutate, isLoading } = useClerkRequest("POST", ["added-friends"]);
+	const { mutate, isLoading } = useClerkRequest(
+		`${trigger === "remove" ? "DELETE" : "POST"}`,
+		["added-friends"]
+	);
 	const [isDialogOpen, setIsDialogOpen] = useState(false);
 
 	const handleAction = () => {
 		mutate(
 			{
-				url: `friend/${
-					trigger === "remove" ? "unfriend" : "block"
-				}/${friendId}`,
+				url: `friends${trigger === "remove" ? "" : "/block"}/${friendId}`,
 			},
 			{
 				onSuccess: () => {
@@ -49,7 +50,10 @@ const FriendAction = ({ trigger, friendId, username }: Props) => {
 			open={isDialogOpen || isLoading}
 			onOpenChange={setIsDialogOpen}
 		>
-			<AlertDialogTrigger className="hover:bg-discord-blue relative flex cursor-default select-none items-center gap-2 rounded w-full px-2 py-1.5 text-sm outline-none transition-colors focus:bg-discord-blue/70 focus:text-white data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-5 [&_svg]:shrink-0 dark:focus:bg-zinc-800 dark:focus:text-zinc-50">
+			<AlertDialogTrigger
+				disabled={trigger === "block" ? true : false}
+				className="hover:bg-discord-blue relative flex cursor-default select-none items-center gap-2 rounded w-full px-2 py-1.5 text-sm outline-none transition-colors focus:bg-discord-blue/70 disabled:cursor-not-allowed focus:text-white data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-5 [&_svg]:shrink-0 dark:focus:bg-zinc-800 dark:focus:text-zinc-50"
+			>
 				{trigger === "remove" ? (
 					<>
 						<UserMinus2 /> Unfriend
@@ -58,6 +62,9 @@ const FriendAction = ({ trigger, friendId, username }: Props) => {
 					<>
 						<ShieldBan />
 						Block
+						<span className="absolute bottom-0 right-0 text-[9px] text-soft-blue rounded-full px-1.5 py-[1px] leading-none">
+							coming soon
+						</span>
 					</>
 				)}
 			</AlertDialogTrigger>
